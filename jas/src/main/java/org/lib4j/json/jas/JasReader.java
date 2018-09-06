@@ -24,8 +24,10 @@ import java.util.NoSuchElementException;
 
 import org.lib4j.io.ReplayReader;
 import org.lib4j.util.ArrayIntList;
+import org.lib4j.util.ArrayLongList;
 import org.lib4j.util.Buffers;
 import org.lib4j.util.Characters;
+import org.lib4j.util.Numbers;
 
 /**
  * The {@code JasReader} ("Json Api Simple" Reader) is a {@link Reader} and
@@ -62,8 +64,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
     return ch == '{' || ch == '}' || ch == '[' || ch == ']' || ch == ':' || ch == ',';
   }
 
-  private final ArrayIntList starts = new ArrayIntList(DEFAULT_TOKENS_SIZE);
-  private final ArrayIntList ends;
+  private final ArrayLongList positions = new ArrayLongList(DEFAULT_TOKENS_SIZE);
   private final ArrayList<long[]> scopes = new ArrayList<>(DEFAULT_SCOPE_SIZE);
   private final ArrayIntList depths = new ArrayIntList(DEFAULT_SCOPE_SIZE);
   private int index = -1;
@@ -71,7 +72,6 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
   private long[] scope = new long[DEFAULT_SCOPE_SIZE];
   private int depth = -1;
   private int abort = 0;
-  private int endOfContent = Integer.MAX_VALUE;
 
   private final boolean ignoreWhitespace;
 
@@ -98,7 +98,6 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
   public JasReader(final Reader reader, final boolean ignoreWhitespace) {
     super(reader, DEFAULT_BUFFER_SIZE);
     this.ignoreWhitespace = ignoreWhitespace;
-    this.ends = ignoreWhitespace ? new ArrayIntList(DEFAULT_TOKENS_SIZE) : null;
   }
 
   /**
@@ -137,15 +136,23 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
     if (index < 0)
       throw new IllegalArgumentException("index < 0: " + index);
 
-    if (starts.size() <= index)
-      throw new IndexOutOfBoundsException("setIndex(" + index + ") is beyond index [" + (starts.size() - 1) + "] of tokens read thus far");
+    if (positions.size() <= index)
+      throw new IndexOutOfBoundsException("setIndex(" + index + ") is beyond index [" + (positions.size() - 1) + "] of tokens read thus far");
 
     this.index = index;
 
-    setPosition(getEnd(index));
+    setPosition(getEndPosition(index));
     scope = scopes.get(index);
     depth = depths.get(index);
-    return starts.get(index);
+    return getStartPosition(index);
+  }
+
+  private int getStartPosition(final int index) {
+    return Numbers.Compound.dencodeInt(positions.get(index), 0);
+  }
+
+  private int getEndPosition(final int index) {
+    return Numbers.Compound.dencodeInt(positions.get(index), 1);
   }
 
   /**
@@ -164,28 +171,6 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
    */
   protected void setPosition(final int p) {
     buffer.reset(p);
-  }
-
-  private int getEnd(final int index) {
-    if (ignoreWhitespace)
-      return ends.get(index);
-
-    int nextStart;
-    if (index == starts.size() - 1) {
-      nextStart = buffer.size() + buffer.available() - 1;
-      if (nextStart == starts.get(index))
-        ++nextStart;
-    }
-    else {
-      nextStart = starts.get(index + 1);
-      if (nextStart == -1) {
-        nextStart = buffer.size() + buffer.available();
-        if (nextStart > endOfContent)
-          nextStart = endOfContent;
-      }
-    }
-
-    return nextStart;
   }
 
   /**
@@ -208,13 +193,13 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
   public String readToken() throws IOException, JasParseException {
     final int start;
     final int end;
-    if (getPosition() == getEnd(index)) {
+    if (getPosition() == getEndPosition(index)) {
       start = nextToken();
-      end = getEnd(index);
+      end = getEndPosition(index);
     }
     else {
       start = getPosition();
-      end = getEnd(index);
+      end = getEndPosition(index);
       if (end != -1)
         setPosition(end);
     }
@@ -241,7 +226,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
    * @see #nextToken()
    */
   private boolean hasRemainig() throws IOException, JasParseException {
-    if (index != -1 && getPosition() < getEnd(index))
+    if (index != -1 && getPosition() < getEndPosition(index))
       return true;
 
     final int start = nextToken();
@@ -306,7 +291,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
       if (len == 0 || !hasRemainig())
         return count;
 
-      int remaining = getEnd(index) - getPosition();
+      int remaining = getEndPosition(index) - getPosition();
       if (remaining > len)
         return count + super.read(cbuf, off, len);
 
@@ -372,12 +357,12 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
    */
   @Override
   public boolean hasNext() throws IllegalStateException, JasParseException {
-    if (index < starts.size())
+    if (index < positions.size())
       return true;
 
     try {
       nextToken();
-      return index < starts.size();
+      return index < positions.size();
     }
     catch (final IOException e) {
       throw new IllegalStateException(e);
@@ -421,16 +406,16 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
 
     final char[] buf = buf();
     if (ignoreWhitespace)
-      return buf[starts.get(index - offset)];
+      return buf[getStartPosition(index - offset)];
 
     // Advance the offset if the current index points to whitespace
-    char ch = buf[starts.get(index)];
+    char ch = buf[getStartPosition(index)];
     if (Characters.isWhiteSpace(ch))
       ++offset;
 
     // Advance the offset if the offset itself points to whitespace
     while (offset++ < index)
-      if (!Characters.isWhiteSpace(ch = buf[starts.get(index + 1 - offset)]))
+      if (!Characters.isWhiteSpace(ch = buf[getStartPosition(index + 1 - offset)]))
         return ch;
 
     return -1;
@@ -453,7 +438,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
       start = readTokenStart();
       index = -1;
     }
-    else if (starts.get(index + 1) == -1) {
+    else if (getStartPosition(index + 1) == -1) {
       return start;
     }
 
@@ -461,8 +446,8 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
     setIndex0(index + 1);
 
     // Fast return if there is no need to re-read an already read token
-    if (index + 1 < starts.size())
-      return starts.get(index);
+    if (index + 1 < positions.size())
+      return getStartPosition(index);
 
     final int beforeIndex = index;
     try {
@@ -475,7 +460,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
         setIndex0(index - 1);
     }
 
-    return start != -1 ? start : starts.get(index);
+    return start != -1 ? start : getStartPosition(index);
   }
 
   /**
@@ -490,11 +475,11 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
    * @see #nextToken()
    */
   protected int readTokenStart() throws IOException, JasParseException {
-    if (starts.size() > 0 && getPosition() != getEnd(index))
-      throw new IllegalStateException("Buffer position (" + getPosition() + ") misaligned with end position (" + getEnd(index) + ") on index (" + index + ")");
+    if (positions.size() > 0 && getPosition() != getEndPosition(index))
+      throw new IllegalStateException("Buffer position (" + getPosition() + ") misaligned with end position (" + getEndPosition(index) + ") on index (" + index + ")");
 
     // Fast return if there is no need to re-read an already read token
-    if (index < starts.size() - 1)
+    if (index < positions.size() - 1)
       return setIndex0(index + 1);
 
     abort = 0;
@@ -609,15 +594,12 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
     if (ch != -1)
       setPosition(buffer.size() - 1);
 
-    if (++index != starts.size())
-      throw new IllegalStateException("Index (" + index + ") misaligned with tokens count (" + starts.size() + ")");
+    if (++index != positions.size())
+      throw new IllegalStateException("Index (" + index + ") misaligned with tokens count (" + positions.size() + ")");
 
     scopes.add(scope.clone());
     depths.add(depth);
-    starts.add(pos - 1);
-    if (ignoreWhitespace)
-      ends.add(getPosition());
-
+    positions.add(Numbers.Compound.encode(pos - 1, getPosition()));
     return pos - 1;
   }
 
@@ -642,8 +624,6 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
 
     if (!ignoreWhitespace && depth != -1 && start != getPosition())
       abort = start;
-    else
-      endOfContent = start - 1;
 
     if (depth == -1 && ch != -1)
       throw new JasParseException("No content is expected at this point: " + (char)ch, getPosition() - 1);
