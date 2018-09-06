@@ -1,0 +1,1317 @@
+{
+  "meta" : {
+    "view" : {
+      "id" : "58un-vqfs",
+      "name" : "Job Titles by Classification",
+      "attribution" : "San Francisco Department of Human Resources",
+      "attributionLink" : "http://www.sfdhr.org",
+      "averageRating" : 0,
+      "category" : "City Management and Ethics",
+      "createdAt" : 1321141998,
+      "description" : "Shows the job titles associated with job classifications. Used with the Salary Ranges by Classification and Employees by Classification",
+      "displayType" : "table",
+      "downloadCount" : 10539,
+      "hideFromCatalog" : false,
+      "hideFromDataJson" : false,
+      "indexUpdatedAt" : 1486593898,
+      "licenseId" : "PDDL",
+      "newBackend" : false,
+      "numberOfComments" : 0,
+      "oid" : 368370,
+      "provenance" : "official",
+      "publicationAppendEnabled" : false,
+      "publicationDate" : 1321142215,
+      "publicationGroup" : 252181,
+      "publicationStage" : "published",
+      "rowClass" : "",
+      "rowsUpdatedAt" : 1321142000,
+      "rowsUpdatedBy" : "isin-8y46",
+      "tableId" : 252181,
+      "totalTimesRated" : 0,
+      "viewCount" : 1590,
+      "viewLastModified" : 1486593365,
+      "viewType" : "tabular",
+      "columns" : [ {
+        "id" : -1,
+        "name" : "sid",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":sid",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "id",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":id",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "position",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":position",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "created_at",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":created_at",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "created_meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":created_meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "updated_at",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":updated_at",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "updated_meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":updated_meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : 3530789,
+        "name" : "Job Code",
+        "dataTypeName" : "text",
+        "fieldName" : "job_code",
+        "position" : 2,
+        "renderTypeName" : "text",
+        "tableColumnId" : 1677770,
+        "width" : 196,
+        "cachedContents" : {
+          "non_null" : 1005,
+          "largest" : "TEMPN",
+          "null" : 0,
+          "top" : [ {
+            "item" : "0111",
+            "count" : 1
+          }, {
+            "item" : "0112",
+            "count" : 1
+          }, {
+            "item" : "0114",
+            "count" : 1
+          }, {
+            "item" : "0115",
+            "count" : 1
+          }, {
+            "item" : "0116",
+            "count" : 1
+          }, {
+            "item" : "0118",
+            "count" : 1
+          }, {
+            "item" : "0130",
+            "count" : 1
+          }, {
+            "item" : "0140",
+            "count" : 1
+          }, {
+            "item" : "0150",
+            "count" : 1
+          }, {
+            "item" : "0170",
+            "count" : 1
+          }, {
+            "item" : "0180",
+            "count" : 1
+          }, {
+            "item" : "0190",
+            "count" : 1
+          }, {
+            "item" : "0382",
+            "count" : 1
+          }, {
+            "item" : "0390",
+            "count" : 1
+          }, {
+            "item" : "0395",
+            "count" : 1
+          }, {
+            "item" : "0402",
+            "count" : 1
+          }, {
+            "item" : "0490",
+            "count" : 1
+          }, {
+            "item" : "0720",
+            "count" : 1
+          }, {
+            "item" : "0882",
+            "count" : 1
+          }, {
+            "item" : "0884",
+            "count" : 1
+          } ],
+          "smallest" : "0111"
+        },
+        "format" : { }
+      }, {
+        "id" : 3530790,
+        "name" : "Job Title",
+        "dataTypeName" : "text",
+        "fieldName" : "job_title",
+        "position" : 3,
+        "renderTypeName" : "text",
+        "tableColumnId" : 1677771,
+        "width" : 208,
+        "cachedContents" : {
+          "non_null" : 1004,
+          "largest" : "Zoo Curator",
+          "null" : 1,
+          "top" : [ {
+            "item" : "Temporary Position",
+            "count" : 2
+          }, {
+            "item" : "Accountant I",
+            "count" : 1
+          }, {
+            "item" : "Accountant II",
+            "count" : 1
+          }, {
+            "item" : "Accountant III",
+            "count" : 1
+          }, {
+            "item" : "Accountant Intern",
+            "count" : 1
+          }, {
+            "item" : "Accountant IV",
+            "count" : 1
+          }, {
+            "item" : "Account Clerk",
+            "count" : 1
+          }, {
+            "item" : "Acupuncturist",
+            "count" : 1
+          }, {
+            "item" : "Adm, SFGH Medical Center",
+            "count" : 1
+          }, {
+            "item" : "Administrative Analyst",
+            "count" : 1
+          }, {
+            "item" : "Administrative Engineer",
+            "count" : 1
+          }, {
+            "item" : "Administrative Services Mgr",
+            "count" : 1
+          }, {
+            "item" : "Admission Attendant",
+            "count" : 1
+          }, {
+            "item" : "Agricultural Inspector",
+            "count" : 1
+          }, {
+            "item" : "Airport Custodial Svcs Sprv",
+            "count" : 1
+          }, {
+            "item" : "Airport Economic Planner",
+            "count" : 1
+          }, {
+            "item" : "Airport Electrician",
+            "count" : 1
+          }, {
+            "item" : "Airport Electrician Supervisor",
+            "count" : 1
+          }, {
+            "item" : "Airport Emerg Planning Coord",
+            "count" : 1
+          }, {
+            "item" : "Airport Mechanical Maint Sprv",
+            "count" : 1
+          } ],
+          "smallest" : "Accountant I"
+        },
+        "format" : { }
+      } ],
+      "grants" : [ {
+        "inherited" : false,
+        "type" : "viewer",
+        "flags" : [ "public" ]
+      } ],
+      "license" : {
+        "name" : "Open Data Commons Public Domain Dedication and License",
+        "termsLink" : "http://opendatacommons.org/licenses/pddl/1.0/"
+      },
+      "metadata" : {
+        "rdfSubject" : "0",
+        "rdfClass" : "",
+        "custom_fields" : {
+          "Department Metrics" : {
+            "Publishing Department" : "Human Resources"
+          },
+          "Detailed Descriptive" : {
+            "Geographic unit" : "Not applicable"
+          },
+          "Publishing Details" : {
+            "Data change frequency" : "As needed",
+            "Publishing frequency" : "As needed"
+          }
+        },
+        "rowIdentifier" : "0",
+        "availableDisplayTypes" : [ "table", "fatrow", "page" ],
+        "rowLabel" : "",
+        "renderTypeConfig" : {
+          "visible" : {
+            "table" : true
+          }
+        }
+      },
+      "owner" : {
+        "id" : "ivaz-tugd",
+        "displayName" : "Department of Human Resources",
+        "screenName" : "Department of Human Resources",
+        "type" : "interactive"
+      },
+      "query" : { },
+      "rights" : [ "read" ],
+      "tableAuthor" : {
+        "id" : "ivaz-tugd",
+        "displayName" : "Department of Human Resources",
+        "screenName" : "Department of Human Resources",
+        "type" : "interactive"
+      },
+      "flags" : [ "default", "restorable", "restorePossibleForType" ]
+    }
+  },
+  "data" : [ [ 1, "33FB04E8-3B9A-405C-8C86-A2B4BAE525E5", 1, 1321113200, "390805", 1321113200, "390805", "{\n}", "0111", "BdComm Mbr, Grp2,M=$25/Mtg" ]
+, [ 2, "7C9225BD-CB85-4F75-AA15-239771450C89", 2, 1321113200, "390805", 1321113200, "390805", "{\n}", "0112", "BdComm Mbr, Grp3,M=$50/Mtg" ]
+, [ 3, "75E49B65-A298-4881-8811-82A35032A492", 3, 1321113200, "390805", 1321113200, "390805", "{\n}", "0114", "BdComm Mbr, Grp5,M$100/Mo" ]
+, [ 4, "44913E78-C48D-4534-8846-B9EE15D05402", 4, 1321113200, "390805", 1321113200, "390805", "{\n}", "0115", "BdComm MbrGrp6,D=@$100/Halfday" ]
+, [ 5, "297E9DEE-9C41-436F-8189-0348FEC9BD00", 5, 1321113200, "390805", 1321113200, "390805", "{\n}", "0116", "Brd Comm Mbr, M=$200/Mtg" ]
+, [ 6, "90D9884A-B7A5-4651-B55C-697235EB0899", 6, 1321113200, "390805", 1321113200, "390805", "{\n}", "0118", "BdComm Mbr, Grp7,M=$500/Month" ]
+, [ 7, "109838F2-48A1-4C52-8AE6-D61F5F2C712F", 7, 1321113200, "390805", 1321113200, "390805", "{\n}", "0130", "Superintendent of Schools" ]
+, [ 8, "4EBCDD09-987B-46F3-A350-FDD16F46205B", 8, 1321113200, "390805", 1321113200, "390805", "{\n}", "0140", "Chief, Fire Department" ]
+, [ 9, "958B7D8B-10AC-4A68-86F9-229F139DBDAF", 9, 1321113200, "390805", 1321113200, "390805", "{\n}", "0150", "Dep Chf of Dept (Fire Dept)" ]
+, [ 10, "0BF19576-E7F1-415C-90EF-AF6744D34E50", 10, 1321113200, "390805", 1321113200, "390805", "{\n}", "0170", "Assistant Law Librarian" ]
+, [ 11, "14EAC974-6269-4F11-B814-21F3FBCD2294", 11, 1321113200, "390805", 1321113200, "390805", "{\n}", "0180", "Law Librarian" ]
+, [ 12, "A5882AB1-729C-4DCE-8686-F41592843B22", 12, 1321113200, "390805", 1321113200, "390805", "{\n}", "0190", "Bookbinder" ]
+, [ 13, "6F7F9BDE-93F0-4FE4-A1B1-63C5CFE76A9A", 13, 1321113200, "390805", 1321113200, "390805", "{\n}", "0382", "Inspector 3" ]
+, [ 14, "8E477D26-CFE7-4347-A55C-781B9A6042C3", 14, 1321113200, "390805", 1321113200, "390805", "{\n}", "0390", "Chief of Police" ]
+, [ 15, "9A40239F-5F41-4F05-987F-F9F3009C2F40", 15, 1321113200, "390805", 1321113200, "390805", "{\n}", "0395", "Assistant Chief of Police" ]
+, [ 16, "716B9BEB-638B-4A4A-B5EB-F37755BC124B", 16, 1321113200, "390805", 1321113200, "390805", "{\n}", "0402", "Deputy Chief 3" ]
+, [ 17, "CEF51B63-4A8E-4DCC-A067-D6935A09C619", 17, 1321113200, "390805", 1321113200, "390805", "{\n}", "0490", "Commander 3" ]
+, [ 18, "1BF40F1B-AF9B-4B3A-A835-0C78B39486BA", 18, 1321113200, "390805", 1321113200, "390805", "{\n}", "0720", "Member, Board of Supervisors" ]
+, [ 19, "04D57EDD-41C6-47C1-83BB-1C12B91D95A3", 19, 1321113200, "390805", 1321113200, "390805", "{\n}", "0882", "Mayoral Staff II" ]
+, [ 20, "E73B0D2B-0CF1-43FC-AC6C-E1AAD0AF165C", 20, 1321113200, "390805", 1321113200, "390805", "{\n}", "0884", "Mayoral Staff IV" ]
+, [ 21, "2E210C4F-AEA2-4267-9B5C-C88537CAC5C8", 21, 1321113200, "390805", 1321113200, "390805", "{\n}", "0885", "Mayoral Staff V" ]
+, [ 22, "2E18393B-EC9D-4EA1-A73B-FEB1536179C8", 22, 1321113200, "390805", 1321113200, "390805", "{\n}", "0886", "Mayoral Staff VI" ]
+, [ 23, "6A5CE1F4-2E06-4AAB-BCD2-1946EB651A63", 23, 1321113200, "390805", 1321113200, "390805", "{\n}", "0887", "Mayoral Staff VII" ]
+, [ 24, "A35F02A2-594F-41DD-B6E7-EF0CBFEDB8DF", 24, 1321113200, "390805", 1321113200, "390805", "{\n}", "0889", "Mayoral Staff IX" ]
+, [ 25, "CD7B3A94-2A72-41C0-B699-07C28CFA8886", 25, 1321113200, "390805", 1321113200, "390805", "{\n}", "0890", "Mayoral Staff X" ]
+, [ 26, "3DFB8D2F-867F-4512-9F7C-FE2C00E49ECE", 26, 1321113200, "390805", 1321113200, "390805", "{\n}", "0891", "Mayoral Staff XI" ]
+, [ 27, "455AFDF3-88A4-4FE5-B416-38B013D553DD", 27, 1321113200, "390805", 1321113200, "390805", "{\n}", "0892", "Mayoral Staff XII" ]
+, [ 28, "E7060A7A-44BE-4C25-BEFD-ED4E997E756A", 28, 1321113200, "390805", 1321113200, "390805", "{\n}", "0901", "Mayoral Staff XIII" ]
+, [ 29, "A48D387D-D4DE-45B7-B8FC-135C2CA9124B", 29, 1321113200, "390805", 1321113200, "390805", "{\n}", "0902", "Mayoral Staff XIV" ]
+, [ 30, "CDF85D8E-C293-423A-A34A-D3AA4D2C6289", 30, 1321113200, "390805", 1321113200, "390805", "{\n}", "0903", "Mayoral Staff XV" ]
+, [ 31, "20EBC322-E3DF-4A5E-B4D6-7056BD7C01DD", 31, 1321113200, "390805", 1321113200, "390805", "{\n}", "0904", "Mayoral Staff XVI" ]
+, [ 32, "7C8CF9CA-9F92-439C-9FE6-1DB604400ABD", 32, 1321113200, "390805", 1321113200, "390805", "{\n}", "0905", "Mayoral Staff XVII" ]
+, [ 33, "93101D48-DFC3-43C7-ADFE-83856B8FFD50", 33, 1321113200, "390805", 1321113200, "390805", "{\n}", "0922", "Manager I" ]
+, [ 34, "99B5797F-54E5-4117-9B98-0F0E27344BBD", 34, 1321113200, "390805", 1321113200, "390805", "{\n}", "0923", "Manager II" ]
+, [ 35, "5A5CFE59-5D4B-42A0-AE21-9D935D62788D", 35, 1321113200, "390805", 1321113200, "390805", "{\n}", "0931", "Manager III" ]
+, [ 36, "EB2DE3C6-0157-4F6A-80C1-836697543B4B", 36, 1321113200, "390805", 1321113200, "390805", "{\n}", "0932", "Manager IV" ]
+, [ 37, "81719DD9-276C-4154-9ABA-7D585DBDF9B0", 37, 1321113200, "390805", 1321113200, "390805", "{\n}", "0933", "Manager V" ]
+, [ 38, "5C388D53-ADED-4E92-BAF7-58773157778F", 38, 1321113200, "390805", 1321113200, "390805", "{\n}", "0941", "Manager VI" ]
+, [ 39, "31A1BC75-B15B-4D7A-A105-94319046FEAD", 39, 1321113200, "390805", 1321113200, "390805", "{\n}", "0942", "Manager VII" ]
+, [ 40, "FE8E3A5D-076A-498F-9108-4339D3FF3547", 40, 1321113200, "390805", 1321113200, "390805", "{\n}", "0943", "Manager VIII" ]
+, [ 41, "28F38638-9B7F-4F94-B2BB-92EFDC852AE4", 41, 1321113200, "390805", 1321113200, "390805", "{\n}", "0951", "Dep Dir I" ]
+, [ 42, "CA60C816-B682-4FA7-A9CB-D22F5E833FE3", 42, 1321113200, "390805", 1321113200, "390805", "{\n}", "0952", "Dep Dir II" ]
+, [ 43, "538B52DF-5FA5-4269-AEE5-A4B932D49915", 43, 1321113200, "390805", 1321113200, "390805", "{\n}", "0953", "Dep Dir III" ]
+, [ 44, "18DBA053-44C1-4C01-A89F-025877407035", 44, 1321113200, "390805", 1321113200, "390805", "{\n}", "0954", "Dep Dir IV" ]
+, [ 45, "1F741458-7151-488D-9059-7DF90F251CB6", 45, 1321113200, "390805", 1321113200, "390805", "{\n}", "0955", "Dep Dir V" ]
+, [ 46, "BBD9917B-AD9A-4595-8B91-C10D7AEE9716", 46, 1321113200, "390805", 1321113200, "390805", "{\n}", "0961", "Dept Head I" ]
+, [ 47, "6B8137E8-8AD5-48BA-9BF4-AA3A73F4ECF3", 47, 1321113200, "390805", 1321113200, "390805", "{\n}", "0962", "Dept Head II" ]
+, [ 48, "804E010B-DF45-4C1C-9FBE-B7A9BCF2E449", 48, 1321113200, "390805", 1321113200, "390805", "{\n}", "0963", "Dept Head III" ]
+, [ 49, "005BFB8B-6181-4F2C-991D-523A7F09B7BC", 49, 1321113200, "390805", 1321113200, "390805", "{\n}", "0964", "Dept Head IV" ]
+, [ 50, "79BC8EC4-2130-4C9F-B093-2F94F3D5A623", 50, 1321113200, "390805", 1321113200, "390805", "{\n}", "0965", "Dept Head V" ]
+, [ 51, "1011BB71-BAA9-4678-975D-84BBEBEAD995", 51, 1321113200, "390805", 1321113200, "390805", "{\n}", "1002", "IS Operator-Journey" ]
+, [ 52, "F8598BE7-6A22-4587-BB20-85E42AF7ADB0", 52, 1321113200, "390805", 1321113200, "390805", "{\n}", "1003", "IS Operator-Senior" ]
+, [ 53, "D7957965-3930-430E-AA5C-EBE4A15C0B84", 53, 1321113200, "390805", 1321113200, "390805", "{\n}", "1004", "IS Operator-Analyst" ]
+, [ 54, "5688BBD1-DAD7-48CC-897C-C09BA9BFF96C", 54, 1321113200, "390805", 1321113200, "390805", "{\n}", "1011", "IS Technician Assistant" ]
+, [ 55, "914712EB-0B34-4436-BF3B-F91BE13C4AEB", 55, 1321113200, "390805", 1321113200, "390805", "{\n}", "1012", "IS Technical-Journey" ]
+, [ 56, "06B3DD3C-6DF9-4A88-A71B-37DF244119D4", 56, 1321113200, "390805", 1321113200, "390805", "{\n}", "1013", "IS Technician-Senior" ]
+, [ 57, "977BC1A4-8605-4F09-91DE-A319C0B53B27", 57, 1321113200, "390805", 1321113200, "390805", "{\n}", "1014", "IS Technician-Supervisor" ]
+, [ 58, "68193080-E619-4961-8EE4-E2FF75381530", 58, 1321113200, "390805", 1321113200, "390805", "{\n}", "1021", "IS Administrator 1" ]
+, [ 59, "7D7A794D-4079-4F75-B4FB-A670D32D852D", 59, 1321113200, "390805", 1321113200, "390805", "{\n}", "1022", "IS Administrator 2" ]
+, [ 60, "17531E36-EDF5-45B7-8F65-C14BFCD2E929", 60, 1321113200, "390805", 1321113200, "390805", "{\n}", "1023", "IS Administrator 3" ]
+, [ 61, "2D04D240-9A25-4663-AC02-EA53CCCA88BD", 61, 1321113200, "390805", 1321113200, "390805", "{\n}", "1024", "IS Administrator-Supervisor" ]
+, [ 62, "B72DF693-8975-4868-83E4-0A3E6886083A", 62, 1321113200, "390805", 1321113200, "390805", "{\n}", "1031", "IS Trainer-Assistant" ]
+, [ 63, "B01589F1-B095-4691-8B74-158E69EA34C0", 63, 1321113200, "390805", 1321113200, "390805", "{\n}", "1032", "IS Trainer-Journey" ]
+, [ 64, "EEE0E8E5-882C-4778-B358-343BE9DC509E", 64, 1321113200, "390805", 1321113200, "390805", "{\n}", "1033", "IS Trainer-Senior" ]
+, [ 65, "BF9A2C65-DAB7-4C32-BCC6-03FF6A373A30", 65, 1321113200, "390805", 1321113200, "390805", "{\n}", "1041", "IS Engineer-Assistant" ]
+, [ 66, "842E92FD-03A5-4455-82B5-030EA107FB29", 66, 1321113200, "390805", 1321113200, "390805", "{\n}", "1042", "IS Engineer-Journey" ]
+, [ 67, "E1E74C64-1998-4D7F-9E0C-946DB8EBE94A", 67, 1321113200, "390805", 1321113200, "390805", "{\n}", "1043", "IS Engineer-Senior" ]
+, [ 68, "725A3EB4-6D5F-47AD-A434-ED3C5D9ECA24", 68, 1321113200, "390805", 1321113200, "390805", "{\n}", "1044", "IS Engineer-Principal" ]
+, [ 69, "A4ADB4A0-FF6B-49B3-A470-AD73D76A1447", 69, 1321113200, "390805", 1321113200, "390805", "{\n}", "1051", "IS Business Analyst-Assistant" ]
+, [ 70, "CA3016E3-DC53-4A89-B9EE-0702BD50F167", 70, 1321113200, "390805", 1321113200, "390805", "{\n}", "1052", "IS Business Analyst" ]
+, [ 71, "5B6CF819-7958-4F9E-809D-8BB8DB9A74AF", 71, 1321113200, "390805", 1321113200, "390805", "{\n}", "1053", "IS Business Analyst-Senior" ]
+, [ 72, "5CFAC45B-4E5A-4089-AF95-95F4B41D1F38", 72, 1321113200, "390805", 1321113200, "390805", "{\n}", "1054", "IS Business Analyst-Principal" ]
+, [ 73, "829EAF30-6FAC-4927-8F8B-55EC8355BB76", 73, 1321113200, "390805", 1321113200, "390805", "{\n}", "1061", "IS Program Analyst-Assistant" ]
+, [ 74, "860CA61D-C17F-444A-812B-0684E2FA4BF6", 74, 1321113200, "390805", 1321113200, "390805", "{\n}", "1062", "IS Programmer Analyst" ]
+, [ 75, "0E8E2FD8-84BB-4A8C-A04B-3A85D49E47FD", 75, 1321113200, "390805", 1321113200, "390805", "{\n}", "1063", "IS Programmer Analyst-Senior" ]
+, [ 76, "A4506F6C-3334-48EE-B2F0-82F540878F3E", 76, 1321113200, "390805", 1321113200, "390805", "{\n}", "1064", "IS Prg Analyst-Principal" ]
+, [ 77, "CE0EFA56-8D2A-4AE1-8AF6-C59CB97CA6F4", 77, 1321113200, "390805", 1321113200, "390805", "{\n}", "1070", "IS Project Director" ]
+, [ 78, "B74A5665-41D0-4689-9E03-907917FCB51D", 78, 1321113200, "390805", 1321113200, "390805", "{\n}", "1071", "IS Manager" ]
+, [ 79, "1433F103-DDD1-4D55-B90B-92BEF0224B8B", 79, 1321113200, "390805", 1321113200, "390805", "{\n}", "1117", "Dep Dir for Investments, Ret" ]
+, [ 80, "B4A84594-2F96-474A-9A17-B3F7A5E01E6A", 80, 1321113200, "390805", 1321113200, "390805", "{\n}", "1130", "Youth Comm Advisor" ]
+, [ 81, "83B3BCD4-1B64-4E08-983E-13E3B347EEA1", 81, 1321113200, "390805", 1321113200, "390805", "{\n}", "1161", "Ex Asst to Admin, SFGH" ]
+, [ 82, "FA60C8AC-A2EB-4533-964D-C087E5F3195A", 82, 1321113200, "390805", 1321113200, "390805", "{\n}", "1164", "Adm, SFGH Medical Center" ]
+, [ 83, "690E97DD-17B6-49E4-A016-5525D785B339", 83, 1321113200, "390805", 1321113200, "390805", "{\n}", "1190", "Mayor" ]
+, [ 84, "AE21C5FD-C8F0-404E-922D-3D52373A2020", 84, 1321113200, "390805", 1321113200, "390805", "{\n}", "1202", "Personnel Clerk" ]
+, [ 85, "C8CD69D2-0EC3-4FD5-AC34-36B40027DCFB", 85, 1321113200, "390805", 1321113200, "390805", "{\n}", "1203", "Personnel Technician" ]
+, [ 86, "62674115-199D-4997-B45C-56FCFD827727", 86, 1321113200, "390805", 1321113200, "390805", "{\n}", "1204", "Senior Personnel Clerk" ]
+, [ 87, "07BD2948-BD69-4B00-BB8C-A4770ED63722", 87, 1321113200, "390805", 1321113200, "390805", "{\n}", "1209", "Benefits Technician" ]
+, [ 88, "F3DD0946-7A77-4102-8AB5-B8D756E4A181", 88, 1321113200, "390805", 1321113200, "390805", "{\n}", "1210", "Benefits Analyst" ]
+, [ 89, "7F3F6EF8-66AA-43D4-A01D-5CA16BFCA1E5", 89, 1321113200, "390805", 1321113200, "390805", "{\n}", "1218", "Payroll Supervisor" ]
+, [ 90, "AA97509E-8FCC-4F82-945A-8BB782DAD9E9", 90, 1321113200, "390805", 1321113200, "390805", "{\n}", "1220", "Payroll Clerk" ]
+, [ 91, "5E5F3A4D-4BB4-48C7-8080-A22F925B7DB4", 91, 1321113200, "390805", 1321113200, "390805", "{\n}", "1222", "Sr Payroll & Personnel Clerk" ]
+, [ 92, "121360CB-D123-4476-948F-90E3BA63772D", 92, 1321113200, "390805", 1321113200, "390805", "{\n}", "1224", "Pr Payroll & Personnel Clerk" ]
+, [ 93, "02129DEB-0F02-4A89-977B-9CD28D8B328F", 93, 1321113200, "390805", 1321113200, "390805", "{\n}", "1226", "Chf Payroll & Personnel Clerk" ]
+, [ 94, "58B669CB-5F44-490E-B596-DBC53390EA07", 94, 1321113200, "390805", 1321113200, "390805", "{\n}", "1227", "Testing Technician" ]
+, [ 95, "CE9D19A7-BF7C-4E94-99AA-7C63AF843FFB", 95, 1321113200, "390805", 1321113200, "390805", "{\n}", "1231", "Assistant Manager, EEO" ]
+, [ 96, "75468E63-6269-4AC9-A032-EDA2F43D7C1D", 96, 1321113200, "390805", 1321113200, "390805", "{\n}", "1232", "Training Officer" ]
+, [ 97, "958EE72D-C2BF-482A-8519-1D35386E286F", 97, 1321113200, "390805", 1321113200, "390805", "{\n}", "1233", "EEO Programs Specialist" ]
+, [ 98, "643CF60D-5BF4-4071-BF63-15BD8675FAE8", 98, 1321113200, "390805", 1321113200, "390805", "{\n}", "1237", "Training Coordinator" ]
+, [ 99, "8B8B8071-242F-4A39-B42F-D09E0AF66033", 99, 1321113200, "390805", 1321113200, "390805", "{\n}", "1241", "Personnel Analyst" ]
+, [ 100, "4A31E8C6-CB69-4DF6-8284-980757F4F298", 100, 1321113200, "390805", 1321113200, "390805", "{\n}", "1244", "Senior Personnel Analyst" ]
+, [ 101, "3F00EFFF-2E1E-41A5-AFC6-DABF207AD283", 101, 1321113200, "390805", 1321113200, "390805", "{\n}", "1246", "Principal Personnel Analyst" ]
+, [ 102, "7D1DB582-E07C-4BE2-80A3-5E68EF3DD9CE", 102, 1321113200, "390805", 1321113200, "390805", "{\n}", "1280", "Employee Relations Representat" ]
+, [ 103, "FCD9ADCB-5462-418E-9680-E102B0363555", 103, 1321113200, "390805", 1321113200, "390805", "{\n}", "1281", "Senior Emp Relations Repres" ]
+, [ 104, "5DF8B5C3-D87D-4F34-B897-C8BE2A68F88F", 104, 1321113200, "390805", 1321113200, "390805", "{\n}", "1282", "Manager,Employee Relations Div" ]
+, [ 105, "FF46E5DF-CF89-4C74-93B6-E339DA863BBE", 105, 1321113200, "390805", 1321113200, "390805", "{\n}", "1283", "Dir Emp Relations Div" ]
+, [ 106, "2B113783-E4C2-4E2F-8292-F4354B2C6A7F", 106, 1321113200, "390805", 1321113200, "390805", "{\n}", "1293", "Human Resources Director" ]
+, [ 107, "2088DC47-D70C-4BE0-A06E-3FB3BA3A8B63", 107, 1321113200, "390805", 1321113200, "390805", "{\n}", "1310", "Public Relations Assistant" ]
+, [ 108, "4F6877D6-5280-4353-AA43-23E80BEF3137", 108, 1321113200, "390805", 1321113200, "390805", "{\n}", "1312", "Public Information Officer" ]
+, [ 109, "C8EF352E-6B1D-4D3B-8B51-45D21FB188CA", 109, 1321113200, "390805", 1321113200, "390805", "{\n}", "1314", "Public Relations Officer" ]
+, [ 110, "A74D10EC-A003-4118-A2F5-3FA53EB64633", 110, 1321113200, "390805", 1321113200, "390805", "{\n}", "1324", "Customer Service Agent" ]
+, [ 111, "D337AA7D-7B71-44E3-B3DB-058357F43BAD", 111, 1321113200, "390805", 1321113200, "390805", "{\n}", "1326", "Customer Service Agent Supv" ]
+, [ 112, "B32CBC05-E5D9-453D-B0A0-E5B2A4963526", 112, 1321113200, "390805", 1321113200, "390805", "{\n}", "1360", "Special Assistant 1" ]
+, [ 113, "8FDD3746-6206-4AC0-B7EE-4B7D34B703CA", 113, 1321113200, "390805", 1321113200, "390805", "{\n}", "1362", "Special Assistant 3" ]
+, [ 114, "7F3D4818-A1A6-4204-92AD-6A12102D551C", 114, 1321113200, "390805", 1321113200, "390805", "{\n}", "1365", "Special Assistant 6" ]
+, [ 115, "22789306-0902-4A7B-B937-C4619C97CAF6", 115, 1321113200, "390805", 1321113200, "390805", "{\n}", "1367", "Special Assistant 8" ]
+, [ 116, "18624A83-54EF-4D28-B134-9F22675C7071", 116, 1321113200, "390805", 1321113200, "390805", "{\n}", "1371", "Special Assistant 12" ]
+, [ 117, "46519E8A-737D-49BF-8ECC-2257146E611F", 117, 1321113200, "390805", 1321113200, "390805", "{\n}", "1402", "Junior Clerk" ]
+, [ 118, "C18DA867-512C-4520-ADA7-76BD6A312BBC", 118, 1321113200, "390805", 1321113200, "390805", "{\n}", "1403", "Elections Clerk" ]
+, [ 119, "5B587398-2E3D-45E8-8F5E-E1D63AF010E8", 119, 1321113200, "390805", 1321113200, "390805", "{\n}", "1404", "Clerk" ]
+, [ 120, "FFBCCD6F-C4D6-42E5-8680-12566BCEA3EB", 120, 1321113200, "390805", 1321113200, "390805", "{\n}", "1406", "Senior Clerk" ]
+, [ 121, "9DC1C01B-9E83-4FE8-BB14-99C0CBD2322D", 121, 1321113200, "390805", 1321113200, "390805", "{\n}", "1408", "Principal Clerk" ]
+, [ 122, "2BDF9403-793D-4546-8726-B667BB285BDF", 122, 1321113200, "390805", 1321113200, "390805", "{\n}", "1410", "Chief Clerk" ]
+, [ 123, "7169DADA-3E6A-4F2C-BD50-544F58192850", 123, 1321113200, "390805", 1321113200, "390805", "{\n}", "1422", "Junior Clerk Typist" ]
+, [ 124, "433CC786-465B-416F-9465-C2107FB4C12C", 124, 1321113200, "390805", 1321113200, "390805", "{\n}", "1424", "Clerk Typist" ]
+, [ 125, "28ACE8B5-50E7-4E20-A2F2-EB87E5E2A024", 125, 1321113200, "390805", 1321113200, "390805", "{\n}", "1426", "Senior Clerk Typist" ]
+, [ 126, "1BC85938-2D33-493C-8D7E-F8719D28D0A1", 126, 1321113200, "390805", 1321113200, "390805", "{\n}", "1428", "Unit Clerk" ]
+, [ 127, "967DDD85-3EA8-4CAF-8019-41EE13064B8D", 127, 1321113200, "390805", 1321113200, "390805", "{\n}", "1429", "Nurses Staffing Assistant" ]
+, [ 128, "AF9A6572-52B3-420D-A6C2-99E41F8005A4", 128, 1321113200, "390805", 1321113200, "390805", "{\n}", "1430", "Transcriber Typist" ]
+, [ 129, "DB44A0C5-D615-4F1A-9B90-817668983228", 129, 1321113200, "390805", 1321113200, "390805", "{\n}", "1431", "Senior Unit Clerk" ]
+, [ 130, "571FF057-E188-4261-9B0B-F5BAC0D5E29B", 130, 1321113200, "390805", 1321113200, "390805", "{\n}", "1432", "Senior Transcriber Typist" ]
+, [ 131, "A905252A-9F04-4DE0-95A7-D47E6EA8A46A", 131, 1321113200, "390805", 1321113200, "390805", "{\n}", "1434", "Shelter Service Representative" ]
+, [ 132, "5E5F6F67-3B5C-4E89-8085-A8CE08EAB8DA", 132, 1321113200, "390805", 1321113200, "390805", "{\n}", "1435", "Shelter Officer Supervisor" ]
+, [ 133, "FBBF2D80-E64A-496F-BD78-F050DEFBFC95", 133, 1321113200, "390805", 1321113200, "390805", "{\n}", "1436", "Braillist" ]
+, [ 134, "43584C26-DA2E-49C1-BB9F-02F90B08E6A8", 134, 1321113200, "390805", 1321113200, "390805", "{\n}", "1437", "Shelter Office Asst Supv" ]
+, [ 135, "F9DEF7F9-258B-49E9-AA48-07AD4657D7B6", 135, 1321113200, "390805", 1321113200, "390805", "{\n}", "1440", "Medical Transcriber Typist" ]
+, [ 136, "93302462-C0FC-498C-AEB9-546F5CBF8AEB", 136, 1321113200, "390805", 1321113200, "390805", "{\n}", "1441", "Sr Medical Transcriber Typist" ]
+, [ 137, "02214258-D0D2-4441-A552-77F321C896AE", 137, 1321113200, "390805", 1321113200, "390805", "{\n}", "1444", "Secretary 1" ]
+, [ 138, "E11311A9-9027-49DF-B725-F7F6354C5C14", 138, 1321113200, "390805", 1321113200, "390805", "{\n}", "1446", "Secretary 2" ]
+, [ 139, "187A2ED2-A4AD-4262-937C-09B41AE7C95B", 139, 1321113200, "390805", 1321113200, "390805", "{\n}", "1450", "Executive Secretary 1" ]
+, [ 140, "DE3B3014-DF7E-4604-9474-81ACBE135D58", 140, 1321113200, "390805", 1321113200, "390805", "{\n}", "1452", "Executive Secretary 2" ]
+, [ 141, "00F24FC9-0C13-41A4-9D5B-66C7CB182F54", 141, 1321113200, "390805", 1321113200, "390805", "{\n}", "1454", "Executive Secretary 3" ]
+, [ 142, "384FF024-94DB-468B-BE5A-172522F5CF17", 142, 1321113200, "390805", 1321113200, "390805", "{\n}", "1458", "Legal Secretary 1" ]
+, [ 143, "073DD182-FF45-44D0-88E4-B30076C6510A", 143, 1321113200, "390805", 1321113200, "390805", "{\n}", "1460", "Legal Secretary 2" ]
+, [ 144, "78AF112B-8745-4633-A249-4D647DD0D574", 144, 1321113200, "390805", 1321113200, "390805", "{\n}", "1466", "Meter Reader" ]
+, [ 145, "39BF8C57-1EC2-434F-A785-0225A0BAEDCC", 145, 1321113200, "390805", 1321113200, "390805", "{\n}", "1468", "Water Services Clerk" ]
+, [ 146, "E2C8DF38-56D0-4EAC-8431-88C21F127BEB", 146, 1321113200, "390805", 1321113200, "390805", "{\n}", "1471", "Elections Worker" ]
+, [ 147, "000DF1CF-1117-4E33-B92C-FC56C04A9874", 147, 1321113200, "390805", 1321113200, "390805", "{\n}", "1474", "Claims Process Clerk" ]
+, [ 148, "24CCC2B7-FD9F-4D2E-9D77-56C8AC6DFAE7", 148, 1321113200, "390805", 1321113200, "390805", "{\n}", "1478", "Senior Water Services Clerk" ]
+, [ 149, "4BF3A990-9FC5-4AB8-8484-20488ED3D7AB", 149, 1321113200, "390805", 1321113200, "390805", "{\n}", "1480", "Principal Water Services Clerk" ]
+, [ 150, "A4915D27-92DB-4DFB-A402-8F1BBF81B048", 150, 1321113200, "390805", 1321113200, "390805", "{\n}", "1492", "Asst Clk, Board of Supervisors" ]
+, [ 151, "0340DC44-9C0D-4DDB-821F-16F5FB773BD4", 151, 1321113200, "390805", 1321113200, "390805", "{\n}", "1512", "Cfdntal Sctry&Ex Asst PublDfdr" ]
+, [ 152, "9C931945-C8A0-4573-AB83-0D59882F927B", 152, 1321113200, "390805", 1321113200, "390805", "{\n}", "1518", "Confidential Sctry to Assessor" ]
+, [ 153, "E0508281-AFA4-4AD8-BB4B-13A456A8E159", 153, 1321113200, "390805", 1321113200, "390805", "{\n}", "1520", "Cfdntal Sctry to Distric Atty" ]
+, [ 154, "9CC5CFC7-0C9A-4044-9634-09002221B893", 154, 1321113200, "390805", 1321113200, "390805", "{\n}", "1522", "Cfdntal Sctry to City Atty" ]
+, [ 155, "527BA867-075C-43B5-903F-91FCC91CC673", 155, 1321113200, "390805", 1321113200, "390805", "{\n}", "1543", "Secretary, Comm on the Environ" ]
+, [ 156, "2ABB5944-F6EB-440D-9799-964D36CE4A28", 156, 1321113200, "390805", 1321113200, "390805", "{\n}", "1544", "Secretary, Library Commission" ]
+, [ 157, "5D74C68F-C044-4118-89AB-A8A69BE7256D", 157, 1321113200, "390805", 1321113200, "390805", "{\n}", "1548", "Sctry, Human Svcs. Commission" ]
+, [ 158, "AEE1BA5B-F324-4701-A4C2-4DD5BC6D4CF9", 158, 1321113200, "390805", 1321113200, "390805", "{\n}", "1549", "Sctry, Juv Probation Comm" ]
+, [ 159, "658168D5-2BB9-4F4B-B402-6F421B019182", 159, 1321113200, "390805", 1321113200, "390805", "{\n}", "1551", "Secretary, Health Commission" ]
+, [ 160, "2A8F8BAA-BC1D-4F76-A0B9-1679E74552B6", 160, 1321113200, "390805", 1321113200, "390805", "{\n}", "1555", "Sctry, Bldg Inspection Comm" ]
+, [ 161, "3F60F690-C7D5-4AC7-9C2E-5C0ECCFE3F92", 161, 1321113200, "390805", 1321113200, "390805", "{\n}", "1574", "Ex Asst to the Controller" ]
+, [ 162, "8DED3C45-A47C-47DD-B9BA-DB341459838E", 162, 1321113200, "390805", 1321113200, "390805", "{\n}", "1630", "Account Clerk" ]
+, [ 163, "99C1DA11-F2A3-4786-99FE-07FB81F8C3EE", 163, 1321113200, "390805", 1321113200, "390805", "{\n}", "1632", "Senior Account Clerk" ]
+, [ 164, "42270F01-1EB7-400F-942D-13235DE493B4", 164, 1321113200, "390805", 1321113200, "390805", "{\n}", "1634", "Principal Account Clerk" ]
+, [ 165, "8BE44E57-D93A-4D74-8A56-FF34C30407DC", 165, 1321113200, "390805", 1321113200, "390805", "{\n}", "1635", "Health Care Billing Clerk 1" ]
+, [ 166, "D6CBCAEB-D62D-4FF2-BBA8-3E9070FAEC2E", 166, 1321113200, "390805", 1321113200, "390805", "{\n}", "1636", "Health Care Billing Clerk 2" ]
+, [ 167, "0375B36F-235A-4255-BA5F-EFEC0E540906", 167, 1321113200, "390805", 1321113200, "390805", "{\n}", "1637", "Patient Accounts Clerk" ]
+, [ 168, "0E4E12BE-7ED0-4C26-AD66-81042233A1C9", 168, 1321113200, "390805", 1321113200, "390805", "{\n}", "1649", "Accountant Intern" ]
+, [ 169, "F5876244-F797-4330-822F-257B775F507D", 169, 1321113200, "390805", 1321113200, "390805", "{\n}", "1650", "Accountant I" ]
+, [ 170, "F6C73809-9FEC-4F53-9FD8-8576E6800DA1", 170, 1321113200, "390805", 1321113200, "390805", "{\n}", "1652", "Accountant II" ]
+, [ 171, "1B197EEC-B7B5-4C01-AA05-CC94CE21ECDE", 171, 1321113200, "390805", 1321113200, "390805", "{\n}", "1654", "Accountant III" ]
+, [ 172, "E89F2D16-B469-4550-9ED0-CF5F87DBD9CB", 172, 1321113200, "390805", 1321113200, "390805", "{\n}", "1657", "Accountant IV" ]
+, [ 173, "28DDA6BA-981B-4724-B0E2-97A236021A5C", 173, 1321113200, "390805", 1321113200, "390805", "{\n}", "1662", "Patient Accounts Asst Sprv" ]
+, [ 346, "C73E5173-2BD1-4560-90E0-4907FBD8A598", 346, 1321113200, "390805", 1321113200, "390805", "{\n}", "2588", "Health Worker 4" ]
+, [ 174, "5840BAFB-37B1-4C9C-A406-174B60F285E8", 174, 1321113200, "390805", 1321113200, "390805", "{\n}", "1663", "Patient Accounts Supervisor" ]
+, [ 175, "1F32E537-A2D0-42C4-A224-F4531085D1B1", 175, 1321113200, "390805", 1321113200, "390805", "{\n}", "1664", "Patient Accounts Manager" ]
+, [ 176, "C854A448-1179-4EE9-9F14-6804AEAF6BA1", 176, 1321113200, "390805", 1321113200, "390805", "{\n}", "1670", "Financial Systems Supervisor" ]
+, [ 177, "05AA620F-1205-4BCE-BA02-B0BAEBA401C2", 177, 1321113200, "390805", 1321113200, "390805", "{\n}", "1684", "Auditor II" ]
+, [ 178, "7C144642-0AD5-4A48-93C9-983346F1C0F6", 178, 1321113200, "390805", 1321113200, "390805", "{\n}", "1686", "Auditor III" ]
+, [ 179, "30FEA663-436C-4537-95D6-A43ABB544DBF", 179, 1321113200, "390805", 1321113200, "390805", "{\n}", "1704", "Communications Dispatcher 1" ]
+, [ 180, "1F5AD266-85FA-41CB-9FB4-C1D1749E9A1A", 180, 1321113200, "390805", 1321113200, "390805", "{\n}", "1705", "Communications Dispatcher 2" ]
+, [ 181, "01B7F0C0-13AE-40AF-B27F-493BF47C1D2B", 181, 1321113200, "390805", 1321113200, "390805", "{\n}", "1706", "Telephone Operator" ]
+, [ 182, "8FE8F1BE-C09D-413E-81DC-17E43EA3C2F3", 182, 1321113200, "390805", 1321113200, "390805", "{\n}", "1708", "Senior Telephone Operator" ]
+, [ 183, "506E9084-CC1D-40F2-8F51-0E471D191289", 183, 1321113200, "390805", 1321113200, "390805", "{\n}", "1721", "Senior Data Entry Operator" ]
+, [ 184, "03942A2C-686A-4BF9-89E2-7E18C36C1B13", 184, 1321113200, "390805", 1321113200, "390805", "{\n}", "1750", "Microphoto/Imaging Technician" ]
+, [ 185, "B3187A46-E3D7-4874-9FEF-4C0A3C0A1564", 185, 1321113200, "390805", 1321113200, "390805", "{\n}", "1752", "Sr. Microphoto/Imaging Tech." ]
+, [ 186, "BCF89F11-7C41-4A8A-9B42-93A084F172D6", 186, 1321113200, "390805", 1321113200, "390805", "{\n}", "1760", "Offset Machine Operator" ]
+, [ 187, "263087A6-10A2-4D24-9AB2-9C01FBCBD014", 187, 1321113200, "390805", 1321113200, "390805", "{\n}", "1762", "Senior Offset Machine Operator" ]
+, [ 188, "5340AF6F-C872-4185-8592-2FE2E0E7613B", 188, 1321113200, "390805", 1321113200, "390805", "{\n}", "1764", "Mail & Reproduction Svc Sprv" ]
+, [ 189, "7A8CAE93-3D9D-439B-BC50-B3C1B1D0D32E", 189, 1321113200, "390805", 1321113200, "390805", "{\n}", "1766", "Media Production Tech" ]
+, [ 190, "76A80FF1-3067-4DDA-9E6E-B63F34D0AADB", 190, 1321113200, "390805", 1321113200, "390805", "{\n}", "1767", "Media Programming Spec" ]
+, [ 191, "E77314E0-CB39-4B1B-B3FB-1184C74D06B3", 191, 1321113200, "390805", 1321113200, "390805", "{\n}", "1769", "Media Production Supv" ]
+, [ 192, "13A6A9AB-0598-4F8F-9629-84E3D0316404", 192, 1321113200, "390805", 1321113200, "390805", "{\n}", "1770", "Photographer" ]
+, [ 193, "88BA5CEF-2512-444C-A8E5-FFC46EAC9C61", 193, 1321113200, "390805", 1321113200, "390805", "{\n}", "1771", "Media Production Specialist" ]
+, [ 194, "8AA8BCCD-A220-46BE-AE93-4B42D98806ED", 194, 1321113200, "390805", 1321113200, "390805", "{\n}", "1773", "Media Training Specialist" ]
+, [ 195, "6646196B-739D-4CD9-B912-4A6D2D855E2A", 195, 1321113200, "390805", 1321113200, "390805", "{\n}", "1774", "Head Photographer" ]
+, [ 196, "52582D78-5A27-4E9D-85AA-3E3CB6D23F85", 196, 1321113200, "390805", 1321113200, "390805", "{\n}", "1777", "Media/Security Sys Spec" ]
+, [ 197, "D8B79C5B-8240-4867-AD34-AE237ECA9E28", 197, 1321113200, "390805", 1321113200, "390805", "{\n}", "1781", "Media/Security Syst Supv" ]
+, [ 198, "F6742332-FF2F-46D2-979A-1153025D989E", 198, 1321113200, "390805", 1321113200, "390805", "{\n}", "1802", "Research Assistant" ]
+, [ 199, "50D922DF-662B-4B27-A50A-36885F24C6EA", 199, 1321113200, "390805", 1321113200, "390805", "{\n}", "1803", "Performance Analyst I" ]
+, [ 200, "F7D00FD8-5AFF-42E7-8121-91A94BAD577C", 200, 1321113200, "390805", 1321113200, "390805", "{\n}", "1804", "Statistician" ]
+, [ 201, "9EC11D37-4967-4CB3-BC07-F31DE784A74D", 201, 1321113200, "390805", 1321113200, "390805", "{\n}", "1805", "Performance Analyst II" ]
+, [ 202, "0091642F-B649-4B13-A13C-255E6D515B0E", 202, 1321113200, "390805", 1321113200, "390805", "{\n}", "1806", "Senior Statistician" ]
+, [ 203, "9848EEF3-C371-456C-97FE-CD4987C17A00", 203, 1321113200, "390805", 1321113200, "390805", "{\n}", "1812", "Assistant Retirement Analyst" ]
+, [ 204, "9954177E-D91F-4435-B662-AE85104C95A4", 204, 1321113200, "390805", 1321113200, "390805", "{\n}", "1813", "Senior Benefits Analyst" ]
+, [ 205, "3E47E67A-CC6D-4F6A-81E2-DB5A5A66B5F2", 205, 1321113200, "390805", 1321113200, "390805", "{\n}", "1814", "Benefits Supervisor" ]
+, [ 206, "0C614C51-3D82-410C-8AAA-4CA887A0B881", 206, 1321113200, "390805", 1321113200, "390805", "{\n}", "1820", "Junior Administrative Analyst" ]
+, [ 207, "AA6C3E50-E3D6-4C7A-98DE-EE36143976C1", 207, 1321113200, "390805", 1321113200, "390805", "{\n}", "1822", "Administrative Analyst" ]
+, [ 208, "B7BED464-6321-4646-9DAC-4B8DC3C3B0DE", 208, 1321113200, "390805", 1321113200, "390805", "{\n}", "1823", "Senior Administrative Analyst" ]
+, [ 209, "40A7D8AC-9528-4D3B-B01A-BAE9464591B7", 209, 1321113200, "390805", 1321113200, "390805", "{\n}", "1824", "Pr Administrative Analyst" ]
+, [ 210, "F5436608-85D6-4EA0-A471-AF546ABEA9D4", 210, 1321113200, "390805", 1321113200, "390805", "{\n}", "1825", "Prnpl Admin Analyst II" ]
+, [ 211, "4B0A5EBE-CA80-47AC-A97C-3EA0886EE50F", 211, 1321113200, "390805", 1321113200, "390805", "{\n}", "1827", "Administrative Services Mgr" ]
+, [ 212, "AAF0E841-F9AF-49A2-BADE-E88B80E32759", 212, 1321113200, "390805", 1321113200, "390805", "{\n}", "1835", "Legislative Assistant" ]
+, [ 213, "3C2857C9-76BF-454A-978C-498426DB687E", 213, 1321113200, "390805", 1321113200, "390805", "{\n}", "1839", "Water Conservation Admin" ]
+, [ 214, "D3893F6F-0D03-41B3-B261-5E0B8EFC15F4", 214, 1321113200, "390805", 1321113200, "390805", "{\n}", "1840", "Junior Management Assistant" ]
+, [ 215, "DFF1578F-D094-48CC-9E63-8B254282A42E", 215, 1321113200, "390805", 1321113200, "390805", "{\n}", "1842", "Management Assistant" ]
+, [ 216, "DE9BFF46-1DFC-4734-8C45-0D39F2AC274E", 216, 1321113200, "390805", 1321113200, "390805", "{\n}", "1843", "Ex Dir, SE Com Fac Comm" ]
+, [ 217, "0984D6B9-BA79-4055-AA78-20780A2325B4", 217, 1321113200, "390805", 1321113200, "390805", "{\n}", "1844", "Senior Management Assistant" ]
+, [ 218, "2EA1CBF6-7120-4D59-B6DC-44221162E8A8", 218, 1321113200, "390805", 1321113200, "390805", "{\n}", "1849", "Prog Mgr, Bus & Econ Develop" ]
+, [ 219, "08F1CFAB-BF00-4FAB-8A51-5FF876DC6B55", 219, 1321113200, "390805", 1321113200, "390805", "{\n}", "1867", "Auditor I" ]
+, [ 220, "2097F12D-EBFE-409E-994F-35CB1B89E68B", 220, 1321113200, "390805", 1321113200, "390805", "{\n}", "1920", "Inventory Clerk" ]
+, [ 221, "6E204E27-0977-472A-99DE-5942F1B8E428", 221, 1321113200, "390805", 1321113200, "390805", "{\n}", "1922", "Senior Inventory Clerk" ]
+, [ 222, "AAC5108D-B90E-4074-9963-0F5E53C64F13", 222, 1321113200, "390805", 1321113200, "390805", "{\n}", "1924", "Materials/Supplies Supervisor" ]
+, [ 223, "AFD595BB-C5E5-4FA8-B742-5C0C9A758A12", 223, 1321113200, "390805", 1321113200, "390805", "{\n}", "1926", "Sr Materials & Supplies Sprv" ]
+, [ 224, "339E3611-216E-478C-AB4D-788E7B5DC3DB", 224, 1321113200, "390805", 1321113200, "390805", "{\n}", "1929", "Parts Storekeeper" ]
+, [ 225, "27CC0450-F65A-417B-BEC5-83426D1D4355", 225, 1321113200, "390805", 1321113200, "390805", "{\n}", "1930", "Warehouse Worker" ]
+, [ 226, "7E34829C-2105-4AA3-8157-6492D7534790", 226, 1321113200, "390805", 1321113200, "390805", "{\n}", "1931", "Senior Parts Storekeeper" ]
+, [ 227, "B5C36DAF-5B20-4B0E-8EFE-71907664D3C7", 227, 1321113200, "390805", 1321113200, "390805", "{\n}", "1932", "Assistant Storekeeper" ]
+, [ 228, "E900A6A5-9860-47E9-A73E-3AAE15380AFC", 228, 1321113200, "390805", 1321113200, "390805", "{\n}", "1934", "Storekeeper" ]
+, [ 229, "09819B7E-B7DC-4723-8BCD-25D55402D39D", 229, 1321113200, "390805", 1321113200, "390805", "{\n}", "1935", "Principal Parts Storekeeper" ]
+, [ 230, "72FC3081-2FF8-4ADE-AEE9-629006EC5F22", 230, 1321113200, "390805", 1321113200, "390805", "{\n}", "1936", "Senior Storekeeper" ]
+, [ 231, "A42C2099-B824-4168-AD5B-8344764F9CF8", 231, 1321113200, "390805", 1321113200, "390805", "{\n}", "1937", "Supervising Parts Storekeeper" ]
+, [ 232, "18A94965-08D9-4851-9BD8-5863ADEECB53", 232, 1321113200, "390805", 1321113200, "390805", "{\n}", "1938", "Stores & Equip Asst Sprv" ]
+, [ 233, "96C587AE-BDB7-4B7D-BBAA-F77B7A2473CA", 233, 1321113200, "390805", 1321113200, "390805", "{\n}", "1942", "Asst Materials Coordinator" ]
+, [ 234, "F9CE7234-0A72-4CB8-A95C-F15153EA135A", 234, 1321113200, "390805", 1321113200, "390805", "{\n}", "1944", "Materials Coordinator" ]
+, [ 235, "849F00B1-C3C2-4D6B-976D-ECCAB6603319", 235, 1321113200, "390805", 1321113200, "390805", "{\n}", "1950", "Assistant Purchaser" ]
+, [ 236, "C428411E-2A1A-4B0C-B48A-9D8AE31AE9BB", 236, 1321113200, "390805", 1321113200, "390805", "{\n}", "1952", "Purchaser" ]
+, [ 237, "5F005B99-1DF2-4987-A132-B01415ED2AF6", 237, 1321113200, "390805", 1321113200, "390805", "{\n}", "1956", "Senior Purchaser" ]
+, [ 238, "2A78C54F-BADE-49CA-8176-5813F0623A0B", 238, 1321113200, "390805", 1321113200, "390805", "{\n}", "1958", "Supervising Purchaser" ]
+, [ 239, "181C0C70-51C7-4B08-9A2E-7C85CC8A4083", 239, 1321113200, "390805", 1321113200, "390805", "{\n}", "2105", "Patient Svcs Finance Tech" ]
+, [ 240, "1B03197E-E427-4167-8142-A03B13DD78FF", 240, 1321113200, "390805", 1321113200, "390805", "{\n}", "2106", "Med Staff Svcs Dept Spc" ]
+, [ 241, "7E5884EB-1904-434A-8D1B-A7A2ACEEDF7E", 241, 1321113200, "390805", 1321113200, "390805", "{\n}", "2107", "Med Staff Svcs Dept Anl" ]
+, [ 242, "1A7ED7A1-2074-44C8-81CE-B27C740A002A", 242, 1321113200, "390805", 1321113200, "390805", "{\n}", "2110", "Medical Records Clerk" ]
+, [ 243, "3815E1DF-1213-4B3C-8F85-8A02C46083AE", 243, 1321113200, "390805", 1321113200, "390805", "{\n}", "2112", "Medical Records Technician" ]
+, [ 244, "9E5D3DE0-5686-4108-ACA6-B20BC92D6745", 244, 1321113200, "390805", 1321113200, "390805", "{\n}", "2114", "Medical Records Tech Sprv" ]
+, [ 245, "28245837-ABC7-4AFA-80F4-8E800C81FDAB", 245, 1321113200, "390805", 1321113200, "390805", "{\n}", "2119", "Health Care Analyst" ]
+, [ 246, "095AFB9B-535F-4E97-8FAE-354293172DCA", 246, 1321113200, "390805", 1321113200, "390805", "{\n}", "2145", "Hospital Assoc Administrator" ]
+, [ 247, "48620F90-ACF3-4408-B8C4-712E8A76C6E9", 247, 1321113200, "390805", 1321113200, "390805", "{\n}", "2202", "Dental Aide" ]
+, [ 248, "F45DC7F1-170D-49C7-AD5C-8D8918CDF2C1", 248, 1321113200, "390805", 1321113200, "390805", "{\n}", "2204", "Dental Hygienist" ]
+, [ 249, "2363B5BC-9B74-455D-8B87-F5E2BCCB93CA", 249, 1321113200, "390805", 1321113200, "390805", "{\n}", "2210", "Dentist" ]
+, [ 250, "1E13DA5A-7C71-499F-8775-42D0C757DFFE", 250, 1321113200, "390805", 1321113200, "390805", "{\n}", "2218", "Physician Assistant" ]
+, [ 251, "B2FE8602-9119-440B-8EBF-566C8F8F970C", 251, 1321113200, "390805", 1321113200, "390805", "{\n}", "2230", "Physician Specialist" ]
+, [ 252, "1005B452-982B-4E94-B4D2-252D9C736BE4", 252, 1321113200, "390805", 1321113200, "390805", "{\n}", "2232", "Senior Physician Specialist" ]
+, [ 253, "DC7DB437-C561-42C1-AD05-F58CF88EB849", 253, 1321113200, "390805", 1321113200, "390805", "{\n}", "2233", "Supervising Physician Spec" ]
+, [ 254, "AD3C9245-7B8D-4E27-AB86-0688733CC4F7", 254, 1321113200, "390805", 1321113200, "390805", "{\n}", "2235", "Medical Dir, Dept of Health" ]
+, [ 255, "7595508D-E42E-4F58-ADCC-150DE4A5165F", 255, 1321113200, "390805", 1321113200, "390805", "{\n}", "2246", "Asst Dir of Clinical Svcs 1" ]
+, [ 256, "807B52BA-8DE2-4285-B534-98C21D660805", 256, 1321113200, "390805", 1321113200, "390805", "{\n}", "2248", "Asst Dir Clinical Svcs 2" ]
+, [ 257, "61AB8039-4D82-4481-8855-2661C391948C", 257, 1321113200, "390805", 1321113200, "390805", "{\n}", "2273", "Post M.D. 1" ]
+, [ 258, "74F25033-D212-4FBC-8E23-2EC8EE910E56", 258, 1321113200, "390805", 1321113200, "390805", "{\n}", "2275", "Post M.D. 2" ]
+, [ 259, "7C6A65A0-2464-4B0F-9A71-23649713E0B3", 259, 1321113200, "390805", 1321113200, "390805", "{\n}", "2277", "Post M.D. 3" ]
+, [ 260, "7EE9D91D-C29D-42B4-8154-9DBF51E10B7A", 260, 1321113200, "390805", 1321113200, "390805", "{\n}", "2279", "Post M.D. 4" ]
+, [ 261, "D4ED7BE4-A3A9-4974-AF6B-F47EBA0E15A3", 261, 1321113200, "390805", 1321113200, "390805", "{\n}", "2281", "Post M.D. 5" ]
+, [ 262, "1DE422C0-2BAA-4893-A72E-19931E496888", 262, 1321113200, "390805", 1321113200, "390805", "{\n}", "2283", "Post M.D. 6" ]
+, [ 263, "78848C35-5B0C-416E-A85B-C0A8E4F91BB7", 263, 1321113200, "390805", 1321113200, "390805", "{\n}", "2292", "Shelter Veterinarian" ]
+, [ 264, "0F9E3D28-236F-471B-803A-13FB98165063", 264, 1321113200, "390805", 1321113200, "390805", "{\n}", "2302", "Nursing Assistant" ]
+, [ 265, "81C6AD31-5953-4C48-AB46-D4D9A59C73F1", 265, 1321113200, "390805", 1321113200, "390805", "{\n}", "2303", "Patient Care Assistant" ]
+, [ 266, "AC4EFB68-CDB1-4DDF-9F78-0A7279F4BE9E", 266, 1321113200, "390805", 1321113200, "390805", "{\n}", "2305", "Psychiatric Technician" ]
+, [ 267, "E6AC7FB5-30D9-4C5E-B6F3-778B69F628ED", 267, 1321113200, "390805", 1321113200, "390805", "{\n}", "2306", "Senior Psychiatric Orderly" ]
+, [ 268, "CFDA95AE-BBCA-4636-B7AA-AD9D44EE5CD5", 268, 1321113200, "390805", 1321113200, "390805", "{\n}", "2310", "Surgical Procedures Technician" ]
+, [ 269, "0C7BBC3D-3421-4CDE-BBB8-5DB1E22D80F6", 269, 1321113200, "390805", 1321113200, "390805", "{\n}", "2312", "Licensed Vocational Nurse" ]
+, [ 270, "7D4A0787-E6BF-41F3-A57C-0CEDEA4119EB", 270, 1321113200, "390805", 1321113200, "390805", "{\n}", "2314", "Public Health Team Leader" ]
+, [ 271, "0D895514-D2E0-4C01-A73F-2DEAC4D55ACC", 271, 1321113200, "390805", 1321113200, "390805", "{\n}", "2320", "Registered Nurse" ]
+, [ 272, "ABDCDF89-10A1-41D2-9CA1-30A566D034B2", 272, 1321113200, "390805", 1321113200, "390805", "{\n}", "2322", "Nurse Manager" ]
+, [ 273, "2D7CD727-9F20-42F9-88EF-DEA46673D8BC", 273, 1321113200, "390805", 1321113200, "390805", "{\n}", "2323", "Clinical Nurse Specialist" ]
+, [ 274, "426D44D3-86CC-4B96-9358-04548699F3FC", 274, 1321113200, "390805", 1321113200, "390805", "{\n}", "2324", "Nursing Supervisor" ]
+, [ 275, "B430AF7D-6E40-49B9-9A9D-03C5246F8FE0", 275, 1321113200, "390805", 1321113200, "390805", "{\n}", "2325", "Nurse Midwife" ]
+, [ 276, "96F73D96-A0E1-41D3-B634-FB92F74A662B", 276, 1321113200, "390805", 1321113200, "390805", "{\n}", "2326", "Nursing Supervisor Psychiatric" ]
+, [ 277, "23535692-0A9C-4818-A0B5-5068B0173762", 277, 1321113200, "390805", 1321113200, "390805", "{\n}", "2328", "Nurse Practitioner" ]
+, [ 278, "47F9C7AF-833A-42B0-BCE7-0F6495855C9E", 278, 1321113200, "390805", 1321113200, "390805", "{\n}", "2330", "Anesthetist" ]
+, [ 279, "82E20330-82D5-41E8-B9AA-8B732197C6B3", 279, 1321113200, "390805", 1321113200, "390805", "{\n}", "2340", "Operating Room Nurse" ]
+, [ 280, "4F5DB993-5504-4C99-9679-40A8B3EBE82C", 280, 1321113200, "390805", 1321113200, "390805", "{\n}", "2390", "Central Processing & Dist Tech" ]
+, [ 281, "F2755A83-E691-4535-A8E7-6A4620952C81", 281, 1321113200, "390805", 1321113200, "390805", "{\n}", "2392", "Sr Cent Proc & Dist Tech" ]
+, [ 282, "8E0F25BA-C3E9-41F4-80AB-B03526D3FCB3", 282, 1321113200, "390805", 1321113200, "390805", "{\n}", "2402", "Laboratory Helper" ]
+, [ 283, "7B5184F7-8C28-4CC4-88B9-8D1A3E02C24C", 283, 1321113200, "390805", 1321113200, "390805", "{\n}", "2403", "Forensic Laboratory Technician" ]
+, [ 284, "41CDF031-D6B3-42D0-8931-AC43E5AEDD23", 284, 1321113200, "390805", 1321113200, "390805", "{\n}", "2406", "Pharmacy Helper" ]
+, [ 285, "0876428C-F340-42F3-839C-78F2B8E98385", 285, 1321113200, "390805", 1321113200, "390805", "{\n}", "2408", "Senior Pharmacy Helper" ]
+, [ 286, "57441046-A9BD-408A-86EC-9DC4C36FBD25", 286, 1321113200, "390805", 1321113200, "390805", "{\n}", "2409", "Pharmacy Technician" ]
+, [ 287, "956A420F-EBF3-4E99-80DB-3FC3F2DCB9FF", 287, 1321113200, "390805", 1321113200, "390805", "{\n}", "2416", "Bacteriological Lab Assistant" ]
+, [ 288, "FBB2E9A9-6986-401B-97CC-0800ADDF463B", 288, 1321113200, "390805", 1321113200, "390805", "{\n}", "2424", "X-Ray Laboratory Aide" ]
+, [ 289, "120D6C64-0C2A-4634-AEC9-AA3F173C32BA", 289, 1321113200, "390805", 1321113200, "390805", "{\n}", "2430", "Medical Evaluations Assistant" ]
+, [ 290, "577E94C9-9A46-440E-990D-E4A019FE4C03", 290, 1321113200, "390805", 1321113200, "390805", "{\n}", "2436", "Electroencephalograph Tech 1" ]
+, [ 291, "C9575BA0-E7FA-46E1-B032-AD6412F53C01", 291, 1321113200, "390805", 1321113200, "390805", "{\n}", "2440", "Vet Laboratory Technologist" ]
+, [ 292, "778D780A-C907-474F-B633-65B994E8BE2E", 292, 1321113200, "390805", 1321113200, "390805", "{\n}", "2450", "Pharmacist" ]
+, [ 293, "68FFBF8D-95D2-4A84-BE9F-1F7BDD66B7EF", 293, 1321113200, "390805", 1321113200, "390805", "{\n}", "2453", "Supervising Pharmacist" ]
+, [ 294, "F383D674-1C70-41C7-A505-F7AB5DA736E5", 294, 1321113200, "390805", 1321113200, "390805", "{\n}", "2454", "Clinical Pharmacist" ]
+, [ 295, "26972E68-B16E-4F97-AB8C-B57BB5369900", 295, 1321113200, "390805", 1321113200, "390805", "{\n}", "2456", "Asst Forensic Toxicologist 1" ]
+, [ 296, "EC529158-0286-411E-924F-014D5D1D5DB9", 296, 1321113200, "390805", 1321113200, "390805", "{\n}", "2458", "Forensic Toxicologist" ]
+, [ 297, "4F84A438-C1A0-4EDD-BBDE-5015ACB5EF0A", 297, 1321113200, "390805", 1321113200, "390805", "{\n}", "2462", "Microbiologist" ]
+, [ 298, "77007A16-AC53-49EF-B4CB-2E8475F8B3CD", 298, 1321113200, "390805", 1321113200, "390805", "{\n}", "2464", "Senior Microbiologist" ]
+, [ 299, "F1FDA2D0-97D3-4C6E-B7B8-79560902A675", 299, 1321113200, "390805", 1321113200, "390805", "{\n}", "2466", "Chief Microbiologist" ]
+, [ 300, "0B14766C-F929-4CA3-B5DD-26E0FEAC1269", 300, 1321113200, "390805", 1321113200, "390805", "{\n}", "2467", "Diagnostic Imaging Tech I" ]
+, [ 301, "D3BB7A0B-179C-47BB-B39A-B653E15212FB", 301, 1321113200, "390805", 1321113200, "390805", "{\n}", "2468", "Diagnostic Imaging Tech II" ]
+, [ 302, "A96B5571-0978-461D-A6F0-97233188167F", 302, 1321113200, "390805", 1321113200, "390805", "{\n}", "2469", "Diagnostic Imaging Tech III" ]
+, [ 303, "31B27DC2-0082-4406-AD7D-D5BEB11F5C02", 303, 1321113200, "390805", 1321113200, "390805", "{\n}", "2470", "Diagnostic Imaging Tech IV" ]
+, [ 304, "DEED3460-CA92-4335-B30F-08CAFB5C1DAC", 304, 1321113200, "390805", 1321113200, "390805", "{\n}", "2481", "Water QualityTech I/II" ]
+, [ 305, "8B51D07A-9840-40DB-BE2A-02B3B591D720", 305, 1321113200, "390805", 1321113200, "390805", "{\n}", "2482", "Water Quality Tech III" ]
+, [ 306, "0CA59D44-1D3A-4042-9313-4FFA33D9BBEB", 306, 1321113200, "390805", 1321113200, "390805", "{\n}", "2483", "Biologist I/II" ]
+, [ 307, "15666E7B-BE9B-4B5A-AA3E-E76288381D47", 307, 1321113200, "390805", 1321113200, "390805", "{\n}", "2484", "Biologist III" ]
+, [ 308, "5A000DA7-5EE5-482E-9977-168730F76198", 308, 1321113200, "390805", 1321113200, "390805", "{\n}", "2485", "Supv Biologist" ]
+, [ 309, "DDB4CC52-4BDE-4C59-97AD-C0C06ACF4A4D", 309, 1321113200, "390805", 1321113200, "390805", "{\n}", "2486", "Chemist I/II" ]
+, [ 310, "9ECE11DF-534B-4BB4-A41D-8D55D172B6AB", 310, 1321113200, "390805", 1321113200, "390805", "{\n}", "2487", "Chemist III" ]
+, [ 311, "131CB12A-8383-47C3-AE53-DD37784CA856", 311, 1321113200, "390805", 1321113200, "390805", "{\n}", "2488", "Supv Chemist" ]
+, [ 312, "B829E159-2F4A-4855-820E-30CA4EB54D46", 312, 1321113200, "390805", 1321113200, "390805", "{\n}", "2489", "Lab Svcs Mgr" ]
+, [ 313, "2AABFD88-1723-4F77-B7B8-911CDA0C9A16", 313, 1321113200, "390805", 1321113200, "390805", "{\n}", "2496", "Radiologic Tech Sprv" ]
+, [ 314, "2B9CB9BB-5A11-4C72-B5C6-07C5BDB0D83B", 314, 1321113200, "390805", 1321113200, "390805", "{\n}", "2514", "Orthopedic Technician 1" ]
+, [ 315, "2DB3BFD3-1358-4F43-8C82-120B107D1776", 315, 1321113200, "390805", 1321113200, "390805", "{\n}", "2515", "Orthopedic Technician 2" ]
+, [ 316, "1D01BE70-E14D-472C-B4F7-E4ACFA73D0BD", 316, 1321113200, "390805", 1321113200, "390805", "{\n}", "2520", "Morgue Attendant" ]
+, [ 317, "B60D35BC-D5D4-44CC-9E96-D63C6FA63631", 317, 1321113200, "390805", 1321113200, "390805", "{\n}", "2522", "Senior Morgue Attendant" ]
+, [ 318, "C4730BA4-D306-485D-83FF-7F2A1D4E30E6", 318, 1321113200, "390805", 1321113200, "390805", "{\n}", "2523", "Forensic Autopsy Technician" ]
+, [ 319, "B2A71832-7DDC-4A7A-BBA7-2E9688DE9ED1", 319, 1321113200, "390805", 1321113200, "390805", "{\n}", "2533", "Emergency Med Svcs Agency Spec" ]
+, [ 320, "BDA54632-BB11-417C-976B-8A1611BC7781", 320, 1321113200, "390805", 1321113200, "390805", "{\n}", "2536", "Respiratory Care Practitioner" ]
+, [ 321, "D0525863-B893-4F30-A60D-B966DA9CBA72", 321, 1321113200, "390805", 1321113200, "390805", "{\n}", "2537", "Respiratory Care Prctnr 2" ]
+, [ 322, "BDE15D2C-FDC1-4F66-B6F9-915C67256BEA", 322, 1321113200, "390805", 1321113200, "390805", "{\n}", "2538", "Audiometrist" ]
+, [ 323, "38BA9CC7-DEB7-42C4-B34D-6E363CEE4CBE", 323, 1321113200, "390805", 1321113200, "390805", "{\n}", "2540", "Audiologist" ]
+, [ 324, "9741A641-D64C-4641-81C9-646DF583E8DF", 324, 1321113200, "390805", 1321113200, "390805", "{\n}", "2542", "Speech Pathologist" ]
+, [ 325, "3E6018A2-52C0-4533-ADDE-A764E5B1B426", 325, 1321113200, "390805", 1321113200, "390805", "{\n}", "2548", "Occupational Therapist" ]
+, [ 326, "0428DF05-5C24-4E67-8309-60B2D6B95525", 326, 1321113200, "390805", 1321113200, "390805", "{\n}", "2550", "Senior Occupational Therapist" ]
+, [ 327, "B644A37C-ABE3-46CE-9C3B-D66E00BD237B", 327, 1321113200, "390805", 1321113200, "390805", "{\n}", "2551", "Mental Hlth Treatment Spec" ]
+, [ 328, "097E7049-2CED-4445-8B91-A2FD19F94248", 328, 1321113200, "390805", 1321113200, "390805", "{\n}", "2552", "Dir of Act, Therapy & Vol Svcs" ]
+, [ 329, "593D1101-BA16-4470-8069-5CAEF2C56F8C", 329, 1321113200, "390805", 1321113200, "390805", "{\n}", "2554", "Therapy Aide" ]
+, [ 330, "537F79CA-1808-4277-B411-061ACE3D3EE1", 330, 1321113200, "390805", 1321113200, "390805", "{\n}", "2555", "Physical Therapist Assistant" ]
+, [ 331, "76B44E3C-F8F1-4F8E-B016-931D74676DBE", 331, 1321113200, "390805", 1321113200, "390805", "{\n}", "2556", "Physical Therapist" ]
+, [ 332, "CBF2B7B4-C699-4E46-BFCD-EB14C2DB8C51", 332, 1321113200, "390805", 1321113200, "390805", "{\n}", "2558", "Senior Physical Therapist" ]
+, [ 333, "97B8B523-A156-4D5C-B7FF-00E9BD4AE459", 333, 1321113200, "390805", 1321113200, "390805", "{\n}", "2561", "Optometrist" ]
+, [ 334, "FAD3DE95-CF84-4761-BDF2-6BD38EACB24C", 334, 1321113200, "390805", 1321113200, "390805", "{\n}", "2565", "Acupuncturist" ]
+, [ 335, "98A16878-F4B7-4BFF-86B2-F61FCE1A9D30", 335, 1321113200, "390805", 1321113200, "390805", "{\n}", "2566", "Rehabilitation Counselor" ]
+, [ 336, "C385920E-93FC-4604-9A41-286996AFB889", 336, 1321113200, "390805", 1321113200, "390805", "{\n}", "2574", "Clinical Psychologist" ]
+, [ 337, "A6BC3D57-9DFD-4D5C-B5EC-EC10ED02A1CF", 337, 1321113200, "390805", 1321113200, "390805", "{\n}", "2575", "Research Psychologist" ]
+, [ 338, "3895CFD2-AFAC-4A0D-A924-FFAB1B9C7283", 338, 1321113200, "390805", 1321113200, "390805", "{\n}", "2576", "Sprv Clincal Psychologist" ]
+, [ 339, "160DB669-CF3A-4698-A8BA-62F6FE06DB04", 339, 1321113200, "390805", 1321113200, "390805", "{\n}", "2577", "Med Examiner's Investigator I" ]
+, [ 340, "528178D3-2FFD-4910-AD1B-8C82E45FEC32", 340, 1321113200, "390805", 1321113200, "390805", "{\n}", "2578", "Med Examiner's Investigator II" ]
+, [ 341, "1B8D40EC-FB8F-4066-933D-98AC683FB2EC", 341, 1321113200, "390805", 1321113200, "390805", "{\n}", "2579", "Med Examiner's InvestigatorIII" ]
+, [ 342, "A2CDF465-92DB-4825-8159-A76987C85C26", 342, 1321113200, "390805", 1321113200, "390805", "{\n}", "2583", "Home Health Aide" ]
+, [ 343, "1699D1E5-1D7F-4547-AF97-B345698AD875", 343, 1321113200, "390805", 1321113200, "390805", "{\n}", "2585", "Health Worker 1" ]
+, [ 344, "B529A303-0C97-4E34-995B-294D6F1717EB", 344, 1321113200, "390805", 1321113200, "390805", "{\n}", "2586", "Health Worker 2" ]
+, [ 345, "40DFB028-589B-4379-A818-5FFE5C76E4AC", 345, 1321113200, "390805", 1321113200, "390805", "{\n}", "2587", "Health Worker 3" ]
+, [ 347, "F7C9DEE4-10BF-4FE3-BA32-87147A6134A9", 347, 1321113200, "390805", 1321113200, "390805", "{\n}", "2589", "Health Program Coordinator 1" ]
+, [ 348, "F7B5D4D6-9EFC-49F7-961A-441B99F7C6CA", 348, 1321113200, "390805", 1321113200, "390805", "{\n}", "2591", "Health Program Coordinator 2" ]
+, [ 349, "80A319A8-D3E6-47F5-B84E-01B851262807", 349, 1321113200, "390805", 1321113200, "390805", "{\n}", "2593", "Health Program Coordinator 3" ]
+, [ 350, "F3397DD2-D3A7-4922-93CA-E60924605ACF", 350, 1321113200, "390805", 1321113200, "390805", "{\n}", "2594", "Employee Assistance Counselor" ]
+, [ 351, "D21A8306-3DCB-47A8-B945-C7ED3A1404EA", 351, 1321113200, "390805", 1321113200, "390805", "{\n}", "2595", "Sr Employee Asst Counselor" ]
+, [ 352, "548E9821-835F-4515-857F-546AB6B57229", 352, 1321113200, "390805", 1321113200, "390805", "{\n}", "2598", "Asst Med Examiner" ]
+, [ 353, "4D2F8595-4659-48D4-A6A7-CA9CC2B62443", 353, 1321113200, "390805", 1321113200, "390805", "{\n}", "2604", "Food Service Worker" ]
+, [ 354, "130DAB39-2B37-4A2A-B0C8-FD7003410836", 354, 1321113200, "390805", 1321113200, "390805", "{\n}", "2606", "Senior Food Service Worker" ]
+, [ 355, "852ABB07-9049-4940-ADB9-24F02486ED0A", 355, 1321113200, "390805", 1321113200, "390805", "{\n}", "2608", "Supply Room Attendant" ]
+, [ 356, "B5CD4634-0D1E-4D38-9C59-CA2DEF697DFF", 356, 1321113200, "390805", 1321113200, "390805", "{\n}", "2618", "Food Service Supervisor" ]
+, [ 357, "BABD2F68-FEBB-4E6E-9E5C-84C5F4B7C972", 357, 1321113200, "390805", 1321113200, "390805", "{\n}", "2619", "Senior Food Service Supervisor" ]
+, [ 358, "EB5A3F67-07A4-45BF-B742-8C4BDB752703", 358, 1321113200, "390805", 1321113200, "390805", "{\n}", "2620", "Food Service Mgr Administrator" ]
+, [ 359, "00604503-15E5-4000-BAC3-512A4B96A31F", 359, 1321113200, "390805", 1321113200, "390805", "{\n}", "2622", "Dietetic Technician" ]
+, [ 360, "048D6EFB-62A1-46D1-8724-726505659261", 360, 1321113200, "390805", 1321113200, "390805", "{\n}", "2624", "Dietitian" ]
+, [ 361, "8A382738-5086-4BBB-B1A4-AA63509E068D", 361, 1321113200, "390805", 1321113200, "390805", "{\n}", "2626", "Chief Dietitian" ]
+, [ 362, "ECB92110-50D6-4D09-9F40-EE6D29127DDF", 362, 1321113200, "390805", 1321113200, "390805", "{\n}", "2650", "Assistant Cook" ]
+, [ 363, "3ADE4886-8A0B-46E7-BEFF-958D6E4C2C6E", 363, 1321113200, "390805", 1321113200, "390805", "{\n}", "2652", "Baker" ]
+, [ 364, "A40E741F-7A65-4D9D-A812-ABD8C917BA3F", 364, 1321113200, "390805", 1321113200, "390805", "{\n}", "2654", "Cook" ]
+, [ 365, "70CB763A-9780-447B-A50F-5A6A68ECB9F0", 365, 1321113200, "390805", 1321113200, "390805", "{\n}", "2656", "Chef" ]
+, [ 366, "A6FB0478-BC80-43E1-9BB8-7CAA6D1DB6FC", 366, 1321113200, "390805", 1321113200, "390805", "{\n}", "2706", "Housekeeper/Food Service Clnr" ]
+, [ 367, "E935E3D9-41B4-423E-A349-68E25818869F", 367, 1321113200, "390805", 1321113200, "390805", "{\n}", "2708", "Custodian" ]
+, [ 368, "E23E863C-C889-4554-9FB0-32B599D8A1C3", 368, 1321113200, "390805", 1321113200, "390805", "{\n}", "2716", "Custodial Assistant Supervisor" ]
+, [ 369, "D626898D-F0AF-430C-A4C7-044DA4A807F0", 369, 1321113200, "390805", 1321113200, "390805", "{\n}", "2718", "Custodial Supervisor" ]
+, [ 370, "C343A31F-F114-4143-9023-E13A79A68694", 370, 1321113200, "390805", 1321113200, "390805", "{\n}", "2719", "Janitorial Svcs Asst Sprv" ]
+, [ 371, "FEEC0D59-0C15-4E17-8057-90C7ABD3399C", 371, 1321113200, "390805", 1321113200, "390805", "{\n}", "2720", "Janitorial Services Supervisor" ]
+, [ 372, "C4BE2126-D234-4D62-80FF-70E5356D62AA", 372, 1321113200, "390805", 1321113200, "390805", "{\n}", "2736", "Porter" ]
+, [ 373, "69A62632-A735-491E-9CAD-B9A37F07473A", 373, 1321113200, "390805", 1321113200, "390805", "{\n}", "2738", "Porter Assistant Supervisor" ]
+, [ 374, "ABC9CAC8-BBFC-4516-9066-953C036BCE0B", 374, 1321113200, "390805", 1321113200, "390805", "{\n}", "2740", "Porter Supervisor 1" ]
+, [ 375, "3D8044B6-1E2E-4C21-B549-CF4A5D82E6A5", 375, 1321113200, "390805", 1321113200, "390805", "{\n}", "2770", "Senior Laundry Worker" ]
+, [ 376, "F27D9FC0-B913-4A4A-BD3F-DB014E8B8261", 376, 1321113200, "390805", 1321113200, "390805", "{\n}", "2772", "Sewing Technician" ]
+, [ 377, "662B632C-5AB9-4A42-85E5-7AD813D7BF88", 377, 1321113200, "390805", 1321113200, "390805", "{\n}", "2785", "Asst General Services Manager" ]
+, [ 378, "711BD4F5-8DE7-4227-ADA5-9A4327C63C78", 378, 1321113200, "390805", 1321113200, "390805", "{\n}", "2786", "General Services Manager" ]
+, [ 379, "060569B8-59EC-4C74-BA2A-622A2A8449F3", 379, 1321113200, "390805", 1321113200, "390805", "{\n}", "2802", "Epidemiologist 1" ]
+, [ 380, "D982BAA5-0EF6-44C4-8FF4-D7384CFE53D1", 380, 1321113200, "390805", 1321113200, "390805", "{\n}", "2803", "Epidemiologist 2" ]
+, [ 381, "517F0838-ED7B-404E-8E38-AD5905D5D5E8", 381, 1321113200, "390805", 1321113200, "390805", "{\n}", "2804", "Epidemiologist 3" ]
+, [ 382, "E75FBF4F-4326-432E-898B-1CEE20428983", 382, 1321113200, "390805", 1321113200, "390805", "{\n}", "2806", "Disease Control Investigator" ]
+, [ 383, "D5E37778-C677-408A-AF10-C4E3CD709548", 383, 1321113200, "390805", 1321113200, "390805", "{\n}", "2808", "Sr Disease Control Invstgtor" ]
+, [ 384, "717AB1A8-A01A-49D8-81CF-965E8B35ABDB", 384, 1321113200, "390805", 1321113200, "390805", "{\n}", "2818", "Health Program Planner" ]
+, [ 385, "3E237ACF-6EAD-4CD4-97BE-497307766361", 385, 1321113200, "390805", 1321113200, "390805", "{\n}", "2819", "Assistant Health Educator" ]
+, [ 386, "3EDA03C1-4E9E-4D07-A8F0-7514555E0649", 386, 1321113200, "390805", 1321113200, "390805", "{\n}", "2820", "Senior Health Program Planner" ]
+, [ 387, "9FF65184-E835-4344-B78A-F87FC1FC2C31", 387, 1321113200, "390805", 1321113200, "390805", "{\n}", "2822", "Health Educator" ]
+, [ 388, "9092E3C4-1C7B-46C8-9DF2-C2052312895E", 388, 1321113200, "390805", 1321113200, "390805", "{\n}", "2825", "Senior Health Educator" ]
+, [ 389, "EBD88081-44E2-41DC-91AD-79323A9C45B4", 389, 1321113200, "390805", 1321113200, "390805", "{\n}", "2830", "Public Health Nurse" ]
+, [ 390, "0E1A45E3-819A-4AFD-AF44-D410CF60122E", 390, 1321113200, "390805", 1321113200, "390805", "{\n}", "2846", "Nutritionist" ]
+, [ 391, "06EA5B5E-36FC-48E4-92AB-5E1028373078", 391, 1321113200, "390805", 1321113200, "390805", "{\n}", "2903", "Eligibility Worker" ]
+, [ 392, "7E051893-C715-4FFA-A858-22C6CDD09C16", 392, 1321113200, "390805", 1321113200, "390805", "{\n}", "2904", "Human Services Technician" ]
+, [ 393, "46F4E83C-A422-460A-B8CE-4EE774E443C5", 393, 1321113200, "390805", 1321113200, "390805", "{\n}", "2905", "Senior Eligibility Worker" ]
+, [ 394, "3EA6D163-06EF-4C1B-87B7-662CC6062627", 394, 1321113200, "390805", 1321113200, "390805", "{\n}", "2907", "Eligibility Worker Supervisor" ]
+, [ 395, "3870F47D-281D-4F17-B414-BA18C6B371B9", 395, 1321113200, "390805", 1321113200, "390805", "{\n}", "2908", "Hospital Eligiblity Worker" ]
+, [ 396, "719039DE-53D6-4922-8E70-163A804ACC68", 396, 1321113200, "390805", 1321113200, "390805", "{\n}", "2909", "Hospital Elig Wrk Supervisor" ]
+, [ 397, "F7DCDB14-4474-49C7-839E-47F0C960F095", 397, 1321113200, "390805", 1321113200, "390805", "{\n}", "2910", "Social Worker" ]
+, [ 398, "155F4CD3-9EDB-4FE8-93E9-C6F8D48D5FBE", 398, 1321113200, "390805", 1321113200, "390805", "{\n}", "2912", "Senior Social Worker" ]
+, [ 399, "12059F00-66EC-4C0E-9892-B03A74BC1261", 399, 1321113200, "390805", 1321113200, "390805", "{\n}", "2913", "Program Specialist" ]
+, [ 400, "9B9F7E8E-2732-4294-B0F1-40C0A709ADB2", 400, 1321113200, "390805", 1321113200, "390805", "{\n}", "2914", "Social Work Supervisor" ]
+, [ 401, "8E238BD3-FB0C-41AE-921C-8847E54A15D4", 401, 1321113200, "390805", 1321113200, "390805", "{\n}", "2915", "Program Specialist Supervisor" ]
+, [ 402, "A9ABAA9E-7F7B-4964-BE00-E12A65B23D0E", 402, 1321113200, "390805", 1321113200, "390805", "{\n}", "2916", "Social Work Specialist" ]
+, [ 403, "6AD5172E-5DE9-47A1-AE76-F921C6B17701", 403, 1321113200, "390805", 1321113200, "390805", "{\n}", "2917", "Program Support Analyst" ]
+, [ 404, "BEC7CB07-B4F4-4B77-A650-EE3A532E8357", 404, 1321113200, "390805", 1321113200, "390805", "{\n}", "2920", "Medical Social Worker" ]
+, [ 405, "825A7CD5-871E-47B2-9C70-2EAF7DAE2923", 405, 1321113200, "390805", 1321113200, "390805", "{\n}", "2922", "Senior Medical Social Worker" ]
+, [ 406, "E2123FA3-4CB5-421F-B530-7E14EC270592", 406, 1321113200, "390805", 1321113200, "390805", "{\n}", "2924", "Medical Social Work Supervisor" ]
+, [ 407, "3C6FACB9-5A43-4496-BA86-948A4B30EFB0", 407, 1321113200, "390805", 1321113200, "390805", "{\n}", "2930", "Psychiatric Social Worker" ]
+, [ 408, "D0CAA67F-3253-4844-B81A-D2485F25B26C", 408, 1321113200, "390805", 1321113200, "390805", "{\n}", "2931", "Marriage, Family & Child Cnslr" ]
+, [ 409, "A4437C29-7DD8-4BBB-99E1-A6BB9C077B66", 409, 1321113200, "390805", 1321113200, "390805", "{\n}", "2932", "Sr Psychiatric Social Worker" ]
+, [ 410, "1DA22D67-9546-4452-AB16-792ABB44AE8E", 410, 1321113200, "390805", 1321113200, "390805", "{\n}", "2933", "Conservatorship/Case Mgt Sprv" ]
+, [ 411, "EAD3EBD7-CE97-4AD1-9196-4364C6CC5843", 411, 1321113200, "390805", 1321113200, "390805", "{\n}", "2935", "Sr Marriage, Fam & Cld Cnslr" ]
+, [ 412, "92BE1AC9-9A4F-47B6-B646-B3AC35BCEA27", 412, 1321113200, "390805", 1321113200, "390805", "{\n}", "2940", "Protective Services Worker" ]
+, [ 413, "710A811E-4127-4DC4-AC8D-4787C78827A7", 413, 1321113200, "390805", 1321113200, "390805", "{\n}", "2944", "Protective Services Supervisor" ]
+, [ 414, "0E5EADFE-4D73-46FB-AB3C-0FB01D463151", 414, 1321113200, "390805", 1321113200, "390805", "{\n}", "2947", "Hospital Eligibility Mgr, DPH" ]
+, [ 415, "3331D766-5984-496B-8307-B9346F572FC8", 415, 1321113200, "390805", 1321113200, "390805", "{\n}", "2966", "Welfare Fraud Investigator" ]
+, [ 416, "A81629C0-A1E3-4E92-B943-8D38376F7205", 416, 1321113200, "390805", 1321113200, "390805", "{\n}", "2967", "Sup Welfare Fraud Investigator" ]
+, [ 417, "CBCC76DC-E636-402A-9CD0-44C4C30FA077", 417, 1321113200, "390805", 1321113200, "390805", "{\n}", "2975", "Citizens Complaint Officer" ]
+, [ 418, "B9B8874F-3437-418F-AB97-0417E7410202", 418, 1321113200, "390805", 1321113200, "390805", "{\n}", "2978", "Contract Compliance Officer 2" ]
+, [ 419, "DAA31606-0A74-468F-8269-2328F6357B4D", 419, 1321113200, "390805", 1321113200, "390805", "{\n}", "2982", "Rent Board Supervisor" ]
+, [ 420, "D6BE927A-4212-4C13-9C58-70F9AE142AFD", 420, 1321113200, "390805", 1321113200, "390805", "{\n}", "2991", "Coord, Human Rights Comm" ]
+, [ 421, "0DA42461-83C1-4AA6-9334-5D6B298A1FD9", 421, 1321113200, "390805", 1321113200, "390805", "{\n}", "2992", "Contract Compliance Officer 1" ]
+, [ 422, "5A7A1183-7025-41DD-BDD9-C80F71544967", 422, 1321113200, "390805", 1321113200, "390805", "{\n}", "2996", "Rep, Human Rights Comm" ]
+, [ 423, "F7A03A15-F297-415F-A89A-395F10F94968", 423, 1321113200, "390805", 1321113200, "390805", "{\n}", "2998", "Rep, Comm Status of Women" ]
+, [ 424, "2A86ACAA-7132-480C-998A-776311AD9BF3", 424, 1321113200, "390805", 1321113200, "390805", "{\n}", "3110", "Secretary, Rec and Park Comm." ]
+, [ 425, "10EDF657-B8DC-459B-80A7-D481AB05C345", 425, 1321113200, "390805", 1321113200, "390805", "{\n}", "3202", "Locker Room Attendant" ]
+, [ 426, "9E6D2DD6-D9EB-427E-A6D0-B1245D07DBD9", 426, 1321113200, "390805", 1321113200, "390805", "{\n}", "3210", "Swimming Instr/Pool Lifeguard" ]
+, [ 427, "DC804257-7B11-442D-BE1E-EFE294AABF9A", 427, 1321113200, "390805", 1321113200, "390805", "{\n}", "3214", "Senior Swimming Instructor" ]
+, [ 428, "E1AF9606-A054-419F-A474-64786D5B4618", 428, 1321113200, "390805", 1321113200, "390805", "{\n}", "3232", "Marina Assistant Manager" ]
+, [ 429, "7549C3C3-74AB-4649-96FA-2E28C0A918AE", 429, 1321113200, "390805", 1321113200, "390805", "{\n}", "3238", "Dance Instructor" ]
+, [ 430, "3C0B3B14-2ADC-4168-8EAA-A00F883655AD", 430, 1321113200, "390805", 1321113200, "390805", "{\n}", "3256", "Photography Instructor" ]
+, [ 431, "916FC9DB-A1EC-47E0-B415-8F3C0C7799BE", 431, 1321113200, "390805", 1321113200, "390805", "{\n}", "3260", "Crafts Instructor" ]
+, [ 432, "C13BCC1E-BA79-4537-BA9D-78ABC9E63F5E", 432, 1321113200, "390805", 1321113200, "390805", "{\n}", "3280", "Assistant Recreation Director" ]
+, [ 433, "9F68ACB4-5418-4D36-B71A-20450EDD656F", 433, 1321113200, "390805", 1321113200, "390805", "{\n}", "3284", "Recreation Director" ]
+, [ 434, "80A268F3-4C07-4085-B8E5-BCCBB0E096EB", 434, 1321113200, "390805", 1321113200, "390805", "{\n}", "3287", "Asst Recreation Supervisor" ]
+, [ 435, "B385E770-D2DD-41E5-B7F0-684AFD50E6D4", 435, 1321113200, "390805", 1321113200, "390805", "{\n}", "3292", "Asst Superintendent Rec" ]
+, [ 436, "F1634944-2321-4027-A819-A61CDB7F3BE6", 436, 1321113200, "390805", 1321113200, "390805", "{\n}", "3302", "Admission Attendant" ]
+, [ 437, "EE9A626E-CB99-41E3-A16A-6EBBAC9C4568", 437, 1321113200, "390805", 1321113200, "390805", "{\n}", "3310", "Stable Attendant" ]
+, [ 438, "D94A8C29-397F-46DC-BF50-BFEFD1AC51CB", 438, 1321113200, "390805", 1321113200, "390805", "{\n}", "3320", "Animal Keeper" ]
+, [ 439, "1B77DA52-DEB5-4BA2-91C4-4EADA9D1B757", 439, 1321113200, "390805", 1321113200, "390805", "{\n}", "3321", "Senior Animal Keeper" ]
+, [ 440, "281A23D1-CF8C-4D9F-A0E6-25257001F3BD", 440, 1321113200, "390805", 1321113200, "390805", "{\n}", "3342", "Zoo Curator" ]
+, [ 441, "17360759-376A-447B-8541-CFE3F62718AB", 441, 1321113200, "390805", 1321113200, "390805", "{\n}", "3370", "Animal Care Attendant" ]
+, [ 442, "79D56E41-ED9E-4F4E-B393-49279FDF8573", 442, 1321113200, "390805", 1321113200, "390805", "{\n}", "3371", "Animal Care Supervisor" ]
+, [ 443, "3AE4AC7C-D3AD-4E9A-BA92-ADE9432B2E29", 443, 1321113200, "390805", 1321113200, "390805", "{\n}", "3372", "Animal Control Officer" ]
+, [ 444, "D0101D13-AD58-4050-BF96-2C6C8267A15A", 444, 1321113200, "390805", 1321113200, "390805", "{\n}", "3374", "Volunteer/Outreach Coord" ]
+, [ 445, "4DECF0F1-5EBE-4440-AA98-365B74667582", 445, 1321113200, "390805", 1321113200, "390805", "{\n}", "3375", "Animal Health Technician" ]
+, [ 446, "B5927E0A-AF05-48C8-A8F0-008FF98E3234", 446, 1321113200, "390805", 1321113200, "390805", "{\n}", "3376", "Animal Care Asst Supv" ]
+, [ 447, "8C99FAF9-91F3-4C5B-A6BD-70309603BBF0", 447, 1321113200, "390805", 1321113200, "390805", "{\n}", "3378", "Field Svcs Asst Supv" ]
+, [ 448, "6A9D38DE-D27A-4C04-A05A-9D09FF4D90CB", 448, 1321113200, "390805", 1321113200, "390805", "{\n}", "3402", "Farmer" ]
+, [ 449, "53647171-3981-46FA-920A-89F2C5F65724", 449, 1321113200, "390805", 1321113200, "390805", "{\n}", "3417", "Gardener" ]
+, [ 450, "37A47180-B831-42A5-BA00-A81AEE520CDC", 450, 1321113200, "390805", 1321113200, "390805", "{\n}", "3419", "Municipal Stadium Groundskpr" ]
+, [ 451, "CC555A0B-9F22-405C-A2AB-86E199A2153A", 451, 1321113200, "390805", 1321113200, "390805", "{\n}", "3422", "Park Section Supervisor" ]
+, [ 452, "5BED3086-A623-418B-A1AA-3F3E9027E6B7", 452, 1321113200, "390805", 1321113200, "390805", "{\n}", "3424", "Pest Control Specialist" ]
+, [ 453, "DA386464-1655-4B7F-A80A-0DEE0041CD6D", 453, 1321113200, "390805", 1321113200, "390805", "{\n}", "3426", "Forester" ]
+, [ 454, "5870FA87-046C-4894-9F81-F16DAB135336", 454, 1321113200, "390805", 1321113200, "390805", "{\n}", "3428", "Nursery Specialist" ]
+, [ 455, "C840A35A-2EEE-4E5D-B169-BF04FAFD1354", 455, 1321113200, "390805", 1321113200, "390805", "{\n}", "3430", "Chief Nursery Specialist" ]
+, [ 456, "401F93DC-3517-4D83-9A44-F723F9E3DE4C", 456, 1321113200, "390805", 1321113200, "390805", "{\n}", "3434", "Arborist Technician" ]
+, [ 457, "28D2A1CA-E42A-4E62-912B-3C1EEA5CD41D", 457, 1321113200, "390805", 1321113200, "390805", "{\n}", "3435", "Urban Forestry Inspector" ]
+, [ 458, "A39F2AA2-DFD0-439E-9CDF-A302FAF44824", 458, 1321113200, "390805", 1321113200, "390805", "{\n}", "3436", "Arborist Technician Supervisor" ]
+, [ 459, "2AA489EE-356D-4810-957A-EAA41E6F220A", 459, 1321113200, "390805", 1321113200, "390805", "{\n}", "3450", "Agricultural Inspector" ]
+, [ 460, "1FEF720E-DE19-48A9-B45E-5A15B39FF5FC", 460, 1321113200, "390805", 1321113200, "390805", "{\n}", "3486", "Watershed Forester" ]
+, [ 461, "84459E05-F705-43FA-A93A-17C5FE057830", 461, 1321113200, "390805", 1321113200, "390805", "{\n}", "3518", "Assoc Musm Cnsrvt, AAM" ]
+, [ 462, "1CF4C086-ACF8-412C-A27A-2789B628AA5C", 462, 1321113200, "390805", 1321113200, "390805", "{\n}", "3520", "Museum Preparator" ]
+, [ 463, "14E8CD89-4EBD-4B79-A865-6DC7AA25AC0C", 463, 1321113200, "390805", 1321113200, "390805", "{\n}", "3522", "Senior Museum Preparator" ]
+, [ 464, "F269493D-1D46-47E1-ABBC-52543DA550C9", 464, 1321113200, "390805", 1321113200, "390805", "{\n}", "3524", "Principal Museum Preparator" ]
+, [ 465, "5AEF296F-7884-465A-878A-4BDE373E1BAF", 465, 1321113200, "390805", 1321113200, "390805", "{\n}", "3525", "Chief Preparator" ]
+, [ 466, "D4D262C9-93D6-49A0-9CF3-9823E757B52E", 466, 1321113200, "390805", 1321113200, "390805", "{\n}", "3541", "Curator 1" ]
+, [ 467, "D1F2BBF7-F7B3-48CC-BEED-E58B7A178785", 467, 1321113200, "390805", 1321113200, "390805", "{\n}", "3542", "Curator 2" ]
+, [ 468, "064102B0-031F-4695-A226-C69ECF98AEFF", 468, 1321113200, "390805", 1321113200, "390805", "{\n}", "3544", "Curator 3" ]
+, [ 469, "4279A2B2-84A4-44F1-83E6-021B0C9E37C9", 469, 1321113200, "390805", 1321113200, "390805", "{\n}", "3546", "Curator 4" ]
+, [ 470, "45916969-E6E0-41BD-A364-DEA1846145C9", 470, 1321113200, "390805", 1321113200, "390805", "{\n}", "3549", "Arts Program Assistant" ]
+, [ 471, "146BA78B-6088-461B-ABB2-438A101D5941", 471, 1321113200, "390805", 1321113200, "390805", "{\n}", "3554", "Associate Museum Registrar" ]
+, [ 472, "C523A33B-5B4C-4B32-A44A-7BEAF0FABEF6", 472, 1321113200, "390805", 1321113200, "390805", "{\n}", "3556", "Museum Registrar" ]
+, [ 473, "C6CC9128-4837-499F-A5CE-E1D83B8EE63D", 473, 1321113200, "390805", 1321113200, "390805", "{\n}", "3558", "Senior Museum Registrar" ]
+, [ 474, "928512CF-6B61-4FFA-B3BE-A0B980E776FF", 474, 1321113200, "390805", 1321113200, "390805", "{\n}", "3602", "Library Page" ]
+, [ 475, "1DDB9911-9EB6-488B-8FBC-D36154ADF73C", 475, 1321113200, "390805", 1321113200, "390805", "{\n}", "3610", "Library Assistant" ]
+, [ 476, "F4B399E1-9651-47DC-8281-5D64D904143A", 476, 1321113200, "390805", 1321113200, "390805", "{\n}", "3616", "Library Technical Assistant 1" ]
+, [ 477, "633BD3A2-2A5E-4843-91E2-F5C2B3E312B4", 477, 1321113200, "390805", 1321113200, "390805", "{\n}", "3618", "Library Technical Assistant 2" ]
+, [ 478, "16D5D0B5-300B-43E0-840C-9B52BC4755C1", 478, 1321113200, "390805", 1321113200, "390805", "{\n}", "3630", "Librarian 1" ]
+, [ 479, "948CD9E9-4529-4499-9113-799C1461907D", 479, 1321113200, "390805", 1321113200, "390805", "{\n}", "3632", "Librarian 2" ]
+, [ 480, "5C8D4D04-6155-4F6D-BF03-6A081BFAC20F", 480, 1321113200, "390805", 1321113200, "390805", "{\n}", "3633", "Librarian 2 - Asian Arts" ]
+, [ 481, "240F3A15-7094-4116-A2A0-B337B06CBCE6", 481, 1321113200, "390805", 1321113200, "390805", "{\n}", "3634", "Librarian 3" ]
+, [ 482, "60CE6154-434D-488F-B45C-3EB1F5260F08", 482, 1321113200, "390805", 1321113200, "390805", "{\n}", "4119", "Performing Arts Center Aide" ]
+, [ 483, "9FB32061-F8C6-4F70-B8C2-4EB5CF95ED80", 483, 1321113200, "390805", 1321113200, "390805", "{\n}", "4140", "Real Property Manager" ]
+, [ 484, "C4195CE4-F4DC-4B6C-8FF6-8A8502ACB5DC", 484, 1321113200, "390805", 1321113200, "390805", "{\n}", "4142", "Senior Real Property Officer" ]
+, [ 485, "8E1EE5BD-EC3A-4991-8B52-D1FE16504EA0", 485, 1321113200, "390805", 1321113200, "390805", "{\n}", "4143", "Principal Real Property Ofc" ]
+, [ 486, "B3BD99B1-0761-44A4-B47D-F20DD7AEA604", 486, 1321113200, "390805", 1321113200, "390805", "{\n}", "4204", "Assessment Srvcs Office Spec" ]
+, [ 487, "0BD439BB-08EA-4109-AFB9-505047A381AB", 487, 1321113200, "390805", 1321113200, "390805", "{\n}", "4205", "Sr Asmnt Srvcs Office Spec" ]
+, [ 488, "A2C51C72-2994-4234-ABB1-3ADE1CCC97D8", 488, 1321113200, "390805", 1321113200, "390805", "{\n}", "4220", "Personal Property Auditor" ]
+, [ 489, "21EB59CA-67A1-4CB3-934A-0C2CC452C3BE", 489, 1321113200, "390805", 1321113200, "390805", "{\n}", "4222", "Sr Personal Property Auditor" ]
+, [ 490, "72635E8C-8AC4-4792-93DE-1D8B3F194E40", 490, 1321113200, "390805", 1321113200, "390805", "{\n}", "4224", "Pr Personal Property Auditor" ]
+, [ 491, "417F44AB-9201-4EE6-8877-5AFE25100273", 491, 1321113200, "390805", 1321113200, "390805", "{\n}", "4230", "Estate Investigator" ]
+, [ 492, "DAD033DB-461A-4621-B27C-935E863535C5", 492, 1321113200, "390805", 1321113200, "390805", "{\n}", "4231", "Senior Estate Investigator" ]
+, [ 493, "E6EC6E6D-CEA4-4129-AA39-2EAAB9787B21", 493, 1321113200, "390805", 1321113200, "390805", "{\n}", "4260", "Real Prop Appraiser Trainee" ]
+, [ 494, "577D3A17-F158-401A-B7C7-4EB14049DA0C", 494, 1321113200, "390805", 1321113200, "390805", "{\n}", "4261", "Real Property Appraiser" ]
+, [ 495, "88030C8A-B820-4D11-B0F6-8594E9F31115", 495, 1321113200, "390805", 1321113200, "390805", "{\n}", "4265", "Senior Real Property Appraiser" ]
+, [ 496, "5CA1B846-37EF-4339-B1E8-F1F2AA43C57F", 496, 1321113200, "390805", 1321113200, "390805", "{\n}", "4267", "Pr Real Property Appraiser" ]
+, [ 497, "0FFEE920-C8B6-4B27-9A73-4E9EF73DB924", 497, 1321113200, "390805", 1321113200, "390805", "{\n}", "4290", "Assessor" ]
+, [ 498, "DF01F36D-3AEA-4F3A-A952-128C564A35BB", 498, 1321113200, "390805", 1321113200, "390805", "{\n}", "4306", "Collections Officer" ]
+, [ 499, "7324109F-71BE-435D-AA62-686EDF40B452", 499, 1321113200, "390805", 1321113200, "390805", "{\n}", "4308", "Senior Collections Officer" ]
+, [ 500, "8E34B0C2-C1A4-423C-A176-42BD252F167E", 500, 1321113200, "390805", 1321113200, "390805", "{\n}", "4310", "Commercial Div Asst Sprv" ]
+, [ 501, "5E104064-3B2E-429F-8103-EBCF568E7991", 501, 1321113200, "390805", 1321113200, "390805", "{\n}", "4320", "Cashier 1" ]
+, [ 502, "6B9514D9-0CF5-495D-BE6F-C4FEB6F9D733", 502, 1321113200, "390805", 1321113200, "390805", "{\n}", "4321", "Cashier 2" ]
+, [ 503, "F24031C6-5F5F-491A-8B27-A1165A575A43", 503, 1321113200, "390805", 1321113200, "390805", "{\n}", "4322", "Cashier 3" ]
+, [ 504, "61D2BECE-9B95-4D44-8B95-4901AE9C981E", 504, 1321113200, "390805", 1321113200, "390805", "{\n}", "4331", "Security Analyst" ]
+, [ 505, "7D16AF0A-E8D8-4139-AC8A-2BC0387F5737", 505, 1321113200, "390805", 1321113200, "390805", "{\n}", "4334", "Investigator, Tax Collector" ]
+, [ 506, "2866AA53-3E58-4AD6-A56B-27019AAF3361", 506, 1321113200, "390805", 1321113200, "390805", "{\n}", "4335", "Sr Investigator, Tax Collector" ]
+, [ 507, "E85AD751-D86E-4C24-A3E4-D3F1E108341C", 507, 1321113200, "390805", 1321113200, "390805", "{\n}", "4366", "Collection Supervisor" ]
+, [ 508, "966F8471-C8FD-4DA5-BB36-9D714438CC49", 508, 1321113200, "390805", 1321113200, "390805", "{\n}", "4390", "Treasurer" ]
+, [ 509, "BE67B105-285C-44BF-9DDC-325F95E0587D", 509, 1321113200, "390805", 1321113200, "390805", "{\n}", "5120", "Architectural Administrator" ]
+, [ 510, "B7B138B2-04DE-4D6B-B58A-FBC1A101466C", 510, 1321113200, "390805", 1321113200, "390805", "{\n}", "5130", "Sewage Treatment Plant Supt" ]
+, [ 511, "69FD8583-72E5-4C7D-895C-7D286B56F9A7", 511, 1321113200, "390805", 1321113200, "390805", "{\n}", "5148", "Water Operations Analyst" ]
+, [ 512, "CE5D4804-D617-4632-829C-9C4886B67F4F", 512, 1321113200, "390805", 1321113200, "390805", "{\n}", "5149", "Supt Water Treatment Fac" ]
+, [ 513, "6D342639-364F-424E-BD2D-4D106291EEFF", 513, 1321113200, "390805", 1321113200, "390805", "{\n}", "5174", "Administrative Engineer" ]
+, [ 514, "47F8024F-8022-4F40-80B0-BA3E4B574429", 514, 1321113200, "390805", 1321113200, "390805", "{\n}", "5177", "Safety Officer" ]
+, [ 515, "168B4F32-95DD-4786-9E4E-44445FA5A7F2", 515, 1321113200, "390805", 1321113200, "390805", "{\n}", "5201", "Junior Engineer" ]
+, [ 516, "B57B1D3D-536E-4CF2-891C-34A47CF024C9", 516, 1321113200, "390805", 1321113200, "390805", "{\n}", "5203", "Asst Engr" ]
+, [ 517, "3684E99E-E612-49C3-B6A8-FB12C0BA1A4E", 517, 1321113200, "390805", 1321113200, "390805", "{\n}", "5207", "Assoc Engineer" ]
+, [ 518, "77EC4FC4-4CCD-4142-8A65-B970CD0E6DC7", 518, 1321113200, "390805", 1321113200, "390805", "{\n}", "5211", "Eng/Arch/Landscape Arch Sr" ]
+, [ 519, "97EE7691-274C-471D-B44B-8FE02497D8E3", 519, 1321113200, "390805", 1321113200, "390805", "{\n}", "5212", "Engineer/Architect Principal" ]
+, [ 520, "66E7EB58-890D-4BC9-8974-774FE515EE4A", 520, 1321113200, "390805", 1321113200, "390805", "{\n}", "5214", "Building Plans Engineer" ]
+, [ 521, "F04ECAE0-310C-4341-84A9-56E638CE606D", 521, 1321113200, "390805", 1321113200, "390805", "{\n}", "5215", "Fire Protection Engineer" ]
+, [ 522, "5E483FDE-4736-4BA7-AC88-E041DD78ABA1", 522, 1321113200, "390805", 1321113200, "390805", "{\n}", "5216", "Chief Surveyor" ]
+, [ 523, "602AF3D8-0510-4B0C-8F16-C77E2481F786", 523, 1321113200, "390805", 1321113200, "390805", "{\n}", "5218", "Structural Engineer" ]
+, [ 524, "4794E701-2E4C-4573-8DF4-F2C701B37AE1", 524, 1321113200, "390805", 1321113200, "390805", "{\n}", "5241", "Engineer" ]
+, [ 525, "70548033-0CE3-4726-B1D1-0B5C90553F88", 525, 1321113200, "390805", 1321113200, "390805", "{\n}", "5246", "Radio Engineer" ]
+, [ 526, "570054F3-AAA5-43A3-97EE-2AABD0446E24", 526, 1321113200, "390805", 1321113200, "390805", "{\n}", "5260", "Architectural Assistant 1" ]
+, [ 527, "DD419B24-27B3-424E-9BE6-37C02BAD847C", 527, 1321113200, "390805", 1321113200, "390805", "{\n}", "5261", "Architectural Assistant 2" ]
+, [ 528, "700AFD39-2B56-4B1E-8C49-289208668613", 528, 1321113200, "390805", 1321113200, "390805", "{\n}", "5262", "Landscape Architect Assoc 1" ]
+, [ 529, "9A977A2C-8ABD-4DDC-96E3-036AA834BB0A", 529, 1321113200, "390805", 1321113200, "390805", "{\n}", "5264", "Airport Noise Abatement Spec" ]
+, [ 530, "C4C095CF-B2BC-48BE-B444-5936992C23EC", 530, 1321113200, "390805", 1321113200, "390805", "{\n}", "5265", "Architectural Associate 1" ]
+, [ 531, "1F3895AC-15CA-49F2-A87F-40C5D44B9F38", 531, 1321113200, "390805", 1321113200, "390805", "{\n}", "5266", "Architectural Associate 2" ]
+, [ 532, "1F04D93E-96F7-416E-9B35-4D78D0E68ED3", 532, 1321113200, "390805", 1321113200, "390805", "{\n}", "5268", "Architect" ]
+, [ 533, "97AF14CB-112B-4B2F-9F06-7A11DDE5ED5F", 533, 1321113200, "390805", 1321113200, "390805", "{\n}", "5271", "Sr Airport Noise Abatement Spe" ]
+, [ 534, "A4609792-12FE-4017-A19B-BE744E2809CD", 534, 1321113200, "390805", 1321113200, "390805", "{\n}", "5272", "Landscape Architect Assoc 2" ]
+, [ 535, "C1105BB5-460C-4C6E-A01F-A62D772940DC", 535, 1321113200, "390805", 1321113200, "390805", "{\n}", "5274", "Landscape Architect" ]
+, [ 536, "A34D6D14-E215-474F-B2DD-5D0098486FA9", 536, 1321113200, "390805", 1321113200, "390805", "{\n}", "5277", "Planner 1" ]
+, [ 537, "BA22BDAD-9890-4531-9EE5-73568A9988AC", 537, 1321113200, "390805", 1321113200, "390805", "{\n}", "5278", "Planner 2" ]
+, [ 538, "1FCE5E70-148F-4CE7-813C-A09FB070E52A", 538, 1321113200, "390805", 1321113200, "390805", "{\n}", "5283", "Planner 5" ]
+, [ 539, "51E916F7-9BD0-4736-BFAA-41161EA256F0", 539, 1321113200, "390805", 1321113200, "390805", "{\n}", "5288", "Transit Planner 2" ]
+, [ 540, "8BC74EF8-83B9-4178-9FE7-0699CA2B9D65", 540, 1321113200, "390805", 1321113200, "390805", "{\n}", "5289", "Transit Planner III" ]
+, [ 541, "DE12A13F-DE09-4E73-9183-7A46ED38FE14", 541, 1321113200, "390805", 1321113200, "390805", "{\n}", "5290", "Transit Planner 4" ]
+, [ 542, "58721629-A492-4D1E-AB21-53B6863E270E", 542, 1321113200, "390805", 1321113200, "390805", "{\n}", "5291", "Planner 3" ]
+, [ 543, "CFBB42CF-087A-4077-B9E8-AD2B279DFB61", 543, 1321113200, "390805", 1321113200, "390805", "{\n}", "5293", "Planner 4" ]
+, [ 544, "E3556B51-F3FB-435C-8D9C-40C546C1237F", 544, 1321113200, "390805", 1321113200, "390805", "{\n}", "5298", "Planner 3-Environmental Review" ]
+, [ 545, "8769C463-59C2-4404-B448-860590B07436", 545, 1321113200, "390805", 1321113200, "390805", "{\n}", "5299", "Planner 4-Environmental Review" ]
+, [ 546, "4A3D7677-006F-436F-96A9-2D0F969C7A7F", 546, 1321113200, "390805", 1321113200, "390805", "{\n}", "5301", "Manager, Traffic Painting Prog" ]
+, [ 547, "F279EA84-AA7F-4685-961E-B8464AF7615B", 547, 1321113200, "390805", 1321113200, "390805", "{\n}", "5302", "Traffic Survey Technician" ]
+, [ 548, "4A88F351-A756-43FD-B61B-5D928459ED34", 548, 1321113200, "390805", 1321113200, "390805", "{\n}", "5303", "Sprv, Traffic & Street Signs" ]
+, [ 549, "7E4A69E6-437B-43FA-9190-9600CF3285E1", 549, 1321113200, "390805", 1321113200, "390805", "{\n}", "5304", "Materials Testing Aide" ]
+, [ 550, "1A83A5AE-65CE-41E1-A708-54DAB5647F85", 550, 1321113200, "390805", 1321113200, "390805", "{\n}", "5305", "Materials Testing Technician" ]
+, [ 551, "7873DE15-36F2-4829-8074-854534F0CF86", 551, 1321113200, "390805", 1321113200, "390805", "{\n}", "5306", "Traffic Sign Manager" ]
+, [ 552, "A3E6E106-62CA-46A0-96D1-F8C83F3F35C7", 552, 1321113200, "390805", 1321113200, "390805", "{\n}", "5310", "Survey Assistant I" ]
+, [ 553, "8A46A138-27F7-4362-A1D4-2F38FA4C5221", 553, 1321113200, "390805", 1321113200, "390805", "{\n}", "5312", "Survey Assistant II" ]
+, [ 554, "E6759C05-949D-488A-988D-9CD0BEAE98DB", 554, 1321113200, "390805", 1321113200, "390805", "{\n}", "5314", "Survey Associate" ]
+, [ 555, "35BE4CFC-CD91-4C11-9821-37BBE73A9C85", 555, 1321113200, "390805", 1321113200, "390805", "{\n}", "5320", "Illustrator and Art Designer" ]
+, [ 556, "DB07A39B-8022-4767-B6EE-5F56D2EA4FF4", 556, 1321113200, "390805", 1321113200, "390805", "{\n}", "5322", "Graphic Artist" ]
+, [ 557, "36D7F5FE-F8AE-4A68-90AC-54E800694B8B", 557, 1321113200, "390805", 1321113200, "390805", "{\n}", "5330", "Graphics Supervisor" ]
+, [ 558, "27040822-1EF6-459E-A523-2FBCA0C4F9CB", 558, 1321113200, "390805", 1321113200, "390805", "{\n}", "5346", "Mechanical Eng Associate 1" ]
+, [ 559, "160B1808-D131-4C67-80C2-12CCC8A5C57F", 559, 1321113200, "390805", 1321113200, "390805", "{\n}", "5362", "Engineering Assistant" ]
+, [ 560, "04215630-FB3E-4E0C-8151-D32F19A9D87B", 560, 1321113200, "390805", 1321113200, "390805", "{\n}", "5364", "Engineering Associate 1" ]
+, [ 561, "3A211D02-4A28-4651-B1A9-D7D5AA4A69A6", 561, 1321113200, "390805", 1321113200, "390805", "{\n}", "5366", "Engineering Associate 2" ]
+, [ 562, "5B39BC45-C53D-4521-BF00-117D3CF5B04A", 562, 1321113200, "390805", 1321113200, "390805", "{\n}", "5380", "StdntDsgnTrain1, Arch/Eng/Plng" ]
+, [ 563, "EE0FFBD8-D1DF-46AE-BB15-CC9F886F32A7", 563, 1321113200, "390805", 1321113200, "390805", "{\n}", "5381", "StdntDsgn Train2/Arch/Eng/Plng" ]
+, [ 564, "0A43AE03-83C7-4908-ACBF-6EDCF5E349AE", 564, 1321113200, "390805", 1321113200, "390805", "{\n}", "5382", "StdntDsgnTrain3, Arch/Eng/Plng" ]
+, [ 565, "8ACF8C88-D42C-41DA-8E56-2DC07525836B", 565, 1321113200, "390805", 1321113200, "390805", "{\n}", "5408", "Coord of Citizen Involvement" ]
+, [ 566, "1C7EC21B-D356-4E06-B22C-8B1FA7A7C2DE", 566, 1321113200, "390805", 1321113200, "390805", "{\n}", "5502", "Project Manager 1" ]
+, [ 567, "05993C85-3343-402C-A13A-EABE5B260A84", 567, 1321113200, "390805", 1321113200, "390805", "{\n}", "5504", "Project Manager 2" ]
+, [ 568, "A187DB78-1805-429F-9777-AE437DFC1709", 568, 1321113200, "390805", 1321113200, "390805", "{\n}", "5506", "Project Manager 3" ]
+, [ 569, "7A034EE4-AE91-484C-A0B9-8FF2B8CBD034", 569, 1321113200, "390805", 1321113200, "390805", "{\n}", "5508", "Project Manager 4" ]
+, [ 570, "27759EE8-5656-46C2-B9C4-8CD565CB36CA", 570, 1321113200, "390805", 1321113200, "390805", "{\n}", "5601", "Utility Analyst" ]
+, [ 571, "6406EEDA-34B6-49F1-8CE4-2FCFB7C90020", 571, 1321113200, "390805", 1321113200, "390805", "{\n}", "5602", "Utility Specialist" ]
+, [ 572, "7E6F176F-2133-4408-89A0-42088300834D", 572, 1321113200, "390805", 1321113200, "390805", "{\n}", "5620", "Regulatory Specialist" ]
+, [ 573, "64E98A34-2B92-4E84-B33A-0CE54A5EDBB1", 573, 1321113200, "390805", 1321113200, "390805", "{\n}", "5638", "Environmental Assistant" ]
+, [ 574, "973151A2-8983-4A3D-BA5A-BFF94F662278", 574, 1321113200, "390805", 1321113200, "390805", "{\n}", "5640", "Environmental Spec" ]
+, [ 575, "EF518378-C0BA-4FC3-BA41-7D4B78F7E64D", 575, 1321113200, "390805", 1321113200, "390805", "{\n}", "5642", "Sr. Environmental Spec" ]
+, [ 576, "CA391296-9E6A-46D5-A7DE-4617469BFAED", 576, 1321113200, "390805", 1321113200, "390805", "{\n}", "5644", "Principal Environ Specialist" ]
+, [ 577, "2E4E8AE6-B9B3-46F9-81B3-207A0F8B98C2", 577, 1321113200, "390805", 1321113200, "390805", "{\n}", "6108", "Environmental Hlth Tech 1" ]
+, [ 578, "27324683-EAC0-47DD-8E2B-6608D7DF13BE", 578, 1321113200, "390805", 1321113200, "390805", "{\n}", "6110", "Environmental Hlth Tech 2" ]
+, [ 579, "4C4FBB5B-E7E3-47B3-977E-56788571DABF", 579, 1321113200, "390805", 1321113200, "390805", "{\n}", "6115", "Wastewater Control Inspector" ]
+, [ 580, "70325050-6D3E-4230-9E45-520131FBFFAA", 580, 1321113200, "390805", 1321113200, "390805", "{\n}", "6116", "Sprv Wastewater Cont Inspector" ]
+, [ 581, "E318670A-9D24-4C7C-8654-F522F04B020D", 581, 1321113200, "390805", 1321113200, "390805", "{\n}", "6120", "Environmental Health Inspector" ]
+, [ 582, "6ECDF24A-548E-4D7B-9682-6C6E1BE42706", 582, 1321113200, "390805", 1321113200, "390805", "{\n}", "6122", "Sr Environmental Hlth Insp" ]
+, [ 583, "ECD40BE9-FD42-4FFE-BD1F-59CA6C8F9006", 583, 1321113200, "390805", 1321113200, "390805", "{\n}", "6124", "Pr Environmental Hlth Insp" ]
+, [ 584, "E445A115-87DB-441C-8AB0-E6BD55D63F1B", 584, 1321113200, "390805", 1321113200, "390805", "{\n}", "6130", "Safety Analyst" ]
+, [ 585, "226A6CE0-0ECC-4110-85FD-381F73695880", 585, 1321113200, "390805", 1321113200, "390805", "{\n}", "6137", "Assistant Industrial Hygienist" ]
+, [ 586, "87766291-8A09-4A05-B9CC-EACAAB9B0699", 586, 1321113200, "390805", 1321113200, "390805", "{\n}", "6138", "Industrial Hygienist" ]
+, [ 587, "CBE9B0F5-38F0-4D36-9E83-60A9633262E2", 587, 1321113200, "390805", 1321113200, "390805", "{\n}", "6139", "Senior Industrial Hygienist" ]
+, [ 588, "032411C9-1EF7-4A37-9795-377ABEF81892", 588, 1321113200, "390805", 1321113200, "390805", "{\n}", "6220", "Inspector, Weights & Measures" ]
+, [ 589, "281FF3AF-90CD-4AEC-8FFF-4BCD3127D6BF", 589, 1321113200, "390805", 1321113200, "390805", "{\n}", "6230", "Street Inspector" ]
+, [ 590, "5BEB7F67-18E9-4EDF-BB4C-58A2EC9B1B3C", 590, 1321113200, "390805", 1321113200, "390805", "{\n}", "6231", "Senior Street Inspector" ]
+, [ 591, "6D67F37B-A4B8-48E4-A4BE-F503C364CF4D", 591, 1321113200, "390805", 1321113200, "390805", "{\n}", "6232", "Street Inspection Supervisor" ]
+, [ 592, "CC3E8B70-6944-4A12-B3EB-C99A898C398D", 592, 1321113200, "390805", 1321113200, "390805", "{\n}", "6235", "Heating/Ventilating Inspector" ]
+, [ 593, "0B5F12B0-7563-4097-8D9E-99D73A5F2051", 593, 1321113200, "390805", 1321113200, "390805", "{\n}", "6242", "Plumbing Inspector" ]
+, [ 594, "CD5166BB-416A-4510-93A1-8D8AF6ADFE92", 594, 1321113200, "390805", 1321113200, "390805", "{\n}", "6244", "Chief Plumbing Inspector" ]
+, [ 595, "564EE75D-C89F-400C-B716-F2B532C569D6", 595, 1321113200, "390805", 1321113200, "390805", "{\n}", "6246", "Senior Plumbing Inspector" ]
+, [ 596, "6EE0D715-06C4-418B-AC23-B5A7272B8152", 596, 1321113200, "390805", 1321113200, "390805", "{\n}", "6248", "Electrical Inspector" ]
+, [ 597, "20EBA669-9459-471A-8A19-D1AC1F6635CE", 597, 1321113200, "390805", 1321113200, "390805", "{\n}", "6249", "Senior Electrical Inpsector" ]
+, [ 598, "F16FCBBA-D008-45AD-B215-2838E0DAF8B3", 598, 1321113200, "390805", 1321113200, "390805", "{\n}", "6250", "Chief Electrical Inspector" ]
+, [ 599, "44750E98-9182-4D55-817B-A6B5BA6FDF7A", 599, 1321113200, "390805", 1321113200, "390805", "{\n}", "6252", "Line Inspector" ]
+, [ 600, "B3E0C8A6-0524-4BF0-B79F-4FC881801B8D", 600, 1321113200, "390805", 1321113200, "390805", "{\n}", "6262", "Plan Checker" ]
+, [ 601, "0417A289-ADAB-4B91-999E-0D9943AEBE9C", 601, 1321113200, "390805", 1321113200, "390805", "{\n}", "6266", "Senior Plan Checker" ]
+, [ 602, "A4B6EC5B-448A-4C8C-A041-2C8FB1952C4D", 602, 1321113200, "390805", 1321113200, "390805", "{\n}", "6270", "Housing Inspector" ]
+, [ 603, "3B5C7841-3CC4-44DB-A3F1-80908F916C5E", 603, 1321113200, "390805", 1321113200, "390805", "{\n}", "6272", "Senior Housing Inspector" ]
+, [ 604, "739239C9-7D50-460F-BE94-60A7ED3A4913", 604, 1321113200, "390805", 1321113200, "390805", "{\n}", "6274", "Chief Housing Inspector" ]
+, [ 605, "98775013-8AF1-4D34-8D55-9422F2E80A0F", 605, 1321113200, "390805", 1321113200, "390805", "{\n}", "6281", "Fire Safety Inspector 2" ]
+, [ 606, "14D8DC01-311A-4D5F-93DC-D9C7F9A8AA13", 606, 1321113200, "390805", 1321113200, "390805", "{\n}", "6317", "Assistant Const Inspector" ]
+, [ 607, "B9B6A091-2100-42EE-9E4B-E12084B375D8", 607, 1321113200, "390805", 1321113200, "390805", "{\n}", "6318", "Construction Inspector" ]
+, [ 608, "01E32D05-29B6-4A9B-91E8-4A265B26FE05", 608, 1321113200, "390805", 1321113200, "390805", "{\n}", "6319", "Senior Const Inspector" ]
+, [ 609, "E9E9A9D8-FC78-4094-809B-21A8BE92BAC1", 609, 1321113200, "390805", 1321113200, "390805", "{\n}", "6331", "Building Inspector" ]
+, [ 610, "1F824268-2199-407E-9FF7-949F9145ACCE", 610, 1321113200, "390805", 1321113200, "390805", "{\n}", "6333", "Senior Building Inspector" ]
+, [ 611, "EA774F93-A2FF-44CB-B949-82D9E02DE6FF", 611, 1321113200, "390805", 1321113200, "390805", "{\n}", "6334", "Chief Building Inspector" ]
+, [ 612, "265D2183-CE17-4AD7-8B71-5042B6429E0A", 612, 1321113200, "390805", 1321113200, "390805", "{\n}", "6335", "Disability Access Coordinator" ]
+, [ 613, "84BFF8C7-0604-4CB0-AF6E-3545130356CF", 613, 1321113200, "390805", 1321113200, "390805", "{\n}", "7108", "Heavy Equip Ops Asst Sprv" ]
+, [ 614, "42B8DFAE-6923-44C0-B288-17BFA5E76CB9", 614, 1321113200, "390805", 1321113200, "390805", "{\n}", "7110", "Mobile Equipment Asst Sprv" ]
+, [ 615, "EEA8A6DB-8E9E-4510-A186-04377333375F", 615, 1321113200, "390805", 1321113200, "390805", "{\n}", "7120", "Bldgs & Grounds Maint Supt" ]
+, [ 616, "DD886FC1-352A-4693-9BF3-4C7CFB6929FA", 616, 1321113200, "390805", 1321113200, "390805", "{\n}", "7126", "Mech Shop & Equip Supt" ]
+, [ 617, "96872180-20EF-4279-AF9A-514B9BB8EA39", 617, 1321113200, "390805", 1321113200, "390805", "{\n}", "7132", "Telecommunication Supervisor" ]
+, [ 618, "B7B2B340-B8AE-4F5B-A611-9A6C300B071D", 618, 1321113200, "390805", 1321113200, "390805", "{\n}", "7134", "Water Const&Main Supt" ]
+, [ 619, "820BB763-97CD-4596-9DE4-D1BA443DB903", 619, 1321113200, "390805", 1321113200, "390805", "{\n}", "7203", "Bldg & Grounds Maint Sprv" ]
+, [ 620, "FE82DF70-EC99-4AEC-81BF-EB6079DFDF97", 620, 1321113200, "390805", 1321113200, "390805", "{\n}", "7204", "Chief Water Service Inspector" ]
+, [ 621, "4E8DC995-CF89-4198-81D3-96A814E0CC11", 621, 1321113200, "390805", 1321113200, "390805", "{\n}", "7205", "Chief Stationary Engineer" ]
+, [ 622, "323E02E5-BD16-458E-9E3E-E254FE306AD5", 622, 1321113200, "390805", 1321113200, "390805", "{\n}", "7208", "Heavy Equipment Ops Sprv" ]
+, [ 623, "BF285F2C-36B8-4DC7-A277-EE95361891F0", 623, 1321113200, "390805", 1321113200, "390805", "{\n}", "7210", "Mobile Equipment Supervisor" ]
+, [ 624, "A9C2BF43-36D0-4D14-8465-70A7872C5159", 624, 1321113200, "390805", 1321113200, "390805", "{\n}", "7211", "Cement Finisher Supervisor 2" ]
+, [ 625, "2A60D70D-05A9-40E0-A191-2955B58FFFED", 625, 1321113200, "390805", 1321113200, "390805", "{\n}", "7213", "Plumber Supervisor 1" ]
+, [ 626, "AA28146B-0A4E-4005-97FC-E3EA567E847B", 626, 1321113200, "390805", 1321113200, "390805", "{\n}", "7215", "General Laborer Supervisor 1" ]
+, [ 627, "E82C9E37-F011-4DFB-B77E-D39E7E5A286C", 627, 1321113200, "390805", 1321113200, "390805", "{\n}", "7216", "Electrical Trnst Shop Sprv 1" ]
+, [ 628, "988841C2-9300-446C-8411-6C113071CF2C", 628, 1321113200, "390805", 1321113200, "390805", "{\n}", "7219", "Maintenance Scheduler" ]
+, [ 629, "D66F4E45-E523-49D7-83E5-695D24B9DE1E", 629, 1321113200, "390805", 1321113200, "390805", "{\n}", "7220", "Asphalt Finisher Supervisor 1" ]
+, [ 630, "72C08CDE-8923-482F-8A8A-03761F94BACD", 630, 1321113200, "390805", 1321113200, "390805", "{\n}", "7221", "Asphalt Plant Supervisor 1" ]
+, [ 631, "0BE51E5F-A33E-4DF5-A87E-F1B2AF15A3E2", 631, 1321113200, "390805", 1321113200, "390805", "{\n}", "7223", "Cable Machinery Supervisor" ]
+, [ 632, "1A783094-5BD8-4D2F-9A67-350F50CC58C0", 632, 1321113200, "390805", 1321113200, "390805", "{\n}", "7225", "Transit Paint Shop Sprv1" ]
+, [ 633, "82BABBFB-7ABA-4900-83B3-1FFA8A9265B0", 633, 1321113200, "390805", 1321113200, "390805", "{\n}", "7226", "Carpenter Supervisor 1" ]
+, [ 634, "F1439D16-5503-4EB6-9B75-F9F742DB058D", 634, 1321113200, "390805", 1321113200, "390805", "{\n}", "7227", "Cement Finisher Supervisor 1" ]
+, [ 635, "9FEC5BE8-83F8-4608-9334-528FDFFC7B8C", 635, 1321113200, "390805", 1321113200, "390805", "{\n}", "7228", "Automotive Trnst Shop Sprv 1" ]
+, [ 636, "9932E096-66A3-4A58-BB0A-C52DA4F98709", 636, 1321113200, "390805", 1321113200, "390805", "{\n}", "7229", "Transmission Line Supervisor 1" ]
+, [ 637, "880603D6-2412-4094-9627-264E8B8B067C", 637, 1321113200, "390805", 1321113200, "390805", "{\n}", "7233", "Glazier Supervisor 1" ]
+, [ 638, "D2CA4715-06F5-4468-898F-45D005F3829E", 638, 1321113200, "390805", 1321113200, "390805", "{\n}", "7235", "Transit Power Line Sprv1" ]
+, [ 639, "3343D643-BA89-4F98-BECB-07A282CC5CCE", 639, 1321113200, "390805", 1321113200, "390805", "{\n}", "7236", "Locksmith Supervisor 1" ]
+, [ 640, "913C7960-8873-4A24-AD49-C7F669A8CA8B", 640, 1321113200, "390805", 1321113200, "390805", "{\n}", "7238", "Electrician Supervisor 1" ]
+, [ 641, "81858BD1-ECCD-4361-AD58-DB9AAFDFC0DC", 641, 1321113200, "390805", 1321113200, "390805", "{\n}", "7239", "Plumber Supervisor 2" ]
+, [ 642, "498D5FF3-3EC0-4693-9A98-777D641A6DCF", 642, 1321113200, "390805", 1321113200, "390805", "{\n}", "7240", "Water Meter Shop Supervisor 1" ]
+, [ 643, "7B186F15-5B52-4CD2-9460-AF503795A8A0", 643, 1321113200, "390805", 1321113200, "390805", "{\n}", "7241", "Senior Maintenance Controller" ]
+, [ 644, "366EF7AD-F8C3-4369-94F0-CAEFFDAFF5A5", 644, 1321113200, "390805", 1321113200, "390805", "{\n}", "7242", "Painter Supervisor 1" ]
+, [ 645, "0BC8357D-599C-421C-AF66-0E284E382B3D", 645, 1321113200, "390805", 1321113200, "390805", "{\n}", "7243", "Parking Meter Repairer Sprv 1" ]
+, [ 646, "F6730A0F-1EE1-4331-8D78-92E49C5CD6F8", 646, 1321113200, "390805", 1321113200, "390805", "{\n}", "7244", "Power Plant Supervisor 1" ]
+, [ 647, "BD55E5AA-1158-4707-B6C1-6215631B9885", 647, 1321113200, "390805", 1321113200, "390805", "{\n}", "7245", "Chf Statnry Eng,WtrTreat Plnt" ]
+, [ 648, "79F57F2D-221D-4150-809D-7D8B8530420C", 648, 1321113200, "390805", 1321113200, "390805", "{\n}", "7246", "Sewer Repair Supervisor" ]
+, [ 649, "32D71F49-2383-48E4-BC28-BE230E60913F", 649, 1321113200, "390805", 1321113200, "390805", "{\n}", "7247", "Sheet Metal Wrk Supervisor 2" ]
+, [ 650, "12782E22-B352-4959-912E-7DAEFC222667", 650, 1321113200, "390805", 1321113200, "390805", "{\n}", "7248", "Steamfitter Supervisor 2" ]
+, [ 651, "00A52BBA-25F3-41C8-87F7-6905262D6C40", 651, 1321113200, "390805", 1321113200, "390805", "{\n}", "7249", "Automotive Mechanic Sprv 1" ]
+, [ 652, "63058EA7-D4D9-4D59-91A4-189C072DBDFB", 652, 1321113200, "390805", 1321113200, "390805", "{\n}", "7250", "Utility Plumber Supervisor 1" ]
+, [ 653, "CF7A8286-D33E-46D6-AB3D-363469C6283E", 653, 1321113200, "390805", 1321113200, "390805", "{\n}", "7251", "Track Maint Wrk Sprv 1" ]
+, [ 654, "44251FDF-BA38-43B7-9CE6-2DF343CCCAA8", 654, 1321113200, "390805", 1321113200, "390805", "{\n}", "7252", "Chf Stationary Eng, Sew Plant" ]
+, [ 655, "F346099C-6069-4B47-B07E-1D84C4187C19", 655, 1321113200, "390805", 1321113200, "390805", "{\n}", "7253", "Electrical Trnst Mech Sprv 1" ]
+, [ 656, "56FD6104-E960-43BD-87E4-7C2508A3B726", 656, 1321113200, "390805", 1321113200, "390805", "{\n}", "7254", "Automotive Machinist Sprv 1" ]
+, [ 657, "ED3E94CE-1394-4698-AB17-5E38F4088E61", 657, 1321113200, "390805", 1321113200, "390805", "{\n}", "7255", "Power House Electrician Sprv 1" ]
+, [ 658, "A704CAE8-DA6D-48CE-AC3D-B175AA53F286", 658, 1321113200, "390805", 1321113200, "390805", "{\n}", "7256", "Electric Motor Repair Sprv 1" ]
+, [ 659, "6F3823A5-5F1B-4AEA-A89F-E251E7FDC0E8", 659, 1321113200, "390805", 1321113200, "390805", "{\n}", "7257", "Communication Line Sprv1" ]
+, [ 660, "39B37713-7CF0-4783-B9F8-E592FB7FF668", 660, 1321113200, "390805", 1321113200, "390805", "{\n}", "7258", "Maintenance Machinist Sprv 1" ]
+, [ 661, "C8769DA7-2D53-4946-A8A1-69AE7F1A963D", 661, 1321113200, "390805", 1321113200, "390805", "{\n}", "7259", "Water & Power Maint Sprv 1" ]
+, [ 662, "683F4C0E-974C-4DEE-AEAC-92DA481C917D", 662, 1321113200, "390805", 1321113200, "390805", "{\n}", "7262", "Maintenance Planner" ]
+, [ 663, "ADC92309-4442-4BD5-9EEB-0DBA1E19BFC3", 663, 1321113200, "390805", 1321113200, "390805", "{\n}", "7263", "Maintenance Manager" ]
+, [ 664, "C7A4F732-2F6B-4EDA-8FEB-10EF46CBD1F8", 664, 1321113200, "390805", 1321113200, "390805", "{\n}", "7264", "Auto Body & Fender Wrk Sprv 1" ]
+, [ 665, "C3C60B50-24C8-401A-9590-4589CB505F2E", 665, 1321113200, "390805", 1321113200, "390805", "{\n}", "7268", "Window Cleaner Supervisor" ]
+, [ 666, "D432965B-FEBC-45B7-B777-1A0729B8DA9D", 666, 1321113200, "390805", 1321113200, "390805", "{\n}", "7270", "Watershed Keeper Supervisor" ]
+, [ 667, "7149FD0D-9378-401F-A435-92B0C2AAE53A", 667, 1321113200, "390805", 1321113200, "390805", "{\n}", "7272", "Carpenter Supervisor 2" ]
+, [ 668, "B985C795-E730-431F-805A-A92D49390E66", 668, 1321113200, "390805", 1321113200, "390805", "{\n}", "7273", "Communications Line Wrk Sprv 2" ]
+, [ 669, "90EB6423-0AEB-47AE-B31A-1903DCBD057A", 669, 1321113200, "390805", 1321113200, "390805", "{\n}", "7274", "Trnst Power Line Wrk Sprv 2" ]
+, [ 670, "EC21E2CD-1867-4618-AE8A-402D51A5A9DB", 670, 1321113200, "390805", 1321113200, "390805", "{\n}", "7275", "Telecommunications Tech Supv" ]
+, [ 671, "8C1397F3-CA1B-4AD5-9247-E7EA18445E23", 671, 1321113200, "390805", 1321113200, "390805", "{\n}", "7276", "Electrician Supervisor 2" ]
+, [ 672, "4CB8F12B-065D-4499-AECB-993C06DE43F2", 672, 1321113200, "390805", 1321113200, "390805", "{\n}", "7277", "City Shops Asst Superintendent" ]
+, [ 673, "FDF04F86-4AD3-4537-A740-FD1AD23BC9EB", 673, 1321113200, "390805", 1321113200, "390805", "{\n}", "7278", "Painter Supervisor 2" ]
+, [ 674, "3437251D-B0A1-41A0-A13E-16E99F8635FA", 674, 1321113200, "390805", 1321113200, "390805", "{\n}", "7279", "Power House Electrician Sprv 2" ]
+, [ 675, "98787EC4-9AA8-44C3-8636-5A6F77757FF8", 675, 1321113200, "390805", 1321113200, "390805", "{\n}", "7281", "Street Environ Svcs Oprs Supv" ]
+, [ 676, "2B581D77-D8DD-4776-AB8B-4FAAFC050F1D", 676, 1321113200, "390805", 1321113200, "390805", "{\n}", "7282", "Street Repair Supervisor 2" ]
+, [ 677, "4A3A923C-2BB6-43D3-B4FC-BD3508E93D3F", 677, 1321113200, "390805", 1321113200, "390805", "{\n}", "7284", "Utility Plumber Supervisor 2" ]
+, [ 678, "E46EF202-DFAB-4C0F-A658-352770E0100E", 678, 1321113200, "390805", 1321113200, "390805", "{\n}", "7285", "Transmission Line Wrk Sprv 2" ]
+, [ 679, "DDDE2367-FA96-4232-99AC-46973DC62E23", 679, 1321113200, "390805", 1321113200, "390805", "{\n}", "7286", "Wire Rope Cable Maint Sprv" ]
+, [ 680, "F98BEB60-6D50-4797-A418-DCBAB985C42B", 680, 1321113200, "390805", 1321113200, "390805", "{\n}", "7287", "Sprv Electronic Main Tech" ]
+, [ 681, "8283B8D2-3A85-4AF0-8BE7-C7680E547C9E", 681, 1321113200, "390805", 1321113200, "390805", "{\n}", "7305", "Metal Fabricator" ]
+, [ 682, "6F6B09B5-1E51-43DB-BCBE-ABB2010D79A3", 682, 1321113200, "390805", 1321113200, "390805", "{\n}", "7306", "Automotive Body & Fender Wrk" ]
+, [ 683, "92424AE6-C3D2-4FF3-A737-B8FFE4E2F77C", 683, 1321113200, "390805", 1321113200, "390805", "{\n}", "7307", "Bricklayer" ]
+, [ 684, "22BF3D97-22FF-4143-A85B-C089CDC10AE8", 684, 1321113200, "390805", 1321113200, "390805", "{\n}", "7308", "Cable Splicer" ]
+, [ 685, "80541636-AF36-46EE-BAFE-6CE806C0EB41", 685, 1321113200, "390805", 1321113200, "390805", "{\n}", "7309", "Car and Auto Painter" ]
+, [ 686, "663B6BCA-685C-4DEC-B00B-93DDA0418331", 686, 1321113200, "390805", 1321113200, "390805", "{\n}", "7311", "Cement Mason" ]
+, [ 687, "13F48739-5F71-41F2-83CD-985D75FBD57C", 687, 1321113200, "390805", 1321113200, "390805", "{\n}", "7313", "Automotive Machinist" ]
+, [ 688, "7C972332-8983-4FFE-B705-3062168067B0", 688, 1321113200, "390805", 1321113200, "390805", "{\n}", "7315", "Auto Machinist Asst Sprv" ]
+, [ 689, "161906FF-F6AB-4A27-9240-53EDCF4B978B", 689, 1321113200, "390805", 1321113200, "390805", "{\n}", "7316", "Water Service Inspector" ]
+, [ 690, "A5DF1BA2-57F5-4347-B77F-F8255C4CF77E", 690, 1321113200, "390805", 1321113200, "390805", "{\n}", "7317", "Senior Water Service Inspector" ]
+, [ 691, "8BE1656E-6AED-4745-92CE-0CD1FBE3FD67", 691, 1321113200, "390805", 1321113200, "390805", "{\n}", "7318", "Electronic Maintenance Tech" ]
+, [ 692, "A01B0929-36F1-48B5-ACB1-06259A17F496", 692, 1321113200, "390805", 1321113200, "390805", "{\n}", "7319", "Electric Motor Repairer" ]
+, [ 693, "EFAA6E34-EB54-4ADF-87F7-E954866E6260", 693, 1321113200, "390805", 1321113200, "390805", "{\n}", "7322", "Auto Body&Fender Wrk Asst Sprv" ]
+, [ 694, "7E21E396-8CF6-4562-A6B1-1BD6DE8C0B01", 694, 1321113200, "390805", 1321113200, "390805", "{\n}", "7324", "Beautician" ]
+, [ 695, "82D67102-7F31-4638-976B-53D54A311FB7", 695, 1321113200, "390805", 1321113200, "390805", "{\n}", "7325", "General Utility Mechanic" ]
+, [ 696, "0A3FA28D-F357-4D16-AB78-F6C379C5BBB6", 696, 1321113200, "390805", 1321113200, "390805", "{\n}", "7326", "Glazier" ]
+, [ 697, "378EB54C-955C-4FBB-8CDE-9973ABAA48B0", 697, 1321113200, "390805", 1321113200, "390805", "{\n}", "7328", "Operating Engineer, Universal" ]
+, [ 698, "592ECB70-C205-48B9-A7CC-CB76A3DCA340", 698, 1321113200, "390805", 1321113200, "390805", "{\n}", "7329", "Electr Maint Tech Asst Sprv" ]
+, [ 699, "CA6FE0A8-7D44-4B24-8A0A-49C0DCB6C245", 699, 1321113200, "390805", 1321113200, "390805", "{\n}", "7330", "Sr General Utility Mechanic" ]
+, [ 700, "F9C2FF04-3BC6-4299-ABFF-60F18D6D987E", 700, 1321113200, "390805", 1321113200, "390805", "{\n}", "7332", "Maintenance Machinist" ]
+, [ 701, "5737AFA8-44C0-4889-B505-558D4E574B65", 701, 1321113200, "390805", 1321113200, "390805", "{\n}", "7333", "Apprentice Stationary Engineer" ]
+, [ 702, "DB780B97-AAB5-4C49-8405-1F501B1BF9A1", 702, 1321113200, "390805", 1321113200, "390805", "{\n}", "7334", "Stationary Engineer" ]
+, [ 703, "26338BFB-2442-4492-ADC1-EA8A03DAE7CB", 703, 1321113200, "390805", 1321113200, "390805", "{\n}", "7335", "Senior Stationary Engineer" ]
+, [ 704, "F19271BE-765A-4613-98B2-552712300C97", 704, 1321113200, "390805", 1321113200, "390805", "{\n}", "7336", "Electr Instrmntn Tech Wtr Poll" ]
+, [ 705, "4B804E77-39D0-422E-ABC0-9BB4202A221A", 705, 1321113200, "390805", 1321113200, "390805", "{\n}", "7337", "Main Machinist Asst Sprv" ]
+, [ 706, "E1C10E11-A316-4D13-8181-E9F6437C5F41", 706, 1321113200, "390805", 1321113200, "390805", "{\n}", "7338", "Electrical Line Worker" ]
+, [ 707, "1DDE8B29-88FD-4713-B689-011B7C56DEEB", 707, 1321113200, "390805", 1321113200, "390805", "{\n}", "7339", "AprntcStatnry Eng,WtrTreatPlnt" ]
+, [ 708, "625E50F3-D052-42E2-85E3-78572152F644", 708, 1321113200, "390805", 1321113200, "390805", "{\n}", "7340", "Maintenance Controller" ]
+, [ 709, "881B5AA5-72E0-4217-93AF-ECA5B5A17D78", 709, 1321113200, "390805", 1321113200, "390805", "{\n}", "7341", "Statnry Eng Water Treat Plant" ]
+, [ 710, "81242BD6-751D-4E7C-9FE1-861F5DFF7116", 710, 1321113200, "390805", 1321113200, "390805", "{\n}", "7342", "Locksmith" ]
+, [ 711, "A2BBADB6-FAB6-41B5-836E-6B461935CC87", 711, 1321113200, "390805", 1321113200, "390805", "{\n}", "7343", "Sr Statnry Eng, Wtr Treat Plnt" ]
+, [ 712, "29FD78ED-AEB9-4E71-9906-52720FBCFB28", 712, 1321113200, "390805", 1321113200, "390805", "{\n}", "7344", "Carpenter" ]
+, [ 713, "AA8448D8-1B85-4616-9E9B-F94A096EF28E", 713, 1321113200, "390805", 1321113200, "390805", "{\n}", "7345", "Electrician" ]
+, [ 714, "41476572-1B75-4F1E-B38D-985945BD2681", 714, 1321113200, "390805", 1321113200, "390805", "{\n}", "7346", "Painter" ]
+, [ 715, "6B4B31B8-CC85-47B4-BCF4-FDCC079CECFF", 715, 1321113200, "390805", 1321113200, "390805", "{\n}", "7347", "Plumber" ]
+, [ 716, "2D1F14E1-51DA-4515-B6AE-5D2FADCB5D24", 716, 1321113200, "390805", 1321113200, "390805", "{\n}", "7348", "Steamfitter" ]
+, [ 717, "DC32B0EA-6EA9-490D-AFB7-740D71EB9C01", 717, 1321113200, "390805", 1321113200, "390805", "{\n}", "7349", "Steamfitter Supervisor I" ]
+, [ 718, "BC78D142-7B96-4BF6-AE2F-DADC2E08963A", 718, 1321113200, "390805", 1321113200, "390805", "{\n}", "7353", "Water Meter Repairer" ]
+, [ 719, "11353904-C655-451E-9347-CB0E4ED4C0DF", 719, 1321113200, "390805", 1321113200, "390805", "{\n}", "7355", "Truck Driver" ]
+, [ 720, "4FDE9554-A12D-4A79-8115-BFC41A5EFCE2", 720, 1321113200, "390805", 1321113200, "390805", "{\n}", "7358", "Pattern Maker" ]
+, [ 721, "C9816F0E-83AC-4690-AAB6-34236235DA60", 721, 1321113200, "390805", 1321113200, "390805", "{\n}", "7360", "Pipe Welder" ]
+, [ 722, "1F26FAF2-F231-4593-A3FD-9F3CD6EF5196", 722, 1321113200, "390805", 1321113200, "390805", "{\n}", "7362", "Communications Systems Tech" ]
+, [ 723, "FFEB3E39-2F04-4E14-A69C-00B2D37ACEBE", 723, 1321113200, "390805", 1321113200, "390805", "{\n}", "7364", "Power House Operator" ]
+, [ 724, "F34B936C-04D4-4C1E-9118-88295F7D9AF7", 724, 1321113200, "390805", 1321113200, "390805", "{\n}", "7365", "Senior Power House Operator" ]
+, [ 725, "DA12D87D-C69D-4569-91B9-87B3D7310208", 725, 1321113200, "390805", 1321113200, "390805", "{\n}", "7366", "Electronic Control Sys Tech" ]
+, [ 726, "C6526282-E14D-4E4A-89B4-4F66416E796B", 726, 1321113200, "390805", 1321113200, "390805", "{\n}", "7368", "Senior Comm Systems Technican" ]
+, [ 727, "DA4DC37A-7D57-431B-AD13-C7F53391D06C", 727, 1321113200, "390805", 1321113200, "390805", "{\n}", "7370", "Rigger" ]
+, [ 728, "43F519C3-F9A0-4EF9-BFC7-159CD422A248", 728, 1321113200, "390805", 1321113200, "390805", "{\n}", "7371", "Electrical Transit System Mech" ]
+, [ 729, "B38946FE-E575-4E16-BE31-B12348612C31", 729, 1321113200, "390805", 1321113200, "390805", "{\n}", "7372", "Stationary Eng, Sewage Plant" ]
+, [ 730, "A898087E-01B9-442F-AC9C-C7F8C7C8980D", 730, 1321113200, "390805", 1321113200, "390805", "{\n}", "7373", "Sr. Stationary Eng, Sew Plant" ]
+, [ 731, "66AA2B05-A28B-4AFC-A47F-411EA8875165", 731, 1321113200, "390805", 1321113200, "390805", "{\n}", "7375", "Aprntc Statnry Eng, Sew Plant" ]
+, [ 732, "152720B5-65BD-40E9-9494-341D1842D00B", 732, 1321113200, "390805", 1321113200, "390805", "{\n}", "7376", "Sheet Metal Worker" ]
+, [ 733, "5FC2B498-3F3B-4F4B-A4CE-0FE5FC58B716", 733, 1321113200, "390805", 1321113200, "390805", "{\n}", "7377", "Stage Electrician" ]
+, [ 734, "2C8DC09B-B32E-43B9-9692-2205CA7EF4FA", 734, 1321113200, "390805", 1321113200, "390805", "{\n}", "7378", "Tile Setter" ]
+, [ 735, "485EAEF0-4EB7-4097-B871-2FF27B8A027C", 735, 1321113200, "390805", 1321113200, "390805", "{\n}", "7380", "Electrl Trnst Mech, Asst Sprv" ]
+, [ 736, "274062F7-B7BB-4F24-9EF2-93C2204D7D42", 736, 1321113200, "390805", 1321113200, "390805", "{\n}", "7381", "Automotive Mechanic" ]
+, [ 737, "423A669D-39A2-4A83-9B6D-1955B465151B", 737, 1321113200, "390805", 1321113200, "390805", "{\n}", "7382", "Automotive Mechanic Asst Sprv" ]
+, [ 738, "82740C30-73DC-4273-A634-43156C0CC4F0", 738, 1321113200, "390805", 1321113200, "390805", "{\n}", "7388", "Utility Plumber" ]
+, [ 739, "5D6BDE77-10A4-46D0-A8D0-3708EAA5DA21", 739, 1321113200, "390805", 1321113200, "390805", "{\n}", "7389", "Metalsmith" ]
+, [ 740, "22B61C25-6B22-4E93-AC8F-DEF3E781706B", 740, 1321113200, "390805", 1321113200, "390805", "{\n}", "7390", "Welder" ]
+, [ 741, "5FBF0ACF-828E-4EEE-8560-428D0C0FCC67", 741, 1321113200, "390805", 1321113200, "390805", "{\n}", "7392", "Window Cleaner" ]
+, [ 742, "03E54A8B-FA7F-433D-B27A-17FA24B6127E", 742, 1321113200, "390805", 1321113200, "390805", "{\n}", "7393", "Soft Floor Coverer" ]
+, [ 743, "9E503938-8406-474E-8392-1672AF242CBF", 743, 1321113200, "390805", 1321113200, "390805", "{\n}", "7395", "Ornamental Iron Worker" ]
+, [ 744, "78FD9E73-2DB6-44B7-A1E1-66437E19EE12", 744, 1321113200, "390805", 1321113200, "390805", "{\n}", "7404", "Asphalt Finisher" ]
+, [ 745, "0B90AC6A-19D1-49A6-9B97-F180DC263CAE", 745, 1321113200, "390805", 1321113200, "390805", "{\n}", "7408", "Assistant Power House Operator" ]
+, [ 746, "EECE26B1-861E-4A11-8902-C7B2DE5E4E90", 746, 1321113200, "390805", 1321113200, "390805", "{\n}", "7410", "Automotive Service Worker" ]
+, [ 747, "F40110C5-80A5-4E1E-A1AE-B5B4119F4D2C", 747, 1321113200, "390805", 1321113200, "390805", "{\n}", "7412", "Auto Svc Wrk Asst Sprv" ]
+, [ 748, "7157C138-0BED-4DDD-B270-BD80FAE6E29E", 748, 1321113200, "390805", 1321113200, "390805", "{\n}", "7416", "Book Repairer" ]
+, [ 749, "1B54491B-F309-4769-915A-644A442C1D5B", 749, 1321113200, "390805", 1321113200, "390805", "{\n}", "7418", "Senior Book Repairer" ]
+, [ 750, "ED4E268F-D995-4319-9BF8-BA8D1A1BD7E3", 750, 1321113200, "390805", 1321113200, "390805", "{\n}", "7421", "Sewer Maintenance Worker" ]
+, [ 751, "B25B0EAE-B7AB-492D-AA97-F94A37730577", 751, 1321113200, "390805", 1321113200, "390805", "{\n}", "7424", "Dryer Mixer Operator" ]
+, [ 752, "6DD45573-70E5-48C0-817E-AE99686CE2D8", 752, 1321113200, "390805", 1321113200, "390805", "{\n}", "7428", "Hodcarrier" ]
+, [ 753, "F129DCAA-0E61-4DAB-832B-20D001AA3126", 753, 1321113200, "390805", 1321113200, "390805", "{\n}", "7430", "Asst Electronic Main Tech" ]
+, [ 754, "B86F7D96-54CB-4EF1-B463-2335510C6E29", 754, 1321113200, "390805", 1321113200, "390805", "{\n}", "7432", "Electrical Line Helper" ]
+, [ 755, "9FF3F272-8347-40BB-AE66-19FC48A97BC5", 755, 1321113200, "390805", 1321113200, "390805", "{\n}", "7434", "Maintenance Machinist Helper" ]
+, [ 756, "FA2122ED-4456-4287-AFD4-26D39E682BF9", 756, 1321113200, "390805", 1321113200, "390805", "{\n}", "7444", "Parking Meter Repairer" ]
+, [ 757, "D08AAC03-1EA3-409D-B0FC-B08082964F79", 757, 1321113200, "390805", 1321113200, "390805", "{\n}", "7449", "Sewer Service Worker" ]
+, [ 758, "423535AD-AECC-4818-B1F5-017708778742", 758, 1321113200, "390805", 1321113200, "390805", "{\n}", "7450", "Shade and Drapery Worker" ]
+, [ 759, "2BC94567-D124-4A46-80EC-57215E9BCFF5", 759, 1321113200, "390805", 1321113200, "390805", "{\n}", "7454", "Traffic Signal Operator" ]
+, [ 760, "DF778FC8-C2FA-45EE-982E-0A9864EAB8D0", 760, 1321113200, "390805", 1321113200, "390805", "{\n}", "7457", "Sign Worker" ]
+, [ 761, "23E572C2-199A-4C2B-8FB4-FBD55E6877AA", 761, 1321113200, "390805", 1321113200, "390805", "{\n}", "7458", "Switch Repairer" ]
+, [ 762, "8799EDDD-0FBB-4D6B-A71F-E67CB4BE48AA", 762, 1321113200, "390805", 1321113200, "390805", "{\n}", "7470", "Watershed Keeper" ]
+, [ 763, "9A30C64E-F9D3-44A4-A491-F34BCA16E4D4", 763, 1321113200, "390805", 1321113200, "390805", "{\n}", "7472", "Wire Rope Cable Maint Mechanic" ]
+, [ 764, "DB49A18C-83D5-4C53-B8ED-BFB149A3EF32", 764, 1321113200, "390805", 1321113200, "390805", "{\n}", "7482", "Power Generation Technician 2" ]
+, [ 765, "EAA47DC5-0BF0-4101-A298-0752A31B10F8", 765, 1321113200, "390805", 1321113200, "390805", "{\n}", "7484", "Sr Power Generation Tech" ]
+, [ 766, "D5D39B47-8527-4AAB-B327-5A5470C73278", 766, 1321113200, "390805", 1321113200, "390805", "{\n}", "7488", "Power Generation Supervisor" ]
+, [ 767, "C3248192-E040-44B4-87CA-84695DC0DE3A", 767, 1321113200, "390805", 1321113200, "390805", "{\n}", "7501", "Environmental Service Worker" ]
+, [ 768, "ADA59ADC-E057-46F0-9C43-4F1A195559E7", 768, 1321113200, "390805", 1321113200, "390805", "{\n}", "7502", "Asphalt Worker" ]
+, [ 769, "D0DC1549-D493-4D6E-80AD-39174A71DF83", 769, 1321113200, "390805", 1321113200, "390805", "{\n}", "7510", "Lighting Fixture Maint Worker" ]
+, [ 770, "4AB1C025-0B6D-4987-B645-8BF977D1CA3A", 770, 1321113200, "390805", 1321113200, "390805", "{\n}", "7514", "General Laborer" ]
+, [ 771, "963FF52B-BACF-4D10-B719-72AFDE28223C", 771, 1321113200, "390805", 1321113200, "390805", "{\n}", "7524", "Institution Utility Worker" ]
+, [ 772, "ABE1095A-1AE0-4F77-9019-59052F273169", 772, 1321113200, "390805", 1321113200, "390805", "{\n}", "7540", "Track Maintenance Worker" ]
+, [ 773, "33596254-A32B-4828-8187-117CE20602D7", 773, 1321113200, "390805", 1321113200, "390805", "{\n}", "8104", "Victim & Witness Technician" ]
+, [ 774, "C80114E6-E2B3-4D03-A39D-D17F03DF7922", 774, 1321113200, "390805", 1321113200, "390805", "{\n}", "8106", "Legal Process Clerk" ]
+, [ 775, "DD464869-A4E0-4BCA-9797-3227414C9CE1", 775, 1321113200, "390805", 1321113200, "390805", "{\n}", "8107", "ASR Office Assistant" ]
+, [ 776, "5264D6A2-8AA7-461C-8C74-A21DE65A7446", 776, 1321113200, "390805", 1321113200, "390805", "{\n}", "8108", "Senior Legal Process Clerk" ]
+, [ 777, "ED1050C7-1859-49EA-B89A-DFD9E50248DD", 777, 1321113200, "390805", 1321113200, "390805", "{\n}", "8109", "Document Examiner Technician" ]
+, [ 778, "82C91001-3BB2-4134-ADC1-73494F97F4A0", 778, 1321113200, "390805", 1321113200, "390805", "{\n}", "8110", "Recordable Docs Office Spec" ]
+, [ 779, "7359EEC8-1555-4006-B0D9-4C8866BA2A8E", 779, 1321113200, "390805", 1321113200, "390805", "{\n}", "8111", "Sr Recordable Docs Office Spec" ]
+, [ 780, "0F52F263-0C88-435D-A708-4D7EAD91B83E", 780, 1321113200, "390805", 1321113200, "390805", "{\n}", "8113", "Court Clerk" ]
+, [ 781, "78B1FB06-A992-416B-A398-C20C9752E037", 781, 1321113200, "390805", 1321113200, "390805", "{\n}", "8116", "Legislative Calendar Clerk" ]
+, [ 782, "138F81CE-32B2-4426-8201-7BAFD080BF6C", 782, 1321113200, "390805", 1321113200, "390805", "{\n}", "8118", "Legislation Clerk" ]
+, [ 783, "88B58FA7-68C5-4F03-A204-ECF8C7B49941", 783, 1321113200, "390805", 1321113200, "390805", "{\n}", "8121", "Fare Inspections Supv/Invest" ]
+, [ 784, "098C081D-D75E-4089-8213-EA1334AE56CD", 784, 1321113200, "390805", 1321113200, "390805", "{\n}", "8124", "Invstgtor Ofc Citizen Cmplnts" ]
+, [ 785, "5EF07547-6623-4A65-9D79-FD67533B81FA", 785, 1321113200, "390805", 1321113200, "390805", "{\n}", "8126", "Sr Investigator, OCC" ]
+, [ 786, "7CFB3143-D82B-46B8-86D1-D8D18D4026BA", 786, 1321113200, "390805", 1321113200, "390805", "{\n}", "8129", "Victim/Witness Investigator 1" ]
+, [ 787, "A21DD920-8E1D-4669-B19C-8D44ED85B6DA", 787, 1321113200, "390805", 1321113200, "390805", "{\n}", "8131", "Victim/Witness Investigator 2" ]
+, [ 788, "E08DCB6B-AF2A-47AB-8B10-5576A053073B", 788, 1321113200, "390805", 1321113200, "390805", "{\n}", "8132", "DA Investigative Assist" ]
+, [ 789, "365A4CC4-04DB-410F-8AA0-97910988295D", 789, 1321113200, "390805", 1321113200, "390805", "{\n}", "8133", "Victim/Witness Investigator 3" ]
+, [ 790, "5D12944D-8801-4918-BF6A-644E7AF1796F", 790, 1321113200, "390805", 1321113200, "390805", "{\n}", "8135", "Asst Chf Victim/Wit Invstgtor" ]
+, [ 791, "104330FB-9129-4E4E-A1A3-3479DE997881", 791, 1321113200, "390805", 1321113200, "390805", "{\n}", "8137", "Chf Victim/Witness Invstgtor" ]
+, [ 792, "95BD215B-7EB8-49AD-A82D-5515306E2902", 792, 1321113200, "390805", 1321113200, "390805", "{\n}", "8139", "Industrial Injury Investigator" ]
+, [ 793, "9690DBCD-C34B-4A22-995D-4B8D762CA748", 793, 1321113200, "390805", 1321113200, "390805", "{\n}", "8141", "Worker's Compensation Adjuster" ]
+, [ 794, "B2764A1A-039C-49A4-8AC2-1C0DBDFCD812", 794, 1321113200, "390805", 1321113200, "390805", "{\n}", "8142", "Public Defender's Investigator" ]
+, [ 795, "EAEA8E40-D065-4F5F-8C01-D1A34C0ECD88", 795, 1321113200, "390805", 1321113200, "390805", "{\n}", "8143", "Sr Public Defenders Invstgtor" ]
+, [ 796, "15B2DE64-6D7B-45F0-9BBC-C9252525FC9F", 796, 1321113200, "390805", 1321113200, "390805", "{\n}", "8146", "District Attry's Investigator" ]
+, [ 797, "209B1F73-45B6-4A78-8559-1AC3D82DC42A", 797, 1321113200, "390805", 1321113200, "390805", "{\n}", "8147", "Sr District Atty Investigator" ]
+, [ 798, "D685A38D-3CFD-4E0C-8E2A-0CBA215F2B7C", 798, 1321113200, "390805", 1321113200, "390805", "{\n}", "8148", "Chf District Atty Investigator" ]
+, [ 799, "D0D9D173-F58D-4F99-ACFE-F3C8E65BD9D4", 799, 1321113200, "390805", 1321113200, "390805", "{\n}", "8149", "Asst Chf Dist Atty's Invstgtor" ]
+, [ 800, "91A1DE69-C012-456B-87B8-AF301262D126", 800, 1321113200, "390805", 1321113200, "390805", "{\n}", "8150", "Pr DistAtty Invstgtor,SpecUnit" ]
+, [ 801, "4F546FA1-3909-4E0A-89CE-DB24E1F45D92", 801, 1321113200, "390805", 1321113200, "390805", "{\n}", "8151", "Claims Investigator, CA" ]
+, [ 802, "586749B8-138E-4F7F-BB27-4C38E78DA2E5", 802, 1321113200, "390805", 1321113200, "390805", "{\n}", "8152", "SrClaimsInvstgtor,Cty Atty Ofc" ]
+, [ 803, "A34249C6-85DC-4957-B608-E4F755A8C3C9", 803, 1321113200, "390805", 1321113200, "390805", "{\n}", "8153", "Pr Clm Invstgtr, City Atty Ofc" ]
+, [ 804, "1D4E10BD-D8C8-482A-A896-162A19C566B0", 804, 1321113200, "390805", 1321113200, "390805", "{\n}", "8158", "Child Support Officer II" ]
+, [ 805, "93060E5C-FD94-4EF7-A52F-2D596D92FDA0", 805, 1321113200, "390805", 1321113200, "390805", "{\n}", "8159", "Child Support Officer III" ]
+, [ 806, "CB59A161-2475-4D8E-B644-E025EE5C7C4B", 806, 1321113200, "390805", 1321113200, "390805", "{\n}", "8165", "Worker's Comp Supervisor 1" ]
+, [ 807, "ED7774DE-950F-4E72-9765-AE191903713F", 807, 1321113200, "390805", 1321113200, "390805", "{\n}", "8167", "Parking Hearing Examiner" ]
+, [ 808, "814F3FC7-BBDA-4132-BAAC-E029CEEA5595", 808, 1321113200, "390805", 1321113200, "390805", "{\n}", "8168", "Parking Hearing Supervisor" ]
+, [ 809, "95DE371C-C967-4189-B5ED-81372B82B7DD", 809, 1321113200, "390805", 1321113200, "390805", "{\n}", "8169", "Legislative Asst City Atty Ofc" ]
+, [ 810, "6EE888F7-C65A-41DA-84C7-4608CEDECA21", 810, 1321113200, "390805", 1321113200, "390805", "{\n}", "8173", "Legal Assistant" ]
+, [ 811, "576425AA-96A2-4B16-AFD3-18D9CC38B216", 811, 1321113200, "390805", 1321113200, "390805", "{\n}", "8177", "Attorney (Civil/Criminal)" ]
+, [ 812, "D211B3AC-DC8A-453C-B8E5-9F143AC7BDBC", 812, 1321113200, "390805", 1321113200, "390805", "{\n}", "8181", "Assistant Chief Attorney 1" ]
+, [ 813, "720B9428-4538-4B86-82CA-34C5B13DA97B", 813, 1321113200, "390805", 1321113200, "390805", "{\n}", "8182", "Head Atty, Civil & Criminal" ]
+, [ 814, "23DEEEA0-E30F-4899-9E2D-FB2046AF3D97", 814, 1321113200, "390805", 1321113200, "390805", "{\n}", "8183", "Assistant Chief Attorney 2" ]
+, [ 815, "7BF4A3E0-3E4C-4C61-A9B0-F23D0B91A784", 815, 1321113200, "390805", 1321113200, "390805", "{\n}", "8184", "Chf Atty 2 (Civil & Criminal)" ]
+, [ 816, "9D0EF43E-9BB3-438A-B709-BC09915604D9", 816, 1321113200, "390805", 1321113200, "390805", "{\n}", "8190", "Attorney, Tax Collector" ]
+, [ 817, "7A146C74-F4D0-4B0A-A147-CCF67FFBAEB0", 817, 1321113200, "390805", 1321113200, "390805", "{\n}", "8193", "Chief Atty1 (Civil & Criminal)" ]
+, [ 818, "6C7E6099-3CED-407D-954B-BD3C21658DB5", 818, 1321113200, "390805", 1321113200, "390805", "{\n}", "8196", "Public Defender" ]
+, [ 819, "D19C0183-CECA-483B-BF06-B3F72A696F89", 819, 1321113200, "390805", 1321113200, "390805", "{\n}", "8197", "City Attorney" ]
+, [ 820, "6D2A9317-1D6E-49EB-BD91-A0A26ACA8F34", 820, 1321113200, "390805", 1321113200, "390805", "{\n}", "8198", "District Attorney" ]
+, [ 821, "7A6023B2-E44F-4634-A438-05A145D9A4AB", 821, 1321113200, "390805", 1321113200, "390805", "{\n}", "8202", "Security Guard" ]
+, [ 822, "EF782278-262E-4922-B4C9-017C8A56C6B1", 822, 1321113200, "390805", 1321113200, "390805", "{\n}", "8204", "Institutional Police Officer" ]
+, [ 823, "AE8B1EF4-FF97-49BC-99EF-EA52E3ABE6B7", 823, 1321113200, "390805", 1321113200, "390805", "{\n}", "8205", "Institutional Police Sergeant" ]
+, [ 824, "C22962B7-DF11-41F8-BCD4-D468CB4093E7", 824, 1321113200, "390805", 1321113200, "390805", "{\n}", "8207", "Bldg & Grounds Patrol Officer" ]
+, [ 825, "A7E4741E-E55D-4908-B70D-60095280D551", 825, 1321113200, "390805", 1321113200, "390805", "{\n}", "8208", "Park Patrol Officer" ]
+, [ 826, "4EADBBB1-B659-452D-B099-6FAD58276A43", 826, 1321113200, "390805", 1321113200, "390805", "{\n}", "8209", "Institutional Police Lieut" ]
+, [ 827, "107AB908-673B-4107-AAB4-E2FDE718EDE2", 827, 1321113200, "390805", 1321113200, "390805", "{\n}", "8210", "Head Park Patrol Officer" ]
+, [ 828, "0A6CC534-C77B-4E2E-A450-5BD3915CD780", 828, 1321113200, "390805", 1321113200, "390805", "{\n}", "8213", "Police Services Aide" ]
+, [ 829, "DEC1F470-BE39-4F6E-825A-4131C7A0568B", 829, 1321113200, "390805", 1321113200, "390805", "{\n}", "8214", "Parking Control Officer" ]
+, [ 830, "83B9A879-5035-492D-B32D-1D956E1CBB08", 830, 1321113200, "390805", 1321113200, "390805", "{\n}", "8216", "Senior Parking Control Officer" ]
+, [ 831, "8076153C-14AA-4D8D-B85C-BF64B25D307C", 831, 1321113200, "390805", 1321113200, "390805", "{\n}", "8217", "Comm Pol Svcs Aide Supervisor" ]
+, [ 832, "764F0F0C-8C4F-4CF9-B462-B4A60EB89BDE", 832, 1321113200, "390805", 1321113200, "390805", "{\n}", "8219", "Parking Enforcement Admin" ]
+, [ 833, "5D384C51-5FBE-48C3-AB18-B5B8FD37DCD0", 833, 1321113200, "390805", 1321113200, "390805", "{\n}", "8226", "Museum Guard" ]
+, [ 834, "9AC02D27-2BC6-4421-863E-0C0BE49539BB", 834, 1321113200, "390805", 1321113200, "390805", "{\n}", "8228", "Museum Sec Supv" ]
+, [ 835, "B3548241-9D81-427E-A718-BB0ACBFDE947", 835, 1321113200, "390805", 1321113200, "390805", "{\n}", "8234", "Fire Alarm Dispatcher" ]
+, [ 836, "2ECB35C6-CA7A-4714-8B12-823A9DE8B1FF", 836, 1321113200, "390805", 1321113200, "390805", "{\n}", "8236", "Chief Fire Alarm Dispatcher" ]
+, [ 837, "AC967424-9D7B-44EE-B699-DC2319C0F9C7", 837, 1321113200, "390805", 1321113200, "390805", "{\n}", "8238", "Police Communications Disp" ]
+, [ 838, "731C5FCA-C4A4-49DA-A73A-2E8A2AB7BDD1", 838, 1321113200, "390805", 1321113200, "390805", "{\n}", "8239", "Sr Pol Communications Disp" ]
+, [ 839, "D447C7F9-8B26-4DC0-8DDA-B6775CF30862", 839, 1321113200, "390805", 1321113200, "390805", "{\n}", "8240", "Pub Safety Communication Coord" ]
+, [ 840, "6A088C78-9277-4FF5-A7EA-D899C1200784", 840, 1321113200, "390805", 1321113200, "390805", "{\n}", "8247", "Emergency Planning Coordinator" ]
+, [ 841, "75F4B229-9673-4EA5-8019-13D08A7C1E39", 841, 1321113200, "390805", 1321113200, "390805", "{\n}", "8249", "Fingerprint Technician 1" ]
+, [ 842, "499920E0-C0B7-4E59-84D5-6C6C0D1EC740", 842, 1321113200, "390805", 1321113200, "390805", "{\n}", "8250", "Fingerprint Technician 2" ]
+, [ 843, "E74203DC-B429-4A62-9996-7B8C00CCCDDC", 843, 1321113200, "390805", 1321113200, "390805", "{\n}", "8251", "Fingerprint Technician 3" ]
+, [ 844, "D1B2B040-1D3E-4B0B-B326-BFBACADFA0F0", 844, 1321113200, "390805", 1321113200, "390805", "{\n}", "8259", "Criminalist I" ]
+, [ 845, "F5E61D5E-819F-4DE7-BA6A-FD79E5D4F3F0", 845, 1321113200, "390805", 1321113200, "390805", "{\n}", "8260", "Criminalist II" ]
+, [ 846, "00DBAC0E-7FE3-43E8-9778-0DF24DEC1C0D", 846, 1321113200, "390805", 1321113200, "390805", "{\n}", "8262", "Criminalist III" ]
+, [ 847, "702C3094-7373-40A1-9841-E144093CBC43", 847, 1321113200, "390805", 1321113200, "390805", "{\n}", "8264", "Forensic Document Examiner" ]
+, [ 848, "4967E047-41F6-49F3-95AF-0FF43397447F", 848, 1321113200, "390805", 1321113200, "390805", "{\n}", "8274", "Police Cadet" ]
+, [ 849, "1858EBC6-A464-4DF5-B35C-2989C0E59AE6", 849, 1321113200, "390805", 1321113200, "390805", "{\n}", "8300", "Sheriff's Cadet" ]
+, [ 850, "9A98B439-3E1E-45DE-85F7-DCACCEB6023A", 850, 1321113200, "390805", 1321113200, "390805", "{\n}", "8302", "Deputy Sheriff 1" ]
+, [ 851, "A8A21A46-54B8-4909-8A55-A2C669B9A446", 851, 1321113200, "390805", 1321113200, "390805", "{\n}", "8304", "Deputy Sheriff" ]
+, [ 852, "32FEFAAB-EADF-4980-A364-FF3C7EB67285", 852, 1321113200, "390805", 1321113200, "390805", "{\n}", "8306", "Senior Deputy Sheriff" ]
+, [ 853, "CD4D0687-9983-4AE4-9168-E2659D36BE32", 853, 1321113200, "390805", 1321113200, "390805", "{\n}", "8308", "Sheriff's Sergeant" ]
+, [ 854, "A2F4BFA6-ACC0-4318-8515-C826D9A55686", 854, 1321113200, "390805", 1321113200, "390805", "{\n}", "8310", "Sheriff's Lieutenant" ]
+, [ 855, "8B9391B5-9577-435D-A08A-260C88F659DE", 855, 1321113200, "390805", 1321113200, "390805", "{\n}", "8312", "Sheriff's Captain" ]
+, [ 856, "23DF5370-5220-4FCC-909D-E38371E3CDBE", 856, 1321113200, "390805", 1321113200, "390805", "{\n}", "8314", "Chief Deputy Sheriff" ]
+, [ 857, "23CF1FF7-6914-45DF-9CF1-37726988465A", 857, 1321113200, "390805", 1321113200, "390805", "{\n}", "8315", "Assistant Sheriff" ]
+, [ 858, "651D7982-760A-4098-8DB1-55B5AF25C6B7", 858, 1321113200, "390805", 1321113200, "390805", "{\n}", "8318", "Counselor 2" ]
+, [ 859, "3ED39C0B-2F0F-4A1F-A34D-6F6F1D2BA5A7", 859, 1321113200, "390805", 1321113200, "390805", "{\n}", "8320", "Counselor, Juvenile Hall" ]
+, [ 860, "A4F7322A-6B4C-4038-9891-188A1FBDC69E", 860, 1321113200, "390805", 1321113200, "390805", "{\n}", "8321", "Counselor, Log Cabin Ranch" ]
+, [ 861, "74FE75E0-80D3-4023-91BD-4B4CAD8A38EF", 861, 1321113200, "390805", 1321113200, "390805", "{\n}", "8322", "Sr Counselor, Juvenile Hall" ]
+, [ 862, "1C85DD33-EF32-4424-B687-016B5DDB41F6", 862, 1321113200, "390805", 1321113200, "390805", "{\n}", "8324", "Sprv Counselor, Juvenile Court" ]
+, [ 863, "8087A14A-3340-43B5-8EF3-246D0113B528", 863, 1321113200, "390805", 1321113200, "390805", "{\n}", "8326", "Asst Dir, Log Cabin Rnch" ]
+, [ 864, "BC55D3EA-BB0F-455E-9CB8-A726A970FC7C", 864, 1321113200, "390805", 1321113200, "390805", "{\n}", "8330", "Director, Log Cabin Ranch" ]
+, [ 865, "2F305DEF-BE66-4240-B9E8-C98D27D27404", 865, 1321113200, "390805", 1321113200, "390805", "{\n}", "8340", "Asst Director, Juvenile Hall" ]
+, [ 866, "A268EC6D-DB3A-42E9-A648-B47CB31736F9", 866, 1321113200, "390805", 1321113200, "390805", "{\n}", "8348", "Undersheriff" ]
+, [ 867, "846B840E-2E8E-498D-A2F4-861672FDC137", 867, 1321113200, "390805", 1321113200, "390805", "{\n}", "8350", "Sheriff" ]
+, [ 868, "9D55A854-630F-452B-95DC-B96B6CBF492B", 868, 1321113200, "390805", 1321113200, "390805", "{\n}", "8414", "Sprv Prob Ofc, Juv Court" ]
+, [ 869, "230FFA72-D1AA-4FD4-BDC7-7B65499EA40A", 869, 1321113200, "390805", 1321113200, "390805", "{\n}", "8415", "Sr Sprv Prob Ofc, Juv Prob" ]
+, [ 870, "9690FE60-59F4-41C7-8DC7-2CB4431F00E4", 870, 1321113200, "390805", 1321113200, "390805", "{\n}", "8416", "Director, Probation Services" ]
+, [ 871, "5D55C702-74CF-47E5-977B-058EB84005E3", 871, 1321113200, "390805", 1321113200, "390805", "{\n}", "8420", "Rehabilitation Svcs Coord" ]
+, [ 872, "32A3D74C-2765-4EF0-B928-01CAF47F044A", 872, 1321113200, "390805", 1321113200, "390805", "{\n}", "8434", "Sprv Adult Probation Ofc" ]
+, [ 873, "37BE4B13-7D8E-4E28-81D2-7B7E4E0B457C", 873, 1321113200, "390805", 1321113200, "390805", "{\n}", "8435", "Div Director, Adult Probation" ]
+, [ 874, "2619DC57-6FB3-4E31-AA8E-7B600F2E33CD", 874, 1321113200, "390805", 1321113200, "390805", "{\n}", "8436", "Chief Adult Probation Officer" ]
+, [ 875, "0973D4DD-ED29-4B6E-910D-479A6A2FC169", 875, 1321113200, "390805", 1321113200, "390805", "{\n}", "8438", "Chief Deputy Adlt Probation Of" ]
+, [ 876, "575F0D33-CC29-4AB2-BFDE-B3A2E04C09F8", 876, 1321113200, "390805", 1321113200, "390805", "{\n}", "8444", "Deputy Probation Officer" ]
+, [ 877, "398E74C3-5081-4716-9E4A-0395E26C2108", 877, 1321113200, "390805", 1321113200, "390805", "{\n}", "8446", "Court Alternative Specialist 1" ]
+, [ 878, "F5AD834E-7C26-42C8-8016-3DC18F7ED479", 878, 1321113200, "390805", 1321113200, "390805", "{\n}", "8452", "Criminal Justice Specialist 2" ]
+, [ 879, "0FBA7755-45E3-4D23-A961-F99261493AA4", 879, 1321113200, "390805", 1321113200, "390805", "{\n}", "9102", "Transit Car Cleaner" ]
+, [ 880, "67D29A5F-431E-4827-8EA4-512BECF31C0E", 880, 1321113200, "390805", 1321113200, "390805", "{\n}", "9104", "Transit Car Cleaner Asst Sprv" ]
+, [ 881, "3D7FC3C6-9ACD-4181-A9EC-CE328E4E8E9B", 881, 1321113200, "390805", 1321113200, "390805", "{\n}", "9110", "Fare Collections Receiver" ]
+, [ 882, "343A314E-BCE4-4E66-A752-1BE5C74B3440", 882, 1321113200, "390805", 1321113200, "390805", "{\n}", "9116", "Sr Fare Collections Receiver" ]
+, [ 883, "06271D58-950A-4CA1-92A5-2CAB388D2249", 883, 1321113200, "390805", 1321113200, "390805", "{\n}", "9117", "Pr Fare Collections Receiver" ]
+, [ 884, "B35FBF23-C239-4562-8FCA-FC0BEA14F139", 884, 1321113200, "390805", 1321113200, "390805", "{\n}", "9118", "Transit Revenue Supervisor" ]
+, [ 885, "234FA384-8796-424D-A9E3-961F006E5540", 885, 1321113200, "390805", 1321113200, "390805", "{\n}", "9122", "Transit Information Clerk" ]
+, [ 886, "2567AE94-8A7A-4575-8E45-4007B797E08F", 886, 1321113200, "390805", 1321113200, "390805", "{\n}", "9124", "Sr Transit Information Clerk" ]
+, [ 887, "BB6C7AD5-88F5-4CB5-94FF-31F2F99D340E", 887, 1321113200, "390805", 1321113200, "390805", "{\n}", "9126", "Transit Traffic Checker" ]
+, [ 888, "57BE4F83-1355-4BDB-BF75-786E88F341A6", 888, 1321113200, "390805", 1321113200, "390805", "{\n}", "9128", "Senior Transit Traffic Checker" ]
+, [ 889, "3C5CC2BE-9B4A-464C-A1BB-4ACEFA1E85F1", 889, 1321113200, "390805", 1321113200, "390805", "{\n}", "9131", "Station Agent, Muni Railway" ]
+, [ 890, "7529A0AF-9B4D-41A0-ABC2-AB10CC921DA6", 890, 1321113200, "390805", 1321113200, "390805", "{\n}", "9132", "Transit Fare Inspector" ]
+, [ 891, "B2880D48-031C-483D-BF7E-EFB870D73C6F", 891, 1321113200, "390805", 1321113200, "390805", "{\n}", "9139", "Transit Supervisor" ]
+, [ 892, "2E5FD852-1AC2-4E31-A961-11B13CC5CF99", 892, 1321113200, "390805", 1321113200, "390805", "{\n}", "9140", "Transit Manager 1" ]
+, [ 893, "991D68F6-C806-46D9-A5B5-13B2BE9560D0", 893, 1321113200, "390805", 1321113200, "390805", "{\n}", "9141", "Transit Manager 2" ]
+, [ 894, "1CA238A8-FE9E-4E49-AE76-3D7BA3E57A37", 894, 1321113200, "390805", 1321113200, "390805", "{\n}", "9150", "Train Controller" ]
+, [ 895, "00D26D0B-5FB6-4F1A-B53F-2FE6EAFDD6A6", 895, 1321113200, "390805", 1321113200, "390805", "{\n}", "9155", "Claims Investigator" ]
+, [ 896, "0F903E45-8CE4-4429-B756-5949B97E1602", 896, 1321113200, "390805", 1321113200, "390805", "{\n}", "9156", "Senior Claims Investigator" ]
+, [ 897, "A1066701-663E-47C5-B2FC-00D645BD400A", 897, 1321113200, "390805", 1321113200, "390805", "{\n}", "9157", "Claims Adjuster" ]
+, [ 898, "74700DB6-EB5D-438C-A4AB-7B552AC61FD6", 898, 1321113200, "390805", 1321113200, "390805", "{\n}", "9160", "Transit Operations Specialist" ]
+, [ 899, "58235A84-DDAC-4066-B853-4AF9D39B80C7", 899, 1321113200, "390805", 1321113200, "390805", "{\n}", "9163", "Transit Operator" ]
+, [ 900, "2CC13FEE-8212-4401-BF7B-BC79EDB25A38", 900, 1321113200, "390805", 1321113200, "390805", "{\n}", "9172", "Manager II, MTA" ]
+, [ 901, "9C086DAC-D93E-46E9-B0AF-EA8B8BAF4C8C", 901, 1321113200, "390805", 1321113200, "390805", "{\n}", "9174", "Manager IV, MTA" ]
+, [ 902, "A545B752-85AF-4452-81F8-086201650B80", 902, 1321113200, "390805", 1321113200, "390805", "{\n}", "9175", "Manager I, MTA" ]
+, [ 903, "43BCE5C6-05EC-4AD5-88D5-039C49F12847", 903, 1321113200, "390805", 1321113200, "390805", "{\n}", "9177", "Manager III, MTA" ]
+, [ 904, "E324649F-EC61-475E-A447-5A5DC7CC637E", 904, 1321113200, "390805", 1321113200, "390805", "{\n}", "9179", "Manager V, MTA" ]
+, [ 905, "93FA8D37-6E64-4D54-9433-4EB7BED0B89C", 905, 1321113200, "390805", 1321113200, "390805", "{\n}", "9180", "Manager VI, MTA" ]
+, [ 906, "3D1CA90A-55A4-486F-98C5-03CE01AA0246", 906, 1321113200, "390805", 1321113200, "390805", "{\n}", "9181", "Manager VII, MTA" ]
+, [ 907, "F8ACCDD8-C96A-433B-A352-73571A1CA402", 907, 1321113200, "390805", 1321113200, "390805", "{\n}", "9182", "Manager VIII, MTA" ]
+, [ 908, "3AE54FCF-02BD-43BA-8F5C-CE0DE1413A88", 908, 1321113200, "390805", 1321113200, "390805", "{\n}", "9183", "Deputy Dir I, MTA" ]
+, [ 909, "973F9A8B-1048-4BA3-9F93-1C50E25E6AD3", 909, 1321113200, "390805", 1321113200, "390805", "{\n}", "9185", "Chf Opr Ofc, Publ Transp Dept" ]
+, [ 910, "07486014-63A6-4AF2-A5E8-2D3F292394D1", 910, 1321113200, "390805", 1321113200, "390805", "{\n}", "9186", "Gen Mgr, Public Trnsp Dept" ]
+, [ 911, "977A20AD-3636-49CA-8CF2-FB74A13BC95A", 911, 1321113200, "390805", 1321113200, "390805", "{\n}", "9187", "Deputy Dir II, MTA" ]
+, [ 912, "070EB89A-FC6C-4FEF-9808-B2C263AAF0D6", 912, 1321113200, "390805", 1321113200, "390805", "{\n}", "9190", "Board Scty, MTA" ]
+, [ 913, "E14661D5-F99D-4E66-9569-04345BE2CA11", 913, 1321113200, "390805", 1321113200, "390805", "{\n}", "9195", "Light Rail Vehicle Equip Eng" ]
+, [ 914, "00A63835-F9B6-4A7F-9B9B-D3CF5B42708B", 914, 1321113200, "390805", 1321113200, "390805", "{\n}", "9196", "Sr Light Rail Veh Equip Eng" ]
+, [ 915, "27EA730A-57E3-43F4-92FF-0C1EE85C9454", 915, 1321113200, "390805", 1321113200, "390805", "{\n}", "9197", "Signal and Systems Engineer" ]
+, [ 916, "12313378-E79D-46A0-A5B1-604A47783D2E", 916, 1321113200, "390805", 1321113200, "390805", "{\n}", "9202", "Airports Communicatins Disp" ]
+, [ 917, "F2FEE78E-C646-43B5-BF9C-21005FE609AB", 917, 1321113200, "390805", 1321113200, "390805", "{\n}", "9203", "Sr Airport Communications Disp" ]
+, [ 918, "A7E3749A-A08F-4564-B19A-74E801FD2479", 918, 1321113200, "390805", 1321113200, "390805", "{\n}", "9204", "Airports Communications Sprv" ]
+, [ 919, "D09D0110-021B-41F1-AA92-75B768D64FAF", 919, 1321113200, "390805", 1321113200, "390805", "{\n}", "9206", "Airport Property Specialist 1" ]
+, [ 920, "BCB1372B-0AD5-4A10-A56A-0AE0EB2031B1", 920, 1321113200, "390805", 1321113200, "390805", "{\n}", "9209", "Community Police Services Aide" ]
+, [ 921, "F9147339-62CE-4D9D-A99B-10E528717CDB", 921, 1321113200, "390805", 1321113200, "390805", "{\n}", "9212", "Airport Safety Officer" ]
+, [ 922, "C727EC52-3FBE-4F29-8D34-E4B89A8A2507", 922, 1321113200, "390805", 1321113200, "390805", "{\n}", "9220", "Airport Operations Supervisor" ]
+, [ 923, "6F27BBFB-53A8-41F4-9A23-830FEC94D257", 923, 1321113200, "390805", 1321113200, "390805", "{\n}", "9230", "Airport Custodial Svcs Sprv" ]
+, [ 924, "755192C7-9771-4CB0-B5CD-F3BC04837455", 924, 1321113200, "390805", 1321113200, "390805", "{\n}", "9232", "Airport Mechanical Maint Sprv" ]
+, [ 925, "FBB5DE9D-059F-4291-AE50-571CBD29CEC0", 925, 1321113200, "390805", 1321113200, "390805", "{\n}", "9240", "Airport Electrician" ]
+, [ 926, "E0B6ED3F-DE1D-4CFB-981F-F386771D3329", 926, 1321113200, "390805", 1321113200, "390805", "{\n}", "9241", "Airport Electrician Supervisor" ]
+, [ 927, "EEB6AEF6-FF22-44AD-96D6-2D3C585E4983", 927, 1321113200, "390805", 1321113200, "390805", "{\n}", "9242", "Head Airport Electrician" ]
+, [ 928, "2CACC3FD-A12D-4DD1-BAC6-93B01940F271", 928, 1321113200, "390805", 1321113200, "390805", "{\n}", "9247", "Airport Emerg Planning Coord" ]
+, [ 929, "5A622232-B629-482A-AC60-D1497EEDC2A2", 929, 1321113200, "390805", 1321113200, "390805", "{\n}", "9251", "Public Relations Mgr" ]
+, [ 930, "E543B7CD-1EAE-4316-A422-68707B64946F", 930, 1321113200, "390805", 1321113200, "390805", "{\n}", "9254", "Asst to Dir, Public Affairs" ]
+, [ 931, "4F296AB5-7403-4402-96DA-2A8E4BB9BDB6", 931, 1321113200, "390805", 1321113200, "390805", "{\n}", "9255", "Airport Economic Planner" ]
+, [ 932, "97D9C011-FA25-48E0-B240-9734C64AFE33", 932, 1321113200, "390805", 1321113200, "390805", "{\n}", "9330", "Pile Worker" ]
+, [ 933, "4ADEBD51-0C07-4F17-A209-3CAC7701EBBB", 933, 1321113200, "390805", 1321113200, "390805", "{\n}", "9331", "Piledriver Engine Operator" ]
+, [ 934, "DABA75AB-E7AC-45EA-B219-D9BACEFE8CCF", 934, 1321113200, "390805", 1321113200, "390805", "{\n}", "9332", "Piledriver Supervisor 1" ]
+, [ 935, "DB709D84-C4E5-4334-AAFA-279F3C50D084", 935, 1321113200, "390805", 1321113200, "390805", "{\n}", "9342", "Ornamental Iron Wrk Sprv 1" ]
+, [ 936, "7E0F4341-7153-4628-A3D9-4FC20C554014", 936, 1321113200, "390805", 1321113200, "390805", "{\n}", "9343", "Roofer" ]
+, [ 937, "6AB3E785-0E45-45C4-B388-5FE50EDCC882", 937, 1321113200, "390805", 1321113200, "390805", "{\n}", "9344", "Roofer Supervisor 1" ]
+, [ 938, "A54599AA-B7E4-46F2-993E-F35FC95FC792", 938, 1321113200, "390805", 1321113200, "390805", "{\n}", "9345", "Sheet Metal Supervisor 1" ]
+, [ 939, "D41945D9-B8D2-41E3-BF0D-9712FDD66C08", 939, 1321113200, "390805", 1321113200, "390805", "{\n}", "9346", "Fusion Welder" ]
+, [ 940, "9EE1D498-D857-42DB-8C55-8493D0582162", 940, 1321113200, "390805", 1321113200, "390805", "{\n}", "9354", "Elevator and Crane Technician" ]
+, [ 941, "9A4C29F4-DE51-4C4C-ABF3-769253E4C1D1", 941, 1321113200, "390805", 1321113200, "390805", "{\n}", "9355", "Wharfinger 1" ]
+, [ 942, "13D697CE-A6F5-44EA-95F1-FAC27FC381C8", 942, 1321113200, "390805", 1321113200, "390805", "{\n}", "9356", "Wharfinger 2" ]
+, [ 943, "C046802C-63A0-4977-B7DB-54C6EAE581C8", 943, 1321113200, "390805", 1321113200, "390805", "{\n}", "9358", "Crane Mechanic Supervisor" ]
+, [ 944, "85A8C03C-4D6C-4CC8-B6AA-785302CE3892", 944, 1321113200, "390805", 1321113200, "390805", "{\n}", "9376", "Market Research Spec, Port" ]
+, [ 945, "076253A6-A137-4C2B-B166-E34EEE256583", 945, 1321113200, "390805", 1321113200, "390805", "{\n}", "9377", "Feasibility Analyst, Port" ]
+, [ 946, "CE1C73D2-7694-4B57-9261-2BD66C56324A", 946, 1321113200, "390805", 1321113200, "390805", "{\n}", "9382", "Govrnmt/Publ Affairs Mgr" ]
+, [ 947, "E8AC0CD3-2CF4-447E-89DC-F313BBCAA180", 947, 1321113200, "390805", 1321113200, "390805", "{\n}", "9386", "Senior Property Manager, Port" ]
+, [ 948, "360BF06E-BB09-49DB-AC0D-1D8F740D84D8", 948, 1321113200, "390805", 1321113200, "390805", "{\n}", "9393", "Maritime Marketing Repr" ]
+, [ 949, "818DCC0C-3C76-4478-95A1-29CA5D600E83", 949, 1321113200, "390805", 1321113200, "390805", "{\n}", "9395", "Property Manager, Port" ]
+, [ 950, "E122580F-031D-47AB-80D9-7139B3C87380", 950, 1321113200, "390805", 1321113200, "390805", "{\n}", "9399", "Port Director" ]
+, [ 951, "F359DA4A-486F-416E-A02D-DA5C077B1CE6", 951, 1321113200, "390805", 1321113200, "390805", "{\n}", "9504", "Permit and Citation Clerk" ]
+, [ 952, "D564E436-1F98-4E83-B9FF-D535F2CCCA1A", 952, 1321113200, "390805", 1321113200, "390805", "{\n}", "9506", "Snr Permit and Citation Clerk" ]
+, [ 953, "F20DECE3-05A5-4C72-B5AA-2931E78C70BB", 953, 1321113200, "390805", 1321113200, "390805", "{\n}", "9508", "Prpl Permit and Citation Clerk" ]
+, [ 954, "B745DA96-BB19-44C5-B055-8F4E3CCCC53B", 954, 1321113200, "390805", 1321113200, "390805", "{\n}", "9520", "Trans Safety Specialist" ]
+, [ 955, "04A43356-5802-493B-9FBC-02865F696EAA", 955, 1321113200, "390805", 1321113200, "390805", "{\n}", "9703", "Emp & Training Spec 2" ]
+, [ 956, "88B6B52B-B77C-4108-A1D3-B35A2D27B995", 956, 1321113200, "390805", 1321113200, "390805", "{\n}", "9704", "Employment & Training Spec 3" ]
+, [ 957, "1F06F49D-DABA-4E0E-9B9B-618F08698EEB", 957, 1321113200, "390805", 1321113200, "390805", "{\n}", "9705", "Emp & Training Spec 4" ]
+, [ 958, "F2547A79-B39B-4D63-A9DD-5F117820BB33", 958, 1321113200, "390805", 1321113200, "390805", "{\n}", "9706", "Employment & Training Spec 5" ]
+, [ 959, "A3D3E590-6A54-43AF-B371-EE3E31EF4332", 959, 1321113200, "390805", 1321113200, "390805", "{\n}", "9708", "Employment & Training Spec 6" ]
+, [ 960, "8BE9E30B-1EEB-4D74-A58F-FAA10309627B", 960, 1321113200, "390805", 1321113200, "390805", "{\n}", "9722", "Specialist in Aging 2" ]
+, [ 961, "87D7AC0E-0CA3-4979-8078-215B1007A918", 961, 1321113200, "390805", 1321113200, "390805", "{\n}", "9770", "Community Development Asst" ]
+, [ 962, "019AC764-EE07-4EA5-9A67-273B692F7230", 962, 1321113200, "390805", 1321113200, "390805", "{\n}", "9772", "Community Development Spec" ]
+, [ 963, "75CB6BBC-C199-408F-ADEF-D9BB54503914", 963, 1321113200, "390805", 1321113200, "390805", "{\n}", "9774", "Sr. Community Devl Spc 1" ]
+, [ 964, "F13F741C-3BCC-4620-BF97-E695DCF660AA", 964, 1321113200, "390805", 1321113200, "390805", "{\n}", "9775", "Sr Community Dev Spec 2" ]
+, [ 965, "96A44380-A7CE-401E-9FDA-861A6C4E29E6", 965, 1321113200, "390805", 1321113200, "390805", "{\n}", "9910", "Public Service Trainee" ]
+, [ 966, "86F7632B-3576-4309-A02B-918759F451A9", 966, 1321113200, "390805", 1321113200, "390805", "{\n}", "9914", "Public Service Aide-Admin" ]
+, [ 967, "EEE003D3-DB4B-4E85-AD2C-A133F35DC410", 967, 1321113200, "390805", 1321113200, "390805", "{\n}", "9916", "Public Svc Aide-Public Works" ]
+, [ 968, "42B80B2E-F026-46EC-A96D-AFFA031D72C6", 968, 1321113200, "390805", 1321113200, "390805", "{\n}", "9922", "PS Aide to Prof" ]
+, [ 969, "67AF23B6-D79F-4541-9A06-7C24E532B362", 969, 1321113200, "390805", 1321113200, "390805", "{\n}", "9924", "PS Aide Health Services" ]
+, [ 970, "DA6BCFFA-0514-4C6B-A937-1D9FE3D3D17E", 970, 1321113200, "390805", 1321113200, "390805", "{\n}", "9989", "Executive Contract Employee" ]
+, [ 971, "B1DFABB7-4D23-4F11-974A-E7DB01CE708D", 971, 1321113200, "390805", 1321113200, "390805", "{\n}", "AB44", "Cfdntal Chf Atty 2,(Cvl&Crmnl)" ]
+, [ 972, "66E4F681-A840-47A8-AA45-D8D8BE259E8B", 972, 1321113200, "390805", 1321113200, "390805", "{\n}", "AC35", "Bd/Comm Secretary 3" ]
+, [ 973, "B39E8022-28F2-434C-9A3E-29969BE4C53B", 973, 1321113200, "390805", 1321113200, "390805", "{\n}", "AC38", "Assistant Superintendent, Rec" ]
+, [ 974, "44DA20A7-D5C2-40A7-A4C8-D482114097EC", 974, 1321113200, "390805", 1321113200, "390805", "{\n}", "AC43", "Grants Associate" ]
+, [ 975, "AC3085A2-079C-4F27-A8DE-95EDBC9BA4F4", 975, 1321113200, "390805", 1321113200, "390805", "{\n}", "H  1", "Fire Rescue Paramedic" ]
+, [ 976, "188F2D52-029E-4ADF-A6E1-D5F24A154079", 976, 1321113200, "390805", 1321113200, "390805", "{\n}", "H  2", "Firefighter" ]
+, [ 977, "7C73D04A-A7AC-44E6-9415-5AA2901131C3", 977, 1321113200, "390805", 1321113200, "390805", "{\n}", "H  3", "Firefighter/Paramedic" ]
+, [ 978, "73FDFBAB-C8C0-4C2D-BA10-DE6EF98DD2D1", 978, 1321113200, "390805", 1321113200, "390805", "{\n}", "H  4", "Insp, Fire Dept" ]
+, [ 979, "60EF1222-7E75-4535-B5FB-352CA5A9BEA3", 979, 1321113200, "390805", 1321113200, "390805", "{\n}", "H  6", "Invstgtor,Fire Dept" ]
+, [ 980, "D0B10D3C-D4C5-4875-A2F7-95004A80E369", 980, 1321113200, "390805", 1321113200, "390805", "{\n}", "H 10", "Incident Support Specialist" ]
+, [ 981, "4218C854-EBE1-4B9A-96B8-D32B1D3CD840", 981, 1321113200, "390805", 1321113200, "390805", "{\n}", "H 20", "Lieutenant, Fire Suppression" ]
+, [ 982, "AE03347F-7142-4398-8306-40658B174D4E", 982, 1321113200, "390805", 1321113200, "390805", "{\n}", "H 22", "Lieut,Fire Prev" ]
+, [ 983, "797485E1-577A-4834-8EB7-729CC70225D4", 983, 1321113200, "390805", 1321113200, "390805", "{\n}", "H 24", "Lieut,Fire Invstgtn" ]
+, [ 984, "7D1D50DE-2521-4AEE-94AB-9E130CB91BD9", 984, 1321113200, "390805", 1321113200, "390805", "{\n}", "H 28", "Lieut, Division of Training" ]
+, [ 985, "32C15D0E-D806-4647-ABC7-EC10F66B83A2", 985, 1321113200, "390805", 1321113200, "390805", "{\n}", "H 30", "Captain, (Fire Department)" ]
+, [ 986, "80E8C6BA-3BF0-4BA0-8B7B-4762BE32602C", 986, 1321113200, "390805", 1321113200, "390805", "{\n}", "H 32", "Capt,Fire Prev or Fire Invsgtn" ]
+, [ 987, "9D5BAC67-B81A-42A5-9673-15AFA7B78810", 987, 1321113200, "390805", 1321113200, "390805", "{\n}", "H 33", "EMS Captain" ]
+, [ 988, "5059DD4F-CFDC-401A-923B-CDB0906ED456", 988, 1321113200, "390805", 1321113200, "390805", "{\n}", "H 39", "Captain, Division of Training" ]
+, [ 989, "9240212D-05CD-4590-B0C9-1871F63D9C8E", 989, 1321113200, "390805", 1321113200, "390805", "{\n}", "H 40", "Battlion Chief, Fire Suppressi" ]
+, [ 990, "42A8CA1F-48F8-46F4-813C-187968D1795B", 990, 1321113200, "390805", 1321113200, "390805", "{\n}", "H 43", "EMS Section Chief" ]
+, [ 991, "B2ED230F-18F1-449A-9E3F-3A51AEEF54A0", 991, 1321113200, "390805", 1321113200, "390805", "{\n}", "H 50", "Asst Chf of Dept (Fire Dept)" ]
+, [ 992, "D0C815DA-D577-4651-BD25-7F4C44C89413", 992, 1321113200, "390805", 1321113200, "390805", "{\n}", "H 51", "Assistant Deputy Chief 2" ]
+, [ 993, "7BCC7012-6C6B-4B64-B85E-E1F48C9A3B4B", 993, 1321113200, "390805", 1321113200, "390805", "{\n}", "H 53", "Emergency Medical Svcs Chief" ]
+, [ 994, "65E89F90-9341-47DE-856F-F31967D7D3B3", 994, 1321113200, "390805", 1321113200, "390805", "{\n}", "H110", "Marine Engineer of Fire Boats" ]
+, [ 995, "745237BF-B776-42E3-AC3B-2C46E0F5F605", 995, 1321113200, "390805", 1321113200, "390805", "{\n}", "H120", "Pilot of Fire Boats" ]
+, [ 996, "46CFEB1F-5F1C-4803-8BC6-C214E4355880", 996, 1321113200, "390805", 1321113200, "390805", "{\n}", "P103", "Special Nurse" ]
+, [ 997, "CCEFD519-0AD5-4210-A1A5-625692DA8DCA", 997, 1321113200, "390805", 1321113200, "390805", "{\n}", "Q  4", "Police Officer 3" ]
+, [ 998, "FB72DFF4-C326-41C6-9261-47ADE024A75E", 998, 1321113200, "390805", 1321113200, "390805", "{\n}", "Q 52", "Sergeant 3" ]
+, [ 999, "24F64BCE-CEC3-4ED7-BE2F-D517CC15BC91", 999, 1321113200, "390805", 1321113200, "390805", "{\n}", "Q 62", "Lieutenant 3" ]
+, [ 1000, "1D490994-158A-4BB4-9D11-71C04D76719D", 1000, 1321113200, "390805", 1321113200, "390805", "{\n}", "Q 63", "Director of Forensic Services" ]
+, [ 1001, "B144E836-1B82-4EDC-BB7D-2C065ED41847", 1001, 1321113200, "390805", 1321113200, "390805", "{\n}", "Q 82", "Captain 3" ]
+, [ 1002, "0431B667-F656-4CF1-901D-190BE8A2E7AB", 1002, 1321113200, "390805", 1321113200, "390805", "{\n}", "Q 90", "Director of Police Psychology" ]
+, [ 1003, "6D09B173-88D0-4322-B479-3A3FFB6465FD", 1003, 1321113200, "390805", 1321113200, "390805", "{\n}", "TEMPM", "Temporary Position" ]
+, [ 1004, "98CCFF2C-406E-4C84-829B-6CA68D72785E", 1004, 1321113200, "390805", 1321113200, "390805", "{\n}", "TEMPN", "Temporary Position" ]
+, [ 1005, "1A6708BB-B5C0-4BC3-AEAA-5C4325C1981B", 1005, 1321113200, "390805", 1321113200, "390805", "{\n}", "Grand Total", null ]
+ ]
+}

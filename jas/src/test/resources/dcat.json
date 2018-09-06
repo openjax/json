@@ -1,0 +1,217 @@
+{
+  "@context": {
+    "adms": "http://www.w3.org/ns/adms#",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dct": "http://purl.org/dc/terms/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "gsp": "http://www.opengis.net/ont/geosparql#",
+    "locn": "http://www.w3.org/ns/locn#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdf": "http://schema.org/item",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "http://schema.org/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "time": "http://www.w3.org/2006/time",
+    "vcard": "http://www.w3.org/2006/vcard/ns#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://open.canada.ca/dataset/e27c6eba-3c5d-4051-9db2-082dc6411c2c/resource/ca30332d-efe5-41ea-a614-ea8774ae2640",
+      "dcat:accessURL": {
+        "@id": "http://ftp.geogratis.gc.ca/pub/nrcan_rncan/vector/geobase_cgn_toponyme/prov_gml_fra/"
+      },
+      "dct:format": "GML",
+      "dct:language": "fr",
+      "dct:title": "Pre-packaged GML files - CGN Canada/Province/Territory (French)",
+      "schema:itemtype": {
+        "@id": "dcat:Distribution"
+      }
+    },
+    {
+      "@id": "_:Naddceae9f2d54310b7e8d8103f8ca464",
+      "locn:geometry": [
+        {
+          "@type": "gsp:wktLiteral",
+          "@value": "POLYGON ((-141.0027 41.0000, -52.0000 41.0000, -52.0000 84.0000, -141.0027 84.0000, -141.0027 41.0000))"
+        },
+        {
+          "@type": "https://www.iana.org/assignments/media-types/application/vnd.geo+json",
+          "@value": "{\"type\": \"Polygon\", \"coordinates\": [[[-141.0027151, 41], [-52, 41], [-52, 84], [-141.0027151, 84], [-141.0027151, 41]]]}"
+        }
+      ],
+      "schema:itemtype": {
+        "@id": "dct:Location"
+      }
+    },
+    {
+      "@id": "https://open.canada.ca/dataset/e27c6eba-3c5d-4051-9db2-082dc6411c2c/resource/f7b3c7ee-6435-4627-8b92-bdf02654d63f",
+      "dcat:accessURL": {
+        "@id": "http://ftp.geogratis.gc.ca/pub/nrcan_rncan/vector/geobase_cgn_toponyme/prov_csv_eng/"
+      },
+      "dct:format": "CSV",
+      "dct:language": "en",
+      "dct:title": "Pre-packaged CSV files - CGN Canada/Province/Territory (English)",
+      "schema:itemtype": {
+        "@id": "dcat:Distribution"
+      }
+    },
+    {
+      "@id": "https://open.canada.ca/dataset/e27c6eba-3c5d-4051-9db2-082dc6411c2c/resource/59738d2e-3160-4051-aba7-2cc3854417fb",
+      "dcat:accessURL": {
+        "@id": "http://ftp.geogratis.gc.ca/pub/nrcan_rncan/vector/geobase_cgn_toponyme/prov_kml_fra/"
+      },
+      "dct:format": "KML",
+      "dct:language": "fr",
+      "dct:title": "Pre-packaged KML files - CGN Canada/Province/Territory (French)",
+      "schema:itemtype": {
+        "@id": "dcat:Distribution"
+      }
+    },
+    {
+      "@id": "https://open.canada.ca/organization/9391E0A2-9717-4755-B548-4499C21F917B",
+      "foaf:name": "Natural Resources Canada | Ressources naturelles Canada",
+      "schema:itemtype": {
+        "@id": "foaf:Organization"
+      }
+    },
+    {
+      "@id": "https://open.canada.ca/dataset/e27c6eba-3c5d-4051-9db2-082dc6411c2c/resource/d0ea17ab-bc6d-4aca-9d25-cfa868acc0bb",
+      "dcat:accessURL": {
+        "@id": "http://ftp.geogratis.gc.ca/pub/nrcan_rncan/vector/geobase_cgn_toponyme/prov_csv_fra/"
+      },
+      "dct:format": "CSV",
+      "dct:language": "fr",
+      "dct:title": "Pre-packaged CSV files - CGN Canada/Province/Territory (French)",
+      "schema:itemtype": {
+        "@id": "dcat:Distribution"
+      }
+    },
+    {
+      "@id": "_:Ndbc61b04639c48699791f5a3346ad50c",
+      "schema:itemtype": {
+        "@id": "vcard:Organization"
+      },
+      "vcard:hasEmail": "geoinfo@canada.ca"
+    },
+    {
+      "@id": "https://open.canada.ca/dataset/e27c6eba-3c5d-4051-9db2-082dc6411c2c",
+      "dcat:contactPoint": {
+        "@id": "_:Ndbc61b04639c48699791f5a3346ad50c"
+      },
+      "dcat:distribution": [
+        {
+          "@id": "https://open.canada.ca/dataset/e27c6eba-3c5d-4051-9db2-082dc6411c2c/resource/f7b3c7ee-6435-4627-8b92-bdf02654d63f"
+        },
+        {
+          "@id": "https://open.canada.ca/dataset/e27c6eba-3c5d-4051-9db2-082dc6411c2c/resource/acaa4898-c57c-4a45-b29b-3404da05625f"
+        },
+        {
+          "@id": "https://open.canada.ca/dataset/e27c6eba-3c5d-4051-9db2-082dc6411c2c/resource/8d5c304f-a348-44ab-82aa-360a7142d942"
+        },
+        {
+          "@id": "https://open.canada.ca/dataset/e27c6eba-3c5d-4051-9db2-082dc6411c2c/resource/ca30332d-efe5-41ea-a614-ea8774ae2640"
+        },
+        {
+          "@id": "https://open.canada.ca/dataset/e27c6eba-3c5d-4051-9db2-082dc6411c2c/resource/f28ff877-859f-4e48-98da-840e080ebc5a"
+        },
+        {
+          "@id": "https://open.canada.ca/dataset/e27c6eba-3c5d-4051-9db2-082dc6411c2c/resource/a49d5999-a63d-4a58-8e99-30afc2237a03"
+        },
+        {
+          "@id": "https://open.canada.ca/dataset/e27c6eba-3c5d-4051-9db2-082dc6411c2c/resource/d0ea17ab-bc6d-4aca-9d25-cfa868acc0bb"
+        },
+        {
+          "@id": "https://open.canada.ca/dataset/e27c6eba-3c5d-4051-9db2-082dc6411c2c/resource/31650c7b-2ef9-45ca-83a5-cb109018a0c1"
+        },
+        {
+          "@id": "https://open.canada.ca/dataset/e27c6eba-3c5d-4051-9db2-082dc6411c2c/resource/59738d2e-3160-4051-aba7-2cc3854417fb"
+        }
+      ],
+      "dct:accrualPeriodicity": "P1W",
+      "dct:description": "The Canadian Geographical Names Data Base (CGNDB) is the authoritative national database of Canada's geographical names. The purpose of the CGNDB is to store place names and their attributes that have been approved by the Geographical Names Board of Canada (GNBC), the national coordinating body responsible for standards and policies on place names. The CGNDB is maintained by Natural Resources Canada, through the Canada Centre for Mapping and Earth Observation. The geographic extent of the CGNDB is the Canadian landmass and water bodies; the temporal extent is from 1897 to present. This dataset is extracted from the CGNDB on a weekly basis, and consists of current officially approved names, feature type, coordinates of the feature, decision date, source, and other attributes. The output file formats for this product are:  text (CSV), Shape (SHP), Geography Markup Language (GML), and Keyhole Markup Language (KML).",
+      "dct:identifier": "e27c6eba-3c5d-4051-9db2-082dc6411c2c",
+      "dct:issued": {
+        "@type": "xsd:dateTime",
+        "@value": "2017-04-28T19:50:12.384897"
+      },
+      "dct:modified": {
+        "@type": "xsd:dateTime",
+        "@value": "2017-12-12T20:24:02.520749"
+      },
+      "dct:publisher": {
+        "@id": "https://open.canada.ca/organization/9391E0A2-9717-4755-B548-4499C21F917B"
+      },
+      "dct:spatial": {
+        "@id": "_:Naddceae9f2d54310b7e8d8103f8ca464"
+      },
+      "dct:title": "Canadian Geographical Names - CGN - GeoBase Series",
+      "schema:itemtype": {
+        "@id": "dcat:Dataset"
+      }
+    },
+    {
+      "@id": "https://open.canada.ca/dataset/e27c6eba-3c5d-4051-9db2-082dc6411c2c/resource/f28ff877-859f-4e48-98da-840e080ebc5a",
+      "dcat:accessURL": {
+        "@id": "http://ftp.geogratis.gc.ca/pub/nrcan_rncan/vector/geobase_cgn_toponyme/prov_shp_fra/"
+      },
+      "dct:format": "SHP",
+      "dct:language": "fr",
+      "dct:title": "Pre-packaged SHP files - CGN Canada/Province/Territory (French)",
+      "schema:itemtype": {
+        "@id": "dcat:Distribution"
+      }
+    },
+    {
+      "@id": "https://open.canada.ca/dataset/e27c6eba-3c5d-4051-9db2-082dc6411c2c/resource/a49d5999-a63d-4a58-8e99-30afc2237a03",
+      "dcat:accessURL": {
+        "@id": "http://ftp.geogratis.gc.ca/pub/nrcan_rncan/vector/geobase_cgn_toponyme/prov_shp_eng/"
+      },
+      "dct:format": "SHP",
+      "dct:language": "en",
+      "dct:title": "Pre-packaged SHP files - CGN Canada/Province/Territory (English)",
+      "schema:itemtype": {
+        "@id": "dcat:Distribution"
+      }
+    },
+    {
+      "@id": "https://open.canada.ca/dataset/e27c6eba-3c5d-4051-9db2-082dc6411c2c/resource/8d5c304f-a348-44ab-82aa-360a7142d942",
+      "dcat:accessURL": {
+        "@id": "http://ftp.geogratis.gc.ca/pub/nrcan_rncan/vector/geobase_cgn_toponyme/prov_gml_eng/"
+      },
+      "dct:format": "GML",
+      "dct:language": "en",
+      "dct:title": "Pre-packaged GML files - CGN Canada/Province/Territory (English)",
+      "schema:itemtype": {
+        "@id": "dcat:Distribution"
+      }
+    },
+    {
+      "@id": "https://open.canada.ca/dataset/e27c6eba-3c5d-4051-9db2-082dc6411c2c/resource/31650c7b-2ef9-45ca-83a5-cb109018a0c1",
+      "dcat:accessURL": {
+        "@id": "http://ftp.geogratis.gc.ca/pub/nrcan_rncan/vector/geobase_cgn_toponyme/doc"
+      },
+      "dct:format": "PDF",
+      "dct:language": [
+        "en",
+        "fr"
+      ],
+      "dct:title": "Documentation related to Canadian Geographical Names (CGN)",
+      "schema:itemtype": {
+        "@id": "dcat:Distribution"
+      }
+    },
+    {
+      "@id": "https://open.canada.ca/dataset/e27c6eba-3c5d-4051-9db2-082dc6411c2c/resource/acaa4898-c57c-4a45-b29b-3404da05625f",
+      "dcat:accessURL": {
+        "@id": "http://ftp.geogratis.gc.ca/pub/nrcan_rncan/vector/geobase_cgn_toponyme/prov_kml_eng/"
+      },
+      "dct:format": "KML",
+      "dct:language": "en",
+      "dct:title": "Pre-packaged KML files - CGN Canada/Province/Territory (English)",
+      "schema:itemtype": {
+        "@id": "dcat:Distribution"
+      }
+    }
+  ]
+}
