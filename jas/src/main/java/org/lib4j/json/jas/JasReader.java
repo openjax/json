@@ -147,25 +147,38 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
     return getStartPosition(index);
   }
 
+  /**
+   * Returns the start position at a token index.
+   *
+   * @param index The token index.
+   * @return The start position at {@code index}.
+   */
   private int getStartPosition(final int index) {
     return Numbers.Compound.dencodeInt(positions.get(index), 0);
   }
 
+  /**
+   * Returns the end position at a token index.
+   *
+   * @param index The token index.
+   * @return The start position at {@code index}.
+   */
   private int getEndPosition(final int index) {
     return Numbers.Compound.dencodeInt(positions.get(index), 1);
   }
 
   /**
-   * Returns the position of the most recently read char.
+   * Returns the buffer position of the most recently read char.
    *
-   * @return The position of the most recently read char.
+   * @return The buffer position of the most recently read char.
    */
   protected int getPosition() {
     return buffer.size();
   }
 
   /**
-   * Set the position from which to read on the next call to {@code read()}.
+   * Set the buffer to position {@code p}, such that a subsequent call to
+   * {@code read()} will return the char at {@code p + 1}.
    *
    * @param p The position.
    */
@@ -175,15 +188,21 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
 
   /**
    * Read the next JSON token. A JSON token is one of:
-   * <ul><li>Structural: <code>{ } [ ] : ,</code></li>
+   * <ul>
+   * <li>Structural:<ul>
+   * <li>A character that is one of:<pre><code>{ } [ ] : ,</code></pre></li></ul></li>
    * <li>A property key:<ul>
-   * <li>A string quoted with {@code '"'} characters</li>
-   * <li>An identifier matching {@code ^[$_a-zA-Z][$_a-zA-Z0-9]*$}</li></ul></li>
+   * <li>A string that matches:<pre>^".*"$</pre></li></ul></li>
    * <li>A property or array member value:<ul>
-   * <li>A string quoted with {@code '"'} characters</li>
-   * <li>A number that matches {@code ^-?(([0-9])|([1-9][0-9]+))(\.[\.0-9]+)?([eE][+-]?(([0-9])|([1-9][0-9]+)))?$}</li>
-   * <li>A literal that matches: {@code ^(null)|(true)|(false)$}</li></ul></li>
-   * <li>Whitespace: whitespace matching {@code ^[ \n\r\t]$}</li></ul>
+   * <li>A string that matches:<pre>^".*"$</pre></li>
+   * <li>A number that matches:<pre>{@code ^-?(([0-9])|([1-9][0-9]+))(\.[\.0-9]+)?([eE][+-]?(([0-9])|([1-9][0-9]+)))?$}</pre></li>
+   * <li>A literal that matches:<pre>{@code ^(null)|(true)|(false)$}</pre></li></ul></li>
+   * <li>Whitespace:<ul>
+   * <li>Whitespace that matches:<pre>{@code ^[ \n\r\t]$}</pre></li></ul></li>
+   * </ul>
+   * <p>
+   * <b>Note:</b> If this instance ignores whitespace, this method will skip
+   * whitespace tokens.
    *
    * @return The next JSON token, or {@code null} if the end of content has
    *         been reached.
@@ -200,8 +219,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
     else {
       start = getPosition();
       end = getEndPosition(index);
-      if (end != -1)
-        setPosition(end);
+      setPosition(end);
     }
 
     // End of stream
@@ -210,7 +228,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
 
     // Sanity check, which should never occur
     if (start == end)
-      throw new UnsupportedOperationException("Unsupported JSON encountered");
+      throw new UnsupportedOperationException("Unsupported JSON content");
 
     return end - start == 1 ? String.valueOf(buf()[start]) : new String(buf(), start, end - start);
   }
@@ -446,7 +464,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
     setIndex0(index + 1);
 
     // Fast return if there is no need to re-read an already read token
-    if (index + 1 < positions.size())
+    if (index < positions.size() - 1)
       return getStartPosition(index);
 
     final int beforeIndex = index;
@@ -662,6 +680,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
    * @throws JasParseException If the content is not well formed.
    */
   private int readUnquoted(int ch) throws IOException, JasParseException {
+    // Read number
     if (ch == '-' || '0' <= ch && ch <= '9') {
       int first = ch;
       int last = first;
@@ -716,6 +735,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
       return ch;
     }
 
+    // Read literal
     for (int i = 0; i < literals.length; ++i) {
       if (ch == literals[i][0]) {
         final char[] literal = literals[i];

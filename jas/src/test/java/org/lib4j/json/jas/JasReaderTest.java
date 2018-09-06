@@ -170,7 +170,7 @@ public class JasReaderTest {
 
   @Test
   public void testScopeEnd() throws IOException {
-    failString("{", JasParseException.class, "Missing closing scope character: '}' [errorOffset: 1]");
+    failString("  {", JasParseException.class, "Missing closing scope character: '}' [errorOffset: 3]");
     failString("[[]", JasParseException.class, "Missing closing scope character: ']' [errorOffset: 3]");
   }
 
@@ -185,7 +185,7 @@ public class JasReaderTest {
 
   @Test
   public void testExpectedColon() throws IOException {
-//    failString("{foo, bar}", SAJParseException.class, "Expected character '\"', but encountered 'f' [errorOffset: 1]");
+    failString("  {foo, bar}  ", JasParseException.class, "Expected character '\"', but encountered 'f' [errorOffset: 3]");
     failString("{\"foo\", bar}", JasParseException.class, "Expected character ':', but encountered ',' [errorOffset: 6]");
     failString("{\"foo\"{ bar}", JasParseException.class, "Expected character ':', but encountered '{' [errorOffset: 6]");
     failString("{\"foo\"[ bar}", JasParseException.class, "Expected character ':', but encountered '[' [errorOffset: 6]");
@@ -195,8 +195,8 @@ public class JasReaderTest {
 
   @Test
   public void testNoContentExpected() throws IOException {
-    failString("{foo: []}", JasParseException.class, "Expected character '\"', but encountered 'f' [errorOffset: 1]");
-    failString("{\"foo\" \"bar\"}", JasParseException.class, "Expected character ':', but encountered '\"' [errorOffset: 7]");
+    failString("  { foo : [   ]  }  ", JasParseException.class, "Expected character '\"', but encountered 'f' [errorOffset: 4]");
+    failString("{ \"foo\"  \"bar\" }", JasParseException.class, "Expected character ':', but encountered '\"' [errorOffset: 9]");
     failString("{\"foo\": \"bar\"} f", JasParseException.class, "No content is expected at this point: f [errorOffset: 15]");
   }
 
@@ -227,7 +227,7 @@ public class JasReaderTest {
 
   @Test
   public void testBoolean() throws IOException {
-    passString("{\"foo\": true}");
+    passString("{\"foo\":  true}");
     passString("{\"foo\": false}");
     failString("{\"foo\": truee}", JasParseException.class, "Illegal character: 'e' [errorOffset: 12]");
     failString("{\"foo\": falss}", JasParseException.class, "Illegal character: 's' [errorOffset: 12]");
