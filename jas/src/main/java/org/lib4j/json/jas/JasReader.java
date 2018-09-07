@@ -60,6 +60,14 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
   private static final int DEFAULT_SCOPE_SIZE = 2;              // Number of [] or {} scopes in the JSON document
   private static final double DEFAULT_SCOPE_RESIZE_FACTOR = 2;  // Resize factor for scope buffer
 
+  /**
+   * Returns {@code true} if {@code ch} is a structural char, which is one of:
+   *
+   * <pre><code>{ } [ ] : ,</code></pre>
+   *
+   * @param ch The char.
+   * @return {@code true} if {@code ch} is a structural char.
+   */
   protected static boolean isStructural(final int ch) {
     return ch == '{' || ch == '}' || ch == '[' || ch == ']' || ch == ':' || ch == ',';
   }
@@ -126,15 +134,6 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
   }
 
   /**
-   * Returns the number of tokens read thus far.
-   *
-   * @return The number of tokens read thus far.
-   */
-  public int size() {
-    return positions.size();
-  }
-
-  /**
    * Supporting method to set the index for the next token to be read.
    *
    * @param index The index for the next token to be read.
@@ -150,7 +149,16 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
   }
 
   /**
-   * Returns the start position at a token index.
+   * Returns the number of tokens read thus far.
+   *
+   * @return The number of tokens read thus far.
+   */
+  public int size() {
+    return positions.size();
+  }
+
+  /**
+   * Returns the start position at {@code index}.
    *
    * @param index The token index.
    * @return The start position at {@code index}.
@@ -160,10 +168,10 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
   }
 
   /**
-   * Returns the end position at a token index.
+   * Returns the end position at {@code index}.
    *
    * @param index The token index.
-   * @return The start position at {@code index}.
+   * @return The end position at {@code index}.
    */
   protected int getEndPosition(final int index) {
     return Numbers.Compound.dencodeInt(positions.get(index), 1);
@@ -174,6 +182,8 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
    * {@code read()} will return the char at {@code p + 1}.
    *
    * @param p The position.
+   * @throws IllegalArgumentException If {@code p} is negative, or if {@code p}
+   *           exceeds the length of the underlying buffer.
    */
   protected void setPosition(final int p) {
     buffer.reset(p);
@@ -230,7 +240,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
 
     // Sanity check, which should never occur
     if (start == end)
-      throw new UnsupportedOperationException("Unsupported JSON content");
+      throw new IllegalStateException("Illegal JSON content [errorOffset: " + start + "]");
 
     return end - start == 1 ? String.valueOf(buf()[start]) : new String(buf(), start, end - start);
   }
@@ -240,7 +250,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
    * to advance to the next token if the end of the current token has been
    * reached.
    *
-   * @return Whether there are more chars to read.
+   * @return {@code true} if there are more chars to read.
    * @throws IOException If an I/O error occurs.
    * @throws JasParseException If the content is not well formed.
    * @see #nextToken()
