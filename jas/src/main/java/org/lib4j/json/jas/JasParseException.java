@@ -18,7 +18,8 @@ package org.lib4j.json.jas;
 
 /**
  * JAS (Json API Simple) exception signifying a violation of JSON document
- * well-formed criteria.
+ * well-formed criteria as expressed by the
+ * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627</a> specification.
  */
 public class JasParseException extends RuntimeException {
   private static final long serialVersionUID = -3748964303015135629L;
@@ -30,7 +31,7 @@ public class JasParseException extends RuntimeException {
   private final int errorOffset;
 
   /**
-   * Constructs a SAJParseException with the specified detail message and offset.
+   * Constructs a JasParseException with the specified detail message and offset.
    * A detail message is a String that describes this particular exception.
    *
    * @param string the detail message

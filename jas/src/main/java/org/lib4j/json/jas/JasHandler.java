@@ -18,7 +18,7 @@ package org.lib4j.json.jas;
 
 /**
  * JAS (Json API Simple) handler that is used for parsing JSON with the
- * {@code {@link JasParser#parse(SAJHandler)}} method.
+ * {@link JasParser#parse(JasHandler)} method.
  */
 public interface JasHandler {
   /**
@@ -34,20 +34,22 @@ public interface JasHandler {
   /**
    * Called when a structural token is encountered.
    *
-   * @param ch The structural token, which is one of: <code>{ } [ ] : ,</code>
+   * @param ch The structural token, which is one of:
+   *           <pre><code>{ } [ ] : ,</code></pre>
    * @return {@code true} to continue parsing, {@code false} to abort.
    */
   boolean structural(char ch);
 
   /**
    * Called when token characters are encountered. Token characters are:
-   * <ul><li>A property key:<ul>
-   * <li>A string quoted with {@code '"'} or {@code '\''} characters</li>
-   * <li>An identifier matching {@code ^[$_a-zA-Z][$_a-zA-Z0-9]*$}</li></ul></li>
+   * <ul>
+   * <li>A property key:<ul>
+   * <li>A string that matches:<pre>^".*"$</pre></li></ul></li>
    * <li>A property or array member value:<ul>
-   * <li>A string quoted with {@code '"'} or {@code '\''} characters</li>
-   * <li>A number that matches {@code ^-?(([0-9])|([1-9][0-9]+))(\.[\.0-9]+)?([eE][+-]?(([0-9])|([1-9][0-9]+)))?$}</li>
-   * <li>A literal that matches: {@code ^(null)|(true)|(false)$}</li></ul></li></ul>
+   * <li>A string that matches:<pre>^".*"$</pre></li>
+   * <li>A number that matches:<pre>{@code ^-?(([0-9])|([1-9][0-9]+))(\.[\.0-9]+)?([eE][+-]?(([0-9])|([1-9][0-9]+)))?$}</pre></li>
+   * <li>A literal that matches:<pre>{@code ^(null)|(true)|(false)$}</pre></li></ul></li>
+   * </ul>
    *
    * @param chars A reference to the underlying {@code char[]} buffer.
    * @param start The start index of the token.
@@ -58,7 +60,8 @@ public interface JasHandler {
 
   /**
    * Called when whitespace characters are encountered. Whitespace characters
-   * match: {@code ^[ \t\r\n]+$}.
+   * match:
+   * <pre>{@code ^[ \n\r\t]+$}</pre>
    *
    * @param chars A reference to the underlying {@code char[]} buffer.
    * @param start The start index of the token.

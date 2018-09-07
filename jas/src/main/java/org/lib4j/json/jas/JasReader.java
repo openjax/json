@@ -57,7 +57,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
 
   private static final int DEFAULT_BUFFER_SIZE = 2048;          // Number of characters in the JSON document
   private static final int DEFAULT_TOKENS_SIZE = 128;           // Number of tokens in the JSON document
-  private static final int DEFAULT_SCOPE_SIZE = 2;              // Number of [] and {} scopes in the JSON document
+  private static final int DEFAULT_SCOPE_SIZE = 2;              // Number of [] or {} scopes in the JSON document
   private static final double DEFAULT_SCOPE_RESIZE_FACTOR = 2;  // Resize factor for scope buffer
 
   protected static boolean isStructural(final int ch) {
@@ -101,7 +101,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
   }
 
   /**
-   * Get the index of the most recently read token.
+   * Returns the index of the most recently read token.
    *
    * @return The index of the most recently read token.
    */
@@ -110,15 +110,19 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
   }
 
   /**
-   * Set the index for the next token to be read.
+   * Sets the index for the next token to be read.
    *
    * @param index The index for the next token to be read.
-   * @throws IndexOutOfBoundsException If {@code index < -1}, or if the index is
-   *           greater than the number of tokens that had been read.
+   * @throws IllegalArgumentException If {@code index < 0 || size() <= index}.
    */
   public void setIndex(final int index) {
-    if (this.index != index)
-      setIndex0(index);
+    if (this.index == index)
+      return;
+
+    if (index < 0 || size() <= index)
+      throw new IllegalArgumentException("Index out of range [0," + (size() - 1) + "]: " + index);
+
+    setIndex0(index);
   }
 
   /**
@@ -135,21 +139,10 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
    *
    * @param index The index for the next token to be read.
    * @return The start position of the token at {@code index}.
-   * @throws IndexOutOfBoundsException If {@code index < -1}, or if the index is
-   *           greater than the number of tokens that had been read.
+   * @throws IndexOutOfBoundsException If {@code index < 0 || size() <= index}.
    */
   private int setIndex0(final int index) {
-    if (this.index == index)
-      throw new IllegalArgumentException("this.index == index: " + index);
-
-    if (index < 0)
-      throw new IllegalArgumentException("index < 0: " + index);
-
-    if (positions.size() <= index)
-      throw new IndexOutOfBoundsException("setIndex(" + index + ") is beyond index [" + (positions.size() - 1) + "] of tokens read thus far");
-
     this.index = index;
-
     setPosition(getEndPosition(index));
     scope = scopes.get(index);
     depth = depths.get(index);
@@ -207,7 +200,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
    * <li>A number that matches:<pre>{@code ^-?(([0-9])|([1-9][0-9]+))(\.[\.0-9]+)?([eE][+-]?(([0-9])|([1-9][0-9]+)))?$}</pre></li>
    * <li>A literal that matches:<pre>{@code ^(null)|(true)|(false)$}</pre></li></ul></li>
    * <li>Whitespace:<ul>
-   * <li>Whitespace that matches:<pre>{@code ^[ \n\r\t]$}</pre></li></ul></li>
+   * <li>Whitespace that matches:<pre>{@code ^[ \n\r\t]+$}</pre></li></ul></li>
    * </ul>
    * <p>
    * <b>Note:</b> If this instance ignores whitespace, this method will skip
@@ -337,9 +330,9 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
    * Characters read with this method advance the characters of the tokens to
    * which they belong. Therefore, when partially reading a token with
    * {@code read(char[])}, subsequent calls to {@code readToken()} will return
-   * <i>the remaining characters of the token that have not yet been returned by
+   * the remaining characters of the token that have not yet been returned by
    * {@code read()}. Characters read with this method undergo the same
-   * token-level error checking as in {@link #readTokenStart()} or
+   * token-level validation as in {@link #readTokenStart()} or
    * {@link #readToken()}.
    *
    * @param cbuf Destination buffer.
@@ -384,12 +377,12 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
    */
   @Override
   public boolean hasNext() throws IllegalStateException, JasParseException {
-    if (index < positions.size())
+    if (index < size())
       return true;
 
     try {
       nextToken();
-      return index < positions.size();
+      return index < size();
     }
     catch (final IOException e) {
       throw new IllegalStateException(e);
@@ -450,8 +443,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
 
   /**
    * Supporting method to read until the end of the next token, and return the
-   * start position of the token that was just read, <i>managing read-ahead
-   * references</i>.
+   * start position of the token that was just read.
    *
    * @return The start index of the next token.
    * @throws IOException If an I/O error occurs.
@@ -473,7 +465,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
     setIndex0(index + 1);
 
     // Fast return if there is no need to re-read an already read token
-    if (index < positions.size() - 1)
+    if (index < size() - 1)
       return getStartPosition(index);
 
     final int beforeIndex = index;
@@ -502,11 +494,11 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
    * @see #nextToken()
    */
   protected int readTokenStart() throws IOException, JasParseException {
-    if (positions.size() > 0 && getPosition() != getEndPosition(index))
+    if (0 < size() && getPosition() != getEndPosition(index))
       throw new IllegalStateException("Buffer position (" + getPosition() + ") misaligned with end position (" + getEndPosition(index) + ") on index (" + index + ")");
 
     // Fast return if there is no need to re-read an already read token
-    if (index < positions.size() - 1)
+    if (index < size() - 1)
       return setIndex0(index + 1);
 
     nextStart = 0;
@@ -611,8 +603,8 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
     if (ch != -1)
       setPosition(getPosition() - 1);
 
-    if (++index != positions.size())
-      throw new IllegalStateException("Index (" + index + ") misaligned with tokens count (" + positions.size() + ")");
+    if (++index != size())
+      throw new IllegalStateException("Index (" + index + ") misaligned with tokens count (" + size() + ")");
 
     scopes.add(scope.clone());
     depths.add(depth);

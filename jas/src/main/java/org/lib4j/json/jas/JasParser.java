@@ -28,10 +28,10 @@ public class JasParser {
   private final JasReader reader;
 
   /**
-   * Construct a new {@code JasParser} for JSON content to be read from
-   * the {@code reader} parameter instance.
+   * Construct a new {@code JasParser} for JSON content to be read from the
+   * {@code reader} parameter instance.
    *
-   * @param reader The {@code Reader} from which JSON is read
+   * @param reader The {@code Reader} from which JSON is read.
    */
   public JasParser(final JasReader reader) {
     this.reader = reader;
@@ -40,16 +40,15 @@ public class JasParser {
   /**
    * Parse the JSON document.
    *
-   * @param handler The {@code SAJHandler} instance for handling content
-   *          callbacks
-   * @return {@code true} if the document has been read entirely.
-   *         {@code false} if parsing was aborted by a handler callback.
-   *         Note, if a handler aborts parsing, subsequent calls to
-   *         {@link #parse(JasHandler)} will resume from the position at
-   *         which parsing was aborted.
-   * @throws IOException if an I/O error occurs
-   * @throws JasParseException if the content not a well formed JSON term
-   * @throws NullPointerException if {@code handler == null}
+   * @param handler The {@code JasHandler} instance for handling content
+   *          callbacks.
+   * @return {@code true} if the document has been read entirely. {@code false}
+   *         if parsing was aborted by a handler callback. If a handler aborts
+   *         parsing, subsequent calls to {@link #parse(JasHandler)} will resume
+   *         from the position at which parsing was previously aborted.
+   * @throws IOException If an I/O error occurs.
+   * @throws JasParseException If the content is not a well formed JSON term.
+   * @throws NullPointerException If {@code handler} is null.
    */
   public boolean parse(final JasHandler handler) throws IOException, JasParseException {
     if (reader.getPosition() == 0)

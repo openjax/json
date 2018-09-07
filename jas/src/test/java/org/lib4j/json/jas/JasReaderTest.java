@@ -157,7 +157,7 @@ public class JasReaderTest {
   private static void failString(final String json, final Class<? extends Exception> cls, final String message) throws IOException {
     try {
       testString(json, false, false);
-      fail("Expected SAJParseException");
+      fail("Expected " + cls.getSimpleName());
     }
     catch (final IOException e) {
       throw e;

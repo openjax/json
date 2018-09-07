@@ -72,6 +72,6 @@ public class JasParserTest extends JasReaderTest {
     final JasParser parser = new JasParser(new JasReader(new StringReader(json), false));
     final StringBuilder builder = new StringBuilder();
     while (!parser.parse(newHandler(json, builder)));
-    assertEquals("builder length should have been set to 0 in SAJHandler#endDocument()", 0, builder.length());
+    assertEquals("builder length should have been set to 0 in JasHandler#endDocument()", 0, builder.length());
   }
 }
