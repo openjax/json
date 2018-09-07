@@ -191,6 +191,7 @@ public class JasReaderTest {
     failString("{\"foo\"[ bar}", JasParseException.class, "Expected character ':', but encountered '[' [errorOffset: 6]");
     failString("{\"foo\"} bar}", JasParseException.class, "Expected character ':', but encountered '}' [errorOffset: 6]");
     failString("{\"foo\"] bar}", JasParseException.class, "Expected character ':', but encountered ']' [errorOffset: 6]");
+    failString("{\"foo\" bar }", JasParseException.class, "Expected character ':', but encountered 'b' [errorOffset: 7]");
   }
 
   @Test

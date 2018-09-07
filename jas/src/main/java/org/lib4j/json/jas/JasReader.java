@@ -71,7 +71,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
 
   private long[] scope = new long[DEFAULT_SCOPE_SIZE];
   private int depth = -1;
-  private int abort = 0;
+  private int nextStart = 0;
 
   private final boolean ignoreWhitespace;
 
@@ -122,6 +122,15 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
   }
 
   /**
+   * Returns the number of tokens read thus far.
+   *
+   * @return The number of tokens read thus far.
+   */
+  public int size() {
+    return positions.size();
+  }
+
+  /**
    * Supporting method to set the index for the next token to be read.
    *
    * @param index The index for the next token to be read.
@@ -153,7 +162,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
    * @param index The token index.
    * @return The start position at {@code index}.
    */
-  private int getStartPosition(final int index) {
+  protected int getStartPosition(final int index) {
     return Numbers.Compound.dencodeInt(positions.get(index), 0);
   }
 
@@ -163,17 +172,8 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
    * @param index The token index.
    * @return The start position at {@code index}.
    */
-  private int getEndPosition(final int index) {
+  protected int getEndPosition(final int index) {
     return Numbers.Compound.dencodeInt(positions.get(index), 1);
-  }
-
-  /**
-   * Returns the buffer position of the most recently read char.
-   *
-   * @return The buffer position of the most recently read char.
-   */
-  protected int getPosition() {
-    return buffer.size();
   }
 
   /**
@@ -184,6 +184,15 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
    */
   protected void setPosition(final int p) {
     buffer.reset(p);
+  }
+
+  /**
+   * Returns the buffer position of the most recently read char.
+   *
+   * @return The buffer position of the most recently read char.
+   */
+  protected int getPosition() {
+    return buffer.size();
   }
 
   /**
@@ -500,11 +509,11 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
     if (index < positions.size() - 1)
       return setIndex0(index + 1);
 
-    abort = 0;
+    nextStart = 0;
     int ch = readNonWS(super.read());
     do {
-      if (abort != 0 || ch == -1)
-        return abort(ch, abort);
+      if (nextStart != 0 || ch == -1)
+        return advance(ch, nextStart);
 
       final int ch1 = nearestNonWsToken(0);
       final int ch2 = ch1 == -1 ? -1 : nearestNonWsToken(1);
@@ -519,7 +528,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
           else
             Buffers.clear(scope, ++depth);
 
-          abort = getPosition();
+          nextStart = getPosition();
           continue;
         }
 
@@ -536,13 +545,13 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
           if (expected != ch)
             throw new JasParseException("Expected character '" + expected + "', but encountered '" + (char)ch + "'", getPosition() - 1);
 
-          abort = getPosition();
+          nextStart = getPosition();
           continue;
         }
 
         // read ','
         if (ch == ',') {
-          abort = getPosition();
+          nextStart = getPosition();
           continue;
         }
 
@@ -556,7 +565,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
 
           final int start = getPosition();
           ch = readQuoted();
-          return abort(ch, abort = start);
+          return advance(ch, start);
         }
       }
       else if (ch != ':') {
@@ -567,27 +576,17 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
       if (!Buffers.get(scope, depth) || ch1 == ':') {
         final int start = getPosition();
         ch = ch == '"' ? readQuoted() : readUnquoted(ch);
-        return abort(ch, abort = start);
+        return advance(ch, start);
       }
 
-      // read ':'
-      if (ch != ':') {
-        ch = readNonWS(ch);
-        if (abort != 0)
-          return abort(ch, abort);
-      }
-
-      if (ch != ':')
-        throw new JasParseException("Expected character ':', but encountered '" + (char)ch + "'", getPosition() - 1);
-
-      abort = getPosition();
+      nextStart = getPosition();
     }
     while ((ch = super.read()) != -1);
 
     if (depth >= 0)
       throw new JasParseException("Missing closing scope character: '" + (Buffers.get(scope, depth) ? '}' : ']') + "'", getPosition());
 
-    return abort(ch, abort);
+    return advance(ch, nextStart);
   }
 
   /**
@@ -600,31 +599,31 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
   }
 
   /**
-   * Called to adjust the return index, and to unread the last read char when
-   * returning from {@link #readTokenStart()}.
+   * Called from {@link #readTokenStart()} to advance the token index, adjust
+   * the return index, and to unread the last read char.
    *
    * @param ch The last read char.
    * @param pos The return position.
    * @return The adjusted return position.
    */
-  private int abort(final int ch, final int pos) {
+  private int advance(final int ch, int pos) {
     // Move back a position of 1, because a single extra char has been read
     if (ch != -1)
-      setPosition(buffer.size() - 1);
+      setPosition(getPosition() - 1);
 
     if (++index != positions.size())
       throw new IllegalStateException("Index (" + index + ") misaligned with tokens count (" + positions.size() + ")");
 
     scopes.add(scope.clone());
     depths.add(depth);
-    positions.add(Numbers.Compound.encode(pos - 1, getPosition()));
-    return pos - 1;
+    positions.add(Numbers.Compound.encode(--pos, getPosition()));
+    return pos;
   }
 
   /**
-   * Read until the first non-whitespace char is encountered. If whitespace is
-   * not ignored, this method will set {@link #abort} to the starting position
-   * of the whitespace.
+   * Read until the first non-whitespace char. If whitespace is not ignored,
+   * this method will set {@link #nextStart} to the starting position of the
+   * whitespace.
    *
    * @param ch The first char to test whether it is not whitespace.
    * @return The first non-whitespace char.
@@ -641,7 +640,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
       return ch;
 
     if (!ignoreWhitespace && depth != -1 && start != getPosition())
-      abort = start;
+      nextStart = start;
 
     if (depth == -1 && ch != -1)
       throw new JasParseException("No content is expected at this point: " + (char)ch, getPosition() - 1);
@@ -650,9 +649,9 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
   }
 
   /**
-   * Read until the first unescaped {@code '"'} is encountered.
+   * Read until the first unescaped {@code '"'} char.
    *
-   * @return The char after the first unescaped {@code '"'} is encountered.
+   * @return The char after the first unescaped {@code '"'} char.
    * @throws IOException If an I/O error occurs.
    * @throws JasParseException If the string is not terminated.
    */
@@ -672,7 +671,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
   }
 
   /**
-   * Read until the first non-literal or non-number character is encountered.
+   * Read until the first non-number or non-literal char.
    *
    * @param ch The first char to test whether it is a non-literal char.
    * @return The first non-literal char.
@@ -739,7 +738,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
     for (int i = 0; i < literals.length; ++i) {
       if (ch == literals[i][0]) {
         final char[] literal = literals[i];
-        for (int j = 1; j < literal.length; j++)
+        for (int j = 1; j < literal.length; ++j)
           if ((ch = super.read()) != literal[j])
             throw new JasParseException("Illegal character: '" + (char)ch + "'", getPosition() - 1);
 
