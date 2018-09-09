@@ -14,50 +14,50 @@
  * program. If not, see <http://opensource.org/licenses/MIT/>.
  */
 
-package org.lib4j.json.jas;
+package org.lib4j.json;
 
 import java.io.IOException;
 
 import org.lib4j.util.Characters;
 
 /**
- * JAS (Json API Simple) parser for JSON documents that asserts the content
- * being read is a well-formed JSON document.
+ * Validating parser for JSON documents that asserts content conforms to the
+ * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627</a> specification.
  */
-public class JasParser {
-  private final JasReader reader;
+public class JsonParser {
+  private final JsonReader reader;
 
   /**
-   * Construct a new {@code JasParser} for JSON content to be read from the
+   * Construct a new {@code JsonParser} for JSON content to be read from the
    * {@code reader} parameter instance.
    *
    * @param reader The {@code Reader} from which JSON is read.
    */
-  public JasParser(final JasReader reader) {
+  public JsonParser(final JsonReader reader) {
     this.reader = reader;
   }
 
   /**
    * Parse the JSON document.
    *
-   * @param handler The {@code JasHandler} instance for handling content
+   * @param handler The {@code JsonHandler} instance for handling content
    *          callbacks.
    * @return {@code true} if the document has been read entirely. {@code false}
    *         if parsing was aborted by a handler callback. If a handler aborts
-   *         parsing, subsequent calls to {@link #parse(JasHandler)} will resume
+   *         parsing, subsequent calls to {@link #parse(JsonHandler)} will resume
    *         from the position at which parsing was previously aborted.
    * @throws IOException If an I/O error occurs.
-   * @throws JasParseException If the content is not a well formed JSON term.
+   * @throws JsonParseException If the content is not a well formed JSON term.
    * @throws NullPointerException If {@code handler} is null.
    */
-  public boolean parse(final JasHandler handler) throws IOException, JasParseException {
+  public boolean parse(final JsonHandler handler) throws IOException, JsonParseException {
     if (reader.getPosition() == 0)
       handler.startDocument();
 
     for (int start; (start = reader.readTokenStart()) != -1;) {
       final int end = reader.getPosition();
       final boolean abort;
-      if (end - start == 1 && JasReader.isStructural(reader.buf()[start]))
+      if (end - start == 1 && JsonReader.isStructural(reader.buf()[start]))
         abort = !handler.structural(reader.buf()[start]);
       else if (Characters.isWhiteSpace(reader.buf()[start]))
         abort = !handler.whitespace(reader.buf(), start, end);

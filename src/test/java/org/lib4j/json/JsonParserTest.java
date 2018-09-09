@@ -14,21 +14,21 @@
  * program. If not, see <http://opensource.org/licenses/MIT/>.
  */
 
-package org.lib4j.json.jas;
+package org.lib4j.json;
 
 import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.io.StringReader;
 
-import org.lib4j.json.jas.JasReader;
-import org.lib4j.json.jas.JasHandler;
-import org.lib4j.json.jas.JasParseException;
-import org.lib4j.json.jas.JasParser;
+import org.lib4j.json.JsonHandler;
+import org.lib4j.json.JsonParseException;
+import org.lib4j.json.JsonParser;
+import org.lib4j.json.JsonReader;
 
-public class JasParserTest extends JasReaderTest {
-  private static JasHandler newHandler(final String expected, final StringBuilder builder) {
-    return new JasHandler() {
+public class JsonParserTest extends JsonReaderTest {
+  private static JsonHandler newHandler(final String expected, final StringBuilder builder) {
+    return new JsonHandler() {
       @Override
       public void startDocument() {
         assertEquals(0, builder.length());
@@ -42,7 +42,7 @@ public class JasParserTest extends JasReaderTest {
 
       @Override
       public boolean structural(final char ch) {
-        assertTrue(JasReader.isStructural(ch));
+        assertTrue(JsonReader.isStructural(ch));
         builder.append(ch);
         return Math.random() < .6 ? true : false;
       }
@@ -67,11 +67,11 @@ public class JasParserTest extends JasReaderTest {
   }
 
   @Override
-  protected void passFile(final String jsonFileName) throws IOException, JasParseException {
+  protected void passFile(final String jsonFileName) throws IOException, JsonParseException {
     final String json = readFile(jsonFileName);
-    final JasParser parser = new JasParser(new JasReader(new StringReader(json), false));
+    final JsonParser parser = new JsonParser(new JsonReader(new StringReader(json), false));
     final StringBuilder builder = new StringBuilder();
     while (!parser.parse(newHandler(json, builder)));
-    assertEquals("builder length should have been set to 0 in JasHandler#endDocument()", 0, builder.length());
+    assertEquals("builder length should have been set to 0 in JsonHandler#endDocument()", 0, builder.length());
   }
 }

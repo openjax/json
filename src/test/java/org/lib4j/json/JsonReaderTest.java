@@ -14,7 +14,7 @@
  * program. If not, see <http://opensource.org/licenses/MIT/>.
  */
 
-package org.lib4j.json.jas;
+package org.lib4j.json;
 
 import static org.junit.Assert.*;
 
@@ -26,12 +26,14 @@ import java.nio.charset.StandardCharsets;
 import org.junit.Test;
 import org.lib4j.io.DecodingReader;
 import org.lib4j.io.Readers;
+import org.lib4j.json.JsonParseException;
+import org.lib4j.json.JsonReader;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 
-public class JasReaderTest {
+public class JsonReaderTest {
   private static boolean testIterator = true;
   private static boolean testReadBack = true;
   private static boolean testReadChar = true;
@@ -55,13 +57,13 @@ public class JasReaderTest {
     return new String(out.toByteArray());
   }
 
-  private static void readRemainder(final JasReader reader, final StringBuilder builder) throws IOException {
+  private static void readRemainder(final JsonReader reader, final StringBuilder builder) throws IOException {
     final String remainder = reader.readToken();
     if (remainder != null)
       builder.append(remainder);
   }
 
-  private static void readBuff(final int length, final JasReader reader, final StringBuilder builder) throws IOException {
+  private static void readBuff(final int length, final JsonReader reader, final StringBuilder builder) throws IOException {
     final char[] cbuf = new char[length];
     final int start = (int)(random() * cbuf.length * .5);
     final int end = start + (int)(random() * cbuf.length * .5);
@@ -76,7 +78,7 @@ public class JasReaderTest {
   }
 
   private static void testString(final String json, final boolean testSetIndex, final boolean ignoreWhitespace) throws IOException {
-    try (final JasReader reader = new JasReader(new StringReader(json), ignoreWhitespace)) {
+    try (final JsonReader reader = new JsonReader(new StringReader(json), ignoreWhitespace)) {
       final StringBuilder builder = new StringBuilder();
       final int gap = (int)(json.length() / 100d);
       int cut = 0;
@@ -170,48 +172,48 @@ public class JasReaderTest {
 
   @Test
   public void testScopeEnd() throws IOException {
-    failString("  {", JasParseException.class, "Missing closing scope character: '}' [errorOffset: 3]");
-    failString("[[]", JasParseException.class, "Missing closing scope character: ']' [errorOffset: 3]");
+    failString("  {", JsonParseException.class, "Missing closing scope character: '}' [errorOffset: 3]");
+    failString("[[]", JsonParseException.class, "Missing closing scope character: ']' [errorOffset: 3]");
   }
 
   @Test
   public void testScopeMiddle() throws IOException {
-    failString("{[", JasParseException.class, "Missing closing scope character: ']' [errorOffset: 2]");
-    failString("[}", JasParseException.class, "Expected character ']', but encountered '}' [errorOffset: 1]");
-    failString("{]", JasParseException.class, "Expected character '}', but encountered ']' [errorOffset: 1]");
-    failString("{\"foo\":[[[]]}", JasParseException.class, "Expected character ']', but encountered '}' [errorOffset: 12]");
-    failString("[[[{]]", JasParseException.class, "Expected character '}', but encountered ']' [errorOffset: 4]");
+    failString("{[", JsonParseException.class, "Missing closing scope character: ']' [errorOffset: 2]");
+    failString("[}", JsonParseException.class, "Expected character ']', but encountered '}' [errorOffset: 1]");
+    failString("{]", JsonParseException.class, "Expected character '}', but encountered ']' [errorOffset: 1]");
+    failString("{\"foo\":[[[]]}", JsonParseException.class, "Expected character ']', but encountered '}' [errorOffset: 12]");
+    failString("[[[{]]", JsonParseException.class, "Expected character '}', but encountered ']' [errorOffset: 4]");
   }
 
   @Test
   public void testExpectedColon() throws IOException {
-    failString("  {foo, bar}  ", JasParseException.class, "Expected character '\"', but encountered 'f' [errorOffset: 3]");
-    failString("{\"foo\", bar}", JasParseException.class, "Expected character ':', but encountered ',' [errorOffset: 6]");
-    failString("{\"foo\"{ bar}", JasParseException.class, "Expected character ':', but encountered '{' [errorOffset: 6]");
-    failString("{\"foo\"[ bar}", JasParseException.class, "Expected character ':', but encountered '[' [errorOffset: 6]");
-    failString("{\"foo\"} bar}", JasParseException.class, "Expected character ':', but encountered '}' [errorOffset: 6]");
-    failString("{\"foo\"] bar}", JasParseException.class, "Expected character ':', but encountered ']' [errorOffset: 6]");
-    failString("{\"foo\" bar }", JasParseException.class, "Expected character ':', but encountered 'b' [errorOffset: 7]");
+    failString("  {foo, bar}  ", JsonParseException.class, "Expected character '\"', but encountered 'f' [errorOffset: 3]");
+    failString("{\"foo\", bar}", JsonParseException.class, "Expected character ':', but encountered ',' [errorOffset: 6]");
+    failString("{\"foo\"{ bar}", JsonParseException.class, "Expected character ':', but encountered '{' [errorOffset: 6]");
+    failString("{\"foo\"[ bar}", JsonParseException.class, "Expected character ':', but encountered '[' [errorOffset: 6]");
+    failString("{\"foo\"} bar}", JsonParseException.class, "Expected character ':', but encountered '}' [errorOffset: 6]");
+    failString("{\"foo\"] bar}", JsonParseException.class, "Expected character ':', but encountered ']' [errorOffset: 6]");
+    failString("{\"foo\" bar }", JsonParseException.class, "Expected character ':', but encountered 'b' [errorOffset: 7]");
   }
 
   @Test
   public void testNoContentExpected() throws IOException {
-    failString("  { foo : [   ]  }  ", JasParseException.class, "Expected character '\"', but encountered 'f' [errorOffset: 4]");
-    failString("{ \"foo\"  \"bar\" }", JasParseException.class, "Expected character ':', but encountered '\"' [errorOffset: 9]");
-    failString("{\"foo\": \"bar\"} f", JasParseException.class, "No content is expected at this point: f [errorOffset: 15]");
+    failString("  { foo : [   ]  }  ", JsonParseException.class, "Expected character '\"', but encountered 'f' [errorOffset: 4]");
+    failString("{ \"foo\"  \"bar\" }", JsonParseException.class, "Expected character ':', but encountered '\"' [errorOffset: 9]");
+    failString("{\"foo\": \"bar\"} f", JsonParseException.class, "No content is expected at this point: f [errorOffset: 15]");
   }
 
   @Test
   public void testTerm() throws IOException {
     passString("{\"foo\": null}");
 
-    failString("{\"foo\": nulll}", JasParseException.class, "Illegal character: 'l' [errorOffset: 12]");
-    failString(".", JasParseException.class, "Expected character '{' or '[', but encountered '.' [errorOffset: 0]");
-    failString("x", JasParseException.class, "Expected character '{' or '[', but encountered 'x' [errorOffset: 0]");
-    failString("[x]", JasParseException.class, "Illegal character: 'x' [errorOffset: 1]");
-    failString("[null: x]", JasParseException.class, "Illegal character: ':' [errorOffset: 5]");
-    failString("[null, x]", JasParseException.class, "Illegal character: 'x' [errorOffset: 7]");
-    failString("{\"foo\": xyz}", JasParseException.class, "Illegal character: 'x' [errorOffset: 8]");
+    failString("{\"foo\": nulll}", JsonParseException.class, "Illegal character: 'l' [errorOffset: 12]");
+    failString(".", JsonParseException.class, "Expected character '{' or '[', but encountered '.' [errorOffset: 0]");
+    failString("x", JsonParseException.class, "Expected character '{' or '[', but encountered 'x' [errorOffset: 0]");
+    failString("[x]", JsonParseException.class, "Illegal character: 'x' [errorOffset: 1]");
+    failString("[null: x]", JsonParseException.class, "Illegal character: ':' [errorOffset: 5]");
+    failString("[null, x]", JsonParseException.class, "Illegal character: 'x' [errorOffset: 7]");
+    failString("{\"foo\": xyz}", JsonParseException.class, "Illegal character: 'x' [errorOffset: 8]");
   }
 
   @Test
@@ -222,16 +224,16 @@ public class JasReaderTest {
     passString("{\"foo\": \"\"}");
     passString("{\"foo\": \"ba\\\"r\"}");
 
-    failString("{\"foo\": \"bar}", JasParseException.class, "Unterminated string [errorOffset: 8]");
-    failString("{\"foo\": 'bar'}", JasParseException.class, "Illegal character: ''' [errorOffset: 8]");
+    failString("{\"foo\": \"bar}", JsonParseException.class, "Unterminated string [errorOffset: 8]");
+    failString("{\"foo\": 'bar'}", JsonParseException.class, "Illegal character: ''' [errorOffset: 8]");
   }
 
   @Test
   public void testBoolean() throws IOException {
     passString("{\"foo\":  true}");
     passString("{\"foo\": false}");
-    failString("{\"foo\": truee}", JasParseException.class, "Illegal character: 'e' [errorOffset: 12]");
-    failString("{\"foo\": falss}", JasParseException.class, "Illegal character: 's' [errorOffset: 12]");
+    failString("{\"foo\": truee}", JsonParseException.class, "Illegal character: 'e' [errorOffset: 12]");
+    failString("{\"foo\": falss}", JsonParseException.class, "Illegal character: 's' [errorOffset: 12]");
   }
 
   @Test
@@ -245,18 +247,18 @@ public class JasReaderTest {
     passString("{\"foo\": 10e+12}");
     passString("{\"foo\": 10E-12}");
 
-    failString("{\"foo\": -.5}", JasParseException.class, "Integer component required before fraction part [errorOffset: 9]");
-    failString("{\"foo\": 001}", JasParseException.class, "Leading zeros are not allowed [errorOffset: 8]");
-    failString("{\"foo\": 0.}", JasParseException.class, "Decimal point must be followed by one or more digits [errorOffset: 10]");
-    failString("{\"foo\": 0.0.}", JasParseException.class, "Illegal character: '.' [errorOffset: 11]");
-    failString("{\"foo\": --0}", JasParseException.class, "Expected digit, but encountered '-' [errorOffset: 9]");
-    failString("{\"foo\": 10E-}", JasParseException.class, "Expected digit, but encountered '}' [errorOffset: 12]");
-    failString("{\"foo\": 10E+}", JasParseException.class, "Expected digit, but encountered '}' [errorOffset: 12]");
-    failString("{\"foo\": 10E--}", JasParseException.class, "Illegal character: '-' [errorOffset: 12]");
-    failString("{\"foo\": 10E++}", JasParseException.class, "Illegal character: '+' [errorOffset: 12]");
-    failString("{\"foo\": 10E+1.}", JasParseException.class, "Illegal character: '.' [errorOffset: 13]");
-    failString("{\"foo\": 10E01}", JasParseException.class, "Leading zeros are not allowed [errorOffset: 11]");
-    failString("{\"foo\": 10E+01}", JasParseException.class, "Leading zeros are not allowed [errorOffset: 12]");
+    failString("{\"foo\": -.5}", JsonParseException.class, "Integer component required before fraction part [errorOffset: 9]");
+    failString("{\"foo\": 001}", JsonParseException.class, "Leading zeros are not allowed [errorOffset: 8]");
+    failString("{\"foo\": 0.}", JsonParseException.class, "Decimal point must be followed by one or more digits [errorOffset: 10]");
+    failString("{\"foo\": 0.0.}", JsonParseException.class, "Illegal character: '.' [errorOffset: 11]");
+    failString("{\"foo\": --0}", JsonParseException.class, "Expected digit, but encountered '-' [errorOffset: 9]");
+    failString("{\"foo\": 10E-}", JsonParseException.class, "Expected digit, but encountered '}' [errorOffset: 12]");
+    failString("{\"foo\": 10E+}", JsonParseException.class, "Expected digit, but encountered '}' [errorOffset: 12]");
+    failString("{\"foo\": 10E--}", JsonParseException.class, "Illegal character: '-' [errorOffset: 12]");
+    failString("{\"foo\": 10E++}", JsonParseException.class, "Illegal character: '+' [errorOffset: 12]");
+    failString("{\"foo\": 10E+1.}", JsonParseException.class, "Illegal character: '.' [errorOffset: 13]");
+    failString("{\"foo\": 10E01}", JsonParseException.class, "Leading zeros are not allowed [errorOffset: 11]");
+    failString("{\"foo\": 10E+01}", JsonParseException.class, "Leading zeros are not allowed [errorOffset: 12]");
   }
 
   @Test

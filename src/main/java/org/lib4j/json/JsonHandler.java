@@ -14,13 +14,12 @@
  * program. If not, see <http://opensource.org/licenses/MIT/>.
  */
 
-package org.lib4j.json.jas;
+package org.lib4j.json;
 
 /**
- * JAS (Json API Simple) handler that is used for parsing JSON with the
- * {@link JasParser#parse(JasHandler)} method.
+ * Handler interface used for parsing JSON with {@link JsonParser#parse()}.
  */
-public interface JasHandler {
+public interface JsonHandler {
   /**
    * Called when the document's start is encountered.
    */
@@ -32,10 +31,12 @@ public interface JasHandler {
   void endDocument();
 
   /**
-   * Called when a structural token is encountered.
+   * Called when a structural token is encountered. A structural token is one
+   * of:
    *
-   * @param ch The structural token, which is one of:
-   *           <pre><code>{ } [ ] : ,</code></pre>
+   * <pre><code>{ } [ ] : ,</code></pre>
+   *
+   * @param ch The structural token.
    * @return {@code true} to continue parsing, {@code false} to abort.
    */
   boolean structural(char ch);
@@ -61,6 +62,7 @@ public interface JasHandler {
   /**
    * Called when whitespace characters are encountered. Whitespace characters
    * match:
+   *
    * <pre>{@code ^[ \n\r\t]+$}</pre>
    *
    * @param chars A reference to the underlying {@code char[]} buffer.

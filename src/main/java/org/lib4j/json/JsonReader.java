@@ -14,7 +14,7 @@
  * program. If not, see <http://opensource.org/licenses/MIT/>.
  */
 
-package org.lib4j.json.jas;
+package org.lib4j.json;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -30,11 +30,10 @@ import org.lib4j.util.Characters;
 import org.lib4j.util.Numbers;
 
 /**
- * The {@code JasReader} ("Json Api Simple" Reader) is a {@link Reader} and
- * {@link Iterator} implementation for JSON streams. This implementation
- * provides an interface to read JSON tokens sequentially, while asserting the
- * content being read is well-formed as per the
- * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627</a> specification.
+ * Validating {@link Reader} and {@link Iterator} implementation for JSON
+ * streams that reads JSON tokens sequentially, while asserting the content
+ * conforms to the <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627</a>
+ * specification.
  * <p>
  * This implementation provides the following features:
  * <ul>
@@ -43,7 +42,7 @@ import org.lib4j.util.Numbers;
  * {@code token}.</li>
  * <li>Optimized read of JSON tokens, sequentially returning only the starting
  * position of each token: {@link #readTokenStart()}. (This position can be
- * dereferenced via: {@link JasReader#buf()}).</li>
+ * dereferenced via: {@link JsonReader#buf()}).</li>
  * <li>Implements the {@link Iterable} interface, to sequentially iterate over
  * each token: {@link #iterator()}.</li>
  * <li>Indexes each token: {@link #getIndex()}.</li>
@@ -52,7 +51,7 @@ import org.lib4j.util.Numbers;
  * {@link #read(char[])}. and {@link #read(char[], int, int)} methods.
  * </ul>
  */
-public class JasReader extends ReplayReader implements Iterable<String>, Iterator<String> {
+public class JsonReader extends ReplayReader implements Iterable<String>, Iterator<String> {
   private static final char[][] literals = {{'n', 'u', 'l', 'l'}, {'t', 'r', 'u', 'e'}, {'f', 'a', 'l', 's', 'e'}};
 
   private static final int DEFAULT_BUFFER_SIZE = 2048;          // Number of characters in the JSON document
@@ -84,26 +83,26 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
   private final boolean ignoreWhitespace;
 
   /**
-   * Construct a new {@code JasReader} for JSON content to be read from the
+   * Construct a new {@code JsonReader} for JSON content to be read from the
    * {@code reader} parameter instance, <b>that ignores inter-token
    * whitespace</b>. This constructor is equivalent to calling
-   * {@code new JasReader(reader, true)}.
+   * {@code new JsonReader(reader, true)}.
    *
    * @param reader The {@code Reader} from which JSON is read.
    */
-  public JasReader(final Reader reader) {
+  public JsonReader(final Reader reader) {
     this(reader, true);
   }
 
   /**
-   * Construct a new {@code JasReader} for JSON content to be read from the
+   * Construct a new {@code JsonReader} for JSON content to be read from the
    * {@code reader} parameter instance.
    *
    * @param reader The {@code Reader} from which JSON is read.
    * @param ignoreWhitespace If {@code ignoreWhitespace == false}, inter-token
    *          whitespace will <b>not</b> be skipped.
    */
-  public JasReader(final Reader reader, final boolean ignoreWhitespace) {
+  public JsonReader(final Reader reader, final boolean ignoreWhitespace) {
     super(reader, DEFAULT_BUFFER_SIZE);
     this.ignoreWhitespace = ignoreWhitespace;
   }
@@ -219,9 +218,9 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
    * @return The next JSON token, or {@code null} if the end of content has
    *         been reached.
    * @throws IOException If an I/O error occurs.
-   * @throws JasParseException If the content is not well formed.
+   * @throws JsonParseException If the content is not well formed.
    */
-  public String readToken() throws IOException, JasParseException {
+  public String readToken() throws IOException, JsonParseException {
     final int start;
     final int end;
     if (getPosition() == getEndPosition(index)) {
@@ -252,10 +251,10 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
    *
    * @return {@code true} if there are more chars to read.
    * @throws IOException If an I/O error occurs.
-   * @throws JasParseException If the content is not well formed.
+   * @throws JsonParseException If the content is not well formed.
    * @see #nextToken()
    */
-  private boolean hasRemainig() throws IOException, JasParseException {
+  private boolean hasRemainig() throws IOException, JsonParseException {
     if (index != -1 && getPosition() < getEndPosition(index))
       return true;
 
@@ -282,7 +281,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
    *         ({@code 0x00-0xffff}), or -1 if the end of the stream has been
    *         reached.
    * @throws IOException If an I/O error occurs.
-   * @throws JasParseException If the content is not well formed.
+   * @throws JsonParseException If the content is not well formed.
    * @see #readTokenStart()
    * @see #readToken()
    */
@@ -311,7 +310,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
    * @throws IndexOutOfBoundsException If {@code off} is negative, or
    *           {@code len} is negative, or {@code len} is greater than
    *           {@code cbuf.length - off}.
-   * @throws JasParseException If the content is not well formed.
+   * @throws JsonParseException If the content is not well formed.
    * @see #readTokenStart()
    * @see #readToken()
    */
@@ -354,7 +353,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
    * @throws IndexOutOfBoundsException If {@code off} is negative, or
    *           {@code len} is negative, or {@code len} is greater than
    *           {@code cbuf.length - off}.
-   * @throws JasParseException If the content is not well formed.
+   * @throws JsonParseException If the content is not well formed.
    * @see #readTokenStart()
    * @see #readToken()
    */
@@ -364,9 +363,9 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
   }
 
   /**
-   * Returns this JasReader, since it is itself an implementation of the {@link Iterator} interface.
+   * Returns this JsonReader, since it is itself an implementation of the {@link Iterator} interface.
    * The iterator iterates over the JSON token strings produced by
-   * {@code JasReader.readToken()}.
+   * {@code JsonReader.readToken()}.
    *
    * @return This instance.
    */
@@ -383,10 +382,10 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
    * @return {@code true} If the iteration has more tokens.
    * @throws IllegalStateException If an {@code IOException} occurs while
    *           reading from the underlying stream.
-   * @throws JasParseException If the content is not well formed.
+   * @throws JsonParseException If the content is not well formed.
    */
   @Override
-  public boolean hasNext() throws IllegalStateException, JasParseException {
+  public boolean hasNext() throws IllegalStateException, JsonParseException {
     if (index < size())
       return true;
 
@@ -406,10 +405,10 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
    * @throws NoSuchElementException If the iteration has no more tokens.
    * @throws IllegalStateException If an {@code IOException} occurs while
    *           reading from the underlying stream.
-   * @throws JasParseException If the content is not well formed.
+   * @throws JsonParseException If the content is not well formed.
    */
   @Override
-  public String next() throws IllegalStateException, JasParseException {
+  public String next() throws IllegalStateException, JsonParseException {
     if (!hasNext())
       throw new NoSuchElementException();
 
@@ -457,10 +456,10 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
    *
    * @return The start index of the next token.
    * @throws IOException If an I/O error occurs.
-   * @throws JasParseException If the content is not well formed.
+   * @throws JsonParseException If the content is not well formed.
    * @see #readTokenStart()
    */
-  private int nextToken() throws IOException, JasParseException {
+  private int nextToken() throws IOException, JsonParseException {
     int start = -1;
     if (index == -1) {
       // Perform the initial read-ahead
@@ -500,10 +499,10 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
    *
    * @return The start index of the next token.
    * @throws IOException If an I/O error occurs.
-   * @throws JasParseException If the content is not well formed.
+   * @throws JsonParseException If the content is not well formed.
    * @see #nextToken()
    */
-  protected int readTokenStart() throws IOException, JasParseException {
+  protected int readTokenStart() throws IOException, JsonParseException {
     if (0 < size() && getPosition() != getEndPosition(index))
       throw new IllegalStateException("Buffer position (" + getPosition() + ") misaligned with end position (" + getEndPosition(index) + ") on index (" + index + ")");
 
@@ -523,7 +522,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
       if (ch2 == ':' || ch1 != '"' || !Buffers.get(scope, depth)) {
         if (ch == '{' || ch == '[') {
           if (ch1 == '{')
-            throw new JasParseException("Expected character '}', but encountered '" + (char)ch + "'", getPosition() - 1);
+            throw new JsonParseException("Expected character '}', but encountered '" + (char)ch + "'", getPosition() - 1);
 
           if (ch == '{')
             Buffers.set(scope, ++depth, DEFAULT_SCOPE_RESIZE_FACTOR);
@@ -545,7 +544,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
           }
 
           if (expected != ch)
-            throw new JasParseException("Expected character '" + expected + "', but encountered '" + (char)ch + "'", getPosition() - 1);
+            throw new JsonParseException("Expected character '" + expected + "', but encountered '" + (char)ch + "'", getPosition() - 1);
 
           nextStart = getPosition();
           continue;
@@ -558,12 +557,12 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
         }
 
         if (depth == -1)
-          throw new JasParseException("Expected character '{' or '[', but encountered '" + (char)ch + "'", getPosition() - 1);
+          throw new JsonParseException("Expected character '{' or '[', but encountered '" + (char)ch + "'", getPosition() - 1);
 
         // read property key
         if (Buffers.get(scope, depth) && ch1 != ':') {
           if (ch != '"')
-            throw new JasParseException("Expected character '\"', but encountered '" + (char)ch + "'", getPosition() - 1);
+            throw new JsonParseException("Expected character '\"', but encountered '" + (char)ch + "'", getPosition() - 1);
 
           final int start = getPosition();
           ch = readQuoted();
@@ -571,7 +570,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
         }
       }
       else if (ch != ':') {
-        throw new JasParseException("Expected character ':', but encountered '" + (char)ch + "'", getPosition() - 1);
+        throw new JsonParseException("Expected character ':', but encountered '" + (char)ch + "'", getPosition() - 1);
       }
 
       // Read property value or array member
@@ -586,7 +585,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
     while ((ch = super.read()) != -1);
 
     if (depth >= 0)
-      throw new JasParseException("Missing closing scope character: '" + (Buffers.get(scope, depth) ? '}' : ']') + "'", getPosition());
+      throw new JsonParseException("Missing closing scope character: '" + (Buffers.get(scope, depth) ? '}' : ']') + "'", getPosition());
 
     return advance(ch, nextStart);
   }
@@ -630,9 +629,9 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
    * @param ch The first char to test whether it is not whitespace.
    * @return The first non-whitespace char.
    * @throws IOException If an I/O error occurs.
-   * @throws JasParseException If content was found that was not expected.
+   * @throws JsonParseException If content was found that was not expected.
    */
-  private int readNonWS(int ch) throws IOException, JasParseException {
+  private int readNonWS(int ch) throws IOException, JsonParseException {
     if (!Characters.isWhiteSpace(ch))
       return ch;
 
@@ -645,7 +644,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
       nextStart = start;
 
     if (depth == -1 && ch != -1)
-      throw new JasParseException("No content is expected at this point: " + (char)ch, getPosition() - 1);
+      throw new JsonParseException("No content is expected at this point: " + (char)ch, getPosition() - 1);
 
     return ch;
   }
@@ -655,7 +654,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
    *
    * @return The char after the first unescaped {@code '"'} char.
    * @throws IOException If an I/O error occurs.
-   * @throws JasParseException If the string is not terminated.
+   * @throws JsonParseException If the string is not terminated.
    */
   private int readQuoted() throws IOException {
     final int start = getPosition();
@@ -669,7 +668,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
         return super.read();
     }
 
-    throw new JasParseException("Unterminated string", start - 1);
+    throw new JsonParseException("Unterminated string", start - 1);
   }
 
   /**
@@ -678,9 +677,9 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
    * @param ch The first char to test whether it is a non-literal char.
    * @return The first non-literal char.
    * @throws IOException If an I/O error occurs.
-   * @throws JasParseException If the content is not well formed.
+   * @throws JsonParseException If the content is not well formed.
    */
-  private int readUnquoted(int ch) throws IOException, JasParseException {
+  private int readUnquoted(int ch) throws IOException, JsonParseException {
     // Read number
     if (ch == '-' || '0' <= ch && ch <= '9') {
       int first = ch;
@@ -689,15 +688,15 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
       for (int i = 0; (ch = super.read()) != -1; ++i, last = ch) {
         if (ch == '.') {
           if (first == '-' && i == 0)
-            throw new JasParseException("Integer component required before fraction part", getPosition() - 1);
+            throw new JsonParseException("Integer component required before fraction part", getPosition() - 1);
 
           if (hasDot)
-            throw new JasParseException("Illegal character: '" + (char)ch + "'", getPosition() - 1);
+            throw new JsonParseException("Illegal character: '" + (char)ch + "'", getPosition() - 1);
 
           hasDot = true;
         }
         else if (last == '0' && ch == '0' && i == (first == '-' ? 1 : 0)) {
-          throw new JasParseException("Leading zeros are not allowed", getPosition() - 2);
+          throw new JsonParseException("Leading zeros are not allowed", getPosition() - 2);
         }
         else if (ch < '0' || '9' < ch) {
           break;
@@ -705,10 +704,10 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
       }
 
       if (last == '.')
-        throw new JasParseException("Decimal point must be followed by one or more digits", getPosition() - 1);
+        throw new JsonParseException("Decimal point must be followed by one or more digits", getPosition() - 1);
 
       if (last == '-')
-        throw new JasParseException("Expected digit, but encountered '" + (char)ch + "'", getPosition() - 1);
+        throw new JsonParseException("Expected digit, but encountered '" + (char)ch + "'", getPosition() - 1);
 
       if (ch == 'e' || ch == 'E') {
         last = ch;
@@ -716,22 +715,22 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
           if (ch == '-' || ch == '+') {
             first = '~';
             if (i > 0)
-              throw new JasParseException("Illegal character: '" + (char)ch + "'", getPosition() - 1);
+              throw new JsonParseException("Illegal character: '" + (char)ch + "'", getPosition() - 1);
           }
           else if (ch < '0' || '9' < ch) {
             break;
           }
           else if (last == '0' && i == (first == '~' ? 2 : 1)) {
-            throw new JasParseException("Leading zeros are not allowed", getPosition() - 2);
+            throw new JsonParseException("Leading zeros are not allowed", getPosition() - 2);
           }
         }
 
         if (last == '-' || last == '+')
-          throw new JasParseException("Expected digit, but encountered '" + (char)ch + "'", getPosition() - 1);
+          throw new JsonParseException("Expected digit, but encountered '" + (char)ch + "'", getPosition() - 1);
       }
 
       if (ch != ']' && ch != '}' && ch != ',' && !Characters.isWhiteSpace(ch))
-        throw new JasParseException("Illegal character: '" + (char)ch + "'", getPosition() - 1);
+        throw new JsonParseException("Illegal character: '" + (char)ch + "'", getPosition() - 1);
 
       return ch;
     }
@@ -742,7 +741,7 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
         final char[] literal = literals[i];
         for (int j = 1; j < literal.length; ++j)
           if ((ch = super.read()) != literal[j])
-            throw new JasParseException("Illegal character: '" + (char)ch + "'", getPosition() - 1);
+            throw new JsonParseException("Illegal character: '" + (char)ch + "'", getPosition() - 1);
 
         ch = super.read();
         if (!isStructural(ch) && !Characters.isWhiteSpace(ch))
@@ -752,6 +751,6 @@ public class JasReader extends ReplayReader implements Iterable<String>, Iterato
       }
     }
 
-    throw new JasParseException("Illegal character: '" + (char)ch + "'", getPosition() - 1);
+    throw new JsonParseException("Illegal character: '" + (char)ch + "'", getPosition() - 1);
   }
 }
