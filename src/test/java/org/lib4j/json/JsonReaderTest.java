@@ -24,7 +24,7 @@ import java.io.StringReader;
 import java.nio.charset.StandardCharsets;
 
 import org.junit.Test;
-import org.lib4j.io.DecodingReader;
+import org.lib4j.io.UnicodeReader;
 import org.lib4j.io.Readers;
 import org.lib4j.json.JsonParseException;
 import org.lib4j.json.JsonReader;
@@ -145,7 +145,7 @@ public class JsonReaderTest {
   }
 
   protected static String readFile(final String jsonFileName) throws IOException {
-    return Readers.readFully(new DecodingReader(Thread.currentThread().getContextClassLoader().getResourceAsStream(jsonFileName), StandardCharsets.UTF_8));
+    return Readers.readFully(new UnicodeReader(Thread.currentThread().getContextClassLoader().getResourceAsStream(jsonFileName)));
   }
 
   protected void passFile(final String jsonFileName) throws IOException {
