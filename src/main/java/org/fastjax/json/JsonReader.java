@@ -1,4 +1,4 @@
-/* Copyright (c) 2018 lib4j
+/* Copyright (c) 2018 FastJAX
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,7 +14,7 @@
  * program. If not, see <http://opensource.org/licenses/MIT/>.
  */
 
-package org.lib4j.json;
+package org.fastjax.json;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -22,12 +22,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import org.lib4j.io.ReplayReader;
-import org.lib4j.util.ArrayIntList;
-import org.lib4j.util.ArrayLongList;
-import org.lib4j.util.Buffers;
-import org.lib4j.util.Characters;
-import org.lib4j.util.Numbers;
+import org.fastjax.util.ArrayIntList;
+import org.fastjax.util.ArrayLongList;
+import org.fastjax.util.Buffers;
+import org.fastjax.util.Characters;
+import org.fastjax.util.Numbers;
+import org.fastjax.io.ReplayReader;
 
 /**
  * Validating {@link Reader} and {@link Iterator} implementation for JSON

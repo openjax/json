@@ -1,4 +1,4 @@
-/* Copyright (c) 2018 lib4j
+/* Copyright (c) 2018 FastJAX
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,20 +14,17 @@
  * program. If not, see <http://opensource.org/licenses/MIT/>.
  */
 
-package org.lib4j.json;
+package org.fastjax.json;
 
 import static org.junit.Assert.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.StringReader;
-import java.nio.charset.StandardCharsets;
 
 import org.junit.Test;
-import org.lib4j.io.UnicodeReader;
-import org.lib4j.io.Readers;
-import org.lib4j.json.JsonParseException;
-import org.lib4j.json.JsonReader;
+import org.fastjax.io.Readers;
+import org.fastjax.io.UnicodeReader;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;

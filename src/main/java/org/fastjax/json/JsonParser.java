@@ -1,4 +1,4 @@
-/* Copyright (c) 2018 lib4j
+/* Copyright (c) 2018 FastJAX
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,11 +14,11 @@
  * program. If not, see <http://opensource.org/licenses/MIT/>.
  */
 
-package org.lib4j.json;
+package org.fastjax.json;
 
 import java.io.IOException;
 
-import org.lib4j.util.Characters;
+import org.fastjax.util.Characters;
 
 /**
  * Validating parser for JSON documents that asserts content conforms to the
