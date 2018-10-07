@@ -17,7 +17,7 @@
 package org.fastjax.json;
 
 /**
- * Handler interface used for parsing JSON with {@link JsonParser#parse()}.
+ * Handler interface used for parsing JSON with {@link JsonParser#parse(JsonHandler)}.
  */
 public interface JsonHandler {
   /**

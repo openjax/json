@@ -46,7 +46,7 @@ import org.fastjax.io.ReplayReader;
  * <li>Implements the {@link Iterable} interface, to sequentially iterate over
  * each token: {@link #iterator()}.</li>
  * <li>Indexes each token: {@link #getIndex()}.</li>
- * <li>Allows to read back previously read tokens: {@link #setIndex()}.</li>
+ * <li>Allows to read back previously read tokens: {@link #setIndex(int)}.</li>
  * <li>Support partial reads of tokens with {@link #read()},
  * {@link #read(char[])}. and {@link #read(char[], int, int)} methods.
  * </ul>
@@ -273,7 +273,7 @@ public class JsonReader extends ReplayReader implements Iterable<String>, Iterat
    * which they belong. Therefore, when partially reading a token with
    * {@code read()}, subsequent calls to {@code readToken()} will return <i>the
    * remaining characters of the token that have not yet been returned by
-   * {@code read()}. Characters read with this method undergo the same
+   * {@code read()}</i>. Characters read with this method undergo the same
    * token-level error checking as in {@link #readTokenStart()} or
    * {@link #readToken()}.
    *
@@ -297,8 +297,8 @@ public class JsonReader extends ReplayReader implements Iterable<String>, Iterat
    * which they belong. Therefore, when partially reading a token with
    * {@code read(char[],int,int)}, subsequent calls to {@code readToken()} will
    * return <i>the remaining characters of the token that have not yet been
-   * returned by {@code read()}. Characters read with this method undergo the
-   * same token-level error checking as in {@link #readTokenStart()} or
+   * returned by {@code read()}</i>. Characters read with this method undergo
+   * the same token-level error checking as in {@link #readTokenStart()} or
    * {@link #readToken()}.
    *
    * @param cbuf Destination buffer.
@@ -345,8 +345,6 @@ public class JsonReader extends ReplayReader implements Iterable<String>, Iterat
    * {@link #readToken()}.
    *
    * @param cbuf Destination buffer.
-   * @param off Offset at which to start storing characters.
-   * @param len Maximum number of characters to read.
    * @return The number of characters read, or -1 if the end of the stream has
    *         been reached.
    * @throws IOException If an I/O error occurs.
