@@ -182,7 +182,7 @@ public class JsonReader extends ReplayReader implements Iterable<String>, Iterat
    *
    * @param p The position.
    * @throws IllegalArgumentException If {@code p} is negative, or if {@code p}
-   *           exceeds the length of the underlying buffer.
+   *           is greater than the length of the underlying buffer.
    */
   protected void setPosition(final int p) {
     buffer.reset(p);
@@ -223,7 +223,7 @@ public class JsonReader extends ReplayReader implements Iterable<String>, Iterat
   public String readToken() throws IOException, JsonParseException {
     final int start;
     final int end;
-    if (getPosition() == getEndPosition(index)) {
+    if (index == -1 || getPosition() == getEndPosition(index)) {
       start = nextToken();
       end = getEndPosition(index);
     }
@@ -245,9 +245,8 @@ public class JsonReader extends ReplayReader implements Iterable<String>, Iterat
   }
 
   /**
-   * Supporting method for {@link #read()} and {@link #read(char[], int, int)}
-   * to advance to the next token if the end of the current token has been
-   * reached.
+   * Supporting method for {@link #read()} and {@link #read(char[],int,int)} to
+   * advance to the next token if the end of the current token has been reached.
    *
    * @return {@code true} if there are more chars to read.
    * @throws IOException If an I/O error occurs.
