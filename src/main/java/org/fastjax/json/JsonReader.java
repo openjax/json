@@ -60,12 +60,13 @@ public class JsonReader extends ReplayReader implements Iterable<String>, Iterat
   private static final double DEFAULT_SCOPE_RESIZE_FACTOR = 2;  // Resize factor for scope buffer
 
   /**
-   * Returns {@code true} if {@code ch} is a structural char, which is one of:
+   * Tests whether {@code ch} is a structural char, which is one of:
    *
    * <pre><code>{ } [ ] : ,</code></pre>
    *
-   * @param ch The char.
-   * @return {@code true} if {@code ch} is a structural char.
+   * @param ch The char to test.
+   * @return {@code true} if {@code ch} is a structural char; otherwise
+   *         {@code false}.
    */
   protected static boolean isStructural(final int ch) {
     return ch == '{' || ch == '}' || ch == '[' || ch == ']' || ch == ':' || ch == ',';
@@ -376,7 +377,7 @@ public class JsonReader extends ReplayReader implements Iterable<String>, Iterat
    * returns {@code true} if {@link #next} would return a token rather than
    * throw an exception).
    *
-   * @return {@code true} If the iteration has more tokens.
+   * @return {@code true} if the iteration has more tokens.
    * @throws IllegalStateException If an {@code IOException} occurs while
    *           reading from the underlying stream.
    * @throws JsonParseException If the content is not well formed.
