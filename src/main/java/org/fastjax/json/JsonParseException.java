@@ -35,8 +35,8 @@ public class JsonParseException extends RuntimeException {
    * offset. A detail message is a String that describes this particular
    * exception.
    *
-   * @param string the detail message
-   * @param errorOffset the position where the error is found while parsing.
+   * @param string The detail message.
+   * @param errorOffset The position where the error is found while parsing.
    */
   public JsonParseException(final String string, final int errorOffset) {
     super(string + " [errorOffset: " + errorOffset + "]");
