@@ -22,12 +22,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+import org.fastjax.io.ReplayReader;
 import org.fastjax.util.ArrayIntList;
 import org.fastjax.util.ArrayLongList;
 import org.fastjax.util.Buffers;
-import org.fastjax.util.Characters;
 import org.fastjax.util.Numbers;
-import org.fastjax.io.ReplayReader;
 
 /**
  * Validating {@link Reader} and {@link Iterator} implementation for JSON
@@ -52,6 +51,23 @@ import org.fastjax.io.ReplayReader;
  * </ul>
  */
 public class JsonReader extends ReplayReader implements Iterable<String>, Iterator<String> {
+  /**
+   * Tests whether the specified {@code int} is JSON whitespace char, which is
+   * one of:
+   *
+   * <pre>
+   * {@code ' '}, {@code '\n'}, {@code '\r'}, or {@code '\t'}
+   * </pre>
+   *
+   * @param ch The {@code int} to test.
+   * @return {@code true} if the specified {@code int} is an ANSI whitespace
+   *         char; otherwise {@code false}.
+   * @see <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC4627</a>
+   */
+  static boolean isWhitespace(final int ch) {
+    return ch == ' ' || ch == '\n' || ch == '\r' || ch == '\t';
+  }
+
   private static final char[][] literals = {{'n', 'u', 'l', 'l'}, {'t', 'r', 'u', 'e'}, {'f', 'a', 'l', 's', 'e'}};
 
   private static final int DEFAULT_BUFFER_SIZE = 2048;          // Number of characters in the JSON document
@@ -437,12 +453,12 @@ public class JsonReader extends ReplayReader implements Iterable<String>, Iterat
 
     // Advance the offset if the current index points to whitespace
     char ch = buf[getStartPosition(index)];
-    if (Characters.isWhiteSpace(ch))
+    if (isWhitespace(ch))
       ++offset;
 
     // Advance the offset if the offset itself points to whitespace
     while (offset++ < index)
-      if (!Characters.isWhiteSpace(ch = buf[getStartPosition(index + 1 - offset)]))
+      if (!isWhitespace(ch = buf[getStartPosition(index + 1 - offset)]))
         return ch;
 
     return -1;
@@ -630,11 +646,11 @@ public class JsonReader extends ReplayReader implements Iterable<String>, Iterat
    * @throws JsonParseException If content was found that was not expected.
    */
   private int readNonWS(int ch) throws IOException, JsonParseException {
-    if (!Characters.isWhiteSpace(ch))
+    if (!isWhitespace(ch))
       return ch;
 
     final int start = getPosition();
-    while (Characters.isWhiteSpace(ch) && (ch = super.read()) != -1);
+    while (isWhitespace(ch) && (ch = super.read()) != -1);
     if (index == -1)
       return ch;
 
@@ -727,7 +743,7 @@ public class JsonReader extends ReplayReader implements Iterable<String>, Iterat
           throw new JsonParseException("Expected digit, but encountered '" + (char)ch + "'", getPosition() - 1);
       }
 
-      if (ch != ']' && ch != '}' && ch != ',' && !Characters.isWhiteSpace(ch))
+      if (ch != ']' && ch != '}' && ch != ',' && !isWhitespace(ch))
         throw new JsonParseException("Illegal character: '" + (char)ch + "'", getPosition() - 1);
 
       return ch;
@@ -742,7 +758,7 @@ public class JsonReader extends ReplayReader implements Iterable<String>, Iterat
             throw new JsonParseException("Illegal character: '" + (char)ch + "'", getPosition() - 1);
 
         ch = super.read();
-        if (!isStructural(ch) && !Characters.isWhiteSpace(ch))
+        if (!isStructural(ch) && !isWhitespace(ch))
           break;
 
         return ch;
