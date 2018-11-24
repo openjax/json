@@ -168,6 +168,43 @@ public class JsonReaderTest {
   }
 
   @Test
+  public void testSetIndex() throws IOException {
+    try (final JsonReader reader = new JsonReader(new StringReader("  [false, true]"), true)) {
+      // Starting index of the reader is -1, because no tokens have been read
+      assertEquals(-1, reader.getIndex());
+      assertEquals(0, reader.size());
+
+      // First token is "[" (because whitespace is ignored), index=0
+      assertEquals("[", reader.readToken());
+      // Assert the index has been advanced properly
+      assertEquals(0, reader.getIndex());
+      // The buffered size of the reader will be 2, because the extra token is read ahead
+      assertEquals(2, reader.size());
+
+      try {
+        reader.setIndex(2);
+        fail("Expected IllegalArgumentException");
+      }
+      catch (final IllegalArgumentException e) {
+      }
+
+      // Move back to the beginning, to re-read the first token
+      reader.setIndex(-1);
+      // Read the first token with the Reader#read() method
+      assertEquals('[', reader.read());
+      // Assert the index has been advanced properly
+      assertEquals(0, reader.getIndex());
+
+      // Move back to the beginning, to re-read the first token
+      reader.setIndex(-1);
+      // Read the first token with the JsonReader#readToen() method
+      assertEquals("[", reader.readToken());
+      // Assert the index has been advanced properly
+      assertEquals(0, reader.getIndex());
+    }
+  }
+
+  @Test
   public void testScopeEnd() throws IOException {
     failString("  {", JsonParseException.class, "Missing closing scope character: '}' [errorOffset: 3]");
     failString("[[]", JsonParseException.class, "Missing closing scope character: ']' [errorOffset: 3]");

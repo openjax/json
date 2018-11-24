@@ -134,38 +134,57 @@ public class JsonReader extends ReplayReader implements Iterable<String>, Iterat
   }
 
   /**
-   * Sets the index for the next token to be read.
+   * Sets the token index of this reader, such that {@link #getIndex()} returns
+   * the specified index. Note, that calling {@link #readToken()} after this
+   * method will return the token with index {@code index + 1}.
    *
-   * @param index The index for the next token to be read.
-   * @throws IllegalArgumentException If {@code index < 0 || size() <= index}.
+   * @param index The index to be set.
+   * @throws IllegalArgumentException If {@code index < -1 || size() <= index}.
    */
   public void setIndex(final int index) {
     if (this.index == index)
       return;
 
-    if (index < 0 || size() <= index)
-      throw new IllegalArgumentException("Index out of range [0," + (size() - 1) + "]: " + index);
+    if (index < -1 || size() <= index)
+      throw new IllegalArgumentException("Index out of range [-1," + (size() - 1) + "]: " + index);
 
     setIndex0(index);
   }
 
   /**
-   * Supporting method to set the index for the next token to be read.
+   * Supporting method to set the index, such that {@link #getIndex()} returns
+   * the specified index. Since the index is one minus the next token index to
+   * be read, a special case is made for index = -1, because there is no
+   * previous "end position" for the first token.
    *
-   * @param index The index for the next token to be read.
-   * @return The start position of the token at {@code index}.
-   * @throws IndexOutOfBoundsException If {@code index < 0 || size() <= index}.
+   * @param index The index to be set.
+   * @return The start position of the token at {@code index + 1}.
+   * @throws IndexOutOfBoundsException If {@code index < -1 || size() <= index}.
    */
-  private int setIndex0(final int index) {
+  private int setIndex0(int index) {
     this.index = index;
-    setPosition(getEndPosition(index));
+    final int start;
+    if (index > -1) {
+      final long position = positions.get(index);
+      start = Numbers.Compound.dencodeInt(position, 0);
+      final int end = Numbers.Compound.dencodeInt(position, 1);
+      setPosition(end);
+      depth = depths.get(index);
+    }
+    else {
+      final long position = positions.get(++index);
+      start = Numbers.Compound.dencodeInt(position, 0);
+      setPosition(start);
+      depth = 0;
+    }
+
     scope = scopes.get(index);
-    depth = depths.get(index);
-    return getStartPosition(index);
+    return start;
   }
 
   /**
-   * Returns the number of tokens read thus far.
+   * Returns the number of tokens read thus far. The value returned by this
+   * method defines the upper bound of {@link #setIndex(int)}.
    *
    * @return The number of tokens read thus far.
    */
@@ -517,7 +536,7 @@ public class JsonReader extends ReplayReader implements Iterable<String>, Iterat
    * @see #nextToken()
    */
   protected int readTokenStart() throws IOException, JsonParseException {
-    if (0 < size() && getPosition() != getEndPosition(index))
+    if (0 < size() && index > -1 && getPosition() != getEndPosition(index))
       throw new IllegalStateException("Buffer position (" + getPosition() + ") misaligned with end position (" + getEndPosition(index) + ") on index (" + index + ")");
 
     // Fast return if there is no need to re-read an already read token
