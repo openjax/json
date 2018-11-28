@@ -22,7 +22,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import org.fastjax.io.ReplayReader;
 import org.fastjax.util.ArrayIntList;
 import org.fastjax.util.ArrayLongList;
 import org.fastjax.util.Buffers;
@@ -50,7 +49,7 @@ import org.fastjax.util.Numbers;
  * {@link #read(char[])}. and {@link #read(char[], int, int)} methods.
  * </ul>
  */
-public class JsonReader extends ReplayReader implements Iterable<String>, Iterator<String> {
+public class JsonReader extends JsonReplayReader implements Iterable<String>, Iterator<String> {
   /**
    * Tests whether the specified {@code int} is JSON whitespace char, which is
    * one of:

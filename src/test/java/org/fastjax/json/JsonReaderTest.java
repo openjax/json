@@ -42,6 +42,40 @@ public class JsonReaderTest {
     return random != null ? random : Math.random();
   }
 
+  private static String unescape(final String json) {
+    final StringBuilder builder = new StringBuilder();
+    for (int i = 0, len = json.length(); i < len; ++i) {
+      char ch = json.charAt(i);
+      if (ch == '\\') {
+        ch = json.charAt(++i);
+        if (ch == '"' || ch == '\\')
+          builder.append('\\');
+        else if (ch == 'n')
+          ch = '\n';
+        else if (ch == 'r')
+          ch = '\r';
+        else if (ch == 't')
+          ch = '\t';
+        else if (ch == 'b')
+          ch = '\b';
+        else if (ch == 'f')
+          ch = '\f';
+        else if (ch == 'u') {
+          final char[] unicode = new char[4];
+          for (int j = 0; j < unicode.length; ++j)
+            unicode[j] = json.charAt(i + j);
+
+          i += unicode.length;
+          ch = (char)Integer.parseInt(new String(unicode), 16);
+        }
+      }
+
+      builder.append(ch);
+    }
+
+    return builder.toString();
+  }
+
   private static String compact(final String json) throws IOException {
     final ByteArrayOutputStream out = new ByteArrayOutputStream();
     final JsonFactory factory = new JsonFactory();
@@ -75,6 +109,7 @@ public class JsonReaderTest {
   }
 
   private static void testString(final String json, final boolean testSetIndex, final boolean ignoreWhitespace) throws IOException {
+    final String unescaped = unescape(json);
     try (final JsonReader reader = new JsonReader(new StringReader(json), ignoreWhitespace)) {
       final StringBuilder builder = new StringBuilder();
       final int gap = (int)(json.length() / 100d);
@@ -131,12 +166,12 @@ public class JsonReaderTest {
         }
         else {
           // If the content is being re-read, ensure that the token is equal to what was read previously
-          final String expected = json.substring(reader.getPosition() - token.length(), reader.getPosition());
+          final String expected = unescaped.substring(reader.getPosition() - token.length(), reader.getPosition());
           assertEquals("ignoreWhitespace: " + ignoreWhitespace + ", Index: " + reader.getIndex() + ", Position: " + reader.getPosition(), expected, token);
         }
       }
 
-      final String expected = ignoreWhitespace ? compact(json.trim()).toString() : json.trim();
+      final String expected = ignoreWhitespace ? unescape(compact(json.trim()).toString()) : unescaped.trim();
       assertEquals("ignoreWhitespace: " + ignoreWhitespace, expected, builder.toString());
     }
   }
