@@ -100,11 +100,10 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
 
   /**
    * Construct a new {@code JsonReader} for JSON content to be read from the
-   * {@code reader} parameter instance, <b>that ignores inter-token
-   * whitespace</b>. This constructor is equivalent to calling
-   * {@code new JsonReader(reader, true)}.
+   * specified {@link Reader}, <b>that ignores inter-token whitespace</b>. This
+   * constructor is equivalent to calling {@code new JsonReader(reader, true)}.
    *
-   * @param reader The {@code Reader} from which JSON is read.
+   * @param reader The {@link Reader} from which JSON is to be read.
    */
   public JsonReader(final Reader reader) {
     this(reader, true);
@@ -112,9 +111,9 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
 
   /**
    * Construct a new {@code JsonReader} for JSON content to be read from the
-   * {@code reader} parameter instance.
+   * specified {@link Reader}.
    *
-   * @param reader The {@code Reader} from which JSON is read.
+   * @param reader The {@link Reader} from which JSON is to be read.
    * @param ignoreWhitespace If {@code ignoreWhitespace == false}, inter-token
    *          whitespace will <b>not</b> be skipped.
    */
@@ -252,7 +251,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    *
    * @return The next JSON token, or null if the end of content has been
    *         reached.
-   * @throws IOException If an I/O error occurs.
+   * @throws IOException If an I/O error has occurred.
    * @throws JsonParseException If the content is not well formed.
    */
   public String readToken() throws IOException, JsonParseException {
@@ -284,7 +283,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    * advance to the next token if the end of the current token has been reached.
    *
    * @return {@code true} if there are more chars to read.
-   * @throws IOException If an I/O error occurs.
+   * @throws IOException If an I/O error has occurred.
    * @throws JsonParseException If the content is not well formed.
    * @see #nextToken()
    */
@@ -314,7 +313,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    * @return The character read, as an integer in the range 0 to 65535
    *         ({@code 0x00-0xffff}), or -1 if the end of the stream has been
    *         reached.
-   * @throws IOException If an I/O error occurs.
+   * @throws IOException If an I/O error has occurred.
    * @throws JsonParseException If the content is not well formed.
    * @see #readTokenStart()
    * @see #readToken()
@@ -340,7 +339,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    * @param len Maximum number of characters to read.
    * @return The number of characters read, or -1 if the end of the stream has
    *         been reached.
-   * @throws IOException If an I/O error occurs.
+   * @throws IOException If an I/O error has occurred.
    * @throws IndexOutOfBoundsException If {@code off} is negative, or
    *           {@code len} is negative, or {@code len} is greater than
    *           {@code cbuf.length - off}.
@@ -381,7 +380,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    * @param cbuf Destination buffer.
    * @return The number of characters read, or -1 if the end of the stream has
    *         been reached.
-   * @throws IOException If an I/O error occurs.
+   * @throws IOException If an I/O error has occurred.
    * @throws IndexOutOfBoundsException If {@code off} is negative, or
    *           {@code len} is negative, or {@code len} is greater than
    *           {@code cbuf.length - off}.
@@ -487,7 +486,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    * start position of the token that was just read.
    *
    * @return The start index of the next token.
-   * @throws IOException If an I/O error occurs.
+   * @throws IOException If an I/O error has occurred.
    * @throws JsonParseException If the content is not well formed.
    * @see #readTokenStart()
    */
@@ -530,7 +529,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    * reached, this method returns -1.
    *
    * @return The start index of the next token.
-   * @throws IOException If an I/O error occurs.
+   * @throws IOException If an I/O error has occurred.
    * @throws JsonParseException If the content is not well formed.
    * @see #nextToken()
    */
@@ -660,7 +659,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    *
    * @param ch The first char to test whether it is not whitespace.
    * @return The first non-whitespace char.
-   * @throws IOException If an I/O error occurs.
+   * @throws IOException If an I/O error has occurred.
    * @throws JsonParseException If content was found that was not expected.
    */
   private int readNonWS(int ch) throws IOException, JsonParseException {
@@ -685,17 +684,17 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    * Read until the first unescaped {@code '"'} char.
    *
    * @return The char after the first unescaped {@code '"'} char.
-   * @throws IOException If an I/O error occurs.
+   * @throws IOException If an I/O error has occurred.
    * @throws JsonParseException If the string is not terminated.
    */
   private int readQuoted() throws IOException {
     final int start = getPosition();
-    boolean esacped = false;
+    boolean escaped = false;
     for (int ch; (ch = super.read()) != -1;) {
-      if (ch == '\\')
-        esacped = true;
-      else if (esacped)
-        esacped = false;
+      if (escaped)
+        escaped = false;
+      else if (ch == '\\')
+        escaped = true;
       else if (ch == '"')
         return super.read();
     }
@@ -708,7 +707,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    *
    * @param ch The first char to test whether it is a non-literal char.
    * @return The first non-literal char.
-   * @throws IOException If an I/O error occurs.
+   * @throws IOException If an I/O error has occurred.
    * @throws JsonParseException If the content is not well formed.
    */
   private int readUnquoted(int ch) throws IOException, JsonParseException {

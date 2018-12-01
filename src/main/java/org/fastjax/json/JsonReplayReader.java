@@ -33,10 +33,9 @@ import org.fastjax.io.ReplayReader;
  * point.</i></blockquote>
  * <p>
  * This implementation unescapes all string-literal codes except for the double
- * quote ({@code "\""}) and reverse solidus ({@code "\\"}), as these are
- * necessary to be able to differentiate the double quote from string
- * boundaries, and thus a reverse solidus from the escape character.
- * <p>
+ * quote ({@code "\""}) and reverse solidus ({@code "\\"}), as these characters
+ * are necessary to be able to differentiate the double quote from string
+ * boundaries, and thus the reverse solidus from the escape character.
  */
 class JsonReplayReader extends ReplayReader {
   private int pos = -1;
@@ -46,7 +45,7 @@ class JsonReplayReader extends ReplayReader {
    * Creates a new {@code JsonReplayReader} using the specified reader as its
    * source, and the provided initial size for the re-readable buffer.
    *
-   * @param in A Reader object providing the underlying stream.
+   * @param in A {@link Reader} providing the underlying stream.
    * @param initialSize An int specifying the initial buffer size of the
    *          re-readable buffer.
    * @throws IllegalArgumentException If {@code initialSize} is negative.
@@ -60,7 +59,7 @@ class JsonReplayReader extends ReplayReader {
    * Creates a new {@code JsonReplayReader} using the specified reader as its
    * source, and default initial size of 32 for the re-readable buffer.
    *
-   * @param in A Reader object providing the underlying stream.
+   * @param in A {@link Reader} providing the underlying stream.
    * @throws NullPointerException If {@code in} is null.
    */
   public JsonReplayReader(final Reader in) {

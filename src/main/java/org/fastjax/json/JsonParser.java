@@ -44,7 +44,7 @@ public class JsonParser {
    *         if parsing was aborted by a handler callback. If a handler aborts
    *         parsing, subsequent calls to {@link #parse(JsonHandler)} will resume
    *         from the position at which parsing was previously aborted.
-   * @throws IOException If an I/O error occurs.
+   * @throws IOException If an I/O error has occurred.
    * @throws JsonParseException If the content is not a well formed JSON term.
    * @throws NullPointerException If {@code handler} is null.
    */
