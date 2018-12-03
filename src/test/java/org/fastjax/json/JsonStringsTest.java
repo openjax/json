@@ -22,6 +22,11 @@ import org.junit.Test;
 
 public class JsonStringsTest {
   @Test
+  public void testEscape() {
+    assertEquals("\\\\\\\"\\r\\t\\f\\b\\u001a\\u0006\\n", JsonStrings.escape("\\\"\r\t\f\b" + (char)0x1A + (char)0x06 + "\n").toString());
+  }
+
+  @Test
   public void testUnescape() {
     assertEquals("\\", JsonStrings.unescape("\\\\"));
     assertEquals("\"", JsonStrings.unescape("\\\""));

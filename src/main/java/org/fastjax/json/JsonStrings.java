@@ -21,6 +21,63 @@ package org.fastjax.json;
  */
 public final class JsonStrings {
   /**
+   * Escapes characters in the specified string that must be escaped as defined
+   * in <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section
+   * 2.5</a>. This includes quotation mark ({@code "\""}), reverse solidus
+   * ({@code "\\"}), and the control characters ({@code U+0000} through
+   * {@code U+001F}).
+   * <p>
+   * This method escapes the following characters in string-literal two-character form:
+   * <blockquote>
+   * <code>{'\n', '\r', '\t', '\b', '\f'} -&gt; {"\\n", "\\r", "\\t", "\\b", "\\f"}</code>
+   * </blockquote>
+   *
+   * @param string The string to be escaped.
+   * @return The escaped representation of the specified string.
+   * @see #unescape(String)
+   */
+  public static StringBuilder escape(final String string) {
+    final StringBuilder builder = new StringBuilder(string.length());
+    for (int i = 0, len = string.length(); i < len; ++i) {
+      final char ch = string.charAt(i);
+      /*
+       * From RFC 4627, "All Unicode characters may be placed within the
+       * quotation marks except for the characters that must be escaped:
+       * quotation mark, reverse solidus, and the control characters (U+0000
+       * through U+001F)."
+       */
+      switch (ch) {
+        case '"':
+        case '\\':
+          builder.append('\\').append(ch);
+          break;
+        case '\n':
+          builder.append("\\n");
+          break;
+        case '\r':
+          builder.append("\\r");
+          break;
+        case '\t':
+          builder.append("\\t");
+          break;
+        case '\b':
+          builder.append("\\b");
+          break;
+        case '\f':
+          builder.append("\\f");
+          break;
+        default:
+          if (ch <= 0x1F)
+            builder.append(String.format("\\u%04x", (int)ch));
+          else
+            builder.append(ch);
+      }
+    }
+
+    return builder;
+  }
+
+  /**
    * Unescapes string-literal unicode ({@code "\u000A"}) and two-character
    * ({@code "\n"}) escape codes, <i>except for the double quote ({@code "\""})
    * and reverse solidus ({@code "\\"})</i>, into UTF-8 as defined in
