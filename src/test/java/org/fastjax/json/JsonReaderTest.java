@@ -436,9 +436,4 @@ public class JsonReaderTest {
   public void testPets() throws IOException {
     passFile("pets.json");
   }
-
-  @Test
-  public void testUnescape() throws IOException {
-    passFile("unescape.json");
-  }
 }
