@@ -227,7 +227,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    *
    * @return The buffer position of the most recently read char.
    */
-  protected int getPosition() {
+  public int getPosition() {
     return buffer.size();
   }
 
