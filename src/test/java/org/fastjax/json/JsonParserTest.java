@@ -16,10 +16,10 @@
 
 package org.fastjax.json;
 
-import static org.junit.Assert.*;
-
 import java.io.IOException;
 import java.io.StringReader;
+
+import static org.junit.Assert.*;
 
 public class JsonParserTest extends JsonReaderTest {
   private static JsonHandler newHandler(final String expected, final StringBuilder builder) {
@@ -39,19 +39,19 @@ public class JsonParserTest extends JsonReaderTest {
       public boolean structural(final char ch) {
         assertTrue(JsonReader.isStructural(ch));
         builder.append(ch);
-        return Math.random() < .6 ? true : false;
+        return Math.random() < .6;
       }
 
       @Override
       public boolean characters(final char[] chars, final int start, final int end) {
         builder.append(chars, start, end - start);
-        return Math.random() < .6 ? true : false;
+        return Math.random() < .6;
       }
 
       @Override
       public boolean whitespace(final char[] chars, final int start, final int end) {
         builder.append(chars, start, end - start);
-        return Math.random() < .6 ? true : false;
+        return Math.random() < .6;
       }
 
       @Override
