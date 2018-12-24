@@ -51,7 +51,7 @@ class JsonReplayReader extends ReplayReader {
    * @throws IllegalArgumentException If {@code initialSize} is negative.
    * @throws NullPointerException If {@code in} is null.
    */
-  public JsonReplayReader(final Reader in, final int initialSize) {
+  JsonReplayReader(final Reader in, final int initialSize) {
     super(in, initialSize);
   }
 
@@ -62,7 +62,7 @@ class JsonReplayReader extends ReplayReader {
    * @param in A {@link Reader} providing the underlying stream.
    * @throws NullPointerException If {@code in} is null.
    */
-  public JsonReplayReader(final Reader in) {
+  JsonReplayReader(final Reader in) {
     super(in);
   }
 

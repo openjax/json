@@ -17,6 +17,7 @@
 package org.fastjax.json;
 
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * Validating parser for JSON documents that asserts content conforms to the
@@ -30,9 +31,10 @@ public class JsonParser {
    * {@code reader} parameter instance.
    *
    * @param reader The {@code Reader} from which JSON is read.
+   * @throws NullPointerException If {@code reader} is null.
    */
   public JsonParser(final JsonReader reader) {
-    this.reader = reader;
+    this.reader = Objects.requireNonNull(reader);
   }
 
   /**

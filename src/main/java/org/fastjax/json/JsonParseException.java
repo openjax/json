@@ -17,9 +17,9 @@
 package org.fastjax.json;
 
 /**
- * JAS (Json API Simple) exception signifying a violation of JSON document
- * well-formed criteria as expressed by the
- * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627</a> specification.
+ * An exception signaling a violation of JSON document well-formed criteria as
+ * expressed by the <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627</a>
+ * specification.
  */
 public class JsonParseException extends RuntimeException {
   private static final long serialVersionUID = -3748964303015135629L;

@@ -243,7 +243,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    * <li>A number that matches:<pre>{@code ^-?(([0-9])|([1-9][0-9]+))(\.[\.0-9]+)?([eE][+-]?(([0-9])|([1-9][0-9]+)))?$}</pre></li>
    * <li>A literal that matches:<pre>{@code ^(null)|(true)|(false)$}</pre></li></ul></li>
    * <li>Whitespace:<ul>
-   * <li>Whitespace that matches:<pre>{@code ^[ \n\r\t]+$}</pre></li></ul></li>
+   * <li>Whitespace string that matches:<pre>{@code ^[ \n\r\t]+$}</pre></li></ul></li>
    * </ul>
    * <p>
    * <b>Note:</b> If this instance ignores whitespace, this method will skip
