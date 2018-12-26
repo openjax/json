@@ -47,7 +47,7 @@ The `JsonParser` is a validating parser for JSON documents that asserts content 
 
 ### JavaDocs
 
-JavaDocs are available [here](https://www.fastjax.org/javadocs/org/fastjax/json/package-summary.html).
+JavaDocs are available [here](https://json.fastjax.org/javadocs/).
 
 ## Contributing
 
