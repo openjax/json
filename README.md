@@ -1,10 +1,10 @@
-# FastJAX JSON
+# OpenJAX Classic JSON
 
 **Java API Extension for JSON Parsing**
 
 ## Introduction
 
-The FastJAX JSON library provides `JsonReader` and `JsonParser`.
+The OpenJAX Classic JSON library provides `JsonReader` and `JsonParser`.
 
 ## JsonReader
 
@@ -47,7 +47,7 @@ The `JsonParser` is a validating parser for JSON documents that asserts content 
 
 ### JavaDocs
 
-JavaDocs are available [here](https://json.fastjax.org/javadocs/).
+JavaDocs are available [here](https://classic.openjax.org/json/apidocs/).
 
 ## Contributing
 

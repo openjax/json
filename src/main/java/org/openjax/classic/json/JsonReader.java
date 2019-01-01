@@ -1,4 +1,4 @@
-/* Copyright (c) 2018 FastJAX
+/* Copyright (c) 2018 OpenJAX
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,7 +14,7 @@
  * program. If not, see <http://opensource.org/licenses/MIT/>.
  */
 
-package org.fastjax.json;
+package org.openjax.classic.json;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -22,10 +22,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import org.fastjax.util.ArrayIntList;
-import org.fastjax.util.ArrayLongList;
-import org.fastjax.util.Buffers;
-import org.fastjax.util.Numbers;
+import org.openjax.classic.util.ArrayIntList;
+import org.openjax.classic.util.ArrayLongList;
+import org.openjax.classic.util.Buffers;
+import org.openjax.classic.util.Numbers;
 
 /**
  * Validating {@link Reader} and {@link Iterator} implementation for JSON

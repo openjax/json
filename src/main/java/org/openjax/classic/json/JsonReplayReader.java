@@ -1,4 +1,4 @@
-/* Copyright (c) 2018 FastJAX
+/* Copyright (c) 2018 OpenJAX
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,12 +14,12 @@
  * program. If not, see <http://opensource.org/licenses/MIT/>.
  */
 
-package org.fastjax.json;
+package org.openjax.classic.json;
 
 import java.io.IOException;
 import java.io.Reader;
 
-import org.fastjax.io.ReplayReader;
+import org.openjax.classic.io.ReplayReader;
 
 /**
  * A {@link ReplayReader} that transparently unescapes string-literal unicode
