@@ -14,12 +14,12 @@
  * program. If not, see <http://opensource.org/licenses/MIT/>.
  */
 
-package org.openjax.classic.json;
+package org.openjax.standard.json;
 
 import java.io.IOException;
 import java.io.Reader;
 
-import org.openjax.classic.io.ReplayReader;
+import org.openjax.standard.io.ReplayReader;
 
 /**
  * A {@link ReplayReader} that transparently unescapes string-literal unicode

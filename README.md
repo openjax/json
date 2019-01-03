@@ -1,10 +1,10 @@
-# OpenJAX Classic JSON
+# OpenJAX Standard JSON
 
 **Java API Extension for JSON Parsing**
 
 ## Introduction
 
-The OpenJAX Classic JSON library provides `JsonReader` and `JsonParser`.
+The OpenJAX Standard JSON library provides `JsonReader` and `JsonParser`.
 
 ## JsonReader
 
@@ -47,7 +47,7 @@ The `JsonParser` is a validating parser for JSON documents that asserts content 
 
 ### JavaDocs
 
-JavaDocs are available [here](https://classic.openjax.org/json/apidocs/).
+JavaDocs are available [here](https://standard.openjax.org/json/apidocs/).
 
 ## Contributing
 

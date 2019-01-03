@@ -14,7 +14,7 @@
  * program. If not, see <http://opensource.org/licenses/MIT/>.
  */
 
-package org.openjax.classic.json;
+package org.openjax.standard.json;
 
 import static org.junit.Assert.*;
 
@@ -23,8 +23,11 @@ import java.io.IOException;
 import java.io.StringReader;
 
 import org.junit.Test;
-import org.openjax.classic.io.Readers;
-import org.openjax.classic.io.UnicodeReader;
+import org.openjax.standard.io.Readers;
+import org.openjax.standard.io.UnicodeReader;
+import org.openjax.standard.json.JsonParseException;
+import org.openjax.standard.json.JsonReader;
+import org.openjax.standard.json.JsonStrings;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;

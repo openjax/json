@@ -14,7 +14,7 @@
  * program. If not, see <http://opensource.org/licenses/MIT/>.
  */
 
-package org.openjax.classic.json;
+package org.openjax.standard.json;
 
 import java.io.IOException;
 import java.util.Objects;

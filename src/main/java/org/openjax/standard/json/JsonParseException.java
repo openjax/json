@@ -14,7 +14,7 @@
 * program. If not, see <http://opensource.org/licenses/MIT/>.
 */
 
-package org.openjax.classic.json;
+package org.openjax.standard.json;
 
 /**
  * An exception signaling a violation of JSON document well-formed criteria as

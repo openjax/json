@@ -14,7 +14,7 @@
  * program. If not, see <http://opensource.org/licenses/MIT/>.
  */
 
-package org.openjax.classic.json;
+package org.openjax.standard.json;
 
 /**
  * Handler interface used for parsing JSON with {@link JsonParser#parse(JsonHandler)}.

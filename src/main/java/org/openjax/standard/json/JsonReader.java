@@ -14,7 +14,7 @@
  * program. If not, see <http://opensource.org/licenses/MIT/>.
  */
 
-package org.openjax.classic.json;
+package org.openjax.standard.json;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -22,10 +22,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import org.openjax.classic.util.ArrayIntList;
-import org.openjax.classic.util.ArrayLongList;
-import org.openjax.classic.util.Buffers;
-import org.openjax.classic.util.Numbers;
+import org.openjax.standard.util.ArrayIntList;
+import org.openjax.standard.util.ArrayLongList;
+import org.openjax.standard.util.Buffers;
+import org.openjax.standard.util.Numbers;
 
 /**
  * Validating {@link Reader} and {@link Iterator} implementation for JSON

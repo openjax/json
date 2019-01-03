@@ -14,11 +14,12 @@
  * program. If not, see <http://opensource.org/licenses/MIT/>.
  */
 
-package org.openjax.classic.json;
+package org.openjax.standard.json;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import org.openjax.standard.json.JsonStrings;
 
 public class JsonStringsTest {
   @Test

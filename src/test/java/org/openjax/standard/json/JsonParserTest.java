@@ -14,12 +14,18 @@
  * program. If not, see <http://opensource.org/licenses/MIT/>.
  */
 
-package org.openjax.classic.json;
+package org.openjax.standard.json;
 
 import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.io.StringReader;
+
+import org.openjax.standard.json.JsonHandler;
+import org.openjax.standard.json.JsonParseException;
+import org.openjax.standard.json.JsonParser;
+import org.openjax.standard.json.JsonReader;
+import org.openjax.standard.json.JsonStrings;
 
 public class JsonParserTest extends JsonReaderTest {
   private static JsonHandler newHandler(final String expected, final StringBuilder builder) {
