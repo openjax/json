@@ -1,6 +1,8 @@
 # OpenJAX Standard JSON
 
-**Java API Extension for JSON Parsing**
+> Java API Extension for JSON Parsing
+
+[![Build Status](https://travis-ci.org/openjax/standard-json.png)](https://travis-ci.org/openjax/standard-json)
 
 ## Introduction
 
