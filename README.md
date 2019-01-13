@@ -3,6 +3,7 @@
 > Java API Extension for JSON Parsing
 
 [![Build Status](https://travis-ci.org/openjax/standard-json.png)](https://travis-ci.org/openjax/standard-json)
+[![Coverage Status](https://coveralls.io/repos/github/openjax/standard-json/badge.svg)](https://coveralls.io/github/openjax/standard-json)
 
 ## Introduction
 
