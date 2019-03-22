@@ -65,7 +65,7 @@ public final class JSON {
     final StringBuilder builder = new StringBuilder("{");
     if (object != null)
       for (final Map.Entry<String,?> entry : object.entrySet())
-        builder.append("\n  \"").append(JsonStrings.escape(entry.getKey())).append("\": ").append(encode(entry.getValue())).append(",");
+        builder.append("\n  \"").append(JsonStrings.escape(entry.getKey())).append("\": ").append(encode(entry.getValue())).append(',');
 
     if (builder.length() > 1)
       builder.setCharAt(builder.length() - 1, '\n');
@@ -101,7 +101,7 @@ public final class JSON {
       final String s = JSON.encode(member);
       if (member instanceof Map || member instanceof List) {
         if (i > 0)
-          builder.append(" ");
+          builder.append(' ');
         else
           backUp = true;
       }
@@ -109,7 +109,7 @@ public final class JSON {
         builder.append("\n  ");
       }
 
-      builder.append(backUp ? s.replaceAll("\n  ", "\n") : s).append(",");
+      builder.append(backUp ? s.replaceAll("\n  ", "\n") : s).append(',');
     }
 
     if (builder.length() > 1) {
