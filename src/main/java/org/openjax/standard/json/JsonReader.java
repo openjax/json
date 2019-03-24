@@ -761,7 +761,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
       }
 
       if (ch != ']' && ch != '}' && ch != ',' && !isWhitespace(ch))
-        throw new JsonParseException("Illegal character: '" + (char)ch + "'", getPosition() - 1);
+        throw new JsonParseException(ch == -1 ? "Unexpected end of document" : "Illegal character: '" + (char)ch + "'", getPosition() - 1);
 
       return ch;
     }
@@ -772,7 +772,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
         final char[] literal = literals[i];
         for (int j = 1; j < literal.length; ++j)
           if ((ch = super.read()) != literal[j])
-            throw new JsonParseException("Illegal character: '" + (char)ch + "'", getPosition() - 1);
+            throw new JsonParseException(ch == -1 ? "Unexpected end of document" : "Illegal character: '" + (char)ch + "'", getPosition() - 1);
 
         ch = super.read();
         if (!isStructural(ch) && !isWhitespace(ch))
@@ -782,6 +782,6 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
       }
     }
 
-    throw new JsonParseException("Illegal character: '" + (char)ch + "'", getPosition() - 1);
+    throw new JsonParseException(ch == -1 ? "Unexpected end of document" : "Illegal character: '" + (char)ch + "'", getPosition() - 1);
   }
 }
