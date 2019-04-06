@@ -25,9 +25,6 @@ import java.io.StringReader;
 import org.junit.Test;
 import org.openjax.standard.io.Readers;
 import org.openjax.standard.io.UnicodeReader;
-import org.openjax.standard.json.JsonParseException;
-import org.openjax.standard.json.JsonReader;
-import org.openjax.standard.json.JsonStrings;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;

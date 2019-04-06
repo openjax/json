@@ -19,7 +19,6 @@ package org.openjax.standard.json;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import org.openjax.standard.json.JsonStrings;
 
 public class JsonStringsTest {
   @Test

@@ -23,7 +23,6 @@ import java.io.StringReader;
 
 import org.junit.Test;
 import org.openjax.standard.io.Readers;
-import org.openjax.standard.json.JsonReplayReader;
 
 public class JsonReplayReaderTest {
   @Test
