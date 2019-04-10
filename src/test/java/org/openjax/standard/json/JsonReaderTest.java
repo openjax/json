@@ -143,7 +143,7 @@ public class JsonReaderTest {
   }
 
   protected static String readFile(final String jsonFileName) throws IOException {
-    return Readers.readFully(new UnicodeReader(Thread.currentThread().getContextClassLoader().getResourceAsStream(jsonFileName)));
+    return Readers.readFully(new UnicodeReader(ClassLoader.getSystemClassLoader().getResourceAsStream(jsonFileName)));
   }
 
   protected void passFile(final String jsonFileName) throws IOException {
