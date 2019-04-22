@@ -28,22 +28,21 @@ import org.openjax.standard.util.Buffers;
 import org.openjax.standard.util.Numbers;
 
 /**
- * Validating {@link Reader} and {@link Iterator} implementation for JSON
- * streams that reads JSON tokens sequentially, while asserting the content
- * conforms to the <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627</a>
- * specification.
+ * Validating {@link Reader} for JSON streams that reads JSON tokens
+ * sequentially, while asserting the content conforms to the
+ * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627</a> specification.
  * <p>
  * This implementation provides the following features:
  * <ul>
- * <li>Regular read of JSON tokens, sequentially returning each token:
- * {@link #readToken()}. (Please see {@link #readToken()} for a definition of:
- * {@code token}.</li>
- * <li>Optimized read of JSON tokens, sequentially returning only the starting
- * position of each token: {@link #readTokenStart()}. (This position can be
- * dereferenced via: {@link JsonReader#buf()}).</li>
+ * <li>Regular read of JSON tokens, sequentially returning each token
+ * {@code String}: {@link #readToken()}. (Please see {@link #readToken()} for a
+ * definition of: {@code token}).</li>
+ * <li>Optimized read of JSON tokens, sequentially returning the {@code int}
+ * starting position of each token: {@link #readTokenStart()}. (This position
+ * can be dereferenced via: {@link JsonReader#buf()}).</li>
  * <li>Implements the {@link Iterable} interface, to sequentially iterate over
  * each token: {@link #iterator()}.</li>
- * <li>Indexes each token: {@link #getIndex()}.</li>
+ * <li>Caches and indexes each token: {@link #getIndex()}.</li>
  * <li>Allows to read back previously read tokens: {@link #setIndex(int)}.</li>
  * <li>Support partial reads of tokens with {@link #read()},
  * {@link #read(char[])}. and {@link #read(char[], int, int)} methods.
