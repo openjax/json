@@ -4,6 +4,8 @@
 
 [![Build Status](https://travis-ci.org/openjax/standard-json.png)](https://travis-ci.org/openjax/standard-json)
 [![Coverage Status](https://coveralls.io/repos/github/openjax/standard-json/badge.svg)](https://coveralls.io/github/openjax/standard-json)
+[![Javadocs](https://www.javadoc.io/badge/org.openjax.standard/json.svg)](https://www.javadoc.io/doc/org.openjax.standard/json)
+[![Released Version](https://img.shields.io/maven-central/v/org.openjax.standard/json.svg)](https://mvnrepository.com/artifact/org.openjax.standard/json)
 
 ## Introduction
 
@@ -47,10 +49,6 @@ The `JsonParser` is a validating parser for JSON documents that asserts content 
 | &nbsp;&nbsp;A literal that matches: | `^(null)\|(true)\|(false)$` |
 | **Whitespace** | |
 | &nbsp;&nbsp;Whitespace string that matches: | `^[ \n\r\t]+$` |
-
-### JavaDocs
-
-JavaDocs are available [here](https://standard.openjax.org/json/apidocs/).
 
 ## Contributing
 
