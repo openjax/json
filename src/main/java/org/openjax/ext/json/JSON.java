@@ -14,7 +14,7 @@
  * program. If not, see <http://opensource.org/licenses/MIT/>.
  */
 
-package org.openjax.standard.json;
+package org.openjax.ext.json;
 
 import java.util.List;
 import java.util.Map;

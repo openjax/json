@@ -14,7 +14,7 @@
  * program. If not, see <http://opensource.org/licenses/MIT/>.
  */
 
-package org.openjax.standard.json;
+package org.openjax.ext.json;
 
 import static org.junit.Assert.*;
 
@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.io.StringReader;
 
 import org.junit.Test;
-import org.openjax.standard.io.Readers;
+import org.openjax.ext.io.Readers;
 
 public class JsonReplayReaderTest {
   @Test

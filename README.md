@@ -1,15 +1,15 @@
-# OpenJAX Standard JSON
+# OpenJAX Extensions JSON
 
 > Java API Extension for JSON Parsing
 
-[![Build Status](https://travis-ci.org/openjax/standard-json.png)](https://travis-ci.org/openjax/standard-json)
-[![Coverage Status](https://coveralls.io/repos/github/openjax/standard-json/badge.svg)](https://coveralls.io/github/openjax/standard-json)
-[![Javadocs](https://www.javadoc.io/badge/org.openjax.standard/json.svg)](https://www.javadoc.io/doc/org.openjax.standard/json)
-[![Released Version](https://img.shields.io/maven-central/v/org.openjax.standard/json.svg)](https://mvnrepository.com/artifact/org.openjax.standard/json)
+[![Build Status](https://travis-ci.org/openjax/ext-json.png)](https://travis-ci.org/openjax/ext-json)
+[![Coverage Status](https://coveralls.io/repos/github/openjax/ext-json/badge.svg)](https://coveralls.io/github/openjax/ext-json)
+[![Javadocs](https://www.javadoc.io/badge/org.openjax.ext/json.svg)](https://www.javadoc.io/doc/org.openjax.ext/json)
+[![Released Version](https://img.shields.io/maven-central/v/org.openjax.ext/json.svg)](https://mvnrepository.com/artifact/org.openjax.ext/json)
 
 ## Introduction
 
-The OpenJAX Standard JSON library provides `JsonReader` and `JsonParser`.
+The OpenJAX Extensions JSON library provides `JsonReader` and `JsonParser`.
 
 ## JsonReader
 
