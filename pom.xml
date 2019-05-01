@@ -26,7 +26,10 @@
   </parent>
   <artifactId>json</artifactId>
   <version>0.9.1-SNAPSHOT</version>
-  <name>${project.groupId}:${project.artifactId}</name>
+  <name>OpenJAX Extensions JSON</name>
+  <description>
+    Java API Extension for JSON parsing, providing a JsonReader and JsonParser.
+  </description>
   <dependencies>
     <dependency>
       <groupId>org.openjax.ext</groupId>
