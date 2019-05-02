@@ -14,7 +14,7 @@
  * program. If not, see <http://opensource.org/licenses/MIT/>.
  */
 
-package org.openjax.ext.json;
+package org.openjax.json;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -22,10 +22,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import org.openjax.ext.util.ArrayIntList;
-import org.openjax.ext.util.ArrayLongList;
-import org.openjax.ext.util.Buffers;
-import org.openjax.ext.util.Numbers;
+import org.openjax.util.ArrayIntList;
+import org.openjax.util.ArrayLongList;
+import org.openjax.util.Buffers;
+import org.openjax.util.Numbers;
 
 /**
  * Validating {@link Reader} for JSON streams that reads JSON tokens

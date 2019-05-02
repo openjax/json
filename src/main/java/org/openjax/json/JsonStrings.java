@@ -14,7 +14,7 @@
  * program. If not, see <http://opensource.org/licenses/MIT/>.
  */
 
-package org.openjax.ext.json;
+package org.openjax.json;
 
 /**
  * Utility functions for operations pertaining to JSON strings.
