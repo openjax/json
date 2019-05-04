@@ -22,10 +22,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import org.openjax.util.ArrayIntList;
-import org.openjax.util.ArrayLongList;
-import org.openjax.util.Buffers;
-import org.openjax.util.Numbers;
+import org.libj.util.ArrayIntList;
+import org.libj.util.ArrayLongList;
+import org.libj.util.Buffers;
+import org.libj.util.Numbers;
 
 /**
  * Validating {@link Reader} for JSON streams that reads JSON tokens

@@ -23,8 +23,8 @@ import java.io.IOException;
 import java.io.StringReader;
 
 import org.junit.Test;
-import org.openjax.io.Readers;
-import org.openjax.io.UnicodeReader;
+import org.libj.io.Readers;
+import org.libj.io.UnicodeReader;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;

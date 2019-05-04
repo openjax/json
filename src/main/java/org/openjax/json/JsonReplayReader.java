@@ -19,7 +19,7 @@ package org.openjax.json;
 import java.io.IOException;
 import java.io.Reader;
 
-import org.openjax.io.ReplayReader;
+import org.libj.io.ReplayReader;
 
 /**
  * A {@link ReplayReader} that transparently unescapes string-literal unicode

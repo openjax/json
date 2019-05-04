@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.io.StringReader;
 
 import org.junit.Test;
-import org.openjax.io.Readers;
+import org.libj.io.Readers;
 
 public class JsonReplayReaderTest {
   @Test
