@@ -28,7 +28,7 @@
   <version>0.9.1-SNAPSHOT</version>
   <name>OpenJAX JSON</name>
   <description>
-    Java API Extension for JSON parsing, providing a JsonReader and JsonParser.
+    API for parsing JSON documents.
   </description>
   <dependencies>
     <dependency>
