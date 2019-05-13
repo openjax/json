@@ -52,7 +52,7 @@ The `JsonParser` is a validating parser for JSON documents that asserts content 
 
 ## Contributing
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Pull requests are welcome. For major changes, please [open an issue](../../issues) first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
 
