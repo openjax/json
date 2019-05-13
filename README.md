@@ -1,7 +1,5 @@
 # OpenJAX JSON
 
-> Java API Extension for JSON Parsing
-
 [![Build Status](https://travis-ci.org/openjax/json.png)](https://travis-ci.org/openjax/json)
 [![Coverage Status](https://coveralls.io/repos/github/openjax/json/badge.svg)](https://coveralls.io/github/openjax/json)
 [![Javadocs](https://www.javadoc.io/badge/org.openjax/json.svg)](https://www.javadoc.io/doc/org.openjax/json)
