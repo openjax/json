@@ -1,4 +1,4 @@
-# OpenJAX JSON
+# JSON
 
 [![Build Status](https://travis-ci.org/openjax/json.png)](https://travis-ci.org/openjax/json)
 [![Coverage Status](https://coveralls.io/repos/github/openjax/json/badge.svg)](https://coveralls.io/github/openjax/json)
