@@ -127,10 +127,10 @@ public final class JsonTypes {
 
       if (last == 'e' || last == 'E')
         throw new JsonParseException("\"" + last + "\" must be followed by one or more digits", i);
-
-      if (ch < '0' || '9' < ch)
-        throw new JsonParseException("Expected digit, but encountered '" + (char)ch + "'", i);
     }
+
+    if (ch < '0' || '9' < ch)
+      throw new JsonParseException("Expected digit, but encountered '" + (char)ch + "'", i);
 
     return isDecimal ? new BigDecimal(string) : expStart == -1 ? new BigInteger(string) : new BigDecimal(string).toBigInteger();
   }
