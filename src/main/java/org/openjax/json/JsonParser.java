@@ -59,7 +59,7 @@ public class JsonParser {
       final boolean abort;
       if (end - start == 1 && JsonReader.isStructural(reader.buf()[start]))
         abort = !handler.structural(reader.buf()[start]);
-      else if (JsonReader.isWhitespace(reader.buf()[start]))
+      else if (JsonTypes.isWhitespace(reader.buf()[start]))
         abort = !handler.whitespace(reader.buf(), start, end);
       else
         abort = !handler.characters(reader.buf(), start, end);

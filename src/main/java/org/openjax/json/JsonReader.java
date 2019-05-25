@@ -49,23 +49,6 @@ import org.libj.util.Numbers;
  * </ul>
  */
 public class JsonReader extends JsonReplayReader implements Iterable<String>, Iterator<String> {
-  /**
-   * Tests whether the specified {@code int} is JSON whitespace char, which is
-   * one of:
-   *
-   * <pre>
-   * {@code ' '}, {@code '\n'}, {@code '\r'}, or {@code '\t'}
-   * </pre>
-   *
-   * @param ch The {@code int} to test.
-   * @return {@code true} if the specified {@code int} is an ANSI whitespace
-   *         char; otherwise {@code false}.
-   * @see <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC4627</a>
-   */
-  static boolean isWhitespace(final int ch) {
-    return ch == ' ' || ch == '\n' || ch == '\r' || ch == '\t';
-  }
-
   private static final char[][] literals = {{'n', 'u', 'l', 'l'}, {'t', 'r', 'u', 'e'}, {'f', 'a', 'l', 's', 'e'}};
 
   private static final int DEFAULT_BUFFER_SIZE = 2048;          // Number of characters in the JSON document
@@ -239,7 +222,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    * <li>A string that matches:<pre>^".*"$</pre></li></ul></li>
    * <li>A property or array member value:<ul>
    * <li>A string that matches:<pre>^".*"$</pre></li>
-   * <li>A number that matches:<pre>{@code ^-?(([0-9])|([1-9][0-9]+))(\.[\.0-9]+)?([eE][+-]?(([0-9])|([1-9][0-9]+)))?$}</pre></li>
+   * <li>A number that matches:<pre>{@code ^-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?([1-9]\d*))?$}</pre></li>
    * <li>A literal that matches:<pre>{@code ^(null)|(true)|(false)$}</pre></li></ul></li>
    * <li>Whitespace:<ul>
    * <li>Whitespace string that matches:<pre>{@code ^[ \n\r\t]+$}</pre></li></ul></li>
@@ -469,12 +452,12 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
 
     // Advance the offset if the current index points to whitespace
     char ch = buf[getStartPosition(index)];
-    if (isWhitespace(ch))
+    if (JsonTypes.isWhitespace(ch))
       ++offset;
 
     // Advance the offset if the offset itself points to whitespace
     while (offset++ < index)
-      if (!isWhitespace(ch = buf[getStartPosition(index + 1 - offset)]))
+      if (!JsonTypes.isWhitespace(ch = buf[getStartPosition(index + 1 - offset)]))
         return ch;
 
     return -1;
@@ -662,11 +645,11 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    * @throws JsonParseException If content was found that was not expected.
    */
   private int readNonWS(int ch) throws IOException, JsonParseException {
-    if (!isWhitespace(ch))
+    if (!JsonTypes.isWhitespace(ch))
       return ch;
 
     final int start = getPosition();
-    while (isWhitespace(ch) && (ch = super.read()) != -1);
+    while (JsonTypes.isWhitespace(ch) && (ch = super.read()) != -1);
     if (index == -1)
       return ch;
 
@@ -725,19 +708,16 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
 
           hasDot = true;
         }
-        else if (last == '0' && ch == '0' && i == (first == '-' ? 1 : 0)) {
-          throw new JsonParseException("Leading zeros are not allowed", getPosition() - 2);
-        }
         else if (ch < '0' || '9' < ch) {
           break;
+        }
+        else if (last == '0' && i == (first == '-' ? 1 : 0)) {
+          throw new JsonParseException("Leading zeros are not allowed", getPosition() - 2);
         }
       }
 
       if (last == '.')
         throw new JsonParseException("Decimal point must be followed by one or more digits", getPosition() - 1);
-
-      if (last == '-')
-        throw new JsonParseException("Expected digit, but encountered '" + (char)ch + "'", getPosition() - 1);
 
       if (ch == 'e' || ch == 'E') {
         last = ch;
@@ -755,11 +735,14 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
           }
         }
 
+        if (last == 'e' || last == 'E')
+          throw new JsonParseException("\"" + last + "\" must be followed by one or more digits", getPosition() - 1);
+
         if (last == '-' || last == '+')
           throw new JsonParseException("Expected digit, but encountered '" + (char)ch + "'", getPosition() - 1);
       }
 
-      if (ch != ']' && ch != '}' && ch != ',' && !isWhitespace(ch))
+      if (ch != ']' && ch != '}' && ch != ',' && !JsonTypes.isWhitespace(ch))
         throw new JsonParseException(ch == -1 ? "Unexpected end of document" : "Illegal character: '" + (char)ch + "'", getPosition() - 1);
 
       return ch;
@@ -774,7 +757,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
             throw new JsonParseException(ch == -1 ? "Unexpected end of document" : "Illegal character: '" + (char)ch + "'", getPosition() - 1);
 
         ch = super.read();
-        if (!isStructural(ch) && !isWhitespace(ch))
+        if (!isStructural(ch) && !JsonTypes.isWhitespace(ch))
           break;
 
         return ch;

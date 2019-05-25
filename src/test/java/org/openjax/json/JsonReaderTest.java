@@ -75,7 +75,7 @@ public class JsonReaderTest {
   }
 
   private static void testString(final String json, final boolean testSetIndex, final boolean ignoreWhitespace) throws IOException {
-    final String unescaped = JsonStrings.unescapeForString(json);
+    final String unescaped = JsonTypes.unescapeForString(json);
     try (final JsonReader reader = new JsonReader(new StringReader(json), ignoreWhitespace)) {
       final StringBuilder builder = new StringBuilder();
       final int gap = (int)(json.length() / 100d);
@@ -137,7 +137,7 @@ public class JsonReaderTest {
         }
       }
 
-      final String expected = ignoreWhitespace ? JsonStrings.unescapeForString(compact(json.trim()).toString()) : unescaped.trim();
+      final String expected = ignoreWhitespace ? JsonTypes.unescapeForString(compact(json.trim()).toString()) : unescaped.trim();
       assertEquals("ignoreWhitespace: " + ignoreWhitespace, expected, builder.toString());
     }
   }
@@ -286,7 +286,7 @@ public class JsonReaderTest {
     failString("{\"foo\": 001}", JsonParseException.class, "Leading zeros are not allowed [errorOffset: 8]");
     failString("{\"foo\": 0.}", JsonParseException.class, "Decimal point must be followed by one or more digits [errorOffset: 10]");
     failString("{\"foo\": 0.0.}", JsonParseException.class, "Illegal character: '.' [errorOffset: 11]");
-    failString("{\"foo\": --0}", JsonParseException.class, "Expected digit, but encountered '-' [errorOffset: 9]");
+    failString("{\"foo\": --0}", JsonParseException.class, "Illegal character: '-' [errorOffset: 9]");
     failString("{\"foo\": 10E-}", JsonParseException.class, "Expected digit, but encountered '}' [errorOffset: 12]");
     failString("{\"foo\": 10E+}", JsonParseException.class, "Expected digit, but encountered '}' [errorOffset: 12]");
     failString("{\"foo\": 10E--}", JsonParseException.class, "Illegal character: '-' [errorOffset: 12]");

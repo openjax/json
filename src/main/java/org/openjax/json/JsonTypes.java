@@ -16,10 +16,125 @@
 
 package org.openjax.json;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
 /**
- * Utility functions for operations pertaining to JSON strings.
+ * Utility functions for operations pertaining to JSON types.
  */
-public final class JsonStrings {
+public final class JsonTypes {
+  /**
+   * Tests whether the specified {@code int} is JSON whitespace char, which is
+   * one of:
+   *
+   * <pre>
+   * {@code ' '}, {@code '\n'}, {@code '\r'}, or {@code '\t'}
+   * </pre>
+   *
+   * @param ch The {@code int} to test.
+   * @return {@code true} if the specified {@code int} is an ANSI whitespace
+   *         char; otherwise {@code false}.
+   * @see <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC4627</a>
+   */
+  public static boolean isWhitespace(final int ch) {
+    return ch == ' ' || ch == '\n' || ch == '\r' || ch == '\t';
+  }
+
+  /**
+   * Parses a number (as an integer) from the specified string by the rules
+   * defined in <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section
+   * 2.4</a>.
+   *
+   * @param string The string to parse.
+   * @return A {@code BigInteger} representing the parsed integer.
+   * @throws JsonParseException If a parsing error has occurred.
+   * @throws IllegalArgumentException If the specified string is empty.
+   * @throws NullPointerException If the specified string is null.
+   */
+  public static BigInteger parseInteger(final String string) throws JsonParseException {
+    return (BigInteger)parseNumber(string, false);
+  }
+
+  /**
+   * Parses a number (as a decimal) from the specified string by the rules
+   * defined in <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section
+   * 2.4</a>.
+   *
+   * @param string The string to parse.
+   * @return A {@code BigDecimal} representing the parsed decimal.
+   * @throws JsonParseException If a parsing error has occurred.
+   * @throws IllegalArgumentException If the specified string is empty.
+   * @throws NullPointerException If the specified string is null.
+   */
+  public static BigDecimal parseDecimal(final String string) throws JsonParseException {
+    return (BigDecimal)parseNumber(string, true);
+  }
+
+  static Number parseNumber(final String string, final boolean isDecimal) throws JsonParseException {
+    if (string.length() == 0)
+      throw new IllegalArgumentException("Empty string");
+
+    int i = 0;
+    int ch = string.charAt(i);
+    if (ch != '-' && (ch < '0'|| '9' < ch))
+      throw new JsonParseException("Illegal first character: '" + (char)ch + "'", i);
+
+    int first = ch;
+    int last = first;
+    final int len = string.length();
+    for (boolean hasDot = false; ++i < len; last = ch) {
+      ch = string.charAt(i);
+      if (isDecimal && ch == '.') {
+        if (first == '-' && i == 1)
+          throw new JsonParseException("Integer component required before fraction part", i);
+
+        if (hasDot)
+          throw new JsonParseException("Illegal character: '" + (char)ch + "'", i);
+
+        hasDot = true;
+      }
+      else if (ch < '0' || '9' < ch) {
+        break;
+      }
+      else if (last == '0' && i == (first == '-' ? 2 : 1)) {
+        throw new JsonParseException("Leading zeros are not allowed", i - 1);
+      }
+    }
+
+    if (isDecimal && last == '.')
+      throw new JsonParseException("Decimal point must be followed by one or more digits", i);
+
+    int expStart = -1;
+    if (i < len) {
+      if (ch != 'e' && ch != 'E')
+        throw new JsonParseException("Illegal character: '" + (char)ch + "'", i);
+
+      last = ch;
+      for (expStart = i + 1; ++i < len; last = ch) {
+        ch = string.charAt(i);
+        if (ch == '-' || ch == '+') {
+          first = '~';
+          if (i > expStart)
+            throw new JsonParseException("Illegal character: '" + (char)ch + "'", i);
+        }
+        else if (ch < '0' || '9' < ch) {
+          break;
+        }
+        else if (last == '0' && i == expStart + (first == '~' ? 2 : 1)) {
+          throw new JsonParseException("Leading zeros are not allowed", i - 1);
+        }
+      }
+
+      if (last == 'e' || last == 'E')
+        throw new JsonParseException("\"" + last + "\" must be followed by one or more digits", i);
+
+      if (ch < '0' || '9' < ch)
+        throw new JsonParseException("Expected digit, but encountered '" + (char)ch + "'", i);
+    }
+
+    return isDecimal ? new BigDecimal(string) : expStart == -1 ? new BigInteger(string) : new BigDecimal(string).toBigInteger();
+  }
+
   /**
    * Escapes characters in the specified string that must be escaped as defined
    * in <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section
@@ -170,6 +285,6 @@ public final class JsonStrings {
     return builder.toString();
   }
 
-  private JsonStrings() {
+  private JsonTypes() {
   }
 }

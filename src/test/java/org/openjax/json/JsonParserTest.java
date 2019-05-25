@@ -31,7 +31,7 @@ public class JsonParserTest extends JsonReaderTest {
 
       @Override
       public void endDocument() {
-        assertEquals(JsonStrings.unescapeForString(expected.trim()), builder.toString());
+        assertEquals(JsonTypes.unescapeForString(expected.trim()), builder.toString());
         builder.setLength(0);
       }
 
