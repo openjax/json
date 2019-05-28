@@ -72,7 +72,9 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
   private final ArrayLongList positions = new ArrayLongList(DEFAULT_TOKENS_SIZE);
   private final ArrayList<long[]> scopes = new ArrayList<>(DEFAULT_SCOPE_SIZE);
   private final ArrayIntList depths = new ArrayIntList(DEFAULT_SCOPE_SIZE);
+  /** The index of the token last read */
   private int index = -1;
+  private int markedIndex = index;
 
   private long[] scope = new long[DEFAULT_SCOPE_SIZE];
   private int depth = -1;
@@ -105,8 +107,6 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
   }
 
   /**
-   * Returns the index of the most recently read token.
-   *
    * @return The index of the most recently read token.
    */
   public int getIndex() {
@@ -205,8 +205,6 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
   }
 
   /**
-   * Returns the buffer position of the most recently read char.
-   *
    * @return The buffer position of the most recently read char.
    */
   public int getPosition() {
@@ -279,6 +277,18 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
 
     setPosition(start);
     return true;
+  }
+
+  @Override
+  public void mark(final int readlimit) {
+    markedIndex = getIndex();
+    super.mark(readlimit);
+  }
+
+  @Override
+  public void reset() {
+    setIndex(markedIndex);
+    super.reset();
   }
 
   /**
@@ -434,13 +444,13 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
   }
 
   /**
-   * Returns the nearest non-whitespace token that is {@code offset} distance
-   * back from {@code index}.
+   * Returns the index of nearest non-whitespace token that is {@code offset}
+   * distance back from {@link #index}.
    *
    * @param offset The offset back from {@code index} of the first
    *          non-whitespace token to check.
-   * @return The nearest non-whitespace token that is {@code offset} distance
-   *         back from {@code index}.
+   * @return The index of nearest non-whitespace token that is {@code offset}
+   *         distance back from {@link #index}.
    */
   private int nearestNonWsToken(int offset) {
     if (index < offset)
@@ -604,8 +614,6 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
   }
 
   /**
-   * Returns the {@code char[]} buffer of the underlying {@code ReplayReader}.
-   *
    * @return The {@code char[]} buffer of the underlying {@code ReplayReader}.
    */
   protected char[] buf() {

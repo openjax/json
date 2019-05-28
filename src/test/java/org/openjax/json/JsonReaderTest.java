@@ -25,12 +25,16 @@ import java.io.StringReader;
 import org.junit.Test;
 import org.libj.io.Readers;
 import org.libj.io.UnicodeReader;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 
 public class JsonReaderTest {
+  private static final Logger logger = LoggerFactory.getLogger(JsonReaderTest.class);
+
   private static boolean testIterator = true;
   private static boolean testReadBack = true;
   private static boolean testReadChar = true;
@@ -294,6 +298,45 @@ public class JsonReaderTest {
     failString("{\"foo\": 10E+1.}", JsonParseException.class, "Illegal character: '.' [errorOffset: 13]");
     failString("{\"foo\": 10E01}", JsonParseException.class, "Leading zeros are not allowed [errorOffset: 11]");
     failString("{\"foo\": 10E+01}", JsonParseException.class, "Leading zeros are not allowed [errorOffset: 12]");
+  }
+
+  @Test
+  public void testMarkReset() throws IOException {
+    final String json = "{\"a\": \"$\", \"b\": 5, \"c\": false, \"d\": [], \"e\": {}}";
+    final JsonReader reader = new JsonReader(new StringReader(json));
+    for (int i = 0; i < 2; ++i)
+      logger.debug(reader.readToken());
+
+    reader.mark(-1);
+    for (int i = 0; i < 10; ++i, reader.reset()) {
+      reader.readToken();
+      assertEquals("\"$\"", reader.readToken());
+    }
+
+    for (int i = 0; i < 3; ++i)
+      logger.debug(reader.readToken());
+
+    logger.debug(String.valueOf((char)reader.read()));
+    reader.mark(-1);
+    for (int i = 0; i < 10; ++i, reader.reset()) {
+      assertEquals("b\"", reader.readToken());
+      assertEquals(":", reader.readToken());
+      assertEquals("5", reader.readToken());
+    }
+
+    for (int i = 0; i < 6; ++i)
+      logger.debug(reader.readToken());
+
+    for (int i = 0; i < 3; ++i)
+      logger.debug(String.valueOf((char)reader.read()));
+
+    reader.mark(-1);
+    for (int i = 0; i < 10; ++i, reader.reset()) {
+      assertEquals("se", reader.readToken());
+      assertEquals(",", reader.readToken());
+      assertEquals("\"d\"", reader.readToken());
+      Readers.readFully(reader);
+    }
   }
 
   @Test
