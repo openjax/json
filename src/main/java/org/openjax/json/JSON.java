@@ -30,7 +30,7 @@ public final class JSON {
       return "null";
 
     if (obj instanceof String)
-      return JsonTypes.escape((String)obj).insert(0, '"').append('"').toString();
+      return JsonUtil.escape((String)obj).insert(0, '"').append('"').toString();
 
     if (obj instanceof Boolean || obj instanceof Number)
       return obj.toString();
@@ -65,7 +65,7 @@ public final class JSON {
     final StringBuilder builder = new StringBuilder("{");
     if (object != null)
       for (final Map.Entry<String,?> entry : object.entrySet())
-        builder.append("\n  \"").append(JsonTypes.escape(entry.getKey())).append("\": ").append(encode(entry.getValue())).append(',');
+        builder.append("\n  \"").append(JsonUtil.escape(entry.getKey())).append("\": ").append(encode(entry.getValue())).append(',');
 
     if (builder.length() > 1)
       builder.setCharAt(builder.length() - 1, '\n');

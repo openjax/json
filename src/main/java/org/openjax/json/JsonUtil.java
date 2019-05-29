@@ -20,9 +20,22 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 /**
- * Utility functions for operations pertaining to JSON types.
+ * Utility functions for operations pertaining to JSON.
  */
-public final class JsonTypes {
+public final class JsonUtil {
+  /**
+   * Tests whether {@code ch} is a structural char, which is one of:
+   *
+   * <pre><code>{ } [ ] : ,</code></pre>
+   *
+   * @param ch The char to test.
+   * @return {@code true} if {@code ch} is a structural char; otherwise
+   *         {@code false}.
+   */
+  public static boolean isStructural(final int ch) {
+    return ch == '{' || ch == '}' || ch == '[' || ch == ']' || ch == ':' || ch == ',';
+  }
+
   /**
    * Tests whether the specified {@code int} is JSON whitespace char, which is
    * one of:
@@ -285,6 +298,6 @@ public final class JsonTypes {
     return builder.toString();
   }
 
-  private JsonTypes() {
+  private JsonUtil() {
   }
 }

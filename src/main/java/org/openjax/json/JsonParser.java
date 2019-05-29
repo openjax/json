@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 /**
- * Validating parser for JSON documents that asserts content conforms to the
+ * Parser for JSON documents that asserts content conforms to the
  * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627</a> specification.
  */
 public class JsonParser {
@@ -38,14 +38,15 @@ public class JsonParser {
   }
 
   /**
-   * Parse the JSON document.
+   * Parse the JSON document with the provided {@code JsonHandler} callback
+   * instance.
    *
    * @param handler The {@code JsonHandler} instance for handling content
    *          callbacks.
    * @return {@code true} if the document has been read entirely. {@code false}
    *         if parsing was aborted by a handler callback. If a handler aborts
-   *         parsing, subsequent calls to {@link #parse(JsonHandler)} will resume
-   *         from the position at which parsing was previously aborted.
+   *         parsing, subsequent calls to {@link #parse(JsonHandler)} will
+   *         resume from the position at which parsing was previously aborted.
    * @throws IOException If an I/O error has occurred.
    * @throws JsonParseException If the content is not a well formed JSON term.
    * @throws NullPointerException If {@code handler} is null.
@@ -56,16 +57,17 @@ public class JsonParser {
 
     for (int start; (start = reader.readTokenStart()) != -1;) {
       final int end = reader.getPosition();
-      final boolean abort;
-      if (end - start == 1 && JsonReader.isStructural(reader.buf()[start]))
-        abort = !handler.structural(reader.buf()[start]);
-      else if (JsonTypes.isWhitespace(reader.buf()[start]))
-        abort = !handler.whitespace(reader.buf(), start, end);
+      final char ch = reader.buf()[start];
+      final boolean proceed;
+      if (end - start == 1 && JsonUtil.isStructural(ch))
+        proceed = handler.structural(ch);
+      else if (JsonUtil.isWhitespace(ch))
+        proceed = handler.whitespace(reader.buf(), start, end);
       else
-        abort = !handler.characters(reader.buf(), start, end);
+        proceed = handler.characters(reader.buf(), start, end);
 
-      if (!abort)
-        return abort;
+      if (proceed)
+        return false;
     }
 
     handler.endDocument();

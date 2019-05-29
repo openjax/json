@@ -31,13 +31,13 @@ public class JsonParserTest extends JsonReaderTest {
 
       @Override
       public void endDocument() {
-        assertEquals(JsonTypes.unescapeForString(expected.trim()), builder.toString());
+        assertEquals(JsonUtil.unescapeForString(expected.trim()), builder.toString());
         builder.setLength(0);
       }
 
       @Override
       public boolean structural(final char ch) {
-        assertTrue(JsonReader.isStructural(ch));
+        assertTrue(JsonUtil.isStructural(ch));
         builder.append(ch);
         return Math.random() < .6;
       }

@@ -48,8 +48,8 @@ public interface JsonHandler {
    * <li>A string that matches:<pre>^".*"$</pre></li></ul></li>
    * <li>A property or array member value:<ul>
    * <li>A string that matches:<pre>^".*"$</pre></li>
-   * <li>A number that matches:<pre>{@code ^-?(([0-9])|([1-9][0-9]+))(\.[\.0-9]+)?([eE][+-]?(([0-9])|([1-9][0-9]+)))?$}</pre></li>
-   * <li>A literal that matches:<pre>{@code ^(null)|(true)|(false)$}</pre></li></ul></li>
+   * <li>A number that matches:<pre>{@code ^-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?([1-9]\d*))?$}</pre></li>
+   * <li>A literal that matches:<pre>{@code ^null|true|false$}</pre></li></ul></li>
    * </ul>
    *
    * @param chars A reference to the underlying {@code char[]} buffer.

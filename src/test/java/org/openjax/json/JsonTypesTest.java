@@ -27,22 +27,22 @@ public class JsonTypesTest {
   @Test
   public void testIsWhitespace() {
     for (int i = 0; i < whitespace.length; ++i)
-      assertTrue(JsonTypes.isWhitespace(whitespace[i]));
+      assertTrue(JsonUtil.isWhitespace(whitespace[i]));
 
     for (int i = 0; i < 100; ++i)
-      assertFalse(JsonTypes.isWhitespace(Strings.getRandomAlpha(1).charAt(0)));
+      assertFalse(JsonUtil.isWhitespace(Strings.getRandomAlpha(1).charAt(0)));
   }
 
   private static void testPass(final String number, final boolean isDecimal) {
     if (isDecimal)
-      JsonTypes.parseDecimal(number);
+      JsonUtil.parseDecimal(number);
     else
-      JsonTypes.parseInteger(number);
+      JsonUtil.parseInteger(number);
   }
 
   private static void testFail(final Class<? extends Exception> cls, final String number) {
     try {
-      JsonTypes.parseDecimal(number);
+      JsonUtil.parseDecimal(number);
       fail("Expected " + cls.getSimpleName());
     }
     catch (final Exception e) {
@@ -124,34 +124,34 @@ public class JsonTypesTest {
 
   @Test
   public void testEscape() {
-    assertEquals("\\\\\\\"\\r\\t\\f\\b\\u001a\\u0006\\n", JsonTypes.escape("\\\"\r\t\f\b" + (char)0x1A + (char)0x06 + "\n").toString());
+    assertEquals("\\\\\\\"\\r\\t\\f\\b\\u001a\\u0006\\n", JsonUtil.escape("\\\"\r\t\f\b" + (char)0x1A + (char)0x06 + "\n").toString());
   }
 
   @Test
   public void testUnescape() {
-    assertEquals("\\", JsonTypes.unescape("\\\\"));
-    assertEquals("\"", JsonTypes.unescape("\\\""));
-    assertEquals("\n", JsonTypes.unescape("\\n"));
-    assertEquals("\r", JsonTypes.unescape("\\r"));
-    assertEquals("\t", JsonTypes.unescape("\\t"));
-    assertEquals("\f", JsonTypes.unescape("\\f"));
-    assertEquals("\b", JsonTypes.unescape("\\b"));
-    assertEquals("ĥ", JsonTypes.unescape("\\u0125"));
-    assertEquals("Ħ", JsonTypes.unescape("\\u0126"));
-    assertEquals("\\\"\r\t\f\bĥĦ\n", JsonTypes.unescape("\\\\\\\"\\r\\t\\f\\b\\u0125\\u0126\\n"));
+    assertEquals("\\", JsonUtil.unescape("\\\\"));
+    assertEquals("\"", JsonUtil.unescape("\\\""));
+    assertEquals("\n", JsonUtil.unescape("\\n"));
+    assertEquals("\r", JsonUtil.unescape("\\r"));
+    assertEquals("\t", JsonUtil.unescape("\\t"));
+    assertEquals("\f", JsonUtil.unescape("\\f"));
+    assertEquals("\b", JsonUtil.unescape("\\b"));
+    assertEquals("ĥ", JsonUtil.unescape("\\u0125"));
+    assertEquals("Ħ", JsonUtil.unescape("\\u0126"));
+    assertEquals("\\\"\r\t\f\bĥĦ\n", JsonUtil.unescape("\\\\\\\"\\r\\t\\f\\b\\u0125\\u0126\\n"));
   }
 
   @Test
   public void testUnescapeForString() {
-    assertEquals("\\\\", JsonTypes.unescapeForString("\\\\"));
-    assertEquals("\\\"", JsonTypes.unescapeForString("\\\""));
-    assertEquals("\n", JsonTypes.unescapeForString("\\n"));
-    assertEquals("\r", JsonTypes.unescapeForString("\\r"));
-    assertEquals("\t", JsonTypes.unescapeForString("\\t"));
-    assertEquals("\f", JsonTypes.unescapeForString("\\f"));
-    assertEquals("\b", JsonTypes.unescapeForString("\\b"));
-    assertEquals("ĥ", JsonTypes.unescapeForString("\\u0125"));
-    assertEquals("Ħ", JsonTypes.unescapeForString("\\u0126"));
-    assertEquals("\\\\\\\"\r\t\f\bĥĦ\n", JsonTypes.unescapeForString("\\\\\\\"\\r\\t\\f\\b\\u0125\\u0126\\n"));
+    assertEquals("\\\\", JsonUtil.unescapeForString("\\\\"));
+    assertEquals("\\\"", JsonUtil.unescapeForString("\\\""));
+    assertEquals("\n", JsonUtil.unescapeForString("\\n"));
+    assertEquals("\r", JsonUtil.unescapeForString("\\r"));
+    assertEquals("\t", JsonUtil.unescapeForString("\\t"));
+    assertEquals("\f", JsonUtil.unescapeForString("\\f"));
+    assertEquals("\b", JsonUtil.unescapeForString("\\b"));
+    assertEquals("ĥ", JsonUtil.unescapeForString("\\u0125"));
+    assertEquals("Ħ", JsonUtil.unescapeForString("\\u0126"));
+    assertEquals("\\\\\\\"\r\t\f\bĥĦ\n", JsonUtil.unescapeForString("\\\\\\\"\\r\\t\\f\\b\\u0125\\u0126\\n"));
   }
 }

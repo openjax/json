@@ -79,7 +79,7 @@ public class JsonReaderTest {
   }
 
   private static void testString(final String json, final boolean testSetIndex, final boolean ignoreWhitespace) throws IOException {
-    final String unescaped = JsonTypes.unescapeForString(json);
+    final String unescaped = JsonUtil.unescapeForString(json);
     try (final JsonReader reader = new JsonReader(new StringReader(json), ignoreWhitespace)) {
       final StringBuilder builder = new StringBuilder();
       final int gap = (int)(json.length() / 100d);
@@ -141,7 +141,7 @@ public class JsonReaderTest {
         }
       }
 
-      final String expected = ignoreWhitespace ? JsonTypes.unescapeForString(compact(json.trim()).toString()) : unescaped.trim();
+      final String expected = ignoreWhitespace ? JsonUtil.unescapeForString(compact(json.trim()).toString()) : unescaped.trim();
       assertEquals("ignoreWhitespace: " + ignoreWhitespace, expected, builder.toString());
     }
   }
