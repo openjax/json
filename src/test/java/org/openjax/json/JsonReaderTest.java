@@ -141,7 +141,7 @@ public class JsonReaderTest {
         }
       }
 
-      final String expected = ignoreWhitespace ? JsonUtil.unescapeForString(compact(json.trim()).toString()) : unescaped.trim();
+      final String expected = ignoreWhitespace ? JsonUtil.unescapeForString(compact(json.trim())) : unescaped.trim();
       assertEquals("ignoreWhitespace: " + ignoreWhitespace, expected, builder.toString());
     }
   }
