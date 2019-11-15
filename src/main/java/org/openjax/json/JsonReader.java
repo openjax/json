@@ -18,6 +18,7 @@ package org.openjax.json;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.io.UncheckedIOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -397,12 +398,12 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    * throw an exception).
    *
    * @return {@code true} if the iteration has more tokens.
-   * @throws IllegalStateException If an {@code IOException} occurs while
+   * @throws UncheckedIOException If an {@code IOException} occurs while
    *           reading from the underlying stream.
    * @throws JsonParseException If the content is not well formed.
    */
   @Override
-  public boolean hasNext() throws IllegalStateException, JsonParseException {
+  public boolean hasNext() throws UncheckedIOException, JsonParseException {
     if (index < size())
       return true;
 
@@ -411,7 +412,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
       return index < size();
     }
     catch (final IOException e) {
-      throw new IllegalStateException(e);
+      throw new UncheckedIOException(e);
     }
   }
 
@@ -420,12 +421,12 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    *
    * @return The next token in the iteration.
    * @throws NoSuchElementException If the iteration has no more tokens.
-   * @throws IllegalStateException If an {@code IOException} occurs while
+   * @throws UncheckedIOException If an {@code IOException} occurs while
    *           reading from the underlying stream.
    * @throws JsonParseException If the content is not well formed.
    */
   @Override
-  public String next() throws IllegalStateException, JsonParseException {
+  public String next() throws UncheckedIOException, JsonParseException {
     if (!hasNext())
       throw new NoSuchElementException();
 
@@ -433,7 +434,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
       return readToken();
     }
     catch (final IOException e) {
-      throw new IllegalStateException(e);
+      throw new UncheckedIOException(e);
     }
   }
 
