@@ -43,7 +43,7 @@ class JsonReplayReader extends ReplayReader {
   private char readAhead = '\0';
 
   /**
-   * Creates a new {@code JsonReplayReader} using the specified reader as its
+   * Creates a new {@link JsonReplayReader} using the specified reader as its
    * source, and the provided initial size for the re-readable buffer.
    *
    * @param in A {@link Reader} providing the underlying stream.
@@ -57,7 +57,7 @@ class JsonReplayReader extends ReplayReader {
   }
 
   /**
-   * Creates a new {@code JsonReplayReader} using the specified reader as its
+   * Creates a new {@link JsonReplayReader} using the specified reader as its
    * source, and default initial size of 32 for the re-readable buffer.
    *
    * @param in A {@link Reader} providing the underlying stream.

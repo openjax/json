@@ -21,8 +21,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Lightweight {@code toString(...)} functions for marshaling {@code Map} (JSON
- * object) and {@code List} (JSON array) into JSON document representations.
+ * Lightweight {@code toString(...)} functions for marshaling {@link Map} (JSON
+ * object) and {@link List} (JSON array) into JSON document representations.
  */
 public final class JSON {
   private static String makeIndent(final int indent) {
@@ -67,16 +67,16 @@ public final class JSON {
    * representing a JSON object.
    * <p>
    * <i><b>NOTE</b>: The property values of the specified map may only be
-   * instances of {@code Boolean}, {@code Number}, {@code String}, {@code List},
-   * and {@code Map}. Objects of other classes will result in an
-   * {@code IllegalArgumentException}.</i>
+   * instances of {@link Boolean}, {@link Number}, {@link String}, {@link List},
+   * and {@link Map}. Objects of other classes will result in an
+   * {@link IllegalArgumentException}.</i>
    *
    * @param object The JSON object, represented as a {@code Map<String,?>}.
    * @return A JSON document encoding of the specified {@code Map<String,?>}
    *         representing a JSON object.
    * @throws IllegalArgumentException If a property value of the specified map
-   *           is of a class that is not one of {@code Boolean}, {@code Number},
-   *           {@code String}, {@code List}, or {@code Map}.
+   *           is of a class that is not one of {@link Boolean}, {@link Number},
+   *           {@link String}, {@link List}, or {@link Map}.
    * @throws NullPointerException If {@code properties} is null.
    */
   public static String toString(final Map<String,?> object) {
@@ -88,9 +88,9 @@ public final class JSON {
    * representing a JSON object.
    * <p>
    * <i><b>NOTE</b>: The property values of the specified map may only be
-   * instances of {@code Boolean}, {@code Number}, {@code String}, {@code List},
-   * and {@code Map}. Objects of other classes will result in an
-   * {@code IllegalArgumentException}.</i>
+   * instances of {@link Boolean}, {@link Number}, {@link String}, {@link List},
+   * and {@link Map}. Objects of other classes will result in an
+   * {@link IllegalArgumentException}.</i>
    *
    * @param object The JSON object, represented as a {@code Map<String,?>}.
    * @param indent Number of spaces to indent child elements. If the specified
@@ -101,8 +101,8 @@ public final class JSON {
    * @return A JSON document encoding of the specified {@code Map<String,?>}
    *         representing a JSON object.
    * @throws IllegalArgumentException If a property value of the specified map
-   *           is of a class that is not one of {@code Boolean}, {@code Number},
-   *           {@code String}, {@code List}, or {@code Map}; or if
+   *           is of a class that is not one of {@link Boolean}, {@link Number},
+   *           {@link String}, {@link List}, or {@link Map}; or if
    *           {@code indent} is negative.
    * @throws NullPointerException If {@code properties} is null.
    */
@@ -140,17 +140,17 @@ public final class JSON {
    * is null.
    * <p>
    * <i><b>NOTE</b>: The member values of the specified list may only be
-   * instances of {@code Boolean}, {@code Number}, {@code String}, {@code List},
-   * and {@code Map}. Objects of other classes will result in an
-   * {@code IllegalArgumentException}.</i>
+   * instances of {@link Boolean}, {@link Number}, {@link String}, {@link List},
+   * and {@link Map}. Objects of other classes will result in an
+   * {@link IllegalArgumentException}.</i>
    *
    * @param array The JSON array, represented as a {@code List<?>}.
    * @return A JSON document encoding of the specified {@code List<?>}
    *         representing a JSON array, or {@code null} if {@code array} is
    *         null.
    * @throws IllegalArgumentException If a member of the specified list is of a
-   *           class that is not one of {@code Boolean}, {@code Number},
-   *           {@code String}, {@code List}, or {@code Map}.
+   *           class that is not one of {@link Boolean}, {@link Number},
+   *           {@link String}, {@link List}, or {@link Map}.
    */
   public static String toString(final List<?> array) {
     return toString(array, 0);
@@ -162,9 +162,9 @@ public final class JSON {
    * {@code array} is null.
    * <p>
    * <i><b>NOTE</b>: The member values of the specified list may only be
-   * instances of {@code Boolean}, {@code Number}, {@code String}, {@code List},
-   * and {@code Map}. Objects of other classes will result in an
-   * {@code IllegalArgumentException}.</i>
+   * instances of {@link Boolean}, {@link Number}, {@link String}, {@link List},
+   * and {@link Map}. Objects of other classes will result in an
+   * {@link IllegalArgumentException}.</i>
    *
    * @param array The JSON array, represented as a {@code List<?>}.
    * @param indent Number of spaces to indent child elements. If the specified
@@ -176,8 +176,8 @@ public final class JSON {
    *         representing a JSON array, or {@code null} if {@code array} is
    *         null.
    * @throws IllegalArgumentException If a member of the specified list is of a
-   *           class that is not one of {@code Boolean}, {@code Number},
-   *           {@code String}, {@code List}, or {@code Map}; or if
+   *           class that is not one of {@link Boolean}, {@link Number},
+   *           {@link String}, {@link List}, or {@link Map}; or if
    *           {@code indent} is negative.
    */
   public static String toString(final List<?> array, final int indent) {

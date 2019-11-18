@@ -27,10 +27,10 @@ public class JsonParser {
   private final JsonReader reader;
 
   /**
-   * Construct a new {@code JsonParser} for JSON content to be read from the
+   * Construct a new {@link JsonParser} for JSON content to be read from the
    * {@code reader} parameter instance.
    *
-   * @param reader The {@code Reader} from which JSON is read.
+   * @param reader The {@link JsonReader} from which JSON is read.
    * @throws NullPointerException If {@code reader} is null.
    */
   public JsonParser(final JsonReader reader) {
@@ -38,10 +38,10 @@ public class JsonParser {
   }
 
   /**
-   * Parse the JSON document with the provided {@code JsonHandler} callback
+   * Parse the JSON document with the provided {@link JsonHandler} callback
    * instance.
    *
-   * @param handler The {@code JsonHandler} instance for handling content
+   * @param handler The {@link JsonHandler} instance for handling content
    *          callbacks.
    * @return {@code true} if the document has been read entirely. {@code false}
    *         if parsing was aborted by a handler callback. If a handler aborts

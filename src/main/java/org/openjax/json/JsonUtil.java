@@ -59,7 +59,7 @@ public final class JsonUtil {
    * 2.4</a>.
    *
    * @param string The string to parse.
-   * @return A {@code BigInteger} representing the parsed integer.
+   * @return A {@link BigInteger} representing the parsed integer.
    * @throws JsonParseException If a parsing error has occurred.
    * @throws IllegalArgumentException If the specified string is empty.
    * @throws NullPointerException If the specified string is null.
@@ -74,7 +74,7 @@ public final class JsonUtil {
    * 2.4</a>.
    *
    * @param string The string to parse.
-   * @return A {@code BigDecimal} representing the parsed decimal.
+   * @return A {@link BigDecimal} representing the parsed decimal.
    * @throws JsonParseException If a parsing error has occurred.
    * @throws IllegalArgumentException If the specified string is empty.
    * @throws NullPointerException If the specified string is null.

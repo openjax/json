@@ -36,7 +36,7 @@ import org.libj.util.Numbers;
  * This implementation provides the following features:
  * <ul>
  * <li>Regular read of JSON tokens, sequentially returning each token
- * {@code String}: {@link #readToken()}. (Please see {@link #readToken()} for a
+ * {@link String}: {@link #readToken()}. (Please see {@link #readToken()} for a
  * definition of: {@code token}).</li>
  * <li>Optimized read of JSON tokens, sequentially returning the {@code int}
  * starting position of each token: {@link #readTokenStart()}. (This position
@@ -78,7 +78,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
   private final boolean ignoreWhitespace;
 
   /**
-   * Construct a new {@code JsonReader} for JSON content to be read from the
+   * Construct a new {@link JsonReader} for JSON content to be read from the
    * specified {@link Reader}, <b>that ignores inter-token whitespace</b>. This
    * constructor is equivalent to calling {@code new JsonReader(reader, true)}.
    *
@@ -89,7 +89,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
   }
 
   /**
-   * Construct a new {@code JsonReader} for JSON content to be read from the
+   * Construct a new {@link JsonReader} for JSON content to be read from the
    * specified {@link Reader}.
    *
    * @param reader The {@link Reader} from which JSON is to be read.
@@ -102,6 +102,8 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
   }
 
   /**
+   * Returns the index of the most recently read token.
+   *
    * @return The index of the most recently read token.
    */
   public int getIndex() {
@@ -161,7 +163,8 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    * Returns the number of tokens read thus far. The value returned by this
    * method defines the upper bound of {@link #setIndex(int)}.
    *
-   * @return The number of tokens read thus far.
+   * @return The number of tokens read thus far. The value returned by this
+   *         method defines the upper bound of {@link #setIndex(int)}.
    */
   public int size() {
     return positions.size();
@@ -189,7 +192,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
 
   /**
    * Set the buffer to position {@code p}, such that a subsequent call to
-   * {@code read()} will return the char at {@code p + 1}.
+   * {@link #read()} will return the char at {@code p + 1}.
    *
    * @param p The position.
    * @throws IllegalArgumentException If {@code p} is negative, or if {@code p}
@@ -200,6 +203,8 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
   }
 
   /**
+   * Returns the buffer position of the most recently read char.
+   *
    * @return The buffer position of the most recently read char.
    */
   public int getPosition() {
@@ -291,9 +296,9 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    * <p>
    * Characters read with this method advance the characters of the tokens to
    * which they belong. Therefore, when partially reading a token with
-   * {@code read()}, subsequent calls to {@code readToken()} will return <i>the
-   * remaining characters of the token that have not yet been returned by
-   * {@code read()}</i>. Characters read with this method undergo the same
+   * {@link #read()}, subsequent calls to {@link #readToken()} will return
+   * <i>the remaining characters of the token that have not yet been returned by
+   * {@link #read()}</i>. Characters read with this method undergo the same
    * token-level error checking as in {@link #readTokenStart()} or
    * {@link #readToken()}.
    *
@@ -315,9 +320,9 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    * <p>
    * Characters read with this method advance the characters of the tokens to
    * which they belong. Therefore, when partially reading a token with
-   * {@code read(char[],int,int)}, subsequent calls to {@code readToken()} will
-   * return <i>the remaining characters of the token that have not yet been
-   * returned by {@code read()}</i>. Characters read with this method undergo
+   * {@link #read(char[],int,int)}, subsequent calls to {@link #readToken()}
+   * will return <i>the remaining characters of the token that have not yet been
+   * returned by {@link #read()}</i>. Characters read with this method undergo
    * the same token-level error checking as in {@link #readTokenStart()} or
    * {@link #readToken()}.
    *
@@ -358,9 +363,9 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    * <p>
    * Characters read with this method advance the characters of the tokens to
    * which they belong. Therefore, when partially reading a token with
-   * {@code read(char[])}, subsequent calls to {@code readToken()} will return
+   * {@link #read(char[])}, subsequent calls to {@link #readToken()} will return
    * the remaining characters of the token that have not yet been returned by
-   * {@code read()}. Characters read with this method undergo the same
+   * {@link #read()}. Characters read with this method undergo the same
    * token-level validation as in {@link #readTokenStart()} or
    * {@link #readToken()}.
    *
@@ -381,7 +386,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
   }
 
   /**
-   * Returns this {@code JsonReader}, since it is itself an implementation of
+   * Returns this {@link JsonReader}, since it is itself an implementation of
    * the {@link Iterator} interface. The iterator iterates over the JSON token
    * strings produced by {@code JsonReader.readToken()}.
    *
@@ -398,7 +403,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    * throw an exception).
    *
    * @return {@code true} if the iteration has more tokens.
-   * @throws UncheckedIOException If an {@code IOException} occurs while
+   * @throws UncheckedIOException If an {@link IOException} occurs while
    *           reading from the underlying stream.
    * @throws JsonParseException If the content is not well formed.
    */
@@ -421,8 +426,8 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    *
    * @return The next token in the iteration.
    * @throws NoSuchElementException If the iteration has no more tokens.
-   * @throws UncheckedIOException If an {@code IOException} occurs while
-   *           reading from the underlying stream.
+   * @throws UncheckedIOException If an {@link IOException} occurs while reading
+   *           from the underlying stream.
    * @throws JsonParseException If the content is not well formed.
    */
   @Override
@@ -609,7 +614,11 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
   }
 
   /**
-   * @return The {@code char[]} buffer of the underlying {@code ReplayReader}.
+   * Returns the {@code char[]} buffer of the underlying
+   * {@link JsonReplayReader}.
+   *
+   * @return The {@code char[]} buffer of the underlying
+   *         {@link JsonReplayReader}.
    */
   protected char[] buf() {
     return buffer.buf();
