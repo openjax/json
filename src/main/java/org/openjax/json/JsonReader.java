@@ -143,14 +143,14 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
     final int start;
     if (index > -1) {
       final long position = positions.get(index);
-      start = Numbers.Compound.dencodeInt(position, 0);
-      final int end = Numbers.Compound.dencodeInt(position, 1);
+      start = Numbers.Compound.decodeInt(position, 0);
+      final int end = Numbers.Compound.decodeInt(position, 1);
       setPosition(end);
       depth = depths.get(index);
     }
     else {
       final long position = positions.get(++index);
-      start = Numbers.Compound.dencodeInt(position, 0);
+      start = Numbers.Compound.decodeInt(position, 0);
       setPosition(start);
       depth = 0;
     }
@@ -177,7 +177,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    * @return The start position at {@code index}.
    */
   protected int getStartPosition(final int index) {
-    return Numbers.Compound.dencodeInt(positions.get(index), 0);
+    return Numbers.Compound.decodeInt(positions.get(index), 0);
   }
 
   /**
@@ -187,7 +187,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    * @return The end position at {@code index}.
    */
   protected int getEndPosition(final int index) {
-    return Numbers.Compound.dencodeInt(positions.get(index), 1);
+    return Numbers.Compound.decodeInt(positions.get(index), 1);
   }
 
   /**
@@ -229,7 +229,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    * <b>Note:</b> If this instance ignores whitespace, this method will skip
    * whitespace tokens.
    *
-   * @return The next JSON token, or null if the end of content has been
+   * @return The next JSON token, or {@code null} if the end of content has been
    *         reached.
    * @throws IOException If an I/O error has occurred.
    * @throws JsonParseException If the content is not well formed.
