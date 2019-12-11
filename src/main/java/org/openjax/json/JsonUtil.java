@@ -26,10 +26,12 @@ public final class JsonUtil {
   /**
    * Tests whether {@code ch} is a structural char, which is one of:
    *
-   * <pre><code>{ } [ ] : ,</code></pre>
+   * <pre>
+   * <code>{ } [ ] : ,</code>
+   * </pre>
    *
    * @param ch The char to test.
-   * @return {@code true} if {@code ch} is a structural char; otherwise
+   * @return {@code true} if {@code ch} is a structural char, otherwise
    *         {@code false}.
    */
   public static boolean isStructural(final int ch) {
@@ -155,10 +157,12 @@ public final class JsonUtil {
    * ({@code "\\"}), and the control characters ({@code U+0000} through
    * {@code U+001F}).
    * <p>
-   * This method escapes the following characters in string-literal two-character form:
-   * <blockquote>
-   * <code>{'\n', '\r', '\t', '\b', '\f'} -&gt; {"\\n", "\\r", "\\t", "\\b", "\\f"}</code>
-   * </blockquote>
+   * This method escapes the following characters in string-literal
+   * two-character form:
+   *
+   * <pre>
+   * {'\n', '\r', '\t', '\b', '\f'} -&gt; {"\\n", "\\r", "\\t", "\\b", "\\f"}
+   * </pre>
    *
    * @param string The string to be escaped.
    * @return The escaped representation of the specified string.

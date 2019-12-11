@@ -217,9 +217,9 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    * <li>Structural:<ul>
    * <li>A character that is one of:<pre><code>{ } [ ] : ,</code></pre></li></ul></li>
    * <li>A property key:<ul>
-   * <li>A string that matches:<pre>^".*"$</pre></li></ul></li>
+   * <li>A string that matches:<pre>{@code ^".*"$}</pre></li></ul></li>
    * <li>A property or array member value:<ul>
-   * <li>A string that matches:<pre>^".*"$</pre></li>
+   * <li>A string that matches:<pre>{@code ^".*"$}</pre></li>
    * <li>A number that matches:<pre>{@code ^-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?([1-9]\d*))?$}</pre></li>
    * <li>A literal that matches:<pre>{@code ^null|true|false$}</pre></li></ul></li>
    * <li>Whitespace:<ul>
