@@ -23,10 +23,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import org.libj.util.ArrayIntList;
-import org.libj.util.ArrayLongList;
 import org.libj.util.Buffers;
 import org.libj.util.Numbers;
+import org.libj.util.primitive.ArrayIntList;
+import org.libj.util.primitive.ArrayLongList;
 
 /**
  * Validating {@link Reader} for JSON streams that reads JSON tokens
