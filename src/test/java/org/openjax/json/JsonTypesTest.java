@@ -19,7 +19,7 @@ package org.openjax.json;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import org.libj.util.Strings;
+import org.libj.lang.Strings;
 
 public class JsonTypesTest {
   private static final char[] whitespace = {' ', '\n', '\r', '\t'};
