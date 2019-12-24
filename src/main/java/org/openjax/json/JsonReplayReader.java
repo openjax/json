@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.io.Reader;
 
 import org.libj.io.ReplayReader;
-import org.libj.math.FastMath;
+import org.libj.util.Numbers;
 
 /**
  * A {@link ReplayReader} that transparently unescapes string-literal unicode
@@ -96,6 +96,7 @@ class JsonReplayReader extends ReplayReader {
     if (ch == -1)
       return -1;
 
+    Integer code;
     ++pos;
     if (ch == '\\') {
       ch = in.read();
@@ -127,7 +128,11 @@ class JsonReplayReader extends ReplayReader {
           unicode[i] = (char)c;
         }
 
-        ch = (char)FastMath.parseInt(unicode, 16);
+        code = Numbers.parseInteger(unicode, 16);
+        if (code == null)
+          throw new NumberFormatException(String.valueOf(unicode));
+
+        ch = (char)code.intValue();
       }
     }
 
