@@ -35,10 +35,10 @@ import com.fasterxml.jackson.core.JsonParser;
 public class JsonReaderTest {
   private static final Logger logger = LoggerFactory.getLogger(JsonReaderTest.class);
 
-  private static boolean testIterator = true;
-  private static boolean testReadBack = true;
-  private static boolean testReadChar = true;
-  private static boolean testReadBuff = true;
+  private static final boolean testIterator = true;
+  private static final boolean testReadBack = true;
+  private static final boolean testReadChar = true;
+  private static final boolean testReadBuff = true;
 
   private static Double random = null;
 
@@ -135,7 +135,8 @@ public class JsonReaderTest {
             reader.setIndex((int)(reader.getIndex() - random() * reader.getIndex() / ++cut));
         }
         else {
-          // If the content is being re-read, ensure that the token is equal to what was read previously
+          // If the content is being re-read, ensure that the token is equal to
+          // what was read previously
           final String expected = unescaped.substring(reader.getPosition() - token.length(), reader.getPosition());
           assertEquals("ignoreWhitespace: " + ignoreWhitespace + ", Index: " + reader.getIndex() + ", Position: " + reader.getPosition(), expected, token);
         }
@@ -167,7 +168,7 @@ public class JsonReaderTest {
       throw e;
     }
     catch (final Exception e) {
-      assertEquals(cls, e.getClass());
+      assertSame(cls, e.getClass());
       assertEquals(message, e.getMessage());
     }
   }
@@ -183,7 +184,8 @@ public class JsonReaderTest {
       assertEquals("[", reader.readToken());
       // Assert the index has been advanced properly
       assertEquals(0, reader.getIndex());
-      // The buffered size of the reader will be 2, because the extra token is read ahead
+      // The buffered size of the reader will be 2, because the extra token is
+      // read ahead
       assertEquals(2, reader.size());
 
       try {

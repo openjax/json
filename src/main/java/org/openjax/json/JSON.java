@@ -51,12 +51,12 @@ public final class JSON {
 
     if (obj instanceof List) {
       final String list = toString((List<?>)obj, spaces);
-      return spaces == null ? list : list.replaceAll("\n", spaces);
+      return spaces == null ? list : list.replace("\n", spaces);
     }
 
     if (obj instanceof Map) {
       final String map = toString((Map<String,?>)obj, spaces);
-      return spaces == null ? map : map.replaceAll("\n", spaces);
+      return spaces == null ? map : map.replace("\n", spaces);
     }
 
     throw new IllegalArgumentException("Illegal object of class: " + obj.getClass().getName());

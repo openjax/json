@@ -96,7 +96,7 @@ class JsonReplayReader extends ReplayReader {
     if (ch == -1)
       return -1;
 
-    Integer code;
+    final Integer code;
     ++pos;
     if (ch == '\\') {
       ch = in.read();
