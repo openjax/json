@@ -267,7 +267,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    * @throws JsonParseException If the content is not well formed.
    * @see #nextToken()
    */
-  private boolean hasRemainig() throws IOException, JsonParseException {
+  private boolean hasRemaining() throws IOException, JsonParseException {
     if (index != -1 && getPosition() < getEndPosition(index))
       return true;
 
@@ -312,7 +312,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    */
   @Override
   public int read() throws IOException {
-    return hasRemainig() ? super.read() : -1;
+    return hasRemaining() ? super.read() : -1;
   }
 
   /**
@@ -342,7 +342,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
   @Override
   public int read(final char[] cbuf, int off, int len) throws IOException {
     for (int count = 0;;) {
-      if (len == 0 || !hasRemainig())
+      if (len == 0 || !hasRemaining())
         return count;
 
       int remaining = getEndPosition(index) - getPosition();
