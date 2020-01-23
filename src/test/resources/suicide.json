@@ -1,0 +1,878 @@
+{
+  "meta" : {
+    "view" : {
+      "id" : "k96r-7t2r",
+      "name" : "Youth Suicide Deaths in Washington State by Gender Age 0-17 Years, from 2008-2012",
+      "averageRating" : 0,
+      "createdAt" : 1450104279,
+      "displayType" : "table",
+      "downloadCount" : 3109,
+      "hideFromCatalog" : false,
+      "hideFromDataJson" : false,
+      "indexUpdatedAt" : 1450105988,
+      "newBackend" : true,
+      "numberOfComments" : 0,
+      "oid" : 15425744,
+      "provenance" : "official",
+      "publicationAppendEnabled" : false,
+      "publicationDate" : 1453263971,
+      "publicationGroup" : 6026662,
+      "publicationStage" : "published",
+      "rowsUpdatedAt" : 1450104316,
+      "rowsUpdatedBy" : "6p7r-jviv",
+      "tableId" : 6026662,
+      "totalTimesRated" : 0,
+      "viewCount" : 201,
+      "viewLastModified" : 1453263971,
+      "viewType" : "tabular",
+      "approvals" : [ {
+        "reviewedAt" : 1453263971,
+        "reviewedAutomatically" : true,
+        "state" : "approved",
+        "submissionId" : 744190,
+        "submissionObject" : "public_audience_request",
+        "submissionOutcome" : "change_audience",
+        "submittedAt" : 1453263971,
+        "workflowId" : 2106,
+        "submissionDetails" : {
+          "permissionType" : "READ"
+        },
+        "submissionOutcomeApplication" : {
+          "failureCount" : 0,
+          "status" : "success"
+        },
+        "submitter" : {
+          "id" : "6p7r-jviv",
+          "displayName" : "Alysa Kipersztok"
+        }
+      } ],
+      "columns" : [ {
+        "id" : -1,
+        "name" : "sid",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":sid",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "id",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":id",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "position",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":position",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "created_at",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":created_at",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "created_meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":created_meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "updated_at",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":updated_at",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "updated_meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":updated_meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : 233685759,
+        "name" : "County",
+        "dataTypeName" : "text",
+        "fieldName" : "county",
+        "position" : 1,
+        "renderTypeName" : "text",
+        "tableColumnId" : 33257625,
+        "width" : 83,
+        "cachedContents" : {
+          "non_null" : 27,
+          "largest" : "Yakima",
+          "null" : 0,
+          "top" : [ {
+            "item" : "Asotin",
+            "count" : 20
+          }, {
+            "item" : "Benton",
+            "count" : 19
+          }, {
+            "item" : "Chelan",
+            "count" : 18
+          }, {
+            "item" : "Clallam",
+            "count" : 17
+          }, {
+            "item" : "Clark",
+            "count" : 16
+          }, {
+            "item" : "Columbia",
+            "count" : 15
+          }, {
+            "item" : "Cowlitz",
+            "count" : 14
+          }, {
+            "item" : "Douglas",
+            "count" : 13
+          }, {
+            "item" : "Grays Harbor",
+            "count" : 12
+          }, {
+            "item" : "Island",
+            "count" : 11
+          }, {
+            "item" : "Jefferson",
+            "count" : 10
+          }, {
+            "item" : "King",
+            "count" : 9
+          }, {
+            "item" : "Kitsap",
+            "count" : 8
+          }, {
+            "item" : "Lewis",
+            "count" : 7
+          }, {
+            "item" : "Mason",
+            "count" : 6
+          }, {
+            "item" : "Okanogan",
+            "count" : 5
+          }, {
+            "item" : "Pacific",
+            "count" : 4
+          }, {
+            "item" : "Pierce",
+            "count" : 3
+          }, {
+            "item" : "Skagit",
+            "count" : 2
+          }, {
+            "item" : "Snohomish",
+            "count" : 1
+          } ],
+          "smallest" : "Asotin"
+        },
+        "format" : { }
+      }, {
+        "id" : 233685760,
+        "name" : "Female (2012)",
+        "dataTypeName" : "number",
+        "fieldName" : "female_2012",
+        "position" : 2,
+        "renderTypeName" : "number",
+        "tableColumnId" : 33257626,
+        "width" : 97,
+        "cachedContents" : {
+          "non_null" : 27,
+          "average" : "0.1851851851851852",
+          "largest" : "3",
+          "null" : 0,
+          "top" : [ {
+            "item" : "0",
+            "count" : 20
+          }, {
+            "item" : "1",
+            "count" : 19
+          }, {
+            "item" : "3",
+            "count" : 18
+          } ],
+          "smallest" : "0",
+          "sum" : "5"
+        },
+        "format" : { }
+      }, {
+        "id" : 233685761,
+        "name" : "Male (2012)",
+        "dataTypeName" : "number",
+        "fieldName" : "male_2012",
+        "position" : 3,
+        "renderTypeName" : "number",
+        "tableColumnId" : 33257627,
+        "width" : 98,
+        "cachedContents" : {
+          "non_null" : 27,
+          "average" : "1.148148148148148",
+          "largest" : "10",
+          "null" : 0,
+          "top" : [ {
+            "item" : "0",
+            "count" : 20
+          }, {
+            "item" : "2",
+            "count" : 19
+          }, {
+            "item" : "3",
+            "count" : 18
+          }, {
+            "item" : "1",
+            "count" : 17
+          }, {
+            "item" : "10",
+            "count" : 16
+          } ],
+          "smallest" : "0",
+          "sum" : "31"
+        },
+        "format" : { }
+      }, {
+        "id" : 233685762,
+        "name" : "Total (2012)",
+        "dataTypeName" : "number",
+        "fieldName" : "total_2012",
+        "position" : 4,
+        "renderTypeName" : "number",
+        "tableColumnId" : 33257628,
+        "width" : 85,
+        "cachedContents" : {
+          "non_null" : 27,
+          "average" : "1.333333333333333",
+          "largest" : "13",
+          "null" : 0,
+          "top" : [ {
+            "item" : "0",
+            "count" : 20
+          }, {
+            "item" : "2",
+            "count" : 19
+          }, {
+            "item" : "4",
+            "count" : 18
+          }, {
+            "item" : "1",
+            "count" : 17
+          }, {
+            "item" : "3",
+            "count" : 16
+          }, {
+            "item" : "13",
+            "count" : 15
+          } ],
+          "smallest" : "0",
+          "sum" : "36"
+        },
+        "format" : { }
+      }, {
+        "id" : 233685763,
+        "name" : "Female (2011)",
+        "dataTypeName" : "number",
+        "fieldName" : "female_2011",
+        "position" : 5,
+        "renderTypeName" : "number",
+        "tableColumnId" : 33257629,
+        "width" : 117,
+        "cachedContents" : {
+          "non_null" : 27,
+          "average" : "0.2592592592592593",
+          "largest" : "4",
+          "null" : 0,
+          "top" : [ {
+            "item" : "0",
+            "count" : 20
+          }, {
+            "item" : "1",
+            "count" : 19
+          }, {
+            "item" : "4",
+            "count" : 18
+          } ],
+          "smallest" : "0",
+          "sum" : "7"
+        },
+        "format" : { }
+      }, {
+        "id" : 233685764,
+        "name" : "Male (2011)",
+        "dataTypeName" : "number",
+        "fieldName" : "male_2011",
+        "position" : 6,
+        "renderTypeName" : "number",
+        "tableColumnId" : 33257630,
+        "width" : 113,
+        "cachedContents" : {
+          "non_null" : 27,
+          "average" : "0.8148148148148148",
+          "largest" : "3",
+          "null" : 0,
+          "top" : [ {
+            "item" : "0",
+            "count" : 20
+          }, {
+            "item" : "1",
+            "count" : 19
+          }, {
+            "item" : "2",
+            "count" : 18
+          }, {
+            "item" : "3",
+            "count" : 17
+          } ],
+          "smallest" : "0",
+          "sum" : "22"
+        },
+        "format" : { }
+      }, {
+        "id" : 233685765,
+        "name" : "Total (2011)",
+        "dataTypeName" : "number",
+        "fieldName" : "total_2011",
+        "position" : 7,
+        "renderTypeName" : "number",
+        "tableColumnId" : 33257631,
+        "width" : 92,
+        "cachedContents" : {
+          "non_null" : 27,
+          "average" : "1.074074074074074",
+          "largest" : "6",
+          "null" : 0,
+          "top" : [ {
+            "item" : "0",
+            "count" : 20
+          }, {
+            "item" : "2",
+            "count" : 19
+          }, {
+            "item" : "1",
+            "count" : 18
+          }, {
+            "item" : "6",
+            "count" : 17
+          }, {
+            "item" : "3",
+            "count" : 16
+          } ],
+          "smallest" : "0",
+          "sum" : "29"
+        },
+        "format" : { }
+      }, {
+        "id" : 233685766,
+        "name" : "Female (2010)",
+        "dataTypeName" : "number",
+        "fieldName" : "female_2010",
+        "position" : 8,
+        "renderTypeName" : "number",
+        "tableColumnId" : 33257632,
+        "width" : 97,
+        "cachedContents" : {
+          "non_null" : 27,
+          "average" : "0.1481481481481481",
+          "largest" : "1",
+          "null" : 0,
+          "top" : [ {
+            "item" : "0",
+            "count" : 20
+          }, {
+            "item" : "1",
+            "count" : 19
+          } ],
+          "smallest" : "0",
+          "sum" : "4"
+        },
+        "format" : { }
+      }, {
+        "id" : 233685767,
+        "name" : "Male (2010)",
+        "dataTypeName" : "number",
+        "fieldName" : "male_2010",
+        "position" : 9,
+        "renderTypeName" : "number",
+        "tableColumnId" : 33257633,
+        "width" : 84,
+        "cachedContents" : {
+          "non_null" : 27,
+          "average" : "0.7777777777777778",
+          "largest" : "5",
+          "null" : 0,
+          "top" : [ {
+            "item" : "0",
+            "count" : 20
+          }, {
+            "item" : "1",
+            "count" : 19
+          }, {
+            "item" : "2",
+            "count" : 18
+          }, {
+            "item" : "3",
+            "count" : 17
+          }, {
+            "item" : "5",
+            "count" : 16
+          } ],
+          "smallest" : "0",
+          "sum" : "21"
+        },
+        "format" : { }
+      }, {
+        "id" : 233685768,
+        "name" : "Total (2010)",
+        "dataTypeName" : "number",
+        "fieldName" : "total_2010",
+        "position" : 10,
+        "renderTypeName" : "number",
+        "tableColumnId" : 33257634,
+        "width" : 107,
+        "cachedContents" : {
+          "non_null" : 27,
+          "average" : "0.9259259259259259",
+          "largest" : "5",
+          "null" : 0,
+          "top" : [ {
+            "item" : "0",
+            "count" : 20
+          }, {
+            "item" : "1",
+            "count" : 19
+          }, {
+            "item" : "3",
+            "count" : 18
+          }, {
+            "item" : "2",
+            "count" : 17
+          }, {
+            "item" : "5",
+            "count" : 16
+          } ],
+          "smallest" : "0",
+          "sum" : "25"
+        },
+        "format" : { }
+      }, {
+        "id" : 233685769,
+        "name" : "Female (2009)",
+        "dataTypeName" : "number",
+        "fieldName" : "female_2009",
+        "position" : 11,
+        "renderTypeName" : "number",
+        "tableColumnId" : 33257635,
+        "width" : 90,
+        "cachedContents" : {
+          "non_null" : 27,
+          "average" : "0.2962962962962963",
+          "largest" : "4",
+          "null" : 0,
+          "top" : [ {
+            "item" : "0",
+            "count" : 20
+          }, {
+            "item" : "1",
+            "count" : 19
+          }, {
+            "item" : "4",
+            "count" : 18
+          } ],
+          "smallest" : "0",
+          "sum" : "8"
+        },
+        "format" : { }
+      }, {
+        "id" : 233685770,
+        "name" : "Male (2009)",
+        "dataTypeName" : "number",
+        "fieldName" : "male_2009",
+        "position" : 12,
+        "renderTypeName" : "number",
+        "tableColumnId" : 33257636,
+        "width" : 84,
+        "cachedContents" : {
+          "non_null" : 27,
+          "average" : "0.4074074074074074",
+          "largest" : "3",
+          "null" : 0,
+          "top" : [ {
+            "item" : "0",
+            "count" : 20
+          }, {
+            "item" : "3",
+            "count" : 19
+          }, {
+            "item" : "1",
+            "count" : 18
+          } ],
+          "smallest" : "0",
+          "sum" : "11"
+        },
+        "format" : { }
+      }, {
+        "id" : 233685771,
+        "name" : "Total (2009)",
+        "dataTypeName" : "number",
+        "fieldName" : "total_2009",
+        "position" : 13,
+        "renderTypeName" : "number",
+        "tableColumnId" : 33257637,
+        "width" : 73,
+        "cachedContents" : {
+          "non_null" : 27,
+          "average" : "0.7037037037037037",
+          "largest" : "7",
+          "null" : 0,
+          "top" : [ {
+            "item" : "0",
+            "count" : 20
+          }, {
+            "item" : "1",
+            "count" : 19
+          }, {
+            "item" : "7",
+            "count" : 18
+          }, {
+            "item" : "3",
+            "count" : 17
+          } ],
+          "smallest" : "0",
+          "sum" : "19"
+        },
+        "format" : { }
+      }, {
+        "id" : 233685772,
+        "name" : "Female (2008)",
+        "dataTypeName" : "number",
+        "fieldName" : "female_2008",
+        "position" : 14,
+        "renderTypeName" : "number",
+        "tableColumnId" : 33257638,
+        "width" : 92,
+        "cachedContents" : {
+          "non_null" : 27,
+          "average" : "0.2592592592592593",
+          "largest" : "3",
+          "null" : 0,
+          "top" : [ {
+            "item" : "1",
+            "count" : 20
+          }, {
+            "item" : "0",
+            "count" : 19
+          }, {
+            "item" : "3",
+            "count" : 18
+          } ],
+          "smallest" : "0",
+          "sum" : "7"
+        },
+        "format" : { }
+      }, {
+        "id" : 233685773,
+        "name" : "Male (2008)",
+        "dataTypeName" : "number",
+        "fieldName" : "male_2008",
+        "position" : 15,
+        "renderTypeName" : "number",
+        "tableColumnId" : 33257639,
+        "width" : 74,
+        "cachedContents" : {
+          "non_null" : 27,
+          "average" : "0.4814814814814815",
+          "largest" : "6",
+          "null" : 0,
+          "top" : [ {
+            "item" : "0",
+            "count" : 20
+          }, {
+            "item" : "1",
+            "count" : 19
+          }, {
+            "item" : "4",
+            "count" : 18
+          }, {
+            "item" : "6",
+            "count" : 17
+          } ],
+          "smallest" : "0",
+          "sum" : "13"
+        },
+        "format" : { }
+      }, {
+        "id" : 233685774,
+        "name" : "Total (2008)",
+        "dataTypeName" : "number",
+        "fieldName" : "total_2008",
+        "position" : 16,
+        "renderTypeName" : "number",
+        "tableColumnId" : 33257640,
+        "width" : 83,
+        "cachedContents" : {
+          "non_null" : 27,
+          "average" : "0.7407407407407407",
+          "largest" : "7",
+          "null" : 0,
+          "top" : [ {
+            "item" : "1",
+            "count" : 20
+          }, {
+            "item" : "0",
+            "count" : 19
+          }, {
+            "item" : "4",
+            "count" : 18
+          }, {
+            "item" : "7",
+            "count" : 17
+          }, {
+            "item" : "3",
+            "count" : 16
+          } ],
+          "smallest" : "0",
+          "sum" : "20"
+        },
+        "format" : { }
+      }, {
+        "id" : 233685775,
+        "name" : "Female (2008-2012)",
+        "dataTypeName" : "number",
+        "fieldName" : "female_2008_2012",
+        "position" : 17,
+        "renderTypeName" : "number",
+        "tableColumnId" : 33257641,
+        "width" : 127,
+        "cachedContents" : {
+          "non_null" : 27,
+          "average" : "1.148148148148148",
+          "largest" : "12",
+          "null" : 0,
+          "top" : [ {
+            "item" : "1",
+            "count" : 20
+          }, {
+            "item" : "2",
+            "count" : 19
+          }, {
+            "item" : "0",
+            "count" : 18
+          }, {
+            "item" : "12",
+            "count" : 17
+          }, {
+            "item" : "3",
+            "count" : 16
+          } ],
+          "smallest" : "0",
+          "sum" : "31"
+        },
+        "format" : { }
+      }, {
+        "id" : 233685776,
+        "name" : "Male (2008-2012)",
+        "dataTypeName" : "number",
+        "fieldName" : "male_2008_2012",
+        "position" : 18,
+        "renderTypeName" : "number",
+        "tableColumnId" : 33257642,
+        "width" : 141,
+        "cachedContents" : {
+          "non_null" : 27,
+          "average" : "3.629629629629630",
+          "largest" : "21",
+          "null" : 0,
+          "top" : [ {
+            "item" : "0",
+            "count" : 20
+          }, {
+            "item" : "3",
+            "count" : 19
+          }, {
+            "item" : "1",
+            "count" : 18
+          }, {
+            "item" : "6",
+            "count" : 17
+          }, {
+            "item" : "2",
+            "count" : 16
+          }, {
+            "item" : "5",
+            "count" : 15
+          }, {
+            "item" : "21",
+            "count" : 14
+          }, {
+            "item" : "18",
+            "count" : 13
+          }, {
+            "item" : "8",
+            "count" : 12
+          }, {
+            "item" : "4",
+            "count" : 11
+          }, {
+            "item" : "7",
+            "count" : 10
+          } ],
+          "smallest" : "0",
+          "sum" : "98"
+        },
+        "format" : { }
+      }, {
+        "id" : 233685777,
+        "name" : "Total (2008-2012)",
+        "dataTypeName" : "number",
+        "fieldName" : "total_2008_2012",
+        "position" : 19,
+        "renderTypeName" : "number",
+        "tableColumnId" : 33257643,
+        "width" : 138,
+        "cachedContents" : {
+          "non_null" : 27,
+          "average" : "4.777777777777778",
+          "largest" : "33",
+          "null" : 0,
+          "top" : [ {
+            "item" : "1",
+            "count" : 20
+          }, {
+            "item" : "5",
+            "count" : 19
+          }, {
+            "item" : "2",
+            "count" : 18
+          }, {
+            "item" : "7",
+            "count" : 17
+          }, {
+            "item" : "6",
+            "count" : 16
+          }, {
+            "item" : "33",
+            "count" : 15
+          }, {
+            "item" : "3",
+            "count" : 14
+          }, {
+            "item" : "20",
+            "count" : 13
+          }, {
+            "item" : "11",
+            "count" : 12
+          }, {
+            "item" : "8",
+            "count" : 11
+          } ],
+          "smallest" : "1",
+          "sum" : "129"
+        },
+        "format" : { }
+      } ],
+      "grants" : [ {
+        "inherited" : false,
+        "type" : "viewer",
+        "flags" : [ "public" ]
+      } ],
+      "metadata" : {
+        "custom_fields" : {
+          "Notes" : {
+            "1. " : "",
+            "2. " : "",
+            "3. " : "",
+            "4. " : "",
+            "5. " : "",
+            "6. " : ""
+          }
+        },
+        "rowLabel" : "Row",
+        "availableDisplayTypes" : [ "table", "fatrow", "page" ],
+        "renderTypeConfig" : {
+          "visible" : {
+            "table" : true
+          }
+        }
+      },
+      "owner" : {
+        "id" : "6p7r-jviv",
+        "disabledAt" : 1542822118,
+        "displayName" : "Alysa Kipersztok",
+        "profileImageUrlLarge" : "/api/users/6p7r-jviv/profile_images/LARGE",
+        "profileImageUrlMedium" : "/api/users/6p7r-jviv/profile_images/THUMB",
+        "profileImageUrlSmall" : "/api/users/6p7r-jviv/profile_images/TINY",
+        "screenName" : "Alysa Kipersztok",
+        "type" : "interactive",
+        "userSegment" : "site_member"
+      },
+      "query" : { },
+      "rights" : [ "read" ],
+      "tableAuthor" : {
+        "id" : "6p7r-jviv",
+        "disabledAt" : 1542822118,
+        "displayName" : "Alysa Kipersztok",
+        "profileImageUrlLarge" : "/api/users/6p7r-jviv/profile_images/LARGE",
+        "profileImageUrlMedium" : "/api/users/6p7r-jviv/profile_images/THUMB",
+        "profileImageUrlSmall" : "/api/users/6p7r-jviv/profile_images/TINY",
+        "screenName" : "Alysa Kipersztok",
+        "type" : "interactive",
+        "userSegment" : "site_member"
+      },
+      "flags" : [ "default", "restorable", "restorePossibleForType" ]
+    }
+  },
+  "data" : [ [ "row-mnts-mfg7.ksgg", "00000000-0000-0000-47E3-FA59362EA972", 0, 1453263978, null, 1453263978, null, "{ }", "Asotin", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1", "0", "1", "1", "0", "1" ]
+, [ "row-mifb.446c-rgsg", "00000000-0000-0000-1AFB-00E880E76FC8", 0, 1453263978, null, 1453263978, null, "{ }", "Benton", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1", "0", "1", "1", "0", "1" ]
+, [ "row-bq2q-mtsc~7rg2", "00000000-0000-0000-A546-B62CF91181BD", 0, 1453263978, null, 1453263978, null, "{ }", "Chelan", "0", "2", "2", "0", "0", "0", "0", "1", "1", "1", "0", "1", "1", "0", "1", "2", "3", "5" ]
+, [ "row-ir83_itep.nptn", "00000000-0000-0000-0761-5BAA30D0EFCB", 0, 1453263978, null, 1453263978, null, "{ }", "Clallam", "0", "0", "0", "1", "1", "2", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1", "1", "2" ]
+, [ "row-pn5b_iz8b~fqq4", "00000000-0000-0000-C18E-83F6235A5C6F", 0, 1453263978, null, 1453263978, null, "{ }", "Clark", "1", "3", "4", "0", "2", "2", "0", "0", "0", "0", "0", "0", "0", "1", "1", "1", "6", "7" ]
+, [ "row-pcxq-rccj_brbh", "00000000-0000-0000-736E-8A6AB214C01C", 0, 1453263978, null, 1453263978, null, "{ }", "Columbia", "0", "0", "0", "0", "0", "0", "0", "1", "1", "0", "0", "0", "0", "0", "0", "0", "1", "1" ]
+, [ "row-dzpm.rahy.cgnx", "00000000-0000-0000-9F4D-B61E8BEA5F24", 0, 1453263978, null, 1453263978, null, "{ }", "Cowlitz", "0", "0", "0", "0", "0", "0", "0", "1", "1", "0", "0", "0", "0", "0", "0", "0", "1", "1" ]
+, [ "row-36j7~qq75_midu", "00000000-0000-0000-699D-A6720DDD5008", 0, 1453263978, null, 1453263978, null, "{ }", "Douglas", "0", "1", "1", "0", "0", "0", "0", "1", "1", "0", "0", "0", "0", "0", "0", "0", "2", "2" ]
+, [ "row-icp7~nksv-pkiw", "00000000-0000-0000-9EED-F35EABC0A093", 0, 1453263978, null, 1453263978, null, "{ }", "Grays Harbor", "0", "3", "3", "1", "1", "2", "0", "1", "1", "0", "0", "0", "0", "0", "0", "1", "5", "6" ]
+, [ "row-4suv~8e8k-5ek5", "00000000-0000-0000-CACE-7FD2F03F7672", 0, 1453263978, null, 1453263978, null, "{ }", "Island", "0", "2", "2", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "2", "2" ]
+, [ "row-ihy7~5cji~hft4", "00000000-0000-0000-ED16-40B7F424041D", 0, 1453263978, null, 1453263978, null, "{ }", "Jefferson", "0", "0", "0", "0", "1", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1", "1" ]
+, [ "row-64dp.cr3z.xpwu", "00000000-0000-0000-45A9-CE9DCBD7E0EB", 0, 1453263978, null, 1453263978, null, "{ }", "King", "3", "10", "13", "4", "2", "6", "1", "2", "3", "4", "3", "7", "0", "4", "4", "12", "21", "33" ]
+, [ "row-t437.fs4y~8y2j", "00000000-0000-0000-F5DD-FEE0F997391A", 0, 1453263978, null, 1453263978, null, "{ }", "Kitsap", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1", "1", "0", "0", "0", "0", "1", "1" ]
+, [ "row-emvc.wf2a-6wi9", "00000000-0000-0000-9451-9F980E76C18F", 0, 1453263978, null, 1453263978, null, "{ }", "Lewis", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1", "1", "0", "1", "1" ]
+, [ "row-anfm-7buj_c489", "00000000-0000-0000-A4BD-ABA156444417", 0, 1453263978, null, 1453263978, null, "{ }", "Mason", "0", "1", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1", "1" ]
+, [ "row-v9rp.sask_iakh", "00000000-0000-0000-6F10-45042DD34101", 0, 1453263978, null, 1453263978, null, "{ }", "Okanogan", "0", "0", "0", "0", "2", "2", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "2", "2" ]
+, [ "row-eebd~xp6z_bhmr", "00000000-0000-0000-D1D7-CA6DA07C811E", 0, 1453263978, null, 1453263978, null, "{ }", "Pacific", "0", "0", "0", "0", "0", "0", "1", "1", "2", "0", "1", "1", "0", "0", "0", "1", "2", "3" ]
+, [ "row-w74p-a8x4.cryf", "00000000-0000-0000-D866-93488B8CD5D6", 0, 1453263978, null, 1453263978, null, "{ }", "Pierce", "1", "3", "4", "0", "3", "3", "0", "3", "3", "0", "3", "3", "1", "6", "7", "2", "18", "20" ]
+, [ "row-xjr9-w5ar-fdvm", "00000000-0000-0000-71E2-5BB8AC2A4DD0", 0, 1453263978, null, 1453263978, null, "{ }", "Skagit", "0", "1", "1", "0", "1", "1", "0", "0", "0", "1", "0", "1", "0", "0", "0", "1", "2", "3" ]
+, [ "row-5nrw.6h2k-km4h", "00000000-0000-0000-F688-AB74136E8798", 0, 1453263978, null, 1453263978, null, "{ }", "Snohomish", "0", "1", "1", "0", "2", "2", "0", "5", "5", "0", "0", "0", "3", "0", "3", "3", "8", "11" ]
+, [ "row-qv7s-tnrh~snv2", "00000000-0000-0000-2309-4E10D79127FA", 0, 1453263978, null, 1453263978, null, "{ }", "Spokane", "0", "1", "1", "0", "2", "2", "1", "1", "2", "1", "0", "1", "0", "0", "0", "2", "4", "6" ]
+, [ "row-p7k6_wjxg_nubn", "00000000-0000-0000-FDF6-18DFDCF5D081", 0, 1453263978, null, 1453263978, null, "{ }", "Stevens", "0", "1", "1", "0", "1", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "2", "2" ]
+, [ "row-zu8r.ikqb.aeam", "00000000-0000-0000-68F4-4ACB48E9EB20", 0, 1453263978, null, 1453263978, null, "{ }", "Thurston", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1", "1", "0", "1", "1", "0", "2", "2" ]
+, [ "row-nrf4~ctvv-gesi", "00000000-0000-0000-113F-29ADF13B85F9", 0, 1453263978, null, 1453263978, null, "{ }", "Walla Walla", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1", "1", "0", "0", "0", "0", "1", "1" ]
+, [ "row-84ew~umab-kfnd", "00000000-0000-0000-EBC3-6F8A09B4733F", 0, 1453263978, null, 1453263978, null, "{ }", "Whatcom", "0", "1", "1", "1", "1", "2", "0", "1", "1", "1", "0", "1", "0", "0", "0", "2", "3", "5" ]
+, [ "row-vids~m857~jh46", "00000000-0000-0000-0045-B44C11842BAD", 0, 1453263978, null, 1453263978, null, "{ }", "Whitman", "0", "0", "0", "0", "0", "0", "0", "1", "1", "0", "0", "0", "0", "0", "0", "0", "1", "1" ]
+, [ "row-bahd~267e.f9e9", "00000000-0000-0000-A5FD-16A5C5800CDF", 0, 1453263978, null, 1453263978, null, "{ }", "Yakima", "0", "1", "1", "0", "3", "3", "1", "2", "3", "0", "1", "1", "0", "0", "0", "1", "7", "8" ]
+ ]
+}

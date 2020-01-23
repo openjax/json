@@ -1,0 +1,268 @@
+{
+  "meta" : {
+    "view" : {
+      "id" : "p66y-pv56",
+      "name" : "Type 2 Diabetes",
+      "attribution" : "Oklahoma State Department of Health",
+      "attributionLink" : "http://www.health.ok.gov",
+      "averageRating" : 0,
+      "category" : "Health",
+      "createdAt" : 1431097622,
+      "description" : "Decrease the percentage of people with Type 2 diabetes from 11.2% in 2014 to 10.1% by 2019.",
+      "displayType" : "table",
+      "downloadCount" : 33,
+      "indexUpdatedAt" : 1431625517,
+      "licenseId" : "OPEN_DATABASE_LICENSE",
+      "newBackend" : false,
+      "numberOfComments" : 0,
+      "oid" : 11190337,
+      "publicationAppendEnabled" : false,
+      "publicationDate" : 1431097849,
+      "publicationGroup" : 2798522,
+      "publicationStage" : "published",
+      "rowClass" : "",
+      "rowsUpdatedAt" : 1431097843,
+      "rowsUpdatedBy" : "36fw-8a4w",
+      "tableId" : 2798541,
+      "totalTimesRated" : 0,
+      "viewCount" : 23,
+      "viewLastModified" : 1431625112,
+      "viewType" : "tabular",
+      "columns" : [ {
+        "id" : -1,
+        "name" : "sid",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":sid",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : {
+        }
+      }, {
+        "id" : -1,
+        "name" : "id",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":id",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : {
+        }
+      }, {
+        "id" : -1,
+        "name" : "position",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":position",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : {
+        }
+      }, {
+        "id" : -1,
+        "name" : "created_at",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":created_at",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : {
+        }
+      }, {
+        "id" : -1,
+        "name" : "created_meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":created_meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : {
+        }
+      }, {
+        "id" : -1,
+        "name" : "updated_at",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":updated_at",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : {
+        }
+      }, {
+        "id" : -1,
+        "name" : "updated_meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":updated_meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : {
+        }
+      }, {
+        "id" : -1,
+        "name" : "meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : {
+        }
+      }, {
+        "id" : 202762697,
+        "name" : "Years",
+        "dataTypeName" : "text",
+        "fieldName" : "years",
+        "position" : 2,
+        "renderTypeName" : "text",
+        "tableColumnId" : 28177867,
+        "width" : 160,
+        "cachedContents" : {
+          "non_null" : 9,
+          "smallest" : "2011",
+          "null" : 0,
+          "largest" : "2019",
+          "top" : [ {
+            "count" : 20,
+            "item" : "2011"
+          }, {
+            "count" : 19,
+            "item" : "2012"
+          }, {
+            "count" : 18,
+            "item" : "2013"
+          }, {
+            "count" : 17,
+            "item" : "2014"
+          }, {
+            "count" : 16,
+            "item" : "2015"
+          }, {
+            "count" : 15,
+            "item" : "2016"
+          }, {
+            "count" : 14,
+            "item" : "2017"
+          }, {
+            "count" : 13,
+            "item" : "2018"
+          }, {
+            "count" : 12,
+            "item" : "2019"
+          } ]
+        },
+        "format" : {
+        }
+      }, {
+        "id" : 202762698,
+        "name" : "Historical Data",
+        "dataTypeName" : "percent",
+        "fieldName" : "historical_data",
+        "position" : 3,
+        "renderTypeName" : "percent",
+        "tableColumnId" : 28177868,
+        "width" : 280,
+        "cachedContents" : {
+          "non_null" : 4,
+          "smallest" : "11.00",
+          "sum" : "44.80",
+          "null" : 5,
+          "average" : "11.20",
+          "largest" : "11.50",
+          "top" : [ {
+            "count" : 20,
+            "item" : "11.10"
+          }, {
+            "count" : 19,
+            "item" : "11.50"
+          }, {
+            "count" : 18,
+            "item" : "11.00"
+          }, {
+            "count" : 17,
+            "item" : "11.20"
+          } ]
+        },
+        "format" : {
+          "view" : "percent_text",
+          "precision" : "1",
+          "noCommas" : "false",
+          "align" : "right"
+        }
+      }, {
+        "id" : 202762699,
+        "name" : "Target",
+        "dataTypeName" : "percent",
+        "fieldName" : "target",
+        "position" : 4,
+        "renderTypeName" : "percent",
+        "tableColumnId" : 28177869,
+        "width" : 172,
+        "cachedContents" : {
+          "non_null" : 1,
+          "smallest" : "10.10",
+          "sum" : "10.10",
+          "null" : 8,
+          "average" : "10.10",
+          "largest" : "10.10",
+          "top" : [ {
+            "count" : 20,
+            "item" : "10.10"
+          } ]
+        },
+        "format" : {
+          "view" : "percent_text",
+          "precision" : "1",
+          "noCommas" : "false",
+          "align" : "right"
+        }
+      } ],
+      "grants" : [ {
+        "inherited" : false,
+        "type" : "viewer",
+        "flags" : [ "public" ]
+      } ],
+      "license" : {
+        "name" : "Open Database License"
+      },
+      "metadata" : {
+        "renderTypeConfig" : {
+          "visible" : {
+            "table" : true
+          }
+        },
+        "availableDisplayTypes" : [ "table", "fatrow", "page" ],
+        "rdfSubject" : "0",
+        "rowIdentifier" : "0",
+        "rdfClass" : ""
+      },
+      "owner" : {
+        "id" : "36fw-8a4w",
+        "displayName" : "Office of Management and Enterprise Services",
+        "profileImageUrlLarge" : "/images/profile/0542/3592/white-and-dark-blue-seal-size-220_large.jpg",
+        "profileImageUrlMedium" : "/images/profile/0542/3592/white-and-dark-blue-seal-size-220_thumb.jpg",
+        "profileImageUrlSmall" : "/images/profile/0542/3592/white-and-dark-blue-seal-size-220_tiny.jpg",
+        "roleName" : "publisher",
+        "screenName" : "Office of Management and Enterprise Services",
+        "rights" : [ "create_datasets", "edit_others_datasets", "edit_nominations", "approve_nominations", "moderate_comments", "manage_stories", "feature_items", "change_configurations", "view_domain", "view_others_datasets", "create_pages", "edit_pages", "view_goals", "view_dashboards", "edit_goals", "edit_dashboards" ]
+      },
+      "query" : {
+      },
+      "rights" : [ "read" ],
+      "tableAuthor" : {
+        "id" : "36fw-8a4w",
+        "displayName" : "Office of Management and Enterprise Services",
+        "profileImageUrlLarge" : "/images/profile/0542/3592/white-and-dark-blue-seal-size-220_large.jpg",
+        "profileImageUrlMedium" : "/images/profile/0542/3592/white-and-dark-blue-seal-size-220_thumb.jpg",
+        "profileImageUrlSmall" : "/images/profile/0542/3592/white-and-dark-blue-seal-size-220_tiny.jpg",
+        "roleName" : "publisher",
+        "screenName" : "Office of Management and Enterprise Services",
+        "rights" : [ "create_datasets", "edit_others_datasets", "edit_nominations", "approve_nominations", "moderate_comments", "manage_stories", "feature_items", "change_configurations", "view_domain", "view_others_datasets", "create_pages", "edit_pages", "view_goals", "view_dashboards", "edit_goals", "edit_dashboards" ]
+      },
+      "tags" : [ "type 2", "diabetes", "healthy citizens", "strong families", "prevention", "chronic disease" ],
+      "flags" : [ "default" ]
+    }
+  },
+  "data" : [ [ 1, "4F313843-32B1-4367-9BE6-0636291508C8", 1, 1431097626, "390701", 1431097843, "390701", null, "2011", "11.10", null ]
+, [ 2, "96016495-3315-42AF-B63E-530516F76D65", 2, 1431097626, "390701", 1431097841, "390701", null, "2012", "11.50", null ]
+, [ 3, "2C5DAD5F-EE9F-4730-8811-1F87854DEC01", 3, 1431097626, "390701", 1431097841, "390701", null, "2013", "11.00", null ]
+, [ 4, "4B1DA2F6-AEC7-4B6A-9511-252E1BCBEAD9", 4, 1431097626, "390701", 1431097840, "390701", null, "2014", "11.20", null ]
+, [ 5, "E0580F58-FA26-4D1B-9336-855075DD3884", 5, 1431097626, "390701", 1431097839, "390701", null, "2015", null, null ]
+, [ 6, "B61C1EAA-BE26-429A-8D99-335BAD6B0CDB", 6, 1431097626, "390701", 1431097839, "390701", null, "2016", null, null ]
+, [ 7, "367F907A-56BB-4C8E-81F8-C4CEA82BF945", 7, 1431097626, "390701", 1431097838, "390701", null, "2017", null, null ]
+, [ 8, "334F36B0-4FC2-45A3-A065-D2A717297A4F", 8, 1431097626, "390701", 1431097838, "390701", null, "2018", null, null ]
+, [ 9, "07EECB32-D0DB-4386-B93F-08D68FFDFCB5", 9, 1431097626, "390701", 1431097837, "390701", null, "2019", null, "10.10" ]
+ ]
+}

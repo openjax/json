@@ -1,0 +1,467 @@
+{
+  "meta" : {
+    "view" : {
+      "id" : "yhtd-6cjz",
+      "name" : "Crime & Safety 2010",
+      "attribution" : "Baltimore Neighborhood Indicators Alliance-Jacob France Institute at the University of Baltimore",
+      "attributionLink" : "http://www.bniajfi.org/",
+      "averageRating" : 0,
+      "category" : "Neighborhoods",
+      "createdAt" : 1361885121,
+      "description" : "All crime data for Vital Signs indicators are provided by the Baltimore City Police Department. BNIA-JFI normalizes this data by population to establish crime rates. Normalizing data allows for the rates to reflect the concentration of the crime relative to the population in the area and allows for comparison between areas of different populations.",
+      "displayType" : "table",
+      "downloadCount" : 4958,
+      "hideFromCatalog" : false,
+      "hideFromDataJson" : false,
+      "indexUpdatedAt" : 1486060615,
+      "licenseId" : "CC_30_BY",
+      "newBackend" : true,
+      "numberOfComments" : 0,
+      "oid" : 7693339,
+      "provenance" : "official",
+      "publicationAppendEnabled" : false,
+      "publicationDate" : 1396569963,
+      "publicationGroup" : 700814,
+      "publicationStage" : "published",
+      "rowsUpdatedAt" : 1396569960,
+      "rowsUpdatedBy" : "6r9a-dfdj",
+      "tableId" : 1533988,
+      "totalTimesRated" : 0,
+      "viewCount" : 2063,
+      "viewLastModified" : 1486356350,
+      "viewType" : "tabular",
+      "approvals" : [ {
+        "reviewedAt" : 1396569963,
+        "reviewedAutomatically" : true,
+        "state" : "approved",
+        "submissionId" : 364068,
+        "submissionObject" : "public_audience_request",
+        "submissionOutcome" : "change_audience",
+        "submittedAt" : 1396569963,
+        "workflowId" : 794,
+        "submissionDetails" : {
+          "permissionType" : "READ"
+        },
+        "submissionOutcomeApplication" : {
+          "failureCount" : 0,
+          "status" : "success"
+        },
+        "submitter" : {
+          "id" : "6r9a-dfdj",
+          "displayName" : "Open Baltimore"
+        }
+      } ],
+      "columns" : [ {
+        "id" : -1,
+        "name" : "sid",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":sid",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "id",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":id",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "position",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":position",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "created_at",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":created_at",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "created_meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":created_meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "updated_at",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":updated_at",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "updated_meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":updated_meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : 141280405,
+        "name" : "CSA2010",
+        "dataTypeName" : "text",
+        "fieldName" : "csa2010",
+        "position" : 2,
+        "renderTypeName" : "text",
+        "tableColumnId" : 8177729,
+        "width" : 184,
+        "cachedContents" : {
+          "non_null" : 55,
+          "largest" : "Westport/Mt. Winans/Lakeland ",
+          "null" : 0,
+          "top" : [ {
+            "item" : "Orangeville/East Highlandtown ",
+            "count" : 20
+          }, {
+            "item" : "Patterson Park North & East",
+            "count" : 19
+          }, {
+            "item" : "Penn North/Reservoir Hill ",
+            "count" : 18
+          }, {
+            "item" : "Pimlico/Arlington/Hilltop ",
+            "count" : 17
+          }, {
+            "item" : "Poppleton/The Terraces/Hollins Market ",
+            "count" : 16
+          }, {
+            "item" : "Sandtown-Winchester/Harlem Park ",
+            "count" : 15
+          }, {
+            "item" : "South Baltimore ",
+            "count" : 14
+          }, {
+            "item" : "Southeastern ",
+            "count" : 13
+          }, {
+            "item" : "Southern Park Heights ",
+            "count" : 12
+          }, {
+            "item" : "Southwest Baltimore ",
+            "count" : 11
+          }, {
+            "item" : "The Waverlies ",
+            "count" : 10
+          }, {
+            "item" : "Upton/Druid Heights ",
+            "count" : 9
+          }, {
+            "item" : "Washington Village/Pigtown",
+            "count" : 8
+          }, {
+            "item" : "Westport/Mt. Winans/Lakeland ",
+            "count" : 7
+          } ],
+          "smallest" : "Allendale/Irvington/S. Hilton "
+        },
+        "format" : { }
+      }, {
+        "id" : 141280406,
+        "name" : "domvio10",
+        "dataTypeName" : "number",
+        "fieldName" : "domvio10",
+        "position" : 3,
+        "renderTypeName" : "number",
+        "tableColumnId" : 8177730,
+        "width" : 196,
+        "cachedContents" : {
+          "non_null" : 55,
+          "average" : "52.24545454545455",
+          "largest" : "91.87",
+          "null" : 0,
+          "top" : [ {
+            "item" : "54.32",
+            "count" : 20
+          }, {
+            "item" : "53.54",
+            "count" : 19
+          }, {
+            "item" : "63.2",
+            "count" : 18
+          }, {
+            "item" : "51.12",
+            "count" : 17
+          }, {
+            "item" : "64.489999999999995",
+            "count" : 16
+          }, {
+            "item" : "59.55",
+            "count" : 15
+          }, {
+            "item" : "19.440000000000001",
+            "count" : 14
+          }, {
+            "item" : "59.42",
+            "count" : 13
+          }, {
+            "item" : "57.06",
+            "count" : 12
+          }, {
+            "item" : "71.959999999999994",
+            "count" : 11
+          }, {
+            "item" : "61.14",
+            "count" : 10
+          }, {
+            "item" : "64.89",
+            "count" : 9
+          }, {
+            "item" : "83.05",
+            "count" : 8
+          }, {
+            "item" : "52.82",
+            "count" : 7
+          } ],
+          "smallest" : "19.440000000000001",
+          "sum" : "2873.499999999999993"
+        },
+        "format" : { }
+      }, {
+        "id" : 141280407,
+        "name" : "crime10",
+        "dataTypeName" : "number",
+        "fieldName" : "crime10",
+        "position" : 4,
+        "renderTypeName" : "number",
+        "tableColumnId" : 8177731,
+        "width" : 184,
+        "cachedContents" : {
+          "non_null" : 55,
+          "average" : "68.35600000000000",
+          "largest" : "424.44",
+          "null" : 0,
+          "top" : [ {
+            "item" : "85.86",
+            "count" : 20
+          }, {
+            "item" : "75.680000000000007",
+            "count" : 19
+          }, {
+            "item" : "64.23",
+            "count" : 18
+          }, {
+            "item" : "58.06",
+            "count" : 17
+          }, {
+            "item" : "80.22",
+            "count" : 16
+          }, {
+            "item" : "69.48",
+            "count" : 15
+          }, {
+            "item" : "35.549999999999997",
+            "count" : 14
+          }, {
+            "item" : "57.83",
+            "count" : 13
+          }, {
+            "item" : "59.55",
+            "count" : 12
+          }, {
+            "item" : "79.34",
+            "count" : 11
+          }, {
+            "item" : "70.55",
+            "count" : 10
+          }, {
+            "item" : "65.22",
+            "count" : 9
+          }, {
+            "item" : "123.93",
+            "count" : 8
+          }, {
+            "item" : "78.52",
+            "count" : 7
+          } ],
+          "smallest" : "15.42",
+          "sum" : "3759.580000000000034"
+        },
+        "format" : { }
+      }, {
+        "id" : 141280408,
+        "name" : "viol10",
+        "dataTypeName" : "number",
+        "fieldName" : "viol10",
+        "position" : 5,
+        "renderTypeName" : "number",
+        "tableColumnId" : 8177732,
+        "width" : 172,
+        "cachedContents" : {
+          "non_null" : 55,
+          "average" : "16.93127272727273",
+          "largest" : "97.85",
+          "null" : 0,
+          "top" : [ {
+            "item" : "12.64",
+            "count" : 20
+          }, {
+            "item" : "17.46",
+            "count" : 19
+          }, {
+            "item" : "18.82",
+            "count" : 18
+          }, {
+            "item" : "23.44",
+            "count" : 17
+          }, {
+            "item" : "26.54",
+            "count" : 16
+          }, {
+            "item" : "27.05",
+            "count" : 15
+          }, {
+            "item" : "2.97",
+            "count" : 14
+          }, {
+            "item" : "10.7",
+            "count" : 13
+          }, {
+            "item" : "18.739999999999998",
+            "count" : 12
+          }, {
+            "item" : "28.8",
+            "count" : 11
+          }, {
+            "item" : "18.440000000000001",
+            "count" : 10
+          }, {
+            "item" : "27.29",
+            "count" : 9
+          }, {
+            "item" : "25.44",
+            "count" : 8
+          }, {
+            "item" : "19.53",
+            "count" : 7
+          } ],
+          "smallest" : "1.76",
+          "sum" : "931.2199999999999982"
+        },
+        "format" : { }
+      } ],
+      "grants" : [ {
+        "inherited" : false,
+        "type" : "viewer",
+        "flags" : [ "public" ]
+      } ],
+      "license" : {
+        "name" : "Creative Commons Attribution 3.0 Unported",
+        "logoUrl" : "images/licenses/cc30by.png",
+        "termsLink" : "http://creativecommons.org/licenses/by/3.0/legalcode"
+      },
+      "metadata" : {
+        "custom_fields" : {
+          "Updated" : {
+            "Frequency" : ""
+          },
+          "Publishing Entity" : {
+            "Department" : "Non-Governmental"
+          }
+        }
+      },
+      "owner" : {
+        "id" : "6r9a-dfdj",
+        "displayName" : "Open Baltimore",
+        "screenName" : "Open Baltimore",
+        "type" : "interactive",
+        "userSegment" : "site_member",
+        "flags" : [ "acceptedEula", "mayBeStoriesCoOwner" ]
+      },
+      "query" : { },
+      "rights" : [ "read" ],
+      "tableAuthor" : {
+        "id" : "6r9a-dfdj",
+        "displayName" : "Open Baltimore",
+        "screenName" : "Open Baltimore",
+        "type" : "interactive",
+        "userSegment" : "site_member",
+        "flags" : [ "acceptedEula", "mayBeStoriesCoOwner" ]
+      },
+      "tags" : [ "crime", "census" ],
+      "flags" : [ "default", "restorable", "restorePossibleForType" ]
+    }
+  },
+  "data" : [ [ "row-cxnv.zdtr.5czw", "00000000-0000-0000-94A9-D8AA3926375B", 0, 1425665444, null, 1425665444, null, "{ }", "Allendale/Irvington/S. Hilton ", "59.38", "40.57", "12.64" ]
+, [ "row-z283~ggeh-f32e", "00000000-0000-0000-7FDC-E1EE797DF4EE", 0, 1425665444, null, 1425665444, null, "{ }", "Beechfield/Ten Hills/West Hills ", "47.86", "33.590000000000003", "8.4" ]
+, [ "row-irfa.4apr_mu2j", "00000000-0000-0000-222B-ADF3D6E57A7F", 0, 1425665444, null, 1425665444, null, "{ }", "Belair-Edison ", "51.1", "50.3", "13.26" ]
+, [ "row-zatz_c4wa.7vq3", "00000000-0000-0000-23AF-F8261B220382", 0, 1425665444, null, 1425665444, null, "{ }", "Brooklyn/Curtis Bay/Hawkins Point ", "68.03", "81.650000000000006", "25.35" ]
+, [ "row-r733.f7ji.7j27", "00000000-0000-0000-5D49-59E73682F90C", 0, 1425665444, null, 1425665444, null, "{ }", "Canton ", "34.32", "60.99", "8.27" ]
+, [ "row-rnp8.6vts_wsmd", "00000000-0000-0000-E70B-95DC0C95A280", 0, 1425665444, null, 1425665444, null, "{ }", "Cedonia/Frankford ", "60.24", "43.72", "11.97" ]
+, [ "row-vjfj~xeyz.yg9m", "00000000-0000-0000-BA8A-1F08F5E0900E", 0, 1425665444, null, 1425665444, null, "{ }", "Cherry Hill ", "62.91", "59.99", "22.56" ]
+, [ "row-ng9n_59si~9j6s", "00000000-0000-0000-C108-45293C05D2D9", 0, 1425665444, null, 1425665444, null, "{ }", "Chinquapin Park/Belvedere ", "39.71", "43.58", "12.64" ]
+, [ "row-he9g-uwad_gdmw", "00000000-0000-0000-12A6-EC66EB239CB1", 0, 1425665444, null, 1425665444, null, "{ }", "Claremont/Armistead ", "60.38", "52.61", "13.24" ]
+, [ "row-auur-x2hk_hqf3", "00000000-0000-0000-8B9B-D8262ECAB378", 0, 1425665444, null, 1425665444, null, "{ }", "Clifton-Berea ", "49.73", "57.93", "23.29" ]
+, [ "row-uvjh.26at_m8mv", "00000000-0000-0000-BD3F-98DBDC33DF13", 0, 1425665444, null, 1425665444, null, "{ }", "Cross-Country/Cheswolde ", "22.56", "15.42", "1.76" ]
+, [ "row-y9jm~uwxz-bav3", "00000000-0000-0000-8312-57F9EB9DC1A4", 0, 1425665444, null, 1425665444, null, "{ }", "Dickeyville/Franklintown ", "55.35", "49.5", "7.07" ]
+, [ "row-qcyj_ffqu_yazr", "00000000-0000-0000-A552-E156247D4F5B", 0, 1425665444, null, 1425665444, null, "{ }", "Dorchester/Ashburton ", "51.59", "52.35", "15.44" ]
+, [ "row-2p9b_8wnt_bscn", "00000000-0000-0000-BD63-CBC209D8FA41", 0, 1425665444, null, 1425665444, null, "{ }", "Downtown/Seton Hill ", "91.87", "424.44", "97.85" ]
+, [ "row-6dkb_jah2~4jhv", "00000000-0000-0000-ECC5-23E83AF8CED3", 0, 1425665444, null, 1425665444, null, "{ }", "Edmondson Village ", "43.42", "28.48", "8.23" ]
+, [ "row-rh44-3mh7.f8ce", "00000000-0000-0000-DEA7-0F5DA2A8ECF8", 0, 1425665444, null, 1425665444, null, "{ }", "Fells Point ", "40.49", "62.29", "13.5" ]
+, [ "row-tw47~rwc6-7qhc", "00000000-0000-0000-F504-059233B266BF", 0, 1425665444, null, 1425665444, null, "{ }", "Forest Park/Walbrook ", "51.38", "48.74", "10.36" ]
+, [ "row-ckfj-yrv7.ixmy", "00000000-0000-0000-C173-B4DC4D7B5C8C", 0, 1425665444, null, 1425665444, null, "{ }", "Glen-Falstaff ", "47.2", "53.57", "11.73" ]
+, [ "row-6vjj~z25k~ehu7", "00000000-0000-0000-261D-05C4AED11919", 0, 1425665444, null, 1425665444, null, "{ }", "Greater Charles Village/Barclay ", "43.32", "74.31", "17.14" ]
+, [ "row-vvct.d96b~kk4q", "00000000-0000-0000-7AA3-AB2425FA5168", 0, 1425665444, null, 1425665444, null, "{ }", "Greater Govans ", "45.03", "42.22", "12.08" ]
+, [ "row-jgd7_v8nn_5dsq", "00000000-0000-0000-DDE2-DC4F5446B162", 0, 1425665444, null, 1425665444, null, "{ }", "Greater Mondawmin ", "62.54", "112.42", "24.78" ]
+, [ "row-d6dv_e4gy.hs9c", "00000000-0000-0000-9877-8BFBA3FBC487", 0, 1425665444, null, 1425665444, null, "{ }", "Greater Roland Park/Poplar Hill", "32.53", "32.130000000000003", "2.0299999999999998" ]
+, [ "row-bbdu-aett_sfwh", "00000000-0000-0000-B0D0-168347DF9FA6", 0, 1425665444, null, 1425665444, null, "{ }", "Greater Rosemont ", "64.33", "63.5", "19.52" ]
+, [ "row-suqt~kpgm.xn3i", "00000000-0000-0000-331A-97509B325B2D", 0, 1425665444, null, 1425665444, null, "{ }", "Greenmount East ", "49.97", "57.37", "19.649999999999999" ]
+, [ "row-34if-ud2e.r9iu", "00000000-0000-0000-0A72-3F1336BAAAD7", 0, 1425665444, null, 1425665444, null, "{ }", "Hamilton ", "42.46", "40.840000000000003", "9.4600000000000009" ]
+, [ "row-cz8b~rcup.4ewi", "00000000-0000-0000-F37A-71DF96C471FE", 0, 1425665444, null, 1425665444, null, "{ }", "Harbor East/Little Italy", "74.900000000000006", "119.29", "28.48" ]
+, [ "row-fwfq_gsfg-amt8", "00000000-0000-0000-05C8-EBFC091D6D79", 0, 1425665444, null, 1425665444, null, "{ }", "Harford/Echodale ", "44.06", "41.45", "10.69" ]
+, [ "row-tib8_h2dk_5fpm", "00000000-0000-0000-0CEB-708253E6EF69", 0, 1425665444, null, 1425665444, null, "{ }", "Highlandtown ", "46.21", "77.52", "20.69" ]
+, [ "row-rmhk.qnqc_2px3", "00000000-0000-0000-947F-272AB187E9A1", 0, 1425665444, null, 1425665444, null, "{ }", "Howard Park/West Arlington ", "46.26", "50.49", "11.4" ]
+, [ "row-9cm6_jj2h~9t42", "00000000-0000-0000-BFFA-391858493026", 0, 1425665444, null, 1425665444, null, "{ }", "Inner Harbor/Federal Hill ", "57.3", "165.15", "18.649999999999999" ]
+, [ "row-b62t.tk35~63zi", "00000000-0000-0000-CEAA-C410392FDFCE", 0, 1425665444, null, 1425665444, null, "{ }", "Lauraville ", "48.81", "39.6", "6.27" ]
+, [ "row-mcdv_kfis.6v6x", "00000000-0000-0000-2D3F-C5575C6FBB3B", 0, 1425665444, null, 1425665444, null, "{ }", "Loch Raven ", "45.13", "34.29", "8.43" ]
+, [ "row-pyxm.yzk4~uk87", "00000000-0000-0000-38CD-EB4AAE9DED86", 0, 1425665444, null, 1425665444, null, "{ }", "Madison/East End ", "63.23", "65.540000000000006", "25.06" ]
+, [ "row-tvy3~ek6y.36bb", "00000000-0000-0000-6CDA-454D295D79C2", 0, 1425665444, null, 1425665444, null, "{ }", "Medfield/Hampden/Woodberry", "34.159999999999997", "51.18", "7.13" ]
+, [ "row-g8ui~c22h~6zmm", "00000000-0000-0000-153B-71A8059B4D70", 0, 1425665444, null, 1425665444, null, "{ }", "Midtown ", "25.03", "92.88", "15.18" ]
+, [ "row-vzd8-derh-wamq", "00000000-0000-0000-6F50-B240BF27B1EC", 0, 1425665444, null, 1425665444, null, "{ }", "Midway/Coldstream ", "58.08", "66.400000000000006", "22.03" ]
+, [ "row-znwu~nzg7_cubs", "00000000-0000-0000-A708-BC728A3C4A6A", 0, 1425665444, null, 1425665444, null, "{ }", "Morrell Park/Violetville ", "59.35", "68.05", "6.58" ]
+, [ "row-76wh-7zib~8sfx", "00000000-0000-0000-41FB-8AE52C7BBEB6", 0, 1425665444, null, 1425665444, null, "{ }", "Mt. Washington/Coldspring ", "45.28", "33.090000000000003", "2.3199999999999998" ]
+, [ "row-g8j8~d4z9-quxa", "00000000-0000-0000-87C5-4C40DD9D9629", 0, 1425665444, null, 1425665444, null, "{ }", "North Baltimore/Guilford/Homeland ", "29.09", "25.82", "3.15" ]
+, [ "row-jb55.f5c4~v5bs", "00000000-0000-0000-B121-8B8557446B59", 0, 1425665444, null, 1425665444, null, "{ }", "Northwood ", "39.18", "39.9", "9.5500000000000007" ]
+, [ "row-kht6_p8yg_4q9r", "00000000-0000-0000-3829-401BE37EDA05", 0, 1425665444, null, 1425665444, null, "{ }", "Oldtown/Middle East", "63.73", "102.4", "27.8" ]
+, [ "row-an29.v3dy-2s6y", "00000000-0000-0000-DD87-0CB7F043C57F", 0, 1425665444, null, 1425665444, null, "{ }", "Orangeville/East Highlandtown ", "54.32", "85.86", "20.37" ]
+, [ "row-fihm_65zy-r8pe", "00000000-0000-0000-6903-F74C066EBBB7", 0, 1425665444, null, 1425665444, null, "{ }", "Patterson Park North & East", "53.54", "75.680000000000007", "17.46" ]
+, [ "row-m2vx~7y4w-kx3p", "00000000-0000-0000-A76D-C161B1A23743", 0, 1425665444, null, 1425665444, null, "{ }", "Penn North/Reservoir Hill ", "63.2", "64.23", "18.82" ]
+, [ "row-29hu.7k8t.iigt", "00000000-0000-0000-1295-B297E95BCDF3", 0, 1425665444, null, 1425665444, null, "{ }", "Pimlico/Arlington/Hilltop ", "51.12", "58.06", "23.44" ]
+, [ "row-27vd-63u5-sn9a", "00000000-0000-0000-C685-95CDB53527F8", 0, 1425665444, null, 1425665444, null, "{ }", "Poppleton/The Terraces/Hollins Market ", "64.489999999999995", "80.22", "26.54" ]
+, [ "row-xnfn~wkzr-8cfc", "00000000-0000-0000-2DFD-A8B3BD38B475", 0, 1425665444, null, 1425665444, null, "{ }", "Sandtown-Winchester/Harlem Park ", "59.55", "69.48", "27.05" ]
+, [ "row-9ahh~3rzs~5shu", "00000000-0000-0000-4458-A8C20E94E19D", 0, 1425665444, null, 1425665444, null, "{ }", "South Baltimore ", "19.440000000000001", "35.549999999999997", "2.97" ]
+, [ "row-iaf7-z2ye-vpum", "00000000-0000-0000-92A8-2EB148161360", 0, 1425665444, null, 1425665444, null, "{ }", "Southeastern ", "59.42", "57.83", "10.7" ]
+, [ "row-ijpr.xgg4~t4fn", "00000000-0000-0000-DBDC-2E6314418762", 0, 1425665444, null, 1425665444, null, "{ }", "Southern Park Heights ", "57.06", "59.55", "18.739999999999998" ]
+, [ "row-a3v9-ah35~uvpg", "00000000-0000-0000-27A3-7D328043367F", 0, 1425665444, null, 1425665444, null, "{ }", "Southwest Baltimore ", "71.959999999999994", "79.34", "28.8" ]
+, [ "row-h3k3-yfym_jg3g", "00000000-0000-0000-8EFB-9C3522F0D5D2", 0, 1425665444, null, 1425665444, null, "{ }", "The Waverlies ", "61.14", "70.55", "18.440000000000001" ]
+, [ "row-83ue_zjer~bdpk", "00000000-0000-0000-D9F9-08F169FF7632", 0, 1425665444, null, 1425665444, null, "{ }", "Upton/Druid Heights ", "64.89", "65.22", "27.29" ]
+, [ "row-t3ac_juax~6xe2", "00000000-0000-0000-B14D-155989D5B072", 0, 1425665444, null, 1425665444, null, "{ }", "Washington Village/Pigtown", "83.05", "123.93", "25.44" ]
+, [ "row-3v7u.7ku4_3xdu", "00000000-0000-0000-ABFA-E997F219FE8E", 0, 1425665444, null, 1425665444, null, "{ }", "Westport/Mt. Winans/Lakeland ", "52.82", "78.52", "19.53" ]
+ ]
+}

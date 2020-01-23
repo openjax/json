@@ -1,0 +1,700 @@
+{
+  "meta" : {
+    "view" : {
+      "id" : "m3r4-2ghp",
+      "name" : "HGBP Hotels & Resorts",
+      "averageRating" : 0,
+      "category" : "Economic Development",
+      "createdAt" : 1394846085,
+      "displayType" : "table",
+      "downloadCount" : 4511,
+      "hideFromCatalog" : false,
+      "hideFromDataJson" : false,
+      "indexUpdatedAt" : 1414729206,
+      "newBackend" : true,
+      "numberOfComments" : 0,
+      "oid" : 7686209,
+      "provenance" : "official",
+      "publicationAppendEnabled" : false,
+      "publicationDate" : 1396484269,
+      "publicationGroup" : 1510602,
+      "publicationStage" : "published",
+      "rowsUpdatedAt" : 1396484267,
+      "rowsUpdatedBy" : "av98-wszh",
+      "tableId" : 1532663,
+      "totalTimesRated" : 0,
+      "viewCount" : 644,
+      "viewLastModified" : 1396484270,
+      "viewType" : "tabular",
+      "approvals" : [ {
+        "reviewedAt" : 1396484269,
+        "reviewedAutomatically" : true,
+        "state" : "approved",
+        "submissionId" : 806617,
+        "submissionObject" : "public_audience_request",
+        "submissionOutcome" : "change_audience",
+        "submittedAt" : 1396484269,
+        "workflowId" : 2182,
+        "submissionDetails" : {
+          "permissionType" : "READ"
+        },
+        "submissionOutcomeApplication" : {
+          "failureCount" : 0,
+          "status" : "success"
+        },
+        "submitter" : {
+          "id" : "av98-wszh",
+          "displayName" : "Jonathan Chin"
+        }
+      } ],
+      "columns" : [ {
+        "id" : -1,
+        "name" : "sid",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":sid",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "id",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":id",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "position",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":position",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "created_at",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":created_at",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "created_meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":created_meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "updated_at",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":updated_at",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "updated_meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":updated_meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : 141120117,
+        "name" : "Hotel Name",
+        "dataTypeName" : "text",
+        "fieldName" : "hotel_name",
+        "position" : 1,
+        "renderTypeName" : "text",
+        "tableColumnId" : 18642735,
+        "width" : 220,
+        "cachedContents" : {
+          "non_null" : 30,
+          "largest" : "Wyndham at Waikiki Beach Walk",
+          "null" : "0",
+          "top" : [ {
+            "item" : "Westin Kaanapali Ocean Resort Villas",
+            "count" : "1"
+          }, {
+            "item" : "Hawaii Prince Hotel Waikiki",
+            "count" : "1"
+          }, {
+            "item" : "Hyatt Regency Maui Resort & Spa",
+            "count" : "1"
+          }, {
+            "item" : "Ko Olina Marriot Beach Club",
+            "count" : "1"
+          }, {
+            "item" : "Hilton Waikoloa Village",
+            "count" : "1"
+          }, {
+            "item" : "JW Marriott Ihilani, Ko Olina",
+            "count" : "1"
+          }, {
+            "item" : "Wyndham at Waikiki Beach Walk",
+            "count" : "1"
+          }, {
+            "item" : "Sheraton Waikiki",
+            "count" : "1"
+          }, {
+            "item" : "Moana Surfrider",
+            "count" : "1"
+          }, {
+            "item" : "Hale Koa Hotel",
+            "count" : "1"
+          }, {
+            "item" : "Marriott Waiohai Beach Club",
+            "count" : "1"
+          }, {
+            "item" : "Grand Hyatt Kauai Resort & Spa",
+            "count" : "1"
+          }, {
+            "item" : "Hilton Hawaiian Village",
+            "count" : "1"
+          }, {
+            "item" : "Grand Wailea Resort",
+            "count" : "1"
+          }, {
+            "item" : "Kahala Hotel & Resort",
+            "count" : "1"
+          }, {
+            "item" : "Maui Prince Hotel",
+            "count" : "1"
+          }, {
+            "item" : "Kilauea Lakeside Estate",
+            "count" : "1"
+          }, {
+            "item" : "Wailea Beach Marriott Resort & Spa",
+            "count" : "1"
+          }, {
+            "item" : "Marriott Maui Ocean Club",
+            "count" : "1"
+          }, {
+            "item" : "Waikiki Beach Marriott",
+            "count" : "1"
+          } ],
+          "smallest" : "Aqua Aloha Surf Waikiki Hotel",
+          "not_null" : "30",
+          "cardinality" : "30"
+        },
+        "format" : { }
+      }, {
+        "id" : 141120118,
+        "name" : "Address",
+        "dataTypeName" : "location",
+        "fieldName" : "address",
+        "position" : 2,
+        "renderTypeName" : "location",
+        "tableColumnId" : 18642742,
+        "width" : 184,
+        "format" : { },
+        "subColumnTypes" : [ "human_address", "latitude", "longitude", "machine_address", "needs_recoding" ]
+      }, {
+        "id" : 141120119,
+        "name" : "Hotel Phone Number",
+        "dataTypeName" : "text",
+        "fieldName" : "hotel_phone_number",
+        "position" : 7,
+        "renderTypeName" : "text",
+        "tableColumnId" : 18642736,
+        "width" : 127,
+        "cachedContents" : {
+          "non_null" : 30,
+          "largest" : "(808) 956-1111",
+          "null" : "0",
+          "top" : [ {
+            "item" : "(808) 669-6200",
+            "count" : "1"
+          }, {
+            "item" : "(808) 923-1234",
+            "count" : "1"
+          }, {
+            "item" : "(808) 922-3111",
+            "count" : "1"
+          }, {
+            "item" : "(808) 922-5811",
+            "count" : "1"
+          }, {
+            "item" : "(808) 667-1200",
+            "count" : "1"
+          }, {
+            "item" : "(808) 954-7412",
+            "count" : "1"
+          }, {
+            "item" : "(808) 875-4100",
+            "count" : "1"
+          }, {
+            "item" : "(808) 923-0222",
+            "count" : "1"
+          }, {
+            "item" : "(808) 885-6622",
+            "count" : "1"
+          }, {
+            "item" : "(808) 922-4646",
+            "count" : "1"
+          }, {
+            "item" : "(808) 886-1234",
+            "count" : "1"
+          }, {
+            "item" : "(808) 661-1234",
+            "count" : "1"
+          }, {
+            "item" : "(808) 921-4400",
+            "count" : "1"
+          }, {
+            "item" : "(808) 879-1922",
+            "count" : "1"
+          }, {
+            "item" : "(808) 922-4422",
+            "count" : "1"
+          }, {
+            "item" : "(808) 955-0555",
+            "count" : "1"
+          }, {
+            "item" : "(808) 742-4400",
+            "count" : "1"
+          }, {
+            "item" : "(808) 922-6611",
+            "count" : "1"
+          }, {
+            "item" : "(808) 874-1111",
+            "count" : "1"
+          }, {
+            "item" : "(808) 949-4321",
+            "count" : "1"
+          } ],
+          "smallest" : "(310) 379-7842",
+          "not_null" : "30",
+          "cardinality" : "30"
+        },
+        "format" : { }
+      }, {
+        "id" : 141120120,
+        "name" : "Hotel Website",
+        "dataTypeName" : "url",
+        "fieldName" : "hotel_website",
+        "position" : 8,
+        "renderTypeName" : "url",
+        "tableColumnId" : 18642737,
+        "width" : 166,
+        "cachedContents" : {
+          "non_null" : 30,
+          "largest" : {
+            "description" : "Wyndam at Waikiki Beach Walk",
+            "url" : "http://www.waikikibeachwalk.com/"
+          },
+          "null" : 0,
+          "top" : [ {
+            "item" : {
+              "description" : "Aqua Aloha Surf Waikiki Hotel",
+              "url" : "http://www.aquaresorts.com/hotels/aqua-aloha-surf-waikiki/"
+            },
+            "count" : 20
+          }, {
+            "item" : {
+              "description" : "Aqua Bamboo Waikiki",
+              "url" : "http://www.aquabamboo.com/"
+            },
+            "count" : 19
+          }, {
+            "item" : {
+              "description" : "Hale Koa Hotel",
+              "url" : "http://www.halekoa.com/"
+            },
+            "count" : 18
+          }, {
+            "item" : {
+              "description" : "Hawaii Prince Hotel Waikiki",
+              "url" : "http://www.princeresortshawaii.com/hawaii-prince-hotel-waikiki/index.php"
+            },
+            "count" : 17
+          }, {
+            "item" : {
+              "description" : "Hilton Hawaiian Village",
+              "url" : "http://www.hiltonhawaiianvillage.com/"
+            },
+            "count" : 16
+          }, {
+            "item" : {
+              "description" : "Holiday Inn Waikiki Beachcomber",
+              "url" : "http://www.waikikibeachcomberresort.com/"
+            },
+            "count" : 15
+          }, {
+            "item" : {
+              "description" : "Hyatt Regency Waikiki",
+              "url" : "http://www.waikiki.hyatt.com/en/hotel/home.html"
+            },
+            "count" : 14
+          }, {
+            "item" : {
+              "description" : "JW Marriott Ihilani, Ko Olina",
+              "url" : "http://www.ihilani.com/"
+            },
+            "count" : 13
+          }, {
+            "item" : {
+              "description" : "Kahala Hotel & Resort",
+              "url" : "http://www.kahalaresort.com/"
+            },
+            "count" : 12
+          }, {
+            "item" : {
+              "description" : "Ko Olina Marriot Beach Club",
+              "url" : "http://www.marriott.com/hotels/travel/hnlko-marriotts-ko-olina-beach-club/"
+            },
+            "count" : 11
+          }, {
+            "item" : {
+              "description" : "Moana Surfrider",
+              "url" : "http://www.moana-surfrider.com/"
+            },
+            "count" : 10
+          }, {
+            "item" : {
+              "description" : "Sheraton Princess Kaiulani",
+              "url" : "http://www.princess-kaiulani.com/"
+            },
+            "count" : 9
+          }, {
+            "item" : {
+              "description" : "Sheraton Waikiki",
+              "url" : "http://www.sheraton-waikiki.com/"
+            },
+            "count" : 8
+          }, {
+            "item" : {
+              "description" : "Turtle Bay Resort",
+              "url" : "http://www.turtlebayresort.com/"
+            },
+            "count" : 7
+          }, {
+            "item" : {
+              "description" : "Waikiki Beach Marriott",
+              "url" : "http://www.marriott.com/hotels/travel/hnlmc-waikiki-beach-marriott-resort-and-spa/"
+            },
+            "count" : 6
+          }, {
+            "item" : {
+              "description" : "Wyndam at Waikiki Beach Walk",
+              "url" : "http://www.waikikibeachwalk.com/"
+            },
+            "count" : 5
+          }, {
+            "item" : {
+              "description" : "Fairmont Kea Lani",
+              "url" : "http://www.fairmont.com/kea-lani-maui/"
+            },
+            "count" : 4
+          }, {
+            "item" : {
+              "description" : "Grand Wailea Resort",
+              "url" : "http://www.grandwailea.com/"
+            },
+            "count" : 3
+          }, {
+            "item" : {
+              "description" : "Hyatt Regency Maui Resort & Spa",
+              "url" : "http://maui.hyatt.com/en/hotel/home.html"
+            },
+            "count" : 2
+          }, {
+            "item" : {
+              "description" : "Marriott Maui Ocean Club",
+              "url" : "http://www.marriottvacationclub.com/vacation-resorts/marriott-maui-ocean-club/overview.shtml"
+            },
+            "count" : 1
+          } ],
+          "smallest" : {
+            "description" : "Aqua Aloha Surf Waikiki Hotel",
+            "url" : "http://www.aquaresorts.com/hotels/aqua-aloha-surf-waikiki/"
+          }
+        },
+        "format" : { },
+        "subColumnTypes" : [ "url", "description" ]
+      }, {
+        "id" : 141120121,
+        "name" : "Most recent Report",
+        "dataTypeName" : "url",
+        "fieldName" : "_1st_green_report",
+        "position" : 9,
+        "renderTypeName" : "url",
+        "tableColumnId" : 18642738,
+        "width" : 103,
+        "cachedContents" : {
+          "non_null" : 30,
+          "largest" : {
+            "description" : "2013",
+            "url" : "http://energy.hawaii.gov/wp-content/uploads/2012/04/Wyndham-Waikiki-4-26-13-Press-Packet.pdf"
+          },
+          "null" : 0,
+          "top" : [ {
+            "item" : {
+              "description" : "2013",
+              "url" : "http://energy.hawaii.gov/wp-content/uploads/2012/04/Aqua-Aloha-Press-Packet-04.26.13.pdf"
+            },
+            "count" : 20
+          }, {
+            "item" : {
+              "description" : "2010",
+              "url" : "http://energy.hawaii.gov/wp-content/uploads/2011/10/AquaBamboo_pressrelease.pdf"
+            },
+            "count" : 19
+          }, {
+            "item" : {
+              "description" : "2005",
+              "url" : "http://energy.hawaii.gov/wp-content/uploads/2012/04/Hale-Koa.pdf"
+            },
+            "count" : 18
+          }, {
+            "item" : {
+              "description" : "2006",
+              "url" : "http://energy.hawaii.gov/wp-content/uploads/2012/03/Hawaii-Prince-Hotel-Waikiki-Golf-Club.pdf"
+            },
+            "count" : 17
+          }, {
+            "item" : {
+              "description" : "2007",
+              "url" : "http://energy.hawaii.gov/wp-content/uploads/2012/03/Hilton-Hawaiian-Village-2007.pdf"
+            },
+            "count" : 16
+          }, {
+            "item" : {
+              "description" : "2012",
+              "url" : "http://energy.hawaii.gov/wp-content/uploads/2012/03/Final-Holiday-Inn-Waikiki-Beachcomber-Press-Packet-2012.pdf"
+            },
+            "count" : 15
+          }, {
+            "item" : {
+              "description" : "2013",
+              "url" : "http://energy.hawaii.gov/wp-content/uploads/2012/04/Hyatt-Regency-Waikiki-Press-Packet-04.26.13.pdf"
+            },
+            "count" : 14
+          }, {
+            "item" : {
+              "description" : "2011",
+              "url" : "http://energy.hawaii.gov/wp-content/uploads/2011/10/JW-Marriott-Ihilani-Highlights-2011.pdf"
+            },
+            "count" : 13
+          }, {
+            "item" : {
+              "description" : "2012",
+              "url" : "http://energy.hawaii.gov/wp-content/uploads/2012/03/Final-Kahala-Hotel-Resort-Press-Packet-2012.pdf"
+            },
+            "count" : 12
+          }, {
+            "item" : {
+              "description" : "2010",
+              "url" : "http://energy.hawaii.gov/wp-content/uploads/2011/10/Marriott-Ko-Olina-Highlights-2010.pdf"
+            },
+            "count" : 11
+          }, {
+            "item" : {
+              "description" : "2009",
+              "url" : "http://energy.hawaii.gov/wp-content/uploads/2012/03/Moana-2009.pdf"
+            },
+            "count" : 10
+          }, {
+            "item" : {
+              "description" : "2010",
+              "url" : "http://energy.hawaii.gov/wp-content/uploads/2011/10/Sheraton-Princess-Kaiulani-Highlights-2010.pdf"
+            },
+            "count" : 9
+          }, {
+            "item" : {
+              "description" : "2005",
+              "url" : "http://energy.hawaii.gov/wp-content/uploads/2012/04/Kyo-ya-Hotels-and-Resorts.pdf"
+            },
+            "count" : 8
+          }, {
+            "item" : {
+              "description" : "2011",
+              "url" : "http://energy.hawaii.gov/wp-content/uploads/2011/10/Turtle-Bay-Resort-Highlights-2011.pdf"
+            },
+            "count" : 7
+          }, {
+            "item" : {
+              "description" : "2009",
+              "url" : "http://energy.hawaii.gov/wp-content/uploads/2012/03/WBMR-Green-Award-2009.pdf"
+            },
+            "count" : 6
+          }, {
+            "item" : {
+              "description" : "2013",
+              "url" : "http://energy.hawaii.gov/wp-content/uploads/2012/04/Wyndham-Waikiki-4-26-13-Press-Packet.pdf"
+            },
+            "count" : 5
+          }, {
+            "item" : {
+              "description" : "2010",
+              "url" : "http://energy.hawaii.gov/wp-content/uploads/2011/10/Fairmont-Kea-Lani-Maui-Highlights-2010.pdf"
+            },
+            "count" : 4
+          }, {
+            "item" : {
+              "description" : "2005",
+              "url" : "http://energy.hawaii.gov/wp-content/uploads/2012/04/Grand-Wailea-Resort-Hotel-and-Spa.pdf"
+            },
+            "count" : 3
+          }, {
+            "item" : {
+              "description" : "2009",
+              "url" : "http://energy.hawaii.gov/wp-content/uploads/2011/10/Hyatt-Regency-Maui-2009.pdf"
+            },
+            "count" : 2
+          }, {
+            "item" : {
+              "description" : "2012",
+              "url" : "http://energy.hawaii.gov/wp-content/uploads/2012/03/Final-Maui-Marriott-2012-Press-Packet.pdf"
+            },
+            "count" : 1
+          } ],
+          "smallest" : {
+            "description" : "2002",
+            "url" : "http://energy.hawaii.gov/wp-content/uploads/2012/03/Mauna-Lani-Press-Packet.pdf"
+          }
+        },
+        "format" : {
+          "align" : "left"
+        },
+        "subColumnTypes" : [ "url", "description" ]
+      }, {
+        "id" : 141120122,
+        "name" : "Logo",
+        "dataTypeName" : "photo",
+        "fieldName" : "logo",
+        "position" : 10,
+        "renderTypeName" : "photo",
+        "tableColumnId" : 18642984,
+        "width" : 100,
+        "cachedContents" : {
+          "non_null" : 30,
+          "null" : 0
+        },
+        "format" : { }
+      }, {
+        "id" : 427931131,
+        "name" : "Counties",
+        "dataTypeName" : "number",
+        "fieldName" : ":@computed_region_xpdz_s4v8",
+        "position" : 11,
+        "renderTypeName" : "number",
+        "tableColumnId" : 87346615,
+        "computationStrategy" : {
+          "source_columns" : [ "address" ],
+          "type" : "georegion_match_on_point",
+          "parameters" : {
+            "region" : "_xpdz-s4v8",
+            "primary_key" : "_feature_id"
+          }
+        },
+        "format" : { }
+      } ],
+      "grants" : [ {
+        "inherited" : false,
+        "type" : "viewer",
+        "flags" : [ "public" ]
+      } ],
+      "metadata" : {
+        "rdfSubject" : "0",
+        "custom_fields" : {
+          "Data Reference" : {
+            "Reference for Technical Information" : "",
+            "Frequency" : "",
+            "Date Updated" : "",
+            "Date Released" : "",
+            "Period of Coverage" : "",
+            "Unit of Analysis" : "",
+            "Data dictionary/variable list" : ""
+          },
+          "Hawaii Line of Business" : {
+            "Division name" : "Energy Division",
+            "Line of Business" : "Economic Development",
+            "Division shortname, acronym" : "",
+            "Department Agency short name, acronym" : "DBEDT",
+            "State of Hawaii Data Book Category" : "Geography and Environment",
+            "Department/Agency" : "Business Economic Development and Tourism"
+          },
+          "Terms of Use Acknowledgement" : {
+            "I agree by uploading this dataset that it contains no private information, and adheres to the data.hawaii.gov terms of use." : "yes"
+          }
+        },
+        "availableDisplayTypes" : [ "table", "fatrow", "page" ],
+        "renderTypeConfig" : {
+          "visible" : {
+            "table" : true
+          }
+        }
+      },
+      "owner" : {
+        "id" : "av98-wszh",
+        "displayName" : "Jonathan Chin",
+        "screenName" : "Jonathan Chin",
+        "type" : "interactive",
+        "userSegment" : "site_member"
+      },
+      "query" : { },
+      "rights" : [ "read" ],
+      "tableAuthor" : {
+        "id" : "av98-wszh",
+        "displayName" : "Jonathan Chin",
+        "screenName" : "Jonathan Chin",
+        "type" : "interactive",
+        "userSegment" : "site_member"
+      },
+      "tags" : [ "green", "business", "hotel", "resort", "hospitality" ],
+      "flags" : [ "default", "restorable", "restorePossibleForType", "unsaved" ]
+    }
+  },
+  "data" : [ [ "row-w86u~67mz~magd", "00000000-0000-0000-F304-C3A6F8082E67", 0, 1568247268, null, 1568247269, null, "{ }", "Marriott Waiohai Beach Club", [ "{\"address\": \"2249 Poipu Road\", \"city\": \"Koloa\", \"state\": \"HI\", \"zip\": \"96756\"}", "21.878653049000434", "-159.45999990199974", null, false ], "(808) 742-4400", [ "http://www.marriott.com/hotels/travel/lihwi-marriotts-waiohai-beach-club/", "Marriott Waiohai Beach Club" ], [ "http://energy.hawaii.gov/wp-content/uploads/2011/10/Marriott-Waiohai-Beach-Club-Highlights-2010.pdf", "2010" ], "NuLjf14YlUBUrhMtBjoQrvQlg7ewRbqNPrEAcTpC7XM", "1658" ]
+, [ "row-92yy_hyvq~yvge", "00000000-0000-0000-6810-AA21C523DD91", 0, 1568247268, null, 1568247269, null, "{ }", "Moana Surfrider", [ "{\"address\": \"2365 Kalakaua Avenue\", \"city\": \"Honolulu\", \"state\": \"HI\", \"zip\": \"96815\"}", "21.27667012100045", "-157.82626846999975", null, false ], "(808) 922-3111", [ "http://www.moana-surfrider.com/", "Moana Surfrider" ], [ "http://energy.hawaii.gov/wp-content/uploads/2012/03/Moana-2009.pdf", "2009" ], "GHy6_7cIN2jYnfnsCF5I7py8MQz2mV7QsHNp7m961SM", "1657" ]
+, [ "row-u9nb_a7tm.rhts", "00000000-0000-0000-789A-B240EF52BE70", 0, 1568247268, null, 1568247269, null, "{ }", "Aqua Aloha Surf Waikiki Hotel", [ "{\"address\": \"444 Kanekapolei Street\", \"city\": \"Honolulu\", \"state\": \"HI\", \"zip\": \"96815\"}", "21.278900364000435", "-157.82341996499974", null, false ], "(808) 923-0222", [ "http://www.aquaresorts.com/hotels/aqua-aloha-surf-waikiki/", "Aqua Aloha Surf Waikiki Hotel" ], [ "http://energy.hawaii.gov/wp-content/uploads/2012/04/Aqua-Aloha-Press-Packet-04.26.13.pdf", "2013" ], "4VhSfdbgow47aF13jHT81QXm3P9epjSfRTIFgXQocU4", "1657" ]
+, [ "row-zdta.x7st_xnwg", "00000000-0000-0000-D04B-D905A7D2CE83", 0, 1568247268, null, 1568247269, null, "{ }", "JW Marriott Ihilani, Ko Olina", [ "{\"address\": \"92-1001 Olani Street\", \"city\": \"Ko olina\", \"state\": \"HI\", \"zip\": \"96707\"}", null, null, null, true ], "(808) 679-0079", [ "http://www.ihilani.com/", "JW Marriott Ihilani, Ko Olina" ], [ "http://energy.hawaii.gov/wp-content/uploads/2011/10/JW-Marriott-Ihilani-Highlights-2011.pdf", "2011" ], "UjtnZTps3Ai2gJ1hYPmFIQTV61zLyBmRuYcswNVeLTo", null ]
+, [ "row-gtsw~wv64.4bik", "00000000-0000-0000-5F72-364F3E24D9A7", 0, 1568247268, null, 1568247269, null, "{ }", "Grand Wailea Resort", [ "{\"address\": \"3850 Wailea Alanui Drive\", \"city\": \"Kihei\", \"state\": \"HI\", \"zip\": \"96753\"}", "20.68386484500047", "-156.43933790299974", null, false ], "(808) 875-1234", [ "http://www.grandwailea.com/", "Grand Wailea Resort" ], [ "http://energy.hawaii.gov/wp-content/uploads/2012/04/Grand-Wailea-Resort-Hotel-and-Spa.pdf", "2005" ], "05pdReHSo-d27REJIq21yFsBjxZUtJylk-gJiVy5iBA", "209" ]
+, [ "row-736a_xffs-w2ux", "00000000-0000-0000-94EC-F123B11D0BA4", 0, 1568247268, null, 1568247269, null, "{ }", "Ritz-Carlton Kapalua", [ "{\"address\": \"1 Ritz-Carlton Drive\", \"city\": \"Kapalua\", \"state\": \"HI\", \"zip\": \"96761\"}", "21.000707759000477", "-156.65392675099974", null, false ], "(808) 669-6200", [ "http://www.ritzcarlton.com/en/Properties/KapaluaMaui/Default.htm", "Ritz-Carlton Kapalua" ], [ "http://energy.hawaii.gov/wp-content/uploads/2012/03/Final-Ritz-Carlton-Press-Packet-2012.pdf", "2012" ], "fFd-rp2yU7ZnAk3v64YUeVFSC2oI_QpozBtWeVxiOuI", "209" ]
+, [ "row-tf5s~yhqt.25h6", "00000000-0000-0000-87EC-B1BD0D0FB115", 0, 1568247268, null, 1568247269, null, "{ }", "Hale Koa Hotel", [ "{\"address\": \"2055 Kalia Road\", \"city\": \"Honolulu\", \"state\": \"HI\", \"zip\": \"96825\"}", "21.28254934500046", "-157.83422596599974", null, false ], "(808) 955-0555", [ "http://www.halekoa.com/", "Hale Koa Hotel" ], [ "http://energy.hawaii.gov/wp-content/uploads/2012/04/Hale-Koa.pdf", "2005" ], "-roAAS-VF1mVoXh7DO-vjthnX3y5qJV7GBFHDTQtd5A", "1657" ]
+, [ "row-x4j2~bmcc-5k9p", "00000000-0000-0000-6E7B-561EFD8C79AF", 0, 1568247268, null, 1568247269, null, "{ }", "Wyndham at Waikiki Beach Walk", [ "{\"address\": \"227 Lewers Street\", \"city\": \"Honolulu\", \"state\": \"HI\", \"zip\": \"96815\"}", "21.279202388000442", "-157.83091727799973", null, false ], "(808) 921-4400", [ "http://www.waikikibeachwalk.com/", "Wyndam at Waikiki Beach Walk" ], [ "http://energy.hawaii.gov/wp-content/uploads/2012/04/Wyndham-Waikiki-4-26-13-Press-Packet.pdf", "2013" ], "5eNGYhZMrVia2myo3Sw0e3dtd4UANzsFQPwAkmxOqfU", "1657" ]
+, [ "row-hyne_mnqa.qdy6", "00000000-0000-0000-3EF2-CE730DB6087F", 0, 1568247268, null, 1568247269, null, "{ }", "Westin Kaanapali Ocean Resort Villas", [ "{\"address\": \"6 Kai Ala Drive\", \"city\": \"Ka'anapali\", \"state\": \"HI\", \"zip\": \"96761\"}", "20.93616658500048", "-156.69104980699973", null, false ], "(808) 667-3200", [ "http://www.westinkaanapali.com/", "Westin Kaanapali Ocean Resort Villas" ], [ "http://energy.hawaii.gov/wp-content/uploads/2012/04/Westin-KOR-Villas-Press-Packet-04.26.13.pdf", "2013" ], "_DfQ0zS2KOdwVq0PKcsq-1Bz4k-6OWV2Elaex4Smh00", "209" ]
+, [ "row-7p7t-84ec.ywmj", "00000000-0000-0000-4C55-0075D8C7E87D", 0, 1568247268, null, 1568247269, null, "{ }", "Ko Olina Marriot Beach Club", [ "{\"address\": \"92 161 Waipahe Place\", \"city\": \"Kapolei\", \"state\": \"HI\", \"zip\": \"96707\"}", "21.341793049000444", "-158.08290680699974", null, false ], "(808) 679-4700", [ "http://www.marriott.com/hotels/travel/hnlko-marriotts-ko-olina-beach-club/", "Ko Olina Marriot Beach Club" ], [ "http://energy.hawaii.gov/wp-content/uploads/2011/10/Marriott-Ko-Olina-Highlights-2010.pdf", "2010" ], "XEjteSM7QsCeuDo_y4S7-n6J1uu3k4Q_rh0wvRgGFsE", "1657" ]
+, [ "row-ehne.8s5s-xuzc", "00000000-0000-0000-0F03-8FD6CBB85079", 0, 1568247268, null, 1568247269, null, "{ }", "Hilton Waikoloa Village", [ "{\"address\": \"69-425 Waikoloa Beach Drive\", \"city\": \"Waikoloa Village\", \"state\": \"HI\", \"zip\": \"96738\"}", "19.922629423000444", "-155.88693875999974", null, false ], "(808) 886-1234", [ "http://www.hiltonwaikoloavillage.com/", "Hilton Waikoloa Village" ], [ "http://energy.hawaii.gov/wp-content/uploads/2012/03/Hilton-Waikoloa-Village.pdf", "2006" ], "lqpw_nk3_wFUIO3gQmrReklMzZe9vBGj0AjzNJSRbu4", "1656" ]
+, [ "row-ajqz-2ur2.5j4s", "00000000-0000-0000-D945-444DEA40281E", 0, 1568247268, null, 1568247269, null, "{ }", "Waikiki Beach Marriott", [ "{\"address\": \"2552 Kalakaua Avenue\", \"city\": \"Honolulu\", \"state\": \"HI\", \"zip\": \"96815\"}", "21.27250455200044", "-157.82323401199974", null, false ], "(808) 922-6611", [ "http://www.marriott.com/hotels/travel/hnlmc-waikiki-beach-marriott-resort-and-spa/", "Waikiki Beach Marriott" ], [ "http://energy.hawaii.gov/wp-content/uploads/2012/03/WBMR-Green-Award-2009.pdf", "2009" ], "3qVNReCHUfqQGDszX5NiHdSPgq237Ps3fQhl8cLUcRo", "1657" ]
+, [ "row-qcyv_ukay_bdph", "00000000-0000-0000-AC6E-258D0A34D5BD", 0, 1568247268, null, 1568247269, null, "{ }", "Aqua Bamboo Waikiki", [ "{\"address\": \"2425 Kuhio Avenue\", \"city\": \"Honolulu\", \"state\": \"HI\", \"zip\": \"96815\"}", "21.276930690000427", "-157.82380015999973", null, false ], "(808) 954-7412", [ "http://www.aquabamboo.com/", "Aqua Bamboo Waikiki" ], [ "http://energy.hawaii.gov/wp-content/uploads/2011/10/AquaBamboo_pressrelease.pdf", "2010" ], "WwE9U4l4PFm1bjzON8fTFMYuwRMX3f-v7TnlgRJ_XJ0", "1657" ]
+, [ "row-jnw5-atf2_x6d8", "00000000-0000-0000-503D-05C594895B04", 0, 1568247268, null, 1568247269, null, "{ }", "Grand Hyatt Kauai Resort & Spa", [ "{\"address\": \"1571 Poipu Road\", \"city\": \"Koloa\", \"state\": \"HI\", \"zip\": \"96756\"}", "21.87678794100043", "-159.44084255299975", null, false ], "(808) 742-1234", [ "http://kauai.hyatt.com/en/hotel/home.html", "Grand Hyatt Kauai Resort & Spa" ], [ "http://energy.hawaii.gov/wp-content/uploads/2011/10/Grand-Hyatt-Kauai-Highlights-2010.pdf", "2010" ], "l2EKgkP7RWkzOddR1Z4-93ZAMRicKkh7ge_gHrYfvzs", "1658" ]
+, [ "row-rkzh-gady.g3km", "00000000-0000-0000-6A41-13B7D667A591", 0, 1568247268, null, 1568247269, null, "{ }", "Wailea Beach Marriott Resort & Spa", [ "{\"address\": \"3700 Wailea\", \"city\": \"Wailea\", \"state\": \"HI\", \"zip\": \"96753\"}", "20.698810291000427", "-156.42633609199973", null, false ], "(808) 879-1922", [ "http://www.marriott.com/hotels/travel/hnmmc-wailea-beach-marriott-resort-and-spa/", "Wailea Beach Marriott Resort & Spa" ], [ "http://energy.hawaii.gov/wp-content/uploads/2011/10/Wailea-Beach-Marriott-Highlights-2010.pdf", "2010" ], "3qVNReCHUfqQGDszX5NiHdSPgq237Ps3fQhl8cLUcRo", "209" ]
+, [ "row-8xie-y3yc.vkhe", "00000000-0000-0000-E6A8-1819E4574945", 0, 1568247268, null, 1568247269, null, "{ }", "Kahala Hotel & Resort", [ "{\"address\": \"5000 Kahala Avenue\", \"city\": \"Honolulu\", \"state\": \"HI\", \"zip\": \"96816\"}", "21.271697969000456", "-157.77395783699973", null, false ], "(808) 739-8888", [ "http://www.kahalaresort.com/", "Kahala Hotel & Resort" ], [ "http://energy.hawaii.gov/wp-content/uploads/2012/03/Final-Kahala-Hotel-Resort-Press-Packet-2012.pdf", "2012" ], "ITxJcJsiUU-VT2QCOcU7Hz6Q9LD9RXOyyQDjteZUAdM", null ]
+, [ "row-mqt7.n7kv~sg4s", "00000000-0000-0000-2549-07D7E836C4FC", 0, 1568247268, null, 1568247269, null, "{ }", "Sheraton Waikiki", [ "{\"address\": \"2255 Kalakaua Avenue\", \"city\": \"Honolulu\", \"state\": \"HI\", \"zip\": \"96815\"}", "21.27878522800046", "-157.82864916199975", null, false ], "(808) 922-4422", [ "http://www.sheraton-waikiki.com/", "Sheraton Waikiki" ], [ "http://energy.hawaii.gov/wp-content/uploads/2012/04/Kyo-ya-Hotels-and-Resorts.pdf", "2005" ], "uQMqs4unL6EEAtpiwncolvkzCaJDhd5fPiSVVTDKkbs", "1657" ]
+, [ "row-7b43.576r-maxa", "00000000-0000-0000-B949-E68A45E9B628", 0, 1568247268, null, 1568247269, null, "{ }", "Mauna Lani Bay Hotel & Bungalows", [ "{\"address\": \"68-1400 Mauna Lani Drive\", \"city\": \"Kohala Coast\", \"state\": \"HI\", \"zip\": \"96743\"}", "19.94135230900048", "-155.86073993999975", null, false ], "(808) 885-6622", [ "http://www.maunalani.com/", "Mauna Lani Bay Hotel & Bungalows" ], [ "http://energy.hawaii.gov/wp-content/uploads/2012/03/Mauna-Lani-Press-Packet.pdf", "2002" ], "LlhctZ21uGmrTbMlPezmckh9pjGIxA7ragZtBDX9VoM", "1656" ]
+, [ "row-57g8.n4em-tpqg", "00000000-0000-0000-3B4D-FC28A239D825", 0, 1568247268, null, 1568247269, null, "{ }", "Kilauea Lakeside Estate", [ "{\"address\": \"4613 Waiakalua St\", \"city\": \"Kilauea\", \"state\": \"HI\", \"zip\": \"96754\"}", "22.199422152000466", "-159.37923432799974", null, false ], "(310) 379-7842", [ "http://www.kauailakeside.com/", "Kilauea Lakeside Estate" ], [ "http://energy.hawaii.gov/wp-content/uploads/2012/04/Final-Kilauea-Lakeside-Estate-Press-Packet-2012.pdf", "2012" ], "MPoEsHfZSUthDYnnbZlC35P9c8Duz4dHS0OP_ZLTnR0", "1658" ]
+, [ "row-pwhz_6yek-vqbm", "00000000-0000-0000-0B9E-4D2DB8711E5B", 0, 1568247268, null, 1568247269, null, "{ }", "Hyatt Regency Waikiki", [ "{\"address\": \"2424 Kalakaua Avenue\", \"city\": \"Honolulu\", \"state\": \"HI\", \"zip\": \"96815\"}", "21.27578062900045", "-157.82529843799975", null, false ], "(808) 923-1234", [ "http://www.waikiki.hyatt.com/en/hotel/home.html", "Hyatt Regency Waikiki" ], [ "http://energy.hawaii.gov/wp-content/uploads/2012/04/Hyatt-Regency-Waikiki-Press-Packet-04.26.13.pdf", "2013" ], "UKMQSV9LeLC9TBYPRnH7y5vopA5rPMhoqoe9t1gUyZ4", "1657" ]
+, [ "row-rthk_he9b.54vn", "00000000-0000-0000-C11D-49B938D2247C", 0, 1568247268, null, 1568247269, null, "{ }", "Hyatt Regency Maui Resort & Spa", [ "{\"address\": \"200 Nohea Kai Drive\", \"city\": \"Lahaina\", \"state\": \"HI\", \"zip\": \"96761\"}", "20.916143463000424", "-156.69452417299973", null, false ], "(808) 661-1234", [ "http://maui.hyatt.com/en/hotel/home.html", "Hyatt Regency Maui Resort & Spa" ], [ "http://energy.hawaii.gov/wp-content/uploads/2011/10/Hyatt-Regency-Maui-2009.pdf", "2009" ], "ODrTLlbXLHFF9prMUyC2OuFG3sr4ffa2CQCKOHBV4uM", "209" ]
+, [ "row-c5n7-h96x~4v7g", "00000000-0000-0000-45E8-85B45DF7C519", 0, 1568247268, null, 1568247269, null, "{ }", "Holiday Inn Waikiki Beachcomber", [ "{\"address\": \"2300 Kalakaua Avenue\", \"city\": \"Honolulu\", \"state\": \"HI\", \"zip\": \"96815\"}", "21.27795165100048", "-157.82760092999973", null, false ], "(808) 922-4646", [ "http://www.waikikibeachcomberresort.com/", "Holiday Inn Waikiki Beachcomber" ], [ "http://energy.hawaii.gov/wp-content/uploads/2012/03/Final-Holiday-Inn-Waikiki-Beachcomber-Press-Packet-2012.pdf", "2012" ], "9o5vxd2OnzcgQzrGPLVZ6fYfCrLeHAtNr9o6fFBZQpc", "1657" ]
+, [ "row-xp87_z4eq~ed84", "00000000-0000-0000-32B6-503FB46B8070", 0, 1568247268, null, 1568247269, null, "{ }", "Sheraton Princess Kaiulani", [ "{\"address\": \"120 Kaiulani Avenue\", \"city\": \"Honolulu\", \"state\": \"HI\", \"zip\": \"96815\"}", "21.27705081700043", "-157.82542356999974", null, false ], "(808) 922-5811", [ "http://www.princess-kaiulani.com/", "Sheraton Princess Kaiulani" ], [ "http://energy.hawaii.gov/wp-content/uploads/2011/10/Sheraton-Princess-Kaiulani-Highlights-2010.pdf", "2010" ], "at3O2IswczmQn2OY3sB22vCxHWGNXzydLLpzRhSClnQ", "1657" ]
+, [ "row-cre5_dwg7-276k", "00000000-0000-0000-74E4-FB055D5B99BB", 0, 1568247268, null, 1568247269, null, "{ }", "Sheraton Kauai Resort", [ "{\"address\": \"2440 Hoonani Rd\", \"city\": \"Koloa\", \"state\": \"HI\", \"zip\": \"96756\"}", "21.876718061000474", "-159.46219982699975", null, false ], "(808) 742-1661", [ "http://www.sheraton-kauai.com/", "Sheraton Kauai Resort" ], [ "http://energy.hawaii.gov/wp-content/uploads/2012/03/Sheraton-Kauai-Press-Packet.pdf", "2007" ], "V02fdknUle4qGx7ztA89jU_TeloS-XrjDgtvlVV6Wj4", null ]
+, [ "row-6ph9-32z5_bj47", "00000000-0000-0000-0EA6-AEA904DF24AC", 0, 1568247268, null, 1568247269, null, "{ }", "Maui Prince Hotel", [ "{\"address\": \"5400 Makena Alanui\", \"city\": \"Kihei\", \"state\": \"HI\", \"zip\": \"96753\"}", null, null, null, true ], "(808) 874-1111", [ "http://www.makenaresortmaui.com/default-en.html", "Maui Prince Hotel" ], [ "http://energy.hawaii.gov/wp-content/uploads/2012/03/MAUI-PRINCE-HOTEL-2009.pdf", "2009" ], "HFyCDiHACHalNDImIPzQIfcPBp89DBCdtVMZY1ojydE", null ]
+, [ "row-49uu~wcu9.q3mx", "00000000-0000-0000-CA6E-AA6C585BFBB7", 0, 1568247268, null, 1568247269, null, "{ }", "Turtle Bay Resort", [ "{\"address\": \"57-091 Kamehameha Highway\", \"city\": \"Kahuku\", \"state\": \"HI\", \"zip\": \"96731\"}", "21.69763659500046", "-157.99218942999974", null, false ], "(808) 293-6000", [ "http://www.turtlebayresort.com/", "Turtle Bay Resort" ], [ "http://energy.hawaii.gov/wp-content/uploads/2011/10/Turtle-Bay-Resort-Highlights-2011.pdf", "2011" ], "-QHacXLD4WSqiudMdtCEu8WleXR9xe34-LjN6S9m05w", "1657" ]
+, [ "row-b99b~mcqm_qmsx", "00000000-0000-0000-59EE-B83E7190EE63", 0, 1568247268, null, 1568247269, null, "{ }", "Hawaii Prince Hotel Waikiki", [ "{\"address\": \"100 Holomoana Street\", \"city\": \"Honolulu\", \"state\": \"HI\", \"zip\": \"96815\"}", "21.285997346000443", "-157.84029661599973", null, false ], "(808) 956-1111", [ "http://www.princeresortshawaii.com/hawaii-prince-hotel-waikiki/index.php", "Hawaii Prince Hotel Waikiki" ], [ "http://energy.hawaii.gov/wp-content/uploads/2012/03/Hawaii-Prince-Hotel-Waikiki-Golf-Club.pdf", "2006" ], "yngkHuYJCAHzVnBbnD3yonWIPeqMHPsbrHRjwQYlFm4", "1657" ]
+, [ "row-mztz_f6i8~u5rn", "00000000-0000-0000-0E9C-17E352DE67FB", 0, 1568247268, null, 1568247269, null, "{ }", "Hilton Hawaiian Village", [ "{\"address\": \"2005 Kalia Road\", \"city\": \"Honolulu\", \"state\": \"HI\", \"zip\": \"96815\"}", "21.284135454000477", "-157.83563833299974", null, false ], "(808) 949-4321", [ "http://www.hiltonhawaiianvillage.com/", "Hilton Hawaiian Village" ], [ "http://energy.hawaii.gov/wp-content/uploads/2012/03/Hilton-Hawaiian-Village-2007.pdf", "2007" ], "7NWODL9RizFGzD2EOpew2a6Lw0KSLhbKlNwj-jm6jgg", "1657" ]
+, [ "row-hnfn-rqvb_q748", "00000000-0000-0000-429A-6EA9E0842D03", 0, 1568247268, null, 1568247269, null, "{ }", "Fairmont Kea Lani", [ "{\"address\": \"4100 Wailea Alanui Drive\", \"city\": \"HI\", \"state\": \"\", \"zip\": \"96753\"}", "20.67623606300043", "-156.44064430699973", null, false ], "(808) 875-4100", [ "http://www.fairmont.com/kea-lani-maui/", "Fairmont Kea Lani" ], [ "http://energy.hawaii.gov/wp-content/uploads/2011/10/Fairmont-Kea-Lani-Maui-Highlights-2010.pdf", "2010" ], "7hS9OulQYpLlWCj3U0-ECtAYSU7WIwLSqnUlCN0BIl0", "209" ]
+, [ "row-bjk3~eb3m.gzky", "00000000-0000-0000-4ABC-B2FA910F4E0A", 0, 1568247268, null, 1568247269, null, "{ }", "Marriott Maui Ocean Club", [ "{\"address\": \"100 Nohea Kai Drive\", \"city\": \"Lahaina\", \"state\": \"HI\", \"zip\": \"96761\"}", "20.91617138300046", "-156.69453670899975", null, false ], "(808) 667-1200", [ "http://www.marriottvacationclub.com/vacation-resorts/marriott-maui-ocean-club/overview.shtml", "Marriott Maui Ocean Club" ], [ "http://energy.hawaii.gov/wp-content/uploads/2012/03/Final-Maui-Marriott-2012-Press-Packet.pdf", "2012" ], "4m3Kn5XzbXt3RHa1443T6mI6GBheSVzoLxh1j6WjS-A", "209" ]
+ ]
+}
