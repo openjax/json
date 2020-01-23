@@ -41,8 +41,8 @@ public class JsonTest {
 
     properties.put("array", array);
 
-    final LinkedHashMap<String,Object> o2 = (LinkedHashMap<String,Object>)properties.clone();
-    properties.put("object", o2);
+    final LinkedHashMap<String,Object> clone = (LinkedHashMap<String,Object>)properties.clone();
+    properties.put("object", clone);
 
     System.out.println(JSON.toString(properties, 2));
   }
