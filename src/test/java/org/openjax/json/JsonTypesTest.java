@@ -18,6 +18,9 @@ package org.openjax.json;
 
 import static org.junit.Assert.*;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
 import org.junit.Test;
 import org.libj.lang.Strings;
 
@@ -33,16 +36,13 @@ public class JsonTypesTest {
       assertFalse(JsonUtil.isWhitespace(Strings.getRandomAlpha(1).charAt(0)));
   }
 
-  private static void testPass(final String number, final boolean isDecimal) {
-    if (isDecimal)
-      JsonUtil.parseDecimal(number);
-    else
-      JsonUtil.parseInteger(number);
+  private static void testPass(final String number, final Class<? extends Number> type) {
+    JsonUtil.parseNumber(type, number);
   }
 
   private static void testFail(final Class<? extends Exception> cls, final String number) {
     try {
-      JsonUtil.parseDecimal(number);
+      JsonUtil.parseNumber(BigDecimal.class, number);
       fail("Expected " + cls.getSimpleName());
     }
     catch (final Exception e) {
@@ -72,7 +72,7 @@ public class JsonTypesTest {
     testFail(JsonParseException.class, "1.0E-01");
     testFail(JsonParseException.class, "1.0E+01");
     testFail(JsonParseException.class, "1.0E+1.");
-    testPass("0e0", true);
+    testPass("0e0", double.class);
   }
 
   private static String randomNeg(final boolean plusOk) {
@@ -101,25 +101,25 @@ public class JsonTypesTest {
   @Test
   public void testParseNumberInteger() {
     for (int i = 0; i < 1000; ++i)
-      testPass(randomNeg(false) + randomInt(100), false);
+      testPass(randomNeg(false) + randomInt(100), BigInteger.class);
   }
 
   @Test
   public void testParseNumberIntegerExp() {
     for (int i = 0; i < 1000; ++i)
-      testPass(randomNeg(false) + randomInt(100) + randomExp() + (Math.random() < 0.5 ? "" : "+") + randomInt(5), false);
+      testPass(randomNeg(false) + randomInt(100) + randomExp() + (Math.random() < 0.5 ? "" : "+") + randomInt(5), BigInteger.class);
   }
 
   @Test
   public void testParseNumberDecimal() {
     for (int i = 0; i < 1000; ++i)
-      testPass(randomNeg(false) + randomInt(100) + "." + randomInt(100), true);
+      testPass(randomNeg(false) + randomInt(100) + "." + randomInt(100), double.class);
   }
 
   @Test
   public void testParseNumberDecimalExp() {
     for (int i = 0; i < 1000; ++i)
-      testPass(randomNeg(false) + randomInt(100) + "." + randomInt(100) + randomExp() + randomNeg(true) + randomInt(5), true);
+      testPass(randomNeg(false) + randomInt(100) + "." + randomInt(100) + randomExp() + randomNeg(true) + randomInt(5), float.class);
   }
 
   @Test

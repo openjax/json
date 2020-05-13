@@ -167,13 +167,10 @@ class JsonReplayReader extends ReplayReader {
    */
   @Override
   public int read(final char[] cbuf, final int off, final int len) throws IOException {
-    for (int i = 0; i < len; ++i) {
-      final int ch = read();
-      cbuf[i + off] = (char)ch;
-      if (ch == -1)
-        return i;
-    }
+    int i = 0;
+    for (int ch; i < len && (ch = read()) != -1; ++i)
+      cbuf[off + i] = (char)ch;
 
-    return len;
+    return i;
   }
 }

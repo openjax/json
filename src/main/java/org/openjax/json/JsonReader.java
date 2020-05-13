@@ -24,6 +24,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 import org.libj.util.Buffers;
+import org.libj.util.Characters;
 import org.libj.util.Numbers;
 import org.libj.util.primitive.ArrayIntList;
 import org.libj.util.primitive.ArrayLongList;
@@ -255,7 +256,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
     if (start == end)
       throw new IllegalStateException("Illegal JSON content [errorOffset: " + start + "]");
 
-    return end - start == 1 ? String.valueOf(buf()[start]) : new String(buf(), start, end - start);
+    return end - start == 1 ? Characters.toString(buf()[start]) : new String(buf(), start, end - start);
   }
 
   /**
