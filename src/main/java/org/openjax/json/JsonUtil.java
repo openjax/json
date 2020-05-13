@@ -16,8 +16,11 @@
 
 package org.openjax.json;
 
+import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+
+import org.libj.lang.Classes;
 
 /**
  * Utility functions for operations pertaining to JSON.
@@ -56,50 +59,36 @@ public final class JsonUtil {
   }
 
   /**
-   * Parses a number (as an integer) from the specified string by the rules
-   * defined in <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section
-   * 2.4</a>.
+   * Parses a number from the specified string by the rules defined in
+   * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section 2.4</a>.
    *
-   * @param string The string to parse.
-   * @return A {@link BigInteger} representing the parsed integer.
+   * @param <T> The type parameter for the return instance.
+   * @param type The class of the return instance.
+   * @param str The string to parse.
+   * @return An instance of class {@code type} representing the parsed string.
    * @throws JsonParseException If a parsing error has occurred.
-   * @throws IllegalArgumentException If the specified string is empty.
+   * @throws IllegalArgumentException If the specified string is empty, or if an
+   *           instance of the specific class type does not define
+   *           {@code <init>(String)}, {@code valueOf(String)}, or
+   *           {@code fromString(String)}.
    * @throws NullPointerException If the specified string is null.
    */
-  public static BigInteger parseInteger(final String string) throws JsonParseException {
-    return (BigInteger)parseNumber(string, false);
-  }
-
-  /**
-   * Parses a number (as a decimal) from the specified string by the rules
-   * defined in <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section
-   * 2.4</a>.
-   *
-   * @param string The string to parse.
-   * @return A {@link BigDecimal} representing the parsed decimal.
-   * @throws JsonParseException If a parsing error has occurred.
-   * @throws IllegalArgumentException If the specified string is empty.
-   * @throws NullPointerException If the specified string is null.
-   */
-  public static BigDecimal parseDecimal(final String string) throws JsonParseException {
-    return (BigDecimal)parseNumber(string, true);
-  }
-
-  static Number parseNumber(final String string, final boolean isDecimal) throws JsonParseException {
-    if (string.length() == 0)
+  @SuppressWarnings("unchecked")
+  public static <T extends Number>T parseNumber(final Class<T> type, String str) throws JsonParseException {
+    if (str.length() == 0)
       throw new IllegalArgumentException("Empty string");
 
     int i = 0;
-    int ch = string.charAt(i);
+    int ch = str.charAt(i);
     if (ch != '-' && (ch < '0'|| '9' < ch))
       throw new JsonParseException("Illegal first character: '" + (char)ch + "'", i);
 
     int first = ch;
     int last = first;
-    final int len = string.length();
+    final int len = str.length();
     for (boolean hasDot = false; ++i < len; last = ch) {
-      ch = string.charAt(i);
-      if (isDecimal && ch == '.') {
+      ch = str.charAt(i);
+      if (ch == '.') {
         if (first == '-' && i == 1)
           throw new JsonParseException("Integer component required before fraction part", i);
 
@@ -116,7 +105,7 @@ public final class JsonUtil {
       }
     }
 
-    if (isDecimal && last == '.')
+    if (last == '.')
       throw new JsonParseException("Decimal point must be followed by one or more digits", i);
 
     int expStart = -1;
@@ -126,7 +115,7 @@ public final class JsonUtil {
 
       last = ch;
       for (expStart = i + 1; ++i < len; last = ch) {
-        ch = string.charAt(i);
+        ch = str.charAt(i);
         if (ch == '-' || ch == '+') {
           first = '~';
           if (i > expStart)
@@ -147,7 +136,48 @@ public final class JsonUtil {
     if (ch < '0' || '9' < ch)
       throw new JsonParseException("Expected digit, but encountered '" + (char)ch + "'", i);
 
-    return isDecimal ? new BigDecimal(string) : expStart == -1 ? new BigInteger(string) : new BigDecimal(string).toBigInteger();
+    if (type == null)
+      return null;
+
+    // If we have exponential form, and the return type is not BigDecimal, then
+    // convert to non-exponential form (unless we can immediately return a BigInteger)
+    if (expStart > -1 && !BigDecimal.class.isAssignableFrom(type)) {
+      if (type == BigInteger.class)
+        return (T)new BigDecimal(str).toBigInteger();
+
+      str = new BigDecimal(str).toPlainString();
+    }
+
+    if (type == BigDecimal.class)
+      return (T)new BigDecimal(str);
+
+    if (type == BigInteger.class)
+      return (T)new BigInteger(str);
+
+    if (type == Long.class || type == long.class)
+      return (T)Long.valueOf(str);
+
+    if (type == Integer.class || type == int.class)
+      return (T)Integer.valueOf(str);
+
+    if (type == Short.class || type == short.class)
+      return (T)Short.valueOf(str);
+
+    if (type == Byte.class || type == byte.class)
+      return (T)Byte.valueOf(str);
+
+    if (type == Double.class || type == double.class)
+      return (T)Double.valueOf(str);
+
+    if (type == Float.class || type == float.class)
+      return (T)Float.valueOf(str);
+
+    try {
+      return Classes.newInstance(type, str);
+    }
+    catch (final IllegalAccessException | InstantiationException | InvocationTargetException e) {
+      throw new UnsupportedOperationException("Unsupported type: " + type.getName(), e);
+    }
   }
 
   /**
@@ -164,14 +194,14 @@ public final class JsonUtil {
    * {'\n', '\r', '\t', '\b', '\f'} -&gt; {"\\n", "\\r", "\\t", "\\b", "\\f"}
    * </pre>
    *
-   * @param string The string to be escaped.
+   * @param str The string to be escaped.
    * @return The escaped representation of the specified string.
    * @see #unescape(String)
    */
-  public static StringBuilder escape(final String string) {
-    final StringBuilder builder = new StringBuilder(string.length());
-    for (int i = 0, len = string.length(); i < len; ++i) {
-      final char ch = string.charAt(i);
+  public static StringBuilder escape(final String str) {
+    final StringBuilder builder = new StringBuilder(str.length());
+    for (int i = 0, len = str.length(); i < len; ++i) {
+      final char ch = str.charAt(i);
       /*
        * From RFC 4627, "All Unicode characters may be placed within the
        * quotation marks except for the characters that must be escaped:
@@ -220,18 +250,18 @@ public final class JsonUtil {
    * able to differentiate the double quote from string boundaries, and thus the
    * reverse solidus from the escape character.
    *
-   * @param string The string to be unescaped.
+   * @param str The string to be unescaped.
    * @return The unescaped representation of the specified string, with the
    *         escaped form of the double quote ({@code "\""}) and reverse solidus
    *         ({@code "\\"}) preserved.
    * @see #unescape(String)
    */
-  public static String unescapeForString(final String string) {
-    final StringBuilder builder = new StringBuilder(string.length());
-    for (int i = 0, len = string.length(); i < len; ++i) {
-      char ch = string.charAt(i);
+  public static String unescapeForString(final String str) {
+    final StringBuilder builder = new StringBuilder(str.length());
+    for (int i = 0, len = str.length(); i < len; ++i) {
+      char ch = str.charAt(i);
       if (ch == '\\') {
-        ch = string.charAt(++i);
+        ch = str.charAt(++i);
         if (ch == '"' || ch == '\\')
           builder.append('\\');
         else if (ch == 'n')
@@ -248,7 +278,7 @@ public final class JsonUtil {
           ++i;
           final char[] unicode = new char[4];
           for (int j = 0; j < unicode.length; ++j)
-            unicode[j] = string.charAt(i + j);
+            unicode[j] = str.charAt(i + j);
 
           i += unicode.length - 1;
           ch = (char)Integer.parseInt(new String(unicode), 16);
@@ -266,15 +296,15 @@ public final class JsonUtil {
    * ({@code "\n"}) escape codes into UTF-8 as defined in
    * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section 2.5</a>.
    *
-   * @param string The string to be unescaped.
+   * @param str The string to be unescaped.
    * @return The unescaped representation of the specified string.
    */
-  public static String unescape(final String string) {
-    final StringBuilder builder = new StringBuilder(string.length());
-    for (int i = 0, len = string.length(); i < len; ++i) {
-      char ch = string.charAt(i);
+  public static String unescape(final String str) {
+    final StringBuilder builder = new StringBuilder(str.length());
+    for (int i = 0, len = str.length(); i < len; ++i) {
+      char ch = str.charAt(i);
       if (ch == '\\') {
-        ch = string.charAt(++i);
+        ch = str.charAt(++i);
         if (ch == 'n')
           ch = '\n';
         else if (ch == 'r')
@@ -289,7 +319,7 @@ public final class JsonUtil {
           ++i;
           final char[] unicode = new char[4];
           for (int j = 0; j < unicode.length; ++j)
-            unicode[j] = string.charAt(i + j);
+            unicode[j] = str.charAt(i + j);
 
           i += unicode.length - 1;
           ch = (char)Integer.parseInt(new String(unicode), 16);
