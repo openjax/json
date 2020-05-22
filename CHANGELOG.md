@@ -1,6 +1,11 @@
 # Changes by Version
 
-## v0.9.2 (2019-07-21)
+## [v0.9.3](https://github.com/openjax/json/compare/1cc5ff5a8b0ebc307e765995031a38dd6a22be3a..HEAD) (2020-05-23)
+* Rewrite `JsonUtil.parseNumber(Class,String)`.
+* Improve tests.
+* Improve javadocs.
+
+## [v0.9.2](https://github.com/openjax/json/compare/3bdf347ef08c914b12f0a76d2b19a2254e842cd5..1cc5ff5a8b0ebc307e765995031a38dd6a22be3a) (2019-07-21)
 * Optimize runtime performance of `JsonReader`.
 * Support `JsonReader#mark()` and `JsonReader#reset()`.
 * Rename `JsonStrings` to `JsonUtil`.
