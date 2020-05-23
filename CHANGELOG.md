@@ -1,6 +1,8 @@
 # Changes by Version
 
-## [v0.9.3](https://github.com/openjax/json/compare/1cc5ff5a8b0ebc307e765995031a38dd6a22be3a..HEAD) (2020-05-23)
+## [v0.9.4-SNAPSHOT](https://github.com/openjax/json/compare/02b70e4d74ac2e692c384679522c05ea84a79427..HEAD)
+
+## [v0.9.3](https://github.com/openjax/json/compare/1cc5ff5a8b0ebc307e765995031a38dd6a22be3a..02b70e4d74ac2e692c384679522c05ea84a79427) (2020-05-23)
 * Rewrite `JsonUtil.parseNumber(Class,String)`.
 * Improve tests.
 * Improve javadocs.
