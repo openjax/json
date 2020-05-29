@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.io.Reader;
 
 import org.libj.io.ReplayReader;
-import org.libj.util.Numbers;
+import org.libj.lang.Numbers;
 
 /**
  * A {@link ReplayReader} that transparently unescapes string-literal unicode

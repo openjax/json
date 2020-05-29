@@ -23,9 +23,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import org.libj.util.Buffers;
-import org.libj.util.Characters;
-import org.libj.util.Numbers;
+import org.libj.lang.Buffers;
+import org.libj.lang.Characters;
+import org.libj.lang.Numbers;
 import org.libj.util.primitive.ArrayIntList;
 import org.libj.util.primitive.ArrayLongList;
 
