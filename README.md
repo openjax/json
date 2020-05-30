@@ -4,6 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/openjax/json/badge.svg?1)](https://coveralls.io/github/openjax/json)
 [![Javadocs](https://www.javadoc.io/badge/org.openjax/json.svg?1)](https://www.javadoc.io/doc/org.openjax/json)
 [![Released Version](https://img.shields.io/maven-central/v/org.openjax/json.svg?1)](https://mvnrepository.com/artifact/org.openjax/json)
+![Snapshot Version](https://img.shields.io/nexus/s/org.openjax/json?label=maven-snapshot&server=https%3A%2F%2Foss.sonatype.org)
 
 ## Introduction
 
