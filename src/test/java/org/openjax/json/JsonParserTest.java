@@ -20,6 +20,7 @@ import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.net.URL;
 
 public class JsonParserTest extends JsonReaderTest {
   private static JsonHandler newHandler(final String expected, final StringBuilder builder) {
@@ -62,8 +63,8 @@ public class JsonParserTest extends JsonReaderTest {
   }
 
   @Override
-  protected void passFile(final String jsonFileName) throws IOException, JsonParseException {
-    final String json = readFile(jsonFileName);
+  protected void assertPass(final URL resource) throws IOException, JsonParseException {
+    final String json = readFully(resource);
     final JsonParser parser = new JsonParser(new JsonReader(new StringReader(json), false));
     final StringBuilder builder = new StringBuilder();
     while (!parser.parse(newHandler(json, builder)));

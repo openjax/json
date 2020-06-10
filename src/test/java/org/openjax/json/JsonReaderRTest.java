@@ -44,251 +44,251 @@ public class JsonReaderRTest extends AbstractTest {
 
   @Benchmark
   public void testTweets() throws IOException {
-    passFile("tweets.json");
+    assertPass("tweets.json");
   }
 
   @Benchmark
   public void testPaypal() throws IOException {
-    passFile("paypal.json");
+    assertPass("paypal.json");
   }
 
   @Benchmark
   public void testWebapp() throws IOException {
-    passFile("webapp.json");
+    assertPass("webapp.json");
   }
 
   @Benchmark
   public void testVatrates() throws IOException {
-    passFile("vatrates.json");
+    assertPass("vatrates.json");
   }
 
   @Benchmark
   public void testEmployees() throws IOException {
-    passFile("employees.json");
+    assertPass("employees.json");
   }
 
   @Benchmark
   public void testEarthquakes() throws IOException {
-    passFile("earthquakes.json");
+    assertPass("earthquakes.json");
   }
 
   @Benchmark
   public void testDiabetes() throws IOException {
-    passFile("diabetes.json");
+    assertPass("diabetes.json");
   }
 
   @Benchmark
   public void testDcat() throws IOException {
-    passFile("dcat.json");
+    assertPass("dcat.json");
   }
 
   @Benchmark
   public void testShowtimes() throws IOException {
-    passFile("showtimes.json");
+    assertPass("showtimes.json");
   }
 
   @Benchmark
   public void testCrime() throws IOException {
-    passFile("crime.json");
+    assertPass("crime.json");
   }
 
   @Benchmark
   public void testSuicide() throws IOException {
-    passFile("suicide.json");
+    assertPass("suicide.json");
   }
 
   @Benchmark
   public void testSample() throws IOException {
-    passFile("sample.json");
+    assertPass("sample.json");
   }
 
   @Benchmark
   public void testInsurers() throws IOException {
-    passFile("insurers.json");
+    assertPass("insurers.json");
   }
 
   @Benchmark
   public void testHgbp() throws IOException {
-    passFile("hgbp.json");
+    assertPass("hgbp.json");
   }
 
   @Benchmark
   public void testGithub() throws IOException {
-    passFile("github.json");
+    assertPass("github.json");
   }
 
   @Benchmark
   public void testCensusDiversity() throws IOException {
-    passFile("census-diversity.json");
+    assertPass("census-diversity.json");
   }
 
   @Benchmark
   public void testReddit() throws IOException {
-    passFile("reddit.json");
+    assertPass("reddit.json");
   }
 
   @Benchmark
   public void testSat() throws IOException {
-    passFile("sat.json");
+    assertPass("sat.json");
   }
 
   @Benchmark
   public void testGiphy() throws IOException {
-    passFile("giphy.json");
+    assertPass("giphy.json");
   }
 
   @Benchmark
   public void testJobs() throws IOException {
-    passFile("jobs.json");
+    assertPass("jobs.json");
   }
 
   @Benchmark
   public void testPowerball() throws IOException {
-    passFile("powerball.json");
+    assertPass("powerball.json");
   }
 
   @Benchmark
   public void testDemographics() throws IOException {
-    passFile("demographics.json");
+    assertPass("demographics.json");
   }
 
   @Benchmark
   public void testComplaints() throws IOException {
-    passFile("complaints.json");
+    assertPass("complaints.json");
   }
 
   @Benchmark
   public void testGraduation() throws IOException {
-    passFile("graduation.json");
+    assertPass("graduation.json");
   }
 
   @Benchmark
   public void testNobel() throws IOException {
-    passFile("nobel.json");
+    assertPass("nobel.json");
   }
 
   @Benchmark
   public void testAstronauts() throws IOException {
-    passFile("astronauts.json");
+    assertPass("astronauts.json");
   }
 
   @Benchmark
   public void testMega() throws IOException {
-    passFile("mega.json");
+    assertPass("mega.json");
   }
 
   @Benchmark
   public void testMarijuana() throws IOException {
-    passFile("marijuana.json");
+    assertPass("marijuana.json");
   }
 
   @Benchmark
   public void testPets() throws IOException {
-    passFile("pets.json");
+    assertPass("pets.json");
   }
 
   @Benchmark
   public void testRestaurants() throws IOException {
-    passFile("restaurants.json");
+    assertPass("restaurants.json");
   }
 
   @Benchmark
   public void testOpportunityZones() throws IOException {
-    passFile("opportunity_zones.json");
+    assertPass("opportunity_zones.json");
   }
 
   @Benchmark
   public void testSalesTax() throws IOException {
-    passFile("sales_tax.json");
+    assertPass("sales_tax.json");
   }
 
   @Benchmark
   public void testZipcodes() throws IOException {
-    passFile("zipcodes.json");
+    assertPass("zipcodes.json");
   }
 
   @Benchmark
   public void testDatasets() throws IOException {
-    passFile("datasets.json");
+    assertPass("datasets.json");
   }
 
   @Benchmark
   public void testNames() throws IOException {
-    passFile("names.json");
+    assertPass("names.json");
   }
 
   @Benchmark
   public void testNeighborhoods() throws IOException {
-    passFile("neighborhoods.json");
+    assertPass("neighborhoods.json");
   }
 
   @Benchmark
   public void testCensusTracts() throws IOException {
-    passFile("census-tracts.json");
+    assertPass("census-tracts.json");
   }
 
   @Benchmark
   public void testWeather() throws IOException {
-    passFile("weather.json");
+    assertPass("weather.json");
   }
 
   @Benchmark
   public void testSalaries() throws IOException {
-    passFile("salaries.json");
+    assertPass("salaries.json");
   }
 
   @Benchmark
   public void testMovies() throws IOException {
-    passFile("movies.json");
+    assertPass("movies.json");
   }
 
   @Benchmark
   public void testDoe() throws IOException {
-    passFile("doe.json");
+    assertPass("doe.json");
   }
 
   @Benchmark
   public void testNhanes() throws IOException {
-    passFile("nhanes.json");
+    assertPass("nhanes.json");
   }
 
   @Benchmark
   public void testNutrition() throws IOException {
-    passFile("nutrition.json");
+    assertPass("nutrition.json");
   }
 
   @Benchmark
   public void testAccidentalDeath() throws IOException {
-    passFile("accidental-death.json");
+    assertPass("accidental-death.json");
   }
 
   @Benchmark
   public void testBusinesses() throws IOException {
-    passFile("businesses.json");
+    assertPass("businesses.json");
   }
 
   @Benchmark
   public void testTravel() throws IOException {
-    passFile("travel.json");
+    assertPass("travel.json");
   }
 
   @Benchmark
   public void testCensusBoundaries() throws IOException {
-    passFile("census-boundaries.json");
+    assertPass("census-boundaries.json");
   }
 
   @Benchmark
   public void testAnimalServices() throws IOException {
-    passFile("animal-services.json");
+    assertPass("animal-services.json");
   }
 
   @Benchmark
   public void testCrashes() throws IOException {
-    passFile("crashes.json");
+    assertPass("crashes.json");
   }
 
   @Benchmark
   public void testIncidents() throws IOException {
-    passFile("incidents.json");
+    assertPass("incidents.json");
   }
 }

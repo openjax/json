@@ -20,7 +20,9 @@ import static org.junit.Assert.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.StringReader;
+import java.net.URL;
 
 import org.libj.io.Readers;
 import org.libj.io.UnicodeReader;
@@ -146,19 +148,21 @@ abstract class AbstractTest {
     }
   }
 
-  static String readFile(final String jsonFileName) throws IOException {
-    return Readers.readFully(new UnicodeReader(ClassLoader.getSystemClassLoader().getResourceAsStream(jsonFileName)));
+  static String readFully(final URL resource) throws IOException {
+    try (final InputStream in = resource.openStream()) {
+      return Readers.readFully(new UnicodeReader(in));
+    }
   }
 
-  void passFile(final String jsonFileName) throws IOException {
-    testString(readFile(jsonFileName), true);
+  void assertPass(final URL resource) throws IOException {
+    testString(readFully(resource), true);
   }
 
-  static void passString(final String json) throws IOException {
+  static void assertPass(final String json) throws IOException {
     testString(json, false, false);
   }
 
-  static void failString(final String json, final Class<? extends Exception> cls, final String message) throws IOException {
+  static void assertFail(final String json, final Class<? extends Exception> cls, final String message) throws IOException {
     try {
       testString(json, false, false);
       fail("Expected " + cls.getSimpleName());
