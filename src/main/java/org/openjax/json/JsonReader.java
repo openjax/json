@@ -65,9 +65,9 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
   /** Resize factor for scope buffer */
   private static final double DEFAULT_SCOPE_RESIZE_FACTOR = 2;
 
-  private final ArrayLongList positions = new ArrayLongList(DEFAULT_TOKENS_SIZE);
-  private final ArrayList<long[]> scopes = new ArrayList<>(DEFAULT_SCOPE_SIZE);
-  private final ArrayIntList depths = new ArrayIntList(DEFAULT_SCOPE_SIZE);
+  private ArrayLongList positions = new ArrayLongList(DEFAULT_TOKENS_SIZE);
+  private ArrayList<long[]> scopes = new ArrayList<>(DEFAULT_SCOPE_SIZE);
+  private ArrayIntList depths = new ArrayIntList(DEFAULT_SCOPE_SIZE);
   /** The index of the token last read */
   private int index = -1;
   private int markedIndex = index;
@@ -778,5 +778,15 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
     }
 
     throw new JsonParseException(ch == -1 ? "Unexpected end of document" : "Illegal character: '" + (char)ch + "'", getPosition() - 1);
+  }
+
+  @Override
+  public synchronized void close() throws IOException {
+    super.close();
+    this.positions = null;
+    this.scopes.clear();
+    this.scopes = null;
+    this.depths = null;
+    this.scope = null;
   }
 }
