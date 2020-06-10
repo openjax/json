@@ -33,7 +33,7 @@ import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 
-abstract class AbstractTest {
+public abstract class AbstractTest {
   static final Logger logger = LoggerFactory.getLogger(AbstractTest.class);
 
   private static final boolean testIterator = true;

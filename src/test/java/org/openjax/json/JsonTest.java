@@ -21,8 +21,12 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class JsonTest {
+  private static final Logger logger = LoggerFactory.getLogger(JsonTest.class);
+
   @Test
   @SuppressWarnings("unchecked")
   public void test() {
@@ -44,6 +48,6 @@ public class JsonTest {
     final LinkedHashMap<String,Object> clone = (LinkedHashMap<String,Object>)properties.clone();
     properties.put("object", clone);
 
-    System.out.println(JSON.toString(properties, 2));
+    logger.info(JSON.toString(properties, 2));
   }
 }
