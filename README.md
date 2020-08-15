@@ -1,9 +1,9 @@
 # JSON
 
-[![Build Status](https://travis-ci.org/openjax/json.svg?1)](https://travis-ci.org/openjax/json)
-[![Coverage Status](https://coveralls.io/repos/github/openjax/json/badge.svg?1)](https://coveralls.io/github/openjax/json)
-[![Javadocs](https://www.javadoc.io/badge/org.openjax/json.svg?1)](https://www.javadoc.io/doc/org.openjax/json)
-[![Released Version](https://img.shields.io/maven-central/v/org.openjax/json.svg?1)](https://mvnrepository.com/artifact/org.openjax/json)
+[![Build Status](https://travis-ci.org/openjax/json.svg?branch=master)](https://travis-ci.org/openjax/json)
+[![Coverage Status](https://coveralls.io/repos/github/openjax/json/badge.svg)](https://coveralls.io/github/openjax/json)
+[![Javadocs](https://www.javadoc.io/badge/org.openjax/json.svg)](https://www.javadoc.io/doc/org.openjax/json)
+[![Released Version](https://img.shields.io/maven-central/v/org.openjax/json.svg)](https://mvnrepository.com/artifact/org.openjax/json)
 ![Snapshot Version](https://img.shields.io/nexus/s/org.openjax/json?label=maven-snapshot&server=https%3A%2F%2Foss.sonatype.org)
 
 ## Introduction
