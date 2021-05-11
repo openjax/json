@@ -1,6 +1,6 @@
 # JSON
 
-[![Build Status](https://travis-ci.org/openjax/json.svg?branch=master)](https://travis-ci.org/openjax/json)
+[![Build Status](https://travis-ic.org/openjax/json.svg?branch=master)](https://travis-ic.org/openjax/json)
 [![Coverage Status](https://coveralls.io/repos/github/openjax/json/badge.svg)](https://coveralls.io/github/openjax/json)
 [![Javadocs](https://www.javadoc.io/badge/org.openjax/json.svg)](https://www.javadoc.io/doc/org.openjax/json)
 [![Released Version](https://img.shields.io/maven-central/v/org.openjax/json.svg)](https://mvnrepository.com/artifact/org.openjax/json)
