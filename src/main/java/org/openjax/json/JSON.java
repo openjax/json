@@ -190,7 +190,7 @@ public final class JSON {
 
     final StringBuilder builder = new StringBuilder("[");
     boolean backUp = false;
-    for (int i = 0; i < array.size(); ++i) {
+    for (int i = 0, len = array.size(); i < len; ++i) {
       final Object member = array.get(i);
       final String str = JSON.encode(member, spaces);
       if (member instanceof Map || member instanceof List) {
