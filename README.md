@@ -1,6 +1,6 @@
 # JSON
 
-[![Build Status](https://github.com/openjax/json/workflows/build.yml/badge.svg)](https://github.com/openjax/json/actions/workflows/build.yml)
+[![Build Status](https://github.com/openjax/json/actions/workflows/build.yml/badge.svg)](https://github.com/openjax/json/actions/workflows/build.yml)
 [![Coverage Status](https://coveralls.io/repos/github/openjax/json/badge.svg)](https://coveralls.io/github/openjax/json)
 [![Javadocs](https://www.javadoc.io/badge/org.openjax/json.svg)](https://www.javadoc.io/doc/org.openjax/json)
 [![Released Version](https://img.shields.io/maven-central/v/org.openjax/json.svg)](https://mvnrepository.com/artifact/org.openjax/json)
