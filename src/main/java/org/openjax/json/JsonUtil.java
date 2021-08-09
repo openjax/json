@@ -20,6 +20,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
+import org.libj.lang.Assertions;
 import org.libj.lang.Classes;
 
 /**
@@ -67,15 +68,14 @@ public final class JsonUtil {
    * @param str The string to parse.
    * @return An instance of class {@code type} representing the parsed string.
    * @throws JsonParseException If a parsing error has occurred.
-   * @throws IllegalArgumentException If the specified string is empty, or if an
-   *           instance of the specific class type does not define
-   *           {@code <init>(String)}, {@code valueOf(String)}, or
-   *           {@code fromString(String)}.
-   * @throws NullPointerException If the specified string is null.
+   * @throws IllegalArgumentException If {@code str} is null, or if the
+   *           specified string is empty, or if an instance of the specific
+   *           class type does not define {@code <init>(String)},
+   *           {@code valueOf(String)}, or {@code fromString(String)}.
    */
   @SuppressWarnings("unchecked")
   public static <T extends Number>T parseNumber(final Class<T> type, String str) throws JsonParseException {
-    if (str.length() == 0)
+    if (Assertions.assertNotNull(str).length() == 0)
       throw new IllegalArgumentException("Empty string");
 
     int i = 0;
@@ -136,6 +136,7 @@ public final class JsonUtil {
     if (ch < '0' || '9' < ch)
       throw new JsonParseException("Expected digit, but encountered '" + (char)ch + "'", i);
 
+    // FIXME: Fail fast?! (i.e., earlier?)
     if (type == null)
       return null;
 
@@ -196,10 +197,11 @@ public final class JsonUtil {
    *
    * @param str The string to be escaped.
    * @return The escaped representation of the specified string.
+   * @throws IllegalArgumentException If {@code str} is null.
    * @see #unescape(String)
    */
   public static StringBuilder escape(final String str) {
-    final StringBuilder builder = new StringBuilder(str.length());
+    final StringBuilder builder = new StringBuilder(Assertions.assertNotNull(str).length());
     for (int i = 0, len = str.length(); i < len; ++i) {
       final char ch = str.charAt(i);
       /*
@@ -254,10 +256,11 @@ public final class JsonUtil {
    * @return The unescaped representation of the specified string, with the
    *         escaped form of the double quote ({@code "\""}) and reverse solidus
    *         ({@code "\\"}) preserved.
+   * @throws IllegalArgumentException If {@code str} is null
    * @see #unescape(String)
    */
   public static String unescapeForString(final String str) {
-    final StringBuilder builder = new StringBuilder(str.length());
+    final StringBuilder builder = new StringBuilder(Assertions.assertNotNull(str).length());
     for (int i = 0, len = str.length(); i < len; ++i) {
       char ch = str.charAt(i);
       if (ch == '\\') {
@@ -298,9 +301,10 @@ public final class JsonUtil {
    *
    * @param str The string to be unescaped.
    * @return The unescaped representation of the specified string.
+   * @throws IllegalArgumentException If {@code str} is null
    */
   public static String unescape(final String str) {
-    final StringBuilder builder = new StringBuilder(str.length());
+    final StringBuilder builder = new StringBuilder(Assertions.assertNotNull(str).length());
     for (int i = 0, len = str.length(); i < len; ++i) {
       char ch = str.charAt(i);
       if (ch == '\\') {

@@ -53,7 +53,7 @@ public class JsonTypesTest {
 
   @Test
   public void testParseNumberFail() {
-    testFail(NullPointerException.class, null);
+    testFail(IllegalArgumentException.class, null);
     testFail(IllegalArgumentException.class, "");
     testFail(JsonParseException.class, "a");
     testFail(JsonParseException.class, ".1");

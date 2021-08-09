@@ -17,7 +17,8 @@
 package org.openjax.json;
 
 import java.io.IOException;
-import java.util.Objects;
+
+import org.libj.lang.Assertions;
 
 /**
  * Parser for JSON documents that asserts content conforms to the
@@ -31,10 +32,10 @@ public class JsonParser {
    * {@code reader} parameter instance.
    *
    * @param reader The {@link JsonReader} from which JSON is read.
-   * @throws NullPointerException If {@code reader} is null.
+   * @throws IllegalArgumentException If {@code reader} is null.
    */
   public JsonParser(final JsonReader reader) {
-    this.reader = Objects.requireNonNull(reader);
+    this.reader = Assertions.assertNotNull(reader);
   }
 
   /**
@@ -49,9 +50,10 @@ public class JsonParser {
    *         resume from the position at which parsing was previously aborted.
    * @throws IOException If an I/O error has occurred.
    * @throws JsonParseException If the content is not a well formed JSON term.
-   * @throws NullPointerException If {@code handler} is null.
+   * @throws IllegalArgumentException If {@code handler} is null.
    */
   public boolean parse(final JsonHandler handler) throws IOException, JsonParseException {
+    Assertions.assertNotNull(handler);
     if (reader.getPosition() == 0)
       handler.startDocument();
 

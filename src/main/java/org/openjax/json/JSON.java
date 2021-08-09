@@ -77,7 +77,6 @@ public final class JSON {
    * @throws IllegalArgumentException If a property value of the specified map
    *           is of a class that is not one of {@link Boolean}, {@link Number},
    *           {@link String}, {@link List}, or {@link Map}.
-   * @throws NullPointerException If {@code properties} is null.
    */
   public static String toString(final Map<String,?> object) {
     return toString(object, 0);
@@ -104,7 +103,6 @@ public final class JSON {
    *           is of a class that is not one of {@link Boolean}, {@link Number},
    *           {@link String}, {@link List}, or {@link Map}; or if
    *           {@code indent} is negative.
-   * @throws NullPointerException If {@code properties} is null.
    */
   public static String toString(final Map<String,?> object, final int indent) {
     return toString(object, makeIndent(indent));
