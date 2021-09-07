@@ -226,10 +226,9 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    * <li>Whitespace:<ul>
    * <li>Whitespace string that matches:<pre>{@code ^[ \n\r\t]+$}</pre></li></ul></li>
    * </ul>
-   * <p>
-   * <b>Note:</b> If this instance ignores whitespace, this method will skip
-   * whitespace tokens.
    *
+   * @implNote If this instance ignores whitespace, this method will skip
+   *           whitespace tokens.
    * @return The next JSON token, or {@code null} if the end of content has been
    *         reached.
    * @throws IOException If an I/O error has occurred.

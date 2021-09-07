@@ -65,12 +65,11 @@ public final class JSON {
   /**
    * Returns a JSON document encoding of the specified {@code Map<String,?>}
    * representing a JSON object.
-   * <p>
-   * <b>NOTE</b>: The property values of the specified map may only be instances
-   * of {@link Boolean}, {@link Number}, {@link String}, {@link List}, and
-   * {@link Map}. Objects of other classes will result in an
-   * {@link IllegalArgumentException}.
    *
+   * @implNote The property values of the specified map may only be instances of
+   *           {@link Boolean}, {@link Number}, {@link String}, {@link List},
+   *           and {@link Map}. Objects of other classes will result in an
+   *           {@link IllegalArgumentException}.
    * @param object The JSON object, represented as a {@code Map<String,?>}.
    * @return A JSON document encoding of the specified {@code Map<String,?>}
    *         representing a JSON object.
@@ -85,12 +84,11 @@ public final class JSON {
   /**
    * Returns a JSON document encoding of the specified {@code Map<String,?>}
    * representing a JSON object.
-   * <p>
-   * <b>NOTE</b>: The property values of the specified map may only be instances
-   * of {@link Boolean}, {@link Number}, {@link String}, {@link List}, and
-   * {@link Map}. Objects of other classes will result in an
-   * {@link IllegalArgumentException}.
    *
+   * @implNote The property values of the specified map may only be instances of
+   *           {@link Boolean}, {@link Number}, {@link String}, {@link List},
+   *           and {@link Map}. Objects of other classes will result in an
+   *           {@link IllegalArgumentException}.
    * @param object The JSON object, represented as a {@code Map<String,?>}.
    * @param indent Number of spaces to indent child elements. If the specified
    *          indent value is greater than {@code 0}, child elements are
@@ -136,12 +134,11 @@ public final class JSON {
    * Returns a JSON document encoding (with no indentation) of the specified
    * {@code List<?>} representing a JSON array, or {@code null} if {@code array}
    * is null.
-   * <p>
-   * <b>NOTE</b>: The member values of the specified list may only be instances
-   * of {@link Boolean}, {@link Number}, {@link String}, {@link List}, and
-   * {@link Map}. Objects of other classes will result in an
-   * {@link IllegalArgumentException}.
    *
+   * @implNote The member values of the specified list may only be instances of
+   *           {@link Boolean}, {@link Number}, {@link String}, {@link List},
+   *           and {@link Map}. Objects of other classes will result in an
+   *           {@link IllegalArgumentException}.
    * @param array The JSON array, represented as a {@code List<?>}.
    * @return A JSON document encoding of the specified {@code List<?>}
    *         representing a JSON array, or {@code null} if {@code array} is
@@ -158,12 +155,11 @@ public final class JSON {
    * Returns a JSON document encoding (with the specified indentation) of the
    * specified {@code List<?>} representing a JSON array, or {@code null} if
    * {@code array} is null.
-   * <p>
-   * <b>NOTE</b>: The member values of the specified list may only be instances
-   * of {@link Boolean}, {@link Number}, {@link String}, {@link List}, and
-   * {@link Map}. Objects of other classes will result in an
-   * {@link IllegalArgumentException}.
    *
+   * @implNote The member values of the specified list may only be instances of
+   *           {@link Boolean}, {@link Number}, {@link String}, {@link List},
+   *           and {@link Map}. Objects of other classes will result in an
+   *           {@link IllegalArgumentException}.
    * @param array The JSON array, represented as a {@code List<?>}.
    * @param indent Number of spaces to indent child elements. If the specified
    *          indent value is greater than {@code 0}, child elements are
