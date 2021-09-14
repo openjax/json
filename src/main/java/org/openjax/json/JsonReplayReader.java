@@ -39,6 +39,7 @@ import org.libj.lang.Numbers;
  * boundaries, and thus the reverse solidus from the escape character.
  */
 class JsonReplayReader extends ReplayReader {
+  private final char[] unicode = new char[4];
   private int pos = -1;
   private char readAhead = '\0';
 
@@ -119,7 +120,6 @@ class JsonReplayReader extends ReplayReader {
       else if (ch == 'f')
         ch = '\f';
       else if (ch == 'u') {
-        final char[] unicode = new char[4];
         for (int i = 0; i < unicode.length; ++i) {
           final int c = in.read();
           if (c == -1)

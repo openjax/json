@@ -17,7 +17,8 @@
 package org.openjax.json;
 
 /**
- * Handler interface used for parsing JSON with {@link JsonParser#parse(JsonHandler)}.
+ * Handler interface used for parsing JSON with
+ * {@link JsonParser#parse(JsonReader,JsonHandler)}.
  */
 public interface JsonHandler {
   /**
@@ -56,10 +57,16 @@ public interface JsonHandler {
    *
    * @param chars A reference to the underlying {@code char[]} buffer.
    * @param start The start index of the token.
-   * @param end The end index of the token.
+   * @param len The length of the token.
    * @return {@code true} to continue parsing, {@code false} to abort.
+   * @implNote For token characters representing a string, all string-literal
+   *           unicode ({@code "\u000A"}) and two-character ({@code "\n"})
+   *           escape codes are replaced with their single-character unicode
+   *           representations, as defined in
+   *           <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section
+   *           2.5</a>.
    */
-  boolean characters(char[] chars, int start, int end);
+  boolean characters(char[] chars, int start, int len);
 
   /**
    * Called when whitespace characters are encountered. Whitespace characters
@@ -71,8 +78,8 @@ public interface JsonHandler {
    *
    * @param chars A reference to the underlying {@code char[]} buffer.
    * @param start The start index of the token.
-   * @param end The end index of the token.
+   * @param len The length of the token.
    * @return {@code true} to continue parsing, {@code false} to abort.
    */
-  boolean whitespace(char[] chars, int start, int end);
+  boolean whitespace(char[] chars, int start, int len);
 }

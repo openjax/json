@@ -1,4 +1,4 @@
-/* Copyright (c) 2020 OpenJAX
+/* Copyright (c) 2021 OpenJAX
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,6 +16,8 @@
 
 package org.openjax.json;
 
+import static org.junit.Assert.*;
+
 import java.io.IOException;
 import java.net.URL;
 
@@ -23,19 +25,22 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.libj.test.JUnitUtil;
+import org.libj.util.ArrayUtil;
 
 @RunWith(Parameterized.class)
-public class JsonReaderITest extends AbstractTest {
+public class JsonITest extends AbstractTest {
   @Parameterized.Parameters(name = "{0}")
   public static URL[] resources() throws IOException {
-    return JUnitUtil.sortBySize(JUnitUtil.getResources("", ".*\\.json"));
+    return ArrayUtil.subArray(JUnitUtil.sortBySize(JUnitUtil.getResources("", ".*\\.json")), 0, 33);
   }
 
   @Parameterized.Parameter(0)
   public URL resource;
 
   @Test
-  public void test() throws IOException {
-    assertPass(resource);
+  public void testParse() throws IOException {
+    final String expected = JSON.stripWhitespace(readFully(resource));
+    final String actual = JSON.toString(JSON.parse(expected));
+    assertEquals(expected, actual);
   }
 }

@@ -23,6 +23,7 @@ import java.io.StringReader;
 
 import org.junit.Test;
 import org.libj.io.Readers;
+import org.libj.lang.Numbers;
 
 public class JsonReaderTest extends AbstractTest {
   @Test
@@ -33,7 +34,7 @@ public class JsonReaderTest extends AbstractTest {
       assertEquals(0, reader.size());
 
       // First token is "[" (because whitespace is ignored), index=0
-      assertEquals("[", reader.readToken());
+      assertEquals("[", tokenString(reader));
       // Assert the index has been advanced properly
       assertEquals(0, reader.getIndex());
       // The buffered size of the reader will be 2, because the extra token is
@@ -57,7 +58,7 @@ public class JsonReaderTest extends AbstractTest {
       // Move back to the beginning, to re-read the first token
       reader.setIndex(-1);
       // Read the first token with the JsonReader#readToen() method
-      assertEquals("[", reader.readToken());
+      assertEquals("[", tokenString(reader));
       // Assert the index has been advanced properly
       assertEquals(0, reader.getIndex());
     }
@@ -111,7 +112,8 @@ public class JsonReaderTest extends AbstractTest {
 
   @Test
   public void testString() throws IOException {
-    assertPass("{\"foo\": \"\"}");
+    assertPass("{\"foo\": [\"Z&$GY6-4si[1\"]}");
+    assertPass("{\"foo\": [\"[&]$b|6)?f)A$\"]}");
     assertPass("{\"foo\": \"\"}");
     assertPass("{\"foo\": \"b\\\"ar\"}");
     assertPass("{\"foo\": \"\"}");
@@ -154,41 +156,48 @@ public class JsonReaderTest extends AbstractTest {
     assertFail("{\"foo\": 10E+01}", JsonParseException.class, "Leading zeros are not allowed [errorOffset: 12]");
   }
 
+  private static String tokenString(final JsonReader reader) throws JsonParseException, IOException {
+    final long token = reader.readToken();
+    final int off = Numbers.Composite.decodeInt(token, 0);
+    final int len = Numbers.Composite.decodeInt(token, 1);
+    return new String(reader.buf(), off, len);
+  }
+
   @Test
   public void testMarkReset() throws IOException {
     final String json = "{\"a\": \"$\", \"b\": 5, \"c\": false, \"d\": [], \"e\": {}}";
     final JsonReader reader = new JsonReader(new StringReader(json));
     for (int i = 0; i < 2; ++i)
-      logger.debug(reader.readToken());
+      logger.debug(tokenString(reader));
 
     reader.mark(-1);
     for (int i = 0; i < 10; ++i, reader.reset()) {
-      reader.readToken();
-      assertEquals("\"$\"", reader.readToken());
+      tokenString(reader);
+      assertEquals("\"$\"", tokenString(reader));
     }
 
     for (int i = 0; i < 3; ++i)
-      logger.debug(reader.readToken());
+      logger.debug(tokenString(reader));
 
     logger.debug(String.valueOf((char)reader.read()));
     reader.mark(-1);
     for (int i = 0; i < 10; ++i, reader.reset()) {
-      assertEquals("b\"", reader.readToken());
-      assertEquals(":", reader.readToken());
-      assertEquals("5", reader.readToken());
+      assertEquals("b\"", tokenString(reader));
+      assertEquals(":", tokenString(reader));
+      assertEquals("5", tokenString(reader));
     }
 
     for (int i = 0; i < 6; ++i)
-      logger.debug(reader.readToken());
+      logger.debug(tokenString(reader));
 
     for (int i = 0; i < 3; ++i)
       logger.debug(String.valueOf((char)reader.read()));
 
     reader.mark(-1);
     for (int i = 0; i < 10; ++i, reader.reset()) {
-      assertEquals("se", reader.readToken());
-      assertEquals(",", reader.readToken());
-      assertEquals("\"d\"", reader.readToken());
+      assertEquals("se", tokenString(reader));
+      assertEquals(",", tokenString(reader));
+      assertEquals("\"d\"", tokenString(reader));
       Readers.readFully(reader);
     }
   }

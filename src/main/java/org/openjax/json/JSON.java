@@ -16,15 +16,204 @@
 
 package org.openjax.json;
 
+import java.io.IOException;
+import java.io.Reader;
+import java.io.StringReader;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.libj.lang.Assertions;
 
 /**
  * Lightweight {@code toString(...)} functions for marshaling {@link Map} (JSON
  * object) and {@link List} (JSON array) into JSON document representations.
  */
 public final class JSON {
+  private static Object parseValue(final JsonReader reader, final char[] chars, final int start, final int len) {
+    final char ch = chars[start];
+    if (ch == 'n') {
+      if (len != 4 || chars[start + 1] != 'u' || chars[start + 2] != 'l' || chars[start + 3] != 'l')
+        throw new JsonParseException(new String(reader.buf(), 0, reader.getPosition()), start);
+
+      return null;
+    }
+
+    if (ch == 't') {
+      if (len != 4 || chars[start + 1] != 'r' || chars[start + 2] != 'u' || chars[start + 3] != 'e')
+        throw new JsonParseException(new String(reader.buf(), 0, reader.getPosition()), start);
+
+      return Boolean.TRUE;
+    }
+
+    if (ch == 'f') {
+      if (len != 5 || chars[start + 1] != 'a' || chars[start + 2] != 'l' || chars[start + 3] != 's' || chars[start + 4] != 'e')
+        throw new JsonParseException(new String(reader.buf(), 0, reader.getPosition()), start);
+
+      return Boolean.FALSE;
+    }
+
+    if (ch == '"') {
+      if (chars[start + len - 1] != '"')
+        throw new JsonParseException(new String(reader.buf(), 0, reader.getPosition()), start);
+
+      return JsonUtil.unescape(chars, start + 1, len - 2).toString();
+    }
+
+    if ('0' <= ch && ch <= '9' || ch == '-') {
+      try {
+        return new BigDecimal(chars, start, len);
+      }
+      catch (final NumberFormatException e) {
+        throw new JsonParseException(new String(reader.buf(), 0, reader.getPosition()), start, e);
+      }
+    }
+
+    throw new JsonParseException(new String(reader.buf(), 0, reader.getPosition()), start);
+  }
+
+  private static final JsonParser jsonParser = new JsonParser();
+
+  public static Object parse(final String json) {
+    try (final StringReader reader = new StringReader(Assertions.assertNotNull(json))) {
+      return parse(reader);
+    }
+  }
+
+  public static Object parse(final Reader reader) {
+    final List<Object> stack = new ArrayList<>();
+    try (final JsonReader in = new JsonReader(reader)) {
+      jsonParser.parse(in, new JsonHandler() {
+        private final List<String> propertyNames = new ArrayList<>();
+        private Object current;
+        private String propertyName;
+
+        @Override
+        public void startDocument() {
+        }
+
+        @Override
+        public void endDocument() {
+        }
+
+        @Override
+        public boolean whitespace(final char[] chars, final int start, final int len) {
+          return true;
+        }
+
+        @Override
+        @SuppressWarnings("unchecked")
+        public boolean structural(final char ch) {
+          if (ch == '}' || ch == ']') {
+            final int head = stack.size() - 1;
+            if (head == 0)
+              return true;
+
+            final Object object = stack.remove(head);
+            current = stack.get(head - 1);
+            propertyName = propertyNames.remove(head);
+            if (propertyName != null) {
+              ((Map<String,Object>)current).put(propertyName, object);
+              propertyName = null;
+            }
+            else if (current != null) {
+              ((List<Object>)current).add(object);
+            }
+          }
+          else if (ch == ':' || ch == ',') {
+          }
+          else {
+            if (ch == '{')
+              stack.add(current = new LinkedHashMap<>());
+            else if (ch == '[')
+              stack.add(current = new ArrayList<>());
+
+            propertyNames.add(propertyName);
+            propertyName = null;
+          }
+
+          return true;
+        }
+
+        @Override
+        @SuppressWarnings("unchecked")
+        public boolean characters(final char[] chars, final int start, final int len) {
+          if (current instanceof List) {
+            ((List<Object>)current).add(parseValue(in, chars, start, len));
+          }
+          else if (propertyName == null) {
+            propertyName = new String(chars, start + 1, len - 2);
+          }
+          else {
+            ((Map<String,Object>)current).put(propertyName, parseValue(in, chars, start, len));
+            propertyName = null;
+          }
+
+          return true;
+        }
+      });
+
+      return stack.get(0);
+    }
+    catch (final IOException e) {
+      throw new IllegalStateException(e);
+    }
+  }
+
+  public static String stripWhitespace(final String json) {
+    try (final StringReader reader = new StringReader(Assertions.assertNotNull(json))) {
+      return stripWhitespace(reader);
+    }
+  }
+
+  public static String stripWhitespace(final Reader reader) {
+    final StringBuilder builder = new StringBuilder();
+    try (final JsonReader in = new JsonReader(reader)) {
+      jsonParser.parse(in, new JsonHandler() {
+        @Override
+        public void startDocument() {
+        }
+
+        @Override
+        public void endDocument() {
+        }
+
+        @Override
+        public boolean whitespace(final char[] chars, final int start, final int len) {
+          return true;
+        }
+
+        @Override
+        public boolean structural(final char ch) {
+          builder.append(ch);
+          return true;
+        }
+
+        @Override
+        public boolean characters(final char[] chars, final int start, final int len) {
+          if (chars[start] == '"') {
+            builder.append('"');
+            JsonUtil.escape(builder, chars, start + 1, len - 2);
+            builder.append('"');
+          }
+          else {
+            builder.append(chars, start, len);
+          }
+
+          return true;
+        }
+      });
+
+      return builder.toString();
+    }
+    catch (final IOException e) {
+      throw new IllegalStateException(e);
+    }
+  }
+
   private static String makeIndent(final int indent) {
     if (indent == 0)
       return null;
@@ -63,8 +252,38 @@ public final class JSON {
   }
 
   /**
+   * Returns a JSON document encoding of a {@code Map<String,?>} representing a
+   * JSON object, or a {@code List<?>} representing a JSON array, or
+   * {@code null} if {@code json} is null.
+   *
+   * @implNote The property values of the specified map may only be instances of
+   *           {@link Boolean}, {@link Number}, {@link String}, {@link List},
+   *           and {@link Map}. Objects of other classes will result in an
+   *           {@link IllegalArgumentException}.
+   * @param json The JSON object represented as a {@code Map<String,?>}, or an
+   *          array, represented as a {@code List<?>}.
+   * @return A JSON document encoding of the specified {@code Map<String,?>}
+   *         representing a JSON object or {@code List<?>} representing an
+   *         array.
+   * @throws IllegalArgumentException If a property value of the specified
+   *           {@code Map<String,?>} or member of the {@code List<?>} is of a
+   *           class that is not one of {@link Boolean}, {@link Number},
+   *           {@link String}, {@link List}, or {@link Map}.
+   */
+  @SuppressWarnings("unchecked")
+  public static String toString(final Object json) {
+    if (json instanceof Map)
+      return toString((Map<String,?>)json);
+
+    if (json instanceof List)
+      return toString((List<?>)json);
+
+    throw new IllegalArgumentException("Unknown object type: " + json.getClass().getName());
+  }
+
+  /**
    * Returns a JSON document encoding of the specified {@code Map<String,?>}
-   * representing a JSON object.
+   * representing a JSON object, or {@code null} if {@code object} is null.
    *
    * @implNote The property values of the specified map may only be instances of
    *           {@link Boolean}, {@link Number}, {@link String}, {@link List},
@@ -78,12 +297,12 @@ public final class JSON {
    *           {@link String}, {@link List}, or {@link Map}.
    */
   public static String toString(final Map<String,?> object) {
-    return toString(object, 0);
+    return object == null ? null : toString(object, 0);
   }
 
   /**
    * Returns a JSON document encoding of the specified {@code Map<String,?>}
-   * representing a JSON object.
+   * representing a JSON object, or {@code null} if {@code object} is null.
    *
    * @implNote The property values of the specified map may only be instances of
    *           {@link Boolean}, {@link Number}, {@link String}, {@link List},
@@ -103,7 +322,7 @@ public final class JSON {
    *           {@code indent} is negative.
    */
   public static String toString(final Map<String,?> object, final int indent) {
-    return toString(object, makeIndent(indent));
+    return object == null ? null : toString(object, makeIndent(indent));
   }
 
   private static String toString(final Map<String,?> object, final String spaces) {
@@ -201,7 +420,7 @@ public final class JSON {
     }
 
     if (builder.length() > 1) {
-      if (backUp)
+      if (backUp || spaces == null)
         builder.setLength(builder.length() - 1);
       else
         builder.setCharAt(builder.length() - 1, '\n');

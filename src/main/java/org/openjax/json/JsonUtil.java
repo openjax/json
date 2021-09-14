@@ -74,13 +74,13 @@ public final class JsonUtil {
    *           {@code valueOf(String)}, or {@code fromString(String)}.
    */
   @SuppressWarnings("unchecked")
-  public static <T extends Number>T parseNumber(final Class<T> type, String str) throws JsonParseException {
+  public static <T extends Number> T parseNumber(final Class<T> type, String str) throws JsonParseException {
     if (Assertions.assertNotNull(str).length() == 0)
       throw new IllegalArgumentException("Empty string");
 
     int i = 0;
     int ch = str.charAt(i);
-    if (ch != '-' && (ch < '0'|| '9' < ch))
+    if (ch != '-' && (ch < '0' || '9' < ch))
       throw new JsonParseException("Illegal first character: '" + (char)ch + "'", i);
 
     int first = ch;
@@ -141,7 +141,8 @@ public final class JsonUtil {
       return null;
 
     // If we have exponential form, and the return type is not BigDecimal, then
-    // convert to non-exponential form (unless we can immediately return a BigInteger)
+    // convert to non-exponential form (unless we can immediately return a
+    // BigInteger)
     if (expStart > -1 && !BigDecimal.class.isAssignableFrom(type)) {
       if (type == BigInteger.class)
         return (T)new BigDecimal(str).toBigInteger();
@@ -198,10 +199,36 @@ public final class JsonUtil {
    * @param str The string to be escaped.
    * @return The escaped representation of the specified string.
    * @throws IllegalArgumentException If {@code str} is null.
-   * @see #unescape(String)
+   * @see #unescape(CharSequence)
    */
-  public static StringBuilder escape(final String str) {
-    final StringBuilder builder = new StringBuilder(Assertions.assertNotNull(str).length());
+  public static StringBuilder escape(final CharSequence str) {
+    return escape(new StringBuilder(Assertions.assertNotNull(str).length()), str);
+  }
+
+  /**
+   * Escapes characters in the specified string that must be escaped as defined
+   * in <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section
+   * 2.5</a>. This includes quotation mark ({@code "\""}), reverse solidus
+   * ({@code "\\"}), and the control characters ({@code U+0000} through
+   * {@code U+001F}).
+   * <p>
+   * This method escapes the following characters in string-literal
+   * two-character form:
+   *
+   * <pre>
+   * {'\n', '\r', '\t', '\b', '\f'} -&gt; {"\\n", "\\r", "\\t", "\\b", "\\f"}
+   * </pre>
+   *
+   * @param out The {@link StringBuilder} to which the escaped contents of
+   *          {@code str} are to be appended.
+   * @param str The string to be escaped.
+   * @return The provided {@link StringBuilder} with the escaped representation
+   *         of {@code str}.
+   * @throws IllegalArgumentException If {@code out} or {@code str} is null.
+   * @see #unescape(CharSequence)
+   */
+  public static StringBuilder escape(final StringBuilder out, final CharSequence str) {
+    Assertions.assertNotNull(out);
     for (int i = 0, len = str.length(); i < len; ++i) {
       final char ch = str.charAt(i);
       /*
@@ -213,32 +240,126 @@ public final class JsonUtil {
       switch (ch) {
         case '"':
         case '\\':
-          builder.append('\\').append(ch);
+          out.append('\\').append(ch);
           break;
         case '\n':
-          builder.append("\\n");
+          out.append("\\n");
           break;
         case '\r':
-          builder.append("\\r");
+          out.append("\\r");
           break;
         case '\t':
-          builder.append("\\t");
+          out.append("\\t");
           break;
         case '\b':
-          builder.append("\\b");
+          out.append("\\b");
           break;
         case '\f':
-          builder.append("\\f");
+          out.append("\\f");
           break;
         default:
           if (ch <= 0x1F)
-            builder.append(String.format("\\u%04x", (int)ch));
+            out.append(String.format("\\u%04x", (int)ch));
           else
-            builder.append(ch);
+            out.append(ch);
       }
     }
 
-    return builder;
+    return out;
+  }
+
+  /**
+   * Escapes characters in the specified {@code char[]} that must be escaped as
+   * defined in <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section
+   * 2.5</a>. This includes quotation mark ({@code "\""}), reverse solidus
+   * ({@code "\\"}), and the control characters ({@code U+0000} through
+   * {@code U+001F}).
+   * <p>
+   * This method escapes the following characters in string-literal
+   * two-character form:
+   *
+   * <pre>
+   * {'\n', '\r', '\t', '\b', '\f'} -&gt; {"\\n", "\\r", "\\t", "\\b", "\\f"}
+   * </pre>
+   *
+   * @param chars The {@code char[]} to be escaped.
+   * @param offset The initial offset.
+   * @param len The length.
+   * @return The escaped representation of the specified {@code char[]}.
+   * @throws IllegalArgumentException If {@code chars} is null.
+   * @throws ArrayIndexOutOfBoundsException If {@code offset} is negative, or
+   *           {@code offset + len >= chars.length}.
+   * @see #unescape(char[],int,int)
+   */
+  public static StringBuilder escape(final char[] chars, final int offset, final int len) {
+    return escape(new StringBuilder(Assertions.assertNotNull(chars).length), chars, offset, len);
+  }
+
+  /**
+   * Escapes characters in the specified {@code char[]} that must be escaped as
+   * defined in <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section
+   * 2.5</a>. This includes quotation mark ({@code "\""}), reverse solidus
+   * ({@code "\\"}), and the control characters ({@code U+0000} through
+   * {@code U+001F}).
+   * <p>
+   * This method escapes the following characters in string-literal
+   * two-character form:
+   *
+   * <pre>
+   * {'\n', '\r', '\t', '\b', '\f'} -&gt; {"\\n", "\\r", "\\t", "\\b", "\\f"}
+   * </pre>
+   *
+   * @param out The {@link StringBuilder} to which the escaped contents of
+   *          {@code chars} are to be appended.
+   * @param chars The {@code char[]} to be escaped.
+   * @param offset The initial offset.
+   * @param len The length.
+   * @return The provided {@link StringBuilder} with the escaped representation
+   *         of the specified {@code char[]}.
+   * @throws IllegalArgumentException If {@code out} or {@code chars} is null.
+   * @throws ArrayIndexOutOfBoundsException If {@code offset} is negative, or
+   *           {@code offset + len >= chars.length}.
+   * @see #unescape(char[],int,int)
+   */
+  public static StringBuilder escape(final StringBuilder out, final char[] chars, final int offset, final int len) {
+    Assertions.assertNotNull(out);
+    for (int i = offset, length = offset + len; i < length; ++i) {
+      final char ch = chars[i];
+      /*
+       * From RFC 4627, "All Unicode characters may be placed within the
+       * quotation marks except for the characters that must be escaped:
+       * quotation mark, reverse solidus, and the control characters (U+0000
+       * through U+001F)."
+       */
+      switch (ch) {
+        case '"':
+        case '\\':
+          out.append('\\').append(ch);
+          break;
+        case '\n':
+          out.append("\\n");
+          break;
+        case '\r':
+          out.append("\\r");
+          break;
+        case '\t':
+          out.append("\\t");
+          break;
+        case '\b':
+          out.append("\\b");
+          break;
+        case '\f':
+          out.append("\\f");
+          break;
+        default:
+          if (ch <= 0x1F)
+            out.append(String.format("\\u%04x", (int)ch));
+          else
+            out.append(ch);
+      }
+    }
+
+    return out;
   }
 
   /**
@@ -256,17 +377,44 @@ public final class JsonUtil {
    * @return The unescaped representation of the specified string, with the
    *         escaped form of the double quote ({@code "\""}) and reverse solidus
    *         ({@code "\\"}) preserved.
-   * @throws IllegalArgumentException If {@code str} is null
-   * @see #unescape(String)
+   * @throws IllegalArgumentException If {@code str} is null.
+   * @see #escape(CharSequence)
+   * @see #unescape(CharSequence)
    */
-  public static String unescapeForString(final String str) {
-    final StringBuilder builder = new StringBuilder(Assertions.assertNotNull(str).length());
+  public static StringBuilder unescapeForString(final CharSequence str) {
+    return unescapeForString(new StringBuilder(Assertions.assertNotNull(str).length()), str);
+  }
+
+  /**
+   * Unescapes string-literal unicode ({@code "\u000A"}) and two-character
+   * ({@code "\n"}) escape codes, <i>except for the double quote ({@code "\""})
+   * and reverse solidus ({@code "\\"})</i>, into UTF-8 as defined in
+   * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section 2.5</a>.
+   * <p>
+   * This method deliberately excludes the double quote ({@code "\""}) and
+   * reverse solidus ({@code "\\"}), as these characters are necessary to be
+   * able to differentiate the double quote from string boundaries, and thus the
+   * reverse solidus from the escape character.
+   *
+   * @param out The {@link StringBuilder} to which the unescaped contents of
+   *          {@code str} are to be appended.
+   * @param str The string to be unescaped.
+   * @return The provided {@link StringBuilder} with the unescaped
+   *         representation of of {@code str}, with the escaped form of the
+   *         double quote ({@code "\""}) and reverse solidus ({@code "\\"})
+   *         preserved.
+   * @throws IllegalArgumentException If {@code out} or {@code str} is null.
+   * @see #escape(CharSequence)
+   * @see #unescape(CharSequence)
+   */
+  public static StringBuilder unescapeForString(final StringBuilder out, final CharSequence str) {
+    Assertions.assertNotNull(out);
     for (int i = 0, len = str.length(); i < len; ++i) {
       char ch = str.charAt(i);
       if (ch == '\\') {
         ch = str.charAt(++i);
         if (ch == '"' || ch == '\\')
-          builder.append('\\');
+          out.append('\\');
         else if (ch == 'n')
           ch = '\n';
         else if (ch == 'r')
@@ -288,10 +436,98 @@ public final class JsonUtil {
         }
       }
 
-      builder.append(ch);
+      out.append(ch);
     }
 
-    return builder.toString();
+    return out;
+  }
+
+  /**
+   * Unescapes string-literal unicode ({@code "\u000A"}) and two-character
+   * ({@code "\n"}) escape codes, <i>except for the double quote ({@code "\""})
+   * and reverse solidus ({@code "\\"})</i>, into UTF-8 as defined in
+   * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section 2.5</a>.
+   * <p>
+   * This method deliberately excludes the double quote ({@code "\""}) and
+   * reverse solidus ({@code "\\"}), as these characters are necessary to be
+   * able to differentiate the double quote from string boundaries, and thus the
+   * reverse solidus from the escape character.
+   *
+   * @param chars The {@code char[]} to be unescaped.
+   * @param offset The initial offset.
+   * @param len The length.
+   * @return The unescaped representation of the specified string, with the
+   *         escaped form of the double quote ({@code "\""}) and reverse solidus
+   *         ({@code "\\"}) preserved.
+   * @throws IllegalArgumentException If {@code chars} is null.
+   * @throws ArrayIndexOutOfBoundsException If {@code offset} is negative, or
+   *           {@code offset + len >= chars.length}.
+   * @see #escape(char[],int,int)
+   * @see #unescape(char[],int,int)
+   */
+  public static StringBuilder unescapeForString(final char[] chars, final int offset, final int len) {
+    return unescapeForString(new StringBuilder(Assertions.assertNotNull(chars).length), chars, offset, len);
+  }
+
+  /**
+   * Unescapes string-literal unicode ({@code "\u000A"}) and two-character
+   * ({@code "\n"}) escape codes, <i>except for the double quote ({@code "\""})
+   * and reverse solidus ({@code "\\"})</i>, into UTF-8 as defined in
+   * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section 2.5</a>.
+   * <p>
+   * This method deliberately excludes the double quote ({@code "\""}) and
+   * reverse solidus ({@code "\\"}), as these characters are necessary to be
+   * able to differentiate the double quote from string boundaries, and thus the
+   * reverse solidus from the escape character.
+   *
+   * @param out The {@link StringBuilder} to which the unescaped contents of
+   *          {@code chars} are to be appended.
+   * @param chars The {@code char[]} to be unescaped.
+   * @param offset The initial offset.
+   * @param len The length.
+   * @return The provided {@link StringBuilder} with the unescaped
+   *         representation of {@code chars}, with the escaped form of the
+   *         double quote ({@code "\""}) and reverse solidus ({@code "\\"})
+   *         preserved.
+   * @throws IllegalArgumentException If {@code out} or {@code chars} is null.
+   * @throws ArrayIndexOutOfBoundsException If {@code offset} is negative, or
+   *           {@code offset + len >= chars.length}.
+   * @see #escape(char[],int,int)
+   * @see #unescape(char[],int,int)
+   */
+  public static StringBuilder unescapeForString(final StringBuilder out, final char[] chars, final int offset, final int len) {
+    Assertions.assertNotNull(out);
+    for (int i = offset, length = offset + len; i < length; ++i) {
+      char ch = chars[i];
+      if (ch == '\\') {
+        ch = chars[++i];
+        if (ch == '"' || ch == '\\')
+          out.append('\\');
+        else if (ch == 'n')
+          ch = '\n';
+        else if (ch == 'r')
+          ch = '\r';
+        else if (ch == 't')
+          ch = '\t';
+        else if (ch == 'b')
+          ch = '\b';
+        else if (ch == 'f')
+          ch = '\f';
+        else if (ch == 'u') {
+          ++i;
+          final char[] unicode = new char[4];
+          for (int j = 0; j < unicode.length; ++j)
+            unicode[j] = chars[i + j];
+
+          i += unicode.length - 1;
+          ch = (char)Integer.parseInt(new String(unicode), 16);
+        }
+      }
+
+      out.append(ch);
+    }
+
+    return out;
   }
 
   /**
@@ -301,10 +537,28 @@ public final class JsonUtil {
    *
    * @param str The string to be unescaped.
    * @return The unescaped representation of the specified string.
-   * @throws IllegalArgumentException If {@code str} is null
+   * @throws IllegalArgumentException If {@code str} is null.
+   * @see #escape(CharSequence)
    */
-  public static String unescape(final String str) {
-    final StringBuilder builder = new StringBuilder(Assertions.assertNotNull(str).length());
+  public static StringBuilder unescape(final CharSequence str) {
+    return unescape(new StringBuilder(Assertions.assertNotNull(str).length()), str);
+  }
+
+  /**
+   * Unescapes string-literal unicode ({@code "\u000A"}) and two-character
+   * ({@code "\n"}) escape codes into UTF-8 as defined in
+   * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section 2.5</a>.
+   *
+   * @param out The {@link StringBuilder} to which the unescaped contents of
+   *          {@code str} are to be appended.
+   * @param str The string to be unescaped.
+   * @return The provided {@link StringBuilder} with the unescaped
+   *         representation of {@code str}.
+   * @throws IllegalArgumentException If {@code out} or {@code str} is null.
+   * @see #escape(CharSequence)
+   */
+  public static StringBuilder unescape(final StringBuilder out, final CharSequence str) {
+    Assertions.assertNotNull(out);
     for (int i = 0, len = str.length(); i < len; ++i) {
       char ch = str.charAt(i);
       if (ch == '\\') {
@@ -330,10 +584,78 @@ public final class JsonUtil {
         }
       }
 
-      builder.append(ch);
+      out.append(ch);
     }
 
-    return builder.toString();
+    return out;
+  }
+
+  /**
+   * Unescapes string-literal unicode ({@code "\u000A"}) and two-character
+   * ({@code "\n"}) escape codes into UTF-8 as defined in
+   * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section 2.5</a>.
+   *
+   * @param chars The {@code char[]} to be unescaped.
+   * @param offset The initial offset.
+   * @param len The length.
+   * @return The unescaped representation of the specified string.
+   * @throws IllegalArgumentException If {@code chars} is null.
+   * @throws ArrayIndexOutOfBoundsException If {@code offset} is negative, or
+   *           {@code offset + len >= chars.length}.
+   * @see #escape(char[],int,int)
+   */
+  public static StringBuilder unescape(final char[] chars, final int offset, final int len) {
+    return unescape(new StringBuilder(Assertions.assertNotNull(chars).length), chars, offset, len);
+  }
+
+  /**
+   * Unescapes string-literal unicode ({@code "\u000A"}) and two-character
+   * ({@code "\n"}) escape codes into UTF-8 as defined in
+   * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section 2.5</a>.
+   *
+   * @param out The {@link StringBuilder} to which the unescaped contents of
+   *          {@code chars} are to be appended.
+   * @param chars The {@code char[]} to be unescaped.
+   * @param offset The initial offset.
+   * @param len The length.
+   * @return The provided {@link StringBuilder} with the unescaped
+   *         representation of {@code chars}.
+   * @throws IllegalArgumentException If {@code out} or {@code chars} is null.
+   * @throws ArrayIndexOutOfBoundsException If {@code offset} is negative, or
+   *           {@code offset + len >= chars.length}.
+   * @see #escape(char[],int,int)
+   */
+  public static StringBuilder unescape(final StringBuilder out, final char[] chars, final int offset, final int len) {
+    Assertions.assertNotNull(out);
+    for (int i = offset, length = offset + len; i < length; ++i) {
+      char ch = chars[i];
+      if (ch == '\\') {
+        ch = chars[++i];
+        if (ch == 'n')
+          ch = '\n';
+        else if (ch == 'r')
+          ch = '\r';
+        else if (ch == 't')
+          ch = '\t';
+        else if (ch == 'b')
+          ch = '\b';
+        else if (ch == 'f')
+          ch = '\f';
+        else if (ch == 'u') {
+          ++i;
+          final char[] unicode = new char[4];
+          for (int j = 0; j < unicode.length; ++j)
+            unicode[j] = chars[i + j];
+
+          i += unicode.length - 1;
+          ch = (char)Integer.parseInt(new String(unicode), 16);
+        }
+      }
+
+      out.append(ch);
+    }
+
+    return out;
   }
 
   private JsonUtil() {

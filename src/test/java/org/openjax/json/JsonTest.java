@@ -16,38 +16,37 @@
 
 package org.openjax.json;
 
+import static org.junit.Assert.*;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class JsonTest {
-  private static final Logger logger = LoggerFactory.getLogger(JsonTest.class);
-
   @Test
   @SuppressWarnings("unchecked")
   public void test() {
-    final LinkedHashMap<String,Object> properties = new LinkedHashMap<>();
-    properties.put("string", "str\ni\tn†\u4324g");
-    properties.put("number", BigDecimal.valueOf(Math.PI));
-    properties.put("boolean", false);
-    properties.put("null", null);
+    final LinkedHashMap<String,Object> object = new LinkedHashMap<>();
+    object.put("string", "str\ni\tn†\u4324g");
+    object.put("number", BigDecimal.valueOf(Math.PI));
+    object.put("boolean", false);
+    object.put("null", null);
 
     final ArrayList<Object> array = new ArrayList<>();
     array.add(true);
     array.add(Math.E);
     array.add("hello world");
     array.add(array.clone());
-    array.add(properties.clone());
+    array.add(object.clone());
 
-    properties.put("array", array);
+    object.put("array", array);
 
-    final LinkedHashMap<String,Object> clone = (LinkedHashMap<String,Object>)properties.clone();
-    properties.put("object", clone);
+    final LinkedHashMap<String,Object> clone = (LinkedHashMap<String,Object>)object.clone();
+    object.put("object", clone);
 
-    logger.info(JSON.toString(properties, 2));
+    final String json = JSON.toString(object);
+    assertEquals(json, JSON.toString(JSON.parse(json)));
   }
 }

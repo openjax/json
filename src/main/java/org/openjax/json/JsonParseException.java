@@ -35,12 +35,25 @@ public class JsonParseException extends RuntimeException {
    * offset. A detail message is a String that describes this particular
    * exception.
    *
-   * @param string The detail message.
+   * @param message The detail message.
+   * @param errorOffset The position where the error is found while parsing.
+   * @param cause The cause.
+   */
+  public JsonParseException(final String message, final int errorOffset, final Exception cause) {
+    super(message + " [errorOffset: " + errorOffset + "]", cause);
+    this.errorOffset = errorOffset;
+  }
+
+  /**
+   * Constructs a JsonParseException with the specified detail message and
+   * offset. A detail message is a String that describes this particular
+   * exception.
+   *
+   * @param message The detail message.
    * @param errorOffset The position where the error is found while parsing.
    */
-  public JsonParseException(final String string, final int errorOffset) {
-    super(string + " [errorOffset: " + errorOffset + "]");
-    this.errorOffset = errorOffset;
+  public JsonParseException(final String message, final int errorOffset) {
+    this(message, errorOffset, null);
   }
 
   /**

@@ -129,29 +129,29 @@ public class JsonTypesTest {
 
   @Test
   public void testUnescape() {
-    assertEquals("\\", JsonUtil.unescape("\\\\"));
-    assertEquals("\"", JsonUtil.unescape("\\\""));
-    assertEquals("\n", JsonUtil.unescape("\\n"));
-    assertEquals("\r", JsonUtil.unescape("\\r"));
-    assertEquals("\t", JsonUtil.unescape("\\t"));
-    assertEquals("\f", JsonUtil.unescape("\\f"));
-    assertEquals("\b", JsonUtil.unescape("\\b"));
-    assertEquals("ĥ", JsonUtil.unescape("\\u0125"));
-    assertEquals("Ħ", JsonUtil.unescape("\\u0126"));
-    assertEquals("\\\"\r\t\f\bĥĦ\n", JsonUtil.unescape("\\\\\\\"\\r\\t\\f\\b\\u0125\\u0126\\n"));
+    assertEquals("\\", JsonUtil.unescape("\\\\").toString());
+    assertEquals("\"", JsonUtil.unescape("\\\"").toString());
+    assertEquals("\n", JsonUtil.unescape("\\n").toString());
+    assertEquals("\r", JsonUtil.unescape("\\r").toString());
+    assertEquals("\t", JsonUtil.unescape("\\t").toString());
+    assertEquals("\f", JsonUtil.unescape("\\f").toString());
+    assertEquals("\b", JsonUtil.unescape("\\b").toString());
+    assertEquals("ĥ", JsonUtil.unescape("\\u0125").toString());
+    assertEquals("Ħ", JsonUtil.unescape("\\u0126").toString());
+    assertEquals("\\\"\r\t\f\bĥĦ\n", JsonUtil.unescape("\\\\\\\"\\r\\t\\f\\b\\u0125\\u0126\\n").toString());
   }
 
   @Test
   public void testUnescapeForString() {
-    assertEquals("\\\\", JsonUtil.unescapeForString("\\\\"));
-    assertEquals("\\\"", JsonUtil.unescapeForString("\\\""));
-    assertEquals("\n", JsonUtil.unescapeForString("\\n"));
-    assertEquals("\r", JsonUtil.unescapeForString("\\r"));
-    assertEquals("\t", JsonUtil.unescapeForString("\\t"));
-    assertEquals("\f", JsonUtil.unescapeForString("\\f"));
-    assertEquals("\b", JsonUtil.unescapeForString("\\b"));
-    assertEquals("ĥ", JsonUtil.unescapeForString("\\u0125"));
-    assertEquals("Ħ", JsonUtil.unescapeForString("\\u0126"));
-    assertEquals("\\\\\\\"\r\t\f\bĥĦ\n", JsonUtil.unescapeForString("\\\\\\\"\\r\\t\\f\\b\\u0125\\u0126\\n"));
+    assertEquals("\\\\", JsonUtil.unescapeForString("\\\\").toString());
+    assertEquals("\\\"", JsonUtil.unescapeForString("\\\"").toString());
+    assertEquals("\n", JsonUtil.unescapeForString("\\n").toString());
+    assertEquals("\r", JsonUtil.unescapeForString("\\r").toString());
+    assertEquals("\t", JsonUtil.unescapeForString("\\t").toString());
+    assertEquals("\f", JsonUtil.unescapeForString("\\f").toString());
+    assertEquals("\b", JsonUtil.unescapeForString("\\b").toString());
+    assertEquals("ĥ", JsonUtil.unescapeForString("\\u0125").toString());
+    assertEquals("Ħ", JsonUtil.unescapeForString("\\u0126").toString());
+    assertEquals("\\\\\\\"\r\t\f\bĥĦ\n", JsonUtil.unescapeForString("\\\\\\\"\\r\\t\\f\\b\\u0125\\u0126\\n").toString());
   }
 }

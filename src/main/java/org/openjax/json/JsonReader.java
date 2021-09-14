@@ -20,14 +20,14 @@ import java.io.IOException;
 import java.io.Reader;
 import java.io.UncheckedIOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 import org.libj.lang.Buffers;
-import org.libj.lang.Characters;
 import org.libj.lang.Numbers;
 import org.libj.util.primitive.ArrayIntList;
 import org.libj.util.primitive.ArrayLongList;
+import org.libj.util.primitive.LongIterable;
+import org.libj.util.primitive.LongIterator;
 
 /**
  * Validating {@link Reader} for JSON streams that reads JSON tokens
@@ -42,15 +42,15 @@ import org.libj.util.primitive.ArrayLongList;
  * <li>Optimized read of JSON tokens, sequentially returning the {@code int}
  * starting position of each token: {@link #readTokenStart()}. (This position
  * can be dereferenced via: {@link JsonReader#buf()}).</li>
- * <li>Implements the {@link Iterable} interface, to sequentially iterate over
- * each token: {@link #iterator()}.</li>
+ * <li>Implements the {@link LongIterable} interface, to sequentially iterate
+ * over each token: {@link #iterator()}.</li>
  * <li>Caches and indexes each token: {@link #getIndex()}.</li>
  * <li>Allows to read back previously read tokens: {@link #setIndex(int)}.</li>
  * <li>Support partial reads of tokens with {@link #read()},
  * {@link #read(char[])}. and {@link #read(char[], int, int)} methods.
  * </ul>
  */
-public class JsonReader extends JsonReplayReader implements Iterable<String>, Iterator<String> {
+public class JsonReader extends JsonReplayReader implements LongIterable, LongIterator {
   private static final char[][] literals = {{'n', 'u', 'l', 'l'}, {'t', 'r', 'u', 'e'}, {'f', 'a', 'l', 's', 'e'}};
 
   /** Number of characters in the JSON document */
@@ -84,6 +84,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    * constructor is equivalent to calling {@code new JsonReader(reader, true)}.
    *
    * @param reader The {@link Reader} from which JSON is to be read.
+   * @throws IllegalArgumentException If {@code reader} is null.
    */
   public JsonReader(final Reader reader) {
     this(reader, true);
@@ -96,6 +97,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    * @param reader The {@link Reader} from which JSON is to be read.
    * @param ignoreWhitespace If {@code ignoreWhitespace == false}, inter-token
    *          whitespace will <b>not</b> be skipped.
+   * @throws IllegalArgumentException If {@code reader} is null.
    */
   public JsonReader(final Reader reader, final boolean ignoreWhitespace) {
     super(reader, DEFAULT_BUFFER_SIZE);
@@ -144,14 +146,14 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
     final int start;
     if (index > -1) {
       final long position = positions.get(index);
-      start = Numbers.Compound.decodeInt(position, 0);
-      final int end = Numbers.Compound.decodeInt(position, 1);
+      start = Numbers.Composite.decodeInt(position, 0);
+      final int end = Numbers.Composite.decodeInt(position, 1);
       setPosition(end);
       depth = depths.get(index);
     }
     else {
       final long position = positions.get(++index);
-      start = Numbers.Compound.decodeInt(position, 0);
+      start = Numbers.Composite.decodeInt(position, 0);
       setPosition(start);
       depth = 0;
     }
@@ -178,7 +180,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    * @return The start position at {@code index}.
    */
   protected int getStartPosition(final int index) {
-    return Numbers.Compound.decodeInt(positions.get(index), 0);
+    return Numbers.Composite.decodeInt(positions.get(index), 0);
   }
 
   /**
@@ -188,7 +190,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    * @return The end position at {@code index}.
    */
   protected int getEndPosition(final int index) {
-    return Numbers.Compound.decodeInt(positions.get(index), 1);
+    return Numbers.Composite.decodeInt(positions.get(index), 1);
   }
 
   /**
@@ -213,7 +215,13 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
   }
 
   /**
-   * Read the next JSON token. A JSON token is one of:
+   * Read the next <u>JSON token</u>, and return a
+   * {@linkplain org.libj.lang.Numbers.Composite#encode(int,int) composite}
+   * {@code long} of the <u>offset index</u> and <u>token length</u>, which can
+   * be decoded with {@link org.libj.lang.Numbers.Composite#decodeInt(long,int)
+   * Composite#decodeInt(long,int)}.
+   * <p>
+   * A <u>JSON token</u> is one of:
    * <ul>
    * <li>Structural:<ul>
    * <li>A character that is one of:<pre><code>{ } [ ] : ,</code></pre></li></ul></li>
@@ -229,12 +237,15 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    *
    * @implNote If this instance ignores whitespace, this method will skip
    *           whitespace tokens.
-   * @return The next JSON token, or {@code null} if the end of content has been
-   *         reached.
+   * @return A {@linkplain org.libj.lang.Numbers.Composite#encode(int,int)
+   *         composite} {@code long} of the offset index and length into the
+   *         underlying {@link JsonReader}, or {@code -1} if the end of content
+   *         has been reached.
    * @throws IOException If an I/O error has occurred.
    * @throws JsonParseException If the content is not well formed.
+   * @see org.libj.lang.Numbers.Composite#decodeInt(long,int)
    */
-  public String readToken() throws IOException, JsonParseException {
+  public long readToken() throws IOException, JsonParseException {
     final int start;
     final int end;
     if (index == -1 || getPosition() == getEndPosition(index)) {
@@ -249,13 +260,13 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
 
     // End of stream
     if (start == -1)
-      return null;
+      return -1;
 
     // Sanity check, which should never occur
     if (start == end)
       throw new IllegalStateException("Illegal JSON content [errorOffset: " + start + "]");
 
-    return end - start == 1 ? Characters.toString(buf()[start]) : new String(buf(), start, end - start);
+    return Numbers.Composite.encode(start, end - start);
   }
 
   /**
@@ -387,13 +398,13 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
 
   /**
    * Returns this {@link JsonReader}, since it is itself an implementation of
-   * the {@link Iterator} interface. The iterator iterates over the JSON token
-   * strings produced by {@code JsonReader.readToken()}.
+   * the {@link LongIterator} interface. The iterator iterates over the JSON
+   * token strings produced by {@code JsonReader.readToken()}.
    *
    * @return This instance.
    */
   @Override
-  public Iterator<String> iterator() {
+  public LongIterator iterator() {
     return this;
   }
 
@@ -422,16 +433,23 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
   }
 
   /**
-   * Returns the next token in the iteration.
+   * Returns the next
+   * {@linkplain org.libj.lang.Numbers.Composite#encode(int,int) composite}
+   * {@code long} of the offset index and length into the underlying
+   * {@link JsonReader}.
    *
-   * @return The next token in the iteration.
+   * @return The next
+   *         {@linkplain org.libj.lang.Numbers.Composite#encode(int,int)
+   *         composite} {@code long} of the offset index and length into the
+   *         underlying {@link JsonReader}.
    * @throws NoSuchElementException If the iteration has no more tokens.
    * @throws UncheckedIOException If an {@link IOException} occurs while reading
    *           from the underlying stream.
    * @throws JsonParseException If the content is not well formed.
+   * @see #readToken()
    */
   @Override
-  public String next() throws UncheckedIOException, JsonParseException {
+  public long next() throws UncheckedIOException, JsonParseException {
     if (!hasNext())
       throw new NoSuchElementException();
 
@@ -598,7 +616,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
 
       // Read property value or array member
       if (!Buffers.get(scope, depth) || ch1 == ':') {
-        final int start = getPosition();
+        final int start = getPosition(); // 3502
         ch = ch == '"' ? readQuoted() : readUnquoted(ch);
         return advance(ch, start);
       }
@@ -620,8 +638,43 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
    * @return The {@code char[]} buffer of the underlying
    *         {@link JsonReplayReader}.
    */
-  protected char[] buf() {
+  public char[] buf() {
     return buffer.buf();
+  }
+
+  /**
+   * Appends {@code len} characters starting at {@code off} from {@link #buf()}
+   * to the provided {@link StringBuilder}.
+   *
+   * @param builder The {@link StringBuilder}.
+   * @param off The starting offset in {@link #buf()} from which to append.
+   * @param len The number of characters from {@link #buf()} to append.
+   */
+  public void bufToString(final StringBuilder builder, final int off, final int len) {
+    builder.append(buf(), off, len);
+  }
+
+  /**
+   * Returns a string from {@link #buf()} starting from {@code off} with
+   * {@code len} characters.
+   *
+   * @param off The starting offset in {@link #buf()} from which to append.
+   * @param len The number of characters from {@link #buf()} to append.
+   * @return A string from {@link #buf()} starting from {@code off} with
+   *         {@code len} characters.
+   */
+  public String bufToString(final int off, final int len) {
+    return new String(buf(), off, len);
+  }
+
+  /**
+   * Returns the {@code char} from {@link #buf()} at the index of {@code off}.
+   *
+   * @param off The index in {@link #buf()}.
+   * @return The {@code char} from {@link #buf()} at the index of {@code off}.
+   */
+  public char bufToChar(final int off) {
+    return buf()[off];
   }
 
   /**
@@ -642,7 +695,7 @@ public class JsonReader extends JsonReplayReader implements Iterable<String>, It
 
     scopes.add(scope.clone());
     depths.add(depth);
-    positions.add(Numbers.Compound.encode(--pos, getPosition()));
+    positions.add(Numbers.Composite.encode(--pos, getPosition()));
     return pos;
   }
 

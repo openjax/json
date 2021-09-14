@@ -23,6 +23,8 @@ import java.io.StringReader;
 import java.net.URL;
 
 public class JsonParserTest extends JsonReaderTest {
+  private static final JsonParser parser = new JsonParser();
+
   private static JsonHandler newHandler(final String expected, final StringBuilder builder) {
     return new JsonHandler() {
       @Override
@@ -44,14 +46,14 @@ public class JsonParserTest extends JsonReaderTest {
       }
 
       @Override
-      public boolean characters(final char[] chars, final int start, final int end) {
-        builder.append(chars, start, end - start);
+      public boolean characters(final char[] chars, final int start, final int len) {
+        builder.append(chars, start, len);
         return Math.random() < .6;
       }
 
       @Override
-      public boolean whitespace(final char[] chars, final int start, final int end) {
-        builder.append(chars, start, end - start);
+      public boolean whitespace(final char[] chars, final int start, final int len) {
+        builder.append(chars, start, len);
         return Math.random() < .6;
       }
 
@@ -65,9 +67,10 @@ public class JsonParserTest extends JsonReaderTest {
   @Override
   protected void assertPass(final URL resource) throws IOException, JsonParseException {
     final String json = readFully(resource);
-    final JsonParser parser = new JsonParser(new JsonReader(new StringReader(json), false));
-    final StringBuilder builder = new StringBuilder();
-    while (!parser.parse(newHandler(json, builder)));
-    assertEquals("builder length should have been set to 0 in JsonHandler#endDocument()", 0, builder.length());
+    try (final JsonReader reader = new JsonReader(new StringReader(json), false)) {
+      final StringBuilder builder = new StringBuilder();
+      while (!parser.parse(reader, newHandler(json, builder)));
+      assertEquals("builder length should have been set to 0 in JsonHandler#endDocument()", 0, builder.length());
+    }
   }
 }
