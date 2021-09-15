@@ -18,6 +18,7 @@ package org.openjax.json;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -27,7 +28,7 @@ import org.junit.Test;
 public class JsonTest {
   @Test
   @SuppressWarnings("unchecked")
-  public void test() {
+  public void test() throws JsonParseException, IOException {
     final LinkedHashMap<String,Object> object = new LinkedHashMap<>();
     object.put("string", "str\ni\tn†\u4324g");
     object.put("number", BigDecimal.valueOf(Math.PI));

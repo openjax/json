@@ -21,49 +21,175 @@ import java.io.IOException;
 import org.libj.lang.Assertions;
 
 /**
- * Parser for JSON documents that asserts content conforms to the
- * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627</a> specification.
+ * Handler interface used for parsing JSON with
+ * {@link JsonParser#parse(JsonReader)}.
  */
-public class JsonParser {
+public interface JsonParser {
   /**
-   * Parse the JSON document with the provided {@link JsonHandler} callback
-   * instance.
+   * Parse the JSON document with this {@link JsonParser}.
    *
    * @param reader The {@link JsonReader} from which JSON is read.
-   * @param handler The {@link JsonHandler} instance for handling content
-   *          callbacks.
    * @return {@code true} if the document has been read entirely. {@code false}
    *         if parsing was aborted by a handler callback. If a handler aborts
-   *         parsing, subsequent calls to {@link #parse(JsonReader,JsonHandler)}
-   *         will resume from the position at which parsing was previously
-   *         aborted.
+   *         parsing, subsequent calls to {@link #parse(JsonReader)} will resume
+   *         from the position at which parsing was previously aborted.
    * @throws IOException If an I/O error has occurred.
    * @throws JsonParseException If the content is not a well formed JSON term.
-   * @throws IllegalArgumentException If {@code reader} or {@code handler} is
-   *           null.
+   * @throws IllegalArgumentException If {@code reader} is null.
    */
-  public boolean parse(final JsonReader reader, final JsonHandler handler) throws IOException, JsonParseException {
+  default boolean parse(final JsonReader reader) throws IOException, JsonParseException {
     Assertions.assertNotNull(reader);
-    Assertions.assertNotNull(handler);
-    if (reader.getPosition() == 0)
-      handler.startDocument();
+    boolean started = false;
+    for (int off, depth = 0; (off = reader.readTokenStart()) != -1;) {
+      final char ch = reader.buf()[off];
+      final int len = reader.getPosition() - off;
+      if (len == 1 && JsonUtil.isStructural(ch)) {
+        if (ch == '{' || ch == '[') {
+          ++depth;
+        }
+        else if ((ch == '}' || ch == ']') && --depth == 0) {
+          if (!structural(ch))
+            return false;
 
-    for (int start; (start = reader.readTokenStart()) != -1;) {
-      final char ch = reader.buf()[start];
-      final int len = reader.getPosition() - start;
-      final boolean proceed;
-      if (len == 1 && JsonUtil.isStructural(ch))
-        proceed = handler.structural(ch);
-      else if (JsonUtil.isWhitespace(ch))
-        proceed = handler.whitespace(reader.buf(), start, len);
-      else
-        proceed = handler.characters(reader.buf(), start, len);
+          endDocument();
+          return true;
+        }
 
-      if (!proceed)
+        if (!started) {
+          startDocument();
+          started = true;
+        }
+
+        if (!structural(ch))
+          return false;
+      }
+      else if (JsonUtil.isWhitespace(ch)) {
+        if (started && !whitespace(reader.buf(), off, len))
+          return false;
+      }
+      else if (!started) {
+        startDocument();
+        if (!characters(reader.buf(), off, len))
+          return false;
+
+        endDocument();
+        return true;
+      }
+      else if (!characters(reader.buf(), off, len)) {
         return false;
+      }
     }
 
-    handler.endDocument();
     return true;
   }
+
+  /**
+   * Called when the document's start is encountered.
+   * <p>
+   * The document's start is defined as the first non-whitespace character.
+   */
+  void startDocument();
+
+  /**
+   * Called when the document's end is encountered.
+   * <p>
+   * The document's end is defined as:
+   * <ul>
+   * <li>The last closing <code>}</code> character, if the document started with
+   * <code>{</code> (i.e. the document is a JSON Object).</li>
+   * <li>The last closing <code>]</code> character, if the document started with
+   * <code>[</code> (i.e. the document is a JSON Array).</li>
+   * <li>The last non-whitespace character, if the document represents a JSON
+   * Value.</li>
+   * </ul>
+   */
+  void endDocument();
+
+  /**
+   * Called when a structural token is encountered.
+   * <p>
+   * A structural token is one of:
+   *
+   * <pre>
+   * <code>{ } [ ] : ,</code>
+   * </pre>
+   *
+   * @param ch The structural token.
+   * @return {@code true} to continue parsing, {@code false} to abort.
+   */
+  boolean structural(char ch);
+
+  /**
+   * Called when token characters are encountered.
+   * <p>
+   * Token characters are:
+   * <ul>
+   * <li>A property key:
+   * <ul>
+   * <li>A string that matches:
+   *
+   * <pre>
+   * {@code ^".*"$}
+   * </pre>
+   *
+   * </li>
+   * </ul>
+   * </li>
+   * <li>A property or array value:
+   * <ul>
+   * <li>A string that matches:
+   *
+   * <pre>
+   * {@code ^".*"$}
+   * </pre>
+   *
+   * </li>
+   * <li>A number that matches:
+   *
+   * <pre>
+   * {@code ^-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?([1-9]\d*))?$}
+   * </pre>
+   *
+   * </li>
+   * <li>A literal that matches:
+   *
+   * <pre>
+   * {@code ^null|true|false$}
+   * </pre>
+   *
+   * </li>
+   * </ul>
+   * </li>
+   * </ul>
+   *
+   * @param chars A reference to the underlying {@code char[]} buffer.
+   * @param start The start index of the token.
+   * @param len The length of the token.
+   * @return {@code true} to continue parsing, {@code false} to abort.
+   * @implNote For token characters representing a string, all string-literal
+   *           unicode ({@code "\u000A"}) and two-character ({@code "\n"})
+   *           escape codes are replaced with their single-character unicode
+   *           representations, as defined in
+   *           <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section
+   *           2.5</a>.
+   */
+  boolean characters(char[] chars, int start, int len);
+
+  /**
+   * Called when <u>whitespace characters</u> are encountered after the call to
+   * {@link #startDocument()} has occurred, and not after the call to
+   * {@link #endDocument()} has occurred.
+   * <p>
+   * Whitespace characters match:
+   *
+   * <pre>
+   * {@code ^[ \n\r\t]+$}
+   * </pre>
+   *
+   * @param chars A reference to the underlying {@code char[]} buffer.
+   * @param start The start index of the token.
+   * @param len The length of the token.
+   * @return {@code true} to continue parsing, {@code false} to abort.
+   */
+  boolean whitespace(char[] chars, int start, int len);
 }

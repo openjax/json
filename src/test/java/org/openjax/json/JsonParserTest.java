@@ -23,10 +23,8 @@ import java.io.StringReader;
 import java.net.URL;
 
 public class JsonParserTest extends JsonReaderTest {
-  private static final JsonParser parser = new JsonParser();
-
-  private static JsonHandler newHandler(final String expected, final StringBuilder builder) {
-    return new JsonHandler() {
+  private static JsonParser newParser(final String expected, final StringBuilder builder) {
+    return new JsonParser() {
       @Override
       public void startDocument() {
         assertEquals(0, builder.length());
@@ -69,7 +67,7 @@ public class JsonParserTest extends JsonReaderTest {
     final String json = readFully(resource);
     try (final JsonReader reader = new JsonReader(new StringReader(json), false)) {
       final StringBuilder builder = new StringBuilder();
-      while (!parser.parse(reader, newHandler(json, builder)));
+      while (!newParser(json, builder).parse(reader));
       assertEquals("builder length should have been set to 0 in JsonHandler#endDocument()", 0, builder.length());
     }
   }

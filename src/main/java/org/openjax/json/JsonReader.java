@@ -65,6 +65,24 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
   /** Resize factor for scope buffer */
   private static final double DEFAULT_SCOPE_RESIZE_FACTOR = 2;
 
+  /**
+   * Returns a {@link JsonReader} with the specified {@link Reader reader}
+   * providing the data stream.
+   * <p>
+   * If the specified {@link Reader reader} is an instance of
+   * {@link JsonReader}, the same instance is returned. Otherwise, a new
+   * {@link JsonReader} wrapping the specified {@link Reader reader} is
+   * returned.
+   *
+   * @param reader The {@link Reader} providing the data stream.
+   * @return A {@link JsonReader} with the specified {@link Reader reader}
+   *         providing the data stream.
+   * @throws IllegalArgumentException If {@code reader} is null.
+   */
+  public static JsonReader of(final Reader reader) {
+    return reader instanceof JsonReader ? (JsonReader)reader : new JsonReader(reader);
+  }
+
   private ArrayLongList positions = new ArrayLongList(DEFAULT_TOKENS_SIZE);
   private ArrayList<long[]> scopes = new ArrayList<>(DEFAULT_SCOPE_SIZE);
   private ArrayIntList depths = new ArrayIntList(DEFAULT_SCOPE_SIZE);
