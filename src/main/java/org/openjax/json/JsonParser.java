@@ -84,14 +84,14 @@ public interface JsonParser {
   }
 
   /**
-   * Called when the document's start is encountered.
+   * Called when the <u>document's start</u> is encountered.
    * <p>
    * The document's start is defined as the first non-whitespace character.
    */
   void startDocument();
 
   /**
-   * Called when the document's end is encountered.
+   * Called when the <u>document's end</u> is encountered.
    * <p>
    * The document's end is defined as:
    * <ul>
@@ -106,7 +106,7 @@ public interface JsonParser {
   void endDocument();
 
   /**
-   * Called when a structural token is encountered.
+   * Called when a <u>structural token</u> is encountered.
    * <p>
    * A structural token is one of:
    *
@@ -120,7 +120,7 @@ public interface JsonParser {
   boolean structural(char ch);
 
   /**
-   * Called when token characters are encountered.
+   * Called when <u>token characters</u> are encountered.
    * <p>
    * Token characters are:
    * <ul>
