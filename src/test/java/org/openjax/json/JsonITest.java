@@ -31,7 +31,7 @@ import org.libj.util.ArrayUtil;
 public class JsonITest extends AbstractTest {
   @Parameterized.Parameters(name = "{0}")
   public static URL[] resources() throws IOException {
-    return ArrayUtil.subArray(JUnitUtil.sortBySize(JUnitUtil.getResources("", ".*\\.json")), 0, 33);
+    return ArrayUtil.subArray(JUnitUtil.sortBySize(JUnitUtil.getResources("", ".*\\.json")), 0, 32);
   }
 
   @Parameterized.Parameter(0)
