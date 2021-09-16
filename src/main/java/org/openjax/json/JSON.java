@@ -16,6 +16,8 @@
 
 package org.openjax.json;
 
+import static org.openjax.json.JSON.Type.*;
+
 import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
@@ -25,8 +27,12 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 import org.libj.lang.Assertions;
+import org.libj.util.function.BooleanFunction;
+import org.libj.util.function.ObjBiIntFunction;
 
 /**
  * Lightweight {@code toString(...)} functions for parsing and marshaling
@@ -36,8 +42,101 @@ import org.libj.lang.Assertions;
  * representations.
  */
 public final class JSON {
-  private static Object parseValue(final JsonReader reader, final char[] chars, final int start, final int len) {
+  /**
+   * Enum class representing the JSON types.
+   *
+   * @param <T> The type parameter of the "JSON to object" factory function
+   *          returned by {@link TypeMap#get(Type)}.
+   */
+  public static final class Type<T> {
+    public static final Type<Function<String,?>> STRING;
+    public static final Type<ObjBiIntFunction<char[],?>> NUMBER;
+    public static final Type<BooleanFunction<String>> BOOLEAN;
+    public static final Type<Supplier<Map<String,?>>> OBJECT;
+    public static final Type<Supplier<List<?>>> ARRAY;
+
+    private static int index = 0;
+
+    private static final Type<?>[] values = {
+      STRING = new Type<>("STRING"),
+      NUMBER = new Type<>("NUMBER"),
+      BOOLEAN = new Type<>("BOOLEAN"),
+      OBJECT = new Type<>("OBJECT"),
+      ARRAY = new Type<>("ARRAY"),
+    };
+
+    public static Type<?>[] values() {
+      return values;
+    }
+
+    private final int ordinal;
+    private final String name;
+
+    private Type(final String name) {
+      this.ordinal = index++;
+      this.name = name;
+    }
+
+    public int ordinal() {
+      return ordinal;
+    }
+
+    @Override
+    public String toString() {
+      return name;
+    }
+  }
+
+  /**
+   * A map between JSON {@linkplain Type} and the "JSON to object" factory
+   * function of type <code>Type{@link Type &lt;T&gt;}</code>.
+   */
+  @SuppressWarnings({"unchecked"})
+  public static class TypeMap {
+    private Object[] map = new Object[5];
+
+    /**
+     * Associates the provided {@link Type key} with the specified "JSON to
+     * object" factory function of type <code>Type{@link Type &lt;T&gt;}</code>.
+     *
+     * @param <T> The type parameter of the "JSON to object" factory function
+     *          defined in {@link Type}.
+     * @param key The {@link Type key}.
+     * @param factory The "JSON to object" factory function of type
+     *          <code>Type{@link Type &lt;T&gt;}</code>.
+     * @return {@code this} instance.
+     */
+    public <T>TypeMap put(final Type<T> key, final T factory) {
+      map[key.ordinal()] = factory;
+      return this;
+    }
+
+    /**
+     * Returns the function of type <code>Type{@link Type &lt;T&gt;}</code> for
+     * the provided {@link Type key}.
+     *
+     * @param <T> The type parameter of the "JSON to object" factory function
+     *          defined in {@link Type}.
+     * @param key The {@link Type key}.
+     * @return The function of type <code>Type{@link Type &lt;T&gt;}</code> for
+     *         the provided {@link Type key}.
+     */
+    public <T>T get(final Type<T> key) {
+      return (T)map[key.ordinal()];
+    }
+  }
+
+  private static Object parseValue(final JsonReader reader, final char[] chars, final int start, final int len, final TypeMap typeMap) {
     final char ch = chars[start];
+    if (ch == '"') {
+      if (chars[start + len - 1] != '"')
+        throw new JsonParseException(new String(reader.buf(), 0, reader.getPosition()), start);
+
+      final String s = JsonUtil.unescape(chars, start + 1, len - 2).toString();
+      final Function<String,?> factory = typeMap == null ? null : typeMap.get(STRING);
+      return factory == null ? s : factory.apply(s);
+    }
+
     if (ch == 'n') {
       if (len != 4 || chars[start + 1] != 'u' || chars[start + 2] != 'l' || chars[start + 3] != 'l')
         throw new JsonParseException(new String(reader.buf(), 0, reader.getPosition()), start);
@@ -49,26 +148,22 @@ public final class JSON {
       if (len != 4 || chars[start + 1] != 'r' || chars[start + 2] != 'u' || chars[start + 3] != 'e')
         throw new JsonParseException(new String(reader.buf(), 0, reader.getPosition()), start);
 
-      return Boolean.TRUE;
+      final BooleanFunction<String> factory = typeMap == null ? null : typeMap.get(BOOLEAN);
+      return factory == null ? Boolean.TRUE : factory.apply(Boolean.TRUE);
     }
 
     if (ch == 'f') {
       if (len != 5 || chars[start + 1] != 'a' || chars[start + 2] != 'l' || chars[start + 3] != 's' || chars[start + 4] != 'e')
         throw new JsonParseException(new String(reader.buf(), 0, reader.getPosition()), start);
 
-      return Boolean.FALSE;
-    }
-
-    if (ch == '"') {
-      if (chars[start + len - 1] != '"')
-        throw new JsonParseException(new String(reader.buf(), 0, reader.getPosition()), start);
-
-      return JsonUtil.unescape(chars, start + 1, len - 2).toString();
+      final BooleanFunction<String> factory = typeMap == null ? null : typeMap.get(BOOLEAN);
+      return factory == null ? Boolean.FALSE : factory.apply(Boolean.FALSE);
     }
 
     if ('0' <= ch && ch <= '9' || ch == '-') {
       try {
-        return new BigDecimal(chars, start, len);
+        final ObjBiIntFunction<char[],?> factory = typeMap == null ? null : typeMap.get(NUMBER);
+        return factory == null ? new BigDecimal(chars, start, len) : factory.apply(chars, start, len);
       }
       catch (final NumberFormatException e) {
         throw new JsonParseException(new String(reader.buf(), 0, reader.getPosition()), start, e);
@@ -104,7 +199,39 @@ public final class JSON {
    */
   public static Object parse(final String json) throws JsonParseException, IOException {
     try (final StringReader reader = new StringReader(Assertions.assertNotNull(json))) {
-      return parse(reader);
+      return parse(reader, null);
+    }
+  }
+
+  /**
+   * Parses the JSON document provided by the specified {@link String json},
+   * returning:
+   * <ul>
+   * <li>A {@link Map Map&lt;String,?&gt;}, if the document started with
+   * <code>{</code> (i.e. the document is a JSON Object).</li>
+   * <li>A {@link List List&lt;?&gt;}, if the document started with
+   * <code>[</code> (i.e. the document is a JSON Array).</li>
+   * <li>A {@link String}, if the document represents a JSON String Value.</li>
+   * <li>A {@link Boolean}, if the document represents a JSON Boolean
+   * Value.</li>
+   * <li>A {@link BigDecimal}, if the document represents a JSON Number
+   * Value.</li>
+   * <li>{@code null}, if the document represents a JSON Null Value.</li>
+   * </ul>
+   *
+   * @param json The input {@link String} providing the JSON document.
+     * @param typeMap The {@link TypeMap} with factory mappings for JSON
+     *          {@linkplain Type types}.
+   * @return A string of the JSON document provided by the specified
+   *         {@link Reader reader} with insignificant whitespace stripped.
+   * @throws JsonParseException If a violation has occurred of the JSON document
+   *           well-formed criteria as expressed by the RFC 4627 specification.
+   * @throws IOException If an I/O error has occurred.
+   * @throws IllegalArgumentException If {@code reader} is null.
+   */
+  public static Object parse(final String json, final TypeMap typeMap) throws JsonParseException, IOException {
+    try (final StringReader reader = new StringReader(Assertions.assertNotNull(json))) {
+      return parse(reader, typeMap);
     }
   }
 
@@ -132,7 +259,39 @@ public final class JSON {
    * @throws IOException If an I/O error has occurred.
    * @throws IllegalArgumentException If {@code reader} is null.
    */
+  // FIXME: Test: null, JSON value
   public static Object parse(final Reader reader) throws JsonParseException, IOException {
+    return parse(reader, null);
+  }
+
+  /**
+   * Parses the JSON document provided by the specified {@link Reader reader},
+   * returning:
+   * <ul>
+   * <li>A {@link Map Map&lt;String,?&gt;}, if the document started with
+   * <code>{</code> (i.e. the document is a JSON Object).</li>
+   * <li>A {@link List List&lt;?&gt;}, if the document started with
+   * <code>[</code> (i.e. the document is a JSON Array).</li>
+   * <li>A {@link String}, if the document represents a JSON String Value.</li>
+   * <li>A {@link Boolean}, if the document represents a JSON Boolean
+   * Value.</li>
+   * <li>A {@link BigDecimal}, if the document represents a JSON Number
+   * Value.</li>
+   * <li>{@code null}, if the document represents a JSON Null Value.</li>
+   * </ul>
+   *
+   * @param reader The input {@link Reader} providing the JSON document.
+   * @param typeMap The {@link TypeMap} with factory mappings for JSON
+   *          {@linkplain Type types}.
+   * @return A string of the JSON document provided by the specified
+   *         {@link Reader reader} with insignificant whitespace stripped.
+   * @throws JsonParseException If a violation has occurred of the JSON document
+   *           well-formed criteria as expressed by the RFC 4627 specification.
+   * @throws IOException If an I/O error has occurred.
+   * @throws IllegalArgumentException If {@code reader} is null.
+   */
+  // FIXME: Test: null, JSON value
+  public static Object parse(final Reader reader, final TypeMap typeMap) throws JsonParseException, IOException {
     final List<Object> stack = new ArrayList<>();
     try (final JsonReader in = JsonReader.of(reader)) {
       new JsonParser() {
@@ -175,10 +334,14 @@ public final class JSON {
           else if (ch == ':' || ch == ',') {
           }
           else {
-            if (ch == '{')
-              stack.add(current = new LinkedHashMap<>());
-            else if (ch == '[')
-              stack.add(current = new ArrayList<>());
+            if (ch == '{') {
+              final Supplier<Map<String,?>> factory = typeMap == null ? null : typeMap.get(Type.OBJECT);
+              stack.add(current = factory == null ? new LinkedHashMap<>() : factory.get());
+            }
+            else if (ch == '[') {
+              final Supplier<List<?>> factory = typeMap == null ? null : typeMap.get(Type.ARRAY);
+              stack.add(current = factory == null ? new ArrayList<>() : factory.get());
+            }
 
             propertyNames.add(propertyName);
             propertyName = null;
@@ -191,13 +354,13 @@ public final class JSON {
         @SuppressWarnings("unchecked")
         public boolean characters(final char[] chars, final int start, final int len) {
           if (current instanceof List) {
-            ((List<Object>)current).add(parseValue(in, chars, start, len));
+            ((List<Object>)current).add(parseValue(in, chars, start, len, typeMap));
           }
           else if (propertyName == null) {
             propertyName = new String(chars, start + 1, len - 2);
           }
           else {
-            ((Map<String,Object>)current).put(propertyName, parseValue(in, chars, start, len));
+            ((Map<String,Object>)current).put(propertyName, parseValue(in, chars, start, len, typeMap));
             propertyName = null;
           }
 
@@ -367,7 +530,7 @@ public final class JSON {
     if (json instanceof Number || json instanceof Boolean)
       return String.valueOf(json);
 
-    throw new IllegalArgumentException("Unknown object type: " + json.getClass().getName());
+    throw new IllegalArgumentException("Unknown object class: " + json.getClass().getName());
   }
 
   /**
