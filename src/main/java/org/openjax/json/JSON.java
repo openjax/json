@@ -55,7 +55,7 @@ public final class JSON {
     public static final Type<Supplier<Map<String,?>>> OBJECT;
     public static final Type<Supplier<List<?>>> ARRAY;
 
-    private static int index = 0;
+    private static byte index = 0;
 
     private static final Type<?>[] values = {
       STRING = new Type<>("STRING"),
@@ -69,7 +69,7 @@ public final class JSON {
       return values;
     }
 
-    private final int ordinal;
+    private final byte ordinal;
     private final String name;
 
     private Type(final String name) {
@@ -77,7 +77,7 @@ public final class JSON {
       this.name = name;
     }
 
-    public int ordinal() {
+    public byte ordinal() {
       return ordinal;
     }
 
