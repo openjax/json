@@ -17,5 +17,4 @@
 package org.openjax.json;
 
 public class JsonTypeMap {
-
 }

@@ -22,8 +22,6 @@ package org.openjax.json;
  * specification.
  */
 public class JsonParseException extends RuntimeException {
-  private static final long serialVersionUID = -3748964303015135629L;
-
   /**
    * The zero-based character offset into the string being parsed at which the
    * error was found during parsing.
