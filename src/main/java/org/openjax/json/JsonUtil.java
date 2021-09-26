@@ -16,11 +16,12 @@
 
 package org.openjax.json;
 
+import static org.libj.lang.Assertions.*;
+
 import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-import org.libj.lang.Assertions;
 import org.libj.lang.Classes;
 
 /**
@@ -75,7 +76,7 @@ public final class JsonUtil {
    */
   @SuppressWarnings("unchecked")
   public static <T extends Number> T parseNumber(final Class<T> type, String str) throws JsonParseException {
-    if (Assertions.assertNotNull(str).length() == 0)
+    if (assertNotNull(str).length() == 0)
       throw new IllegalArgumentException("Empty string");
 
     int i = 0;
@@ -202,7 +203,7 @@ public final class JsonUtil {
    * @see #unescape(CharSequence)
    */
   public static StringBuilder escape(final CharSequence str) {
-    return escape(new StringBuilder(Assertions.assertNotNull(str).length()), str);
+    return escape(new StringBuilder(assertNotNull(str).length()), str);
   }
 
   /**
@@ -228,7 +229,7 @@ public final class JsonUtil {
    * @see #unescape(CharSequence)
    */
   public static StringBuilder escape(final StringBuilder out, final CharSequence str) {
-    Assertions.assertNotNull(out);
+    assertNotNull(out);
     for (int i = 0, len = str.length(); i < len; ++i) {
       final char ch = str.charAt(i);
       /*
@@ -292,7 +293,7 @@ public final class JsonUtil {
    * @see #unescape(char[],int,int)
    */
   public static StringBuilder escape(final char[] chars, final int offset, final int len) {
-    return escape(new StringBuilder(Assertions.assertNotNull(chars).length), chars, offset, len);
+    return escape(new StringBuilder(assertNotNull(chars).length), chars, offset, len);
   }
 
   /**
@@ -322,7 +323,7 @@ public final class JsonUtil {
    * @see #unescape(char[],int,int)
    */
   public static StringBuilder escape(final StringBuilder out, final char[] chars, final int offset, final int len) {
-    Assertions.assertNotNull(out);
+    assertNotNull(out);
     for (int i = offset, length = offset + len; i < length; ++i) {
       final char ch = chars[i];
       /*
@@ -382,7 +383,7 @@ public final class JsonUtil {
    * @see #unescape(CharSequence)
    */
   public static StringBuilder unescapeForString(final CharSequence str) {
-    return unescapeForString(new StringBuilder(Assertions.assertNotNull(str).length()), str);
+    return unescapeForString(new StringBuilder(assertNotNull(str).length()), str);
   }
 
   /**
@@ -408,7 +409,7 @@ public final class JsonUtil {
    * @see #unescape(CharSequence)
    */
   public static StringBuilder unescapeForString(final StringBuilder out, final CharSequence str) {
-    Assertions.assertNotNull(out);
+    assertNotNull(out);
     for (int i = 0, len = str.length(); i < len; ++i) {
       char ch = str.charAt(i);
       if (ch == '\\') {
@@ -466,7 +467,7 @@ public final class JsonUtil {
    * @see #unescape(char[],int,int)
    */
   public static StringBuilder unescapeForString(final char[] chars, final int offset, final int len) {
-    return unescapeForString(new StringBuilder(Assertions.assertNotNull(chars).length), chars, offset, len);
+    return unescapeForString(new StringBuilder(assertNotNull(chars).length), chars, offset, len);
   }
 
   /**
@@ -496,7 +497,7 @@ public final class JsonUtil {
    * @see #unescape(char[],int,int)
    */
   public static StringBuilder unescapeForString(final StringBuilder out, final char[] chars, final int offset, final int len) {
-    Assertions.assertNotNull(out);
+    assertNotNull(out);
     for (int i = offset, length = offset + len; i < length; ++i) {
       char ch = chars[i];
       if (ch == '\\') {
@@ -541,7 +542,7 @@ public final class JsonUtil {
    * @see #escape(CharSequence)
    */
   public static StringBuilder unescape(final CharSequence str) {
-    return unescape(new StringBuilder(Assertions.assertNotNull(str).length()), str);
+    return unescape(new StringBuilder(assertNotNull(str).length()), str);
   }
 
   /**
@@ -558,7 +559,7 @@ public final class JsonUtil {
    * @see #escape(CharSequence)
    */
   public static StringBuilder unescape(final StringBuilder out, final CharSequence str) {
-    Assertions.assertNotNull(out);
+    assertNotNull(out);
     for (int i = 0, len = str.length(); i < len; ++i) {
       char ch = str.charAt(i);
       if (ch == '\\') {
@@ -605,7 +606,7 @@ public final class JsonUtil {
    * @see #escape(char[],int,int)
    */
   public static StringBuilder unescape(final char[] chars, final int offset, final int len) {
-    return unescape(new StringBuilder(Assertions.assertNotNull(chars).length), chars, offset, len);
+    return unescape(new StringBuilder(assertNotNull(chars).length), chars, offset, len);
   }
 
   /**
@@ -626,7 +627,7 @@ public final class JsonUtil {
    * @see #escape(char[],int,int)
    */
   public static StringBuilder unescape(final StringBuilder out, final char[] chars, final int offset, final int len) {
-    Assertions.assertNotNull(out);
+    assertNotNull(out);
     for (int i = offset, length = offset + len; i < length; ++i) {
       char ch = chars[i];
       if (ch == '\\') {

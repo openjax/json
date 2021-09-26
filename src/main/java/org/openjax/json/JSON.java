@@ -16,6 +16,7 @@
 
 package org.openjax.json;
 
+import static org.libj.lang.Assertions.*;
 import static org.openjax.json.JSON.Type.*;
 
 import java.io.IOException;
@@ -30,7 +31,6 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import org.libj.lang.Assertions;
 import org.libj.util.function.BooleanFunction;
 import org.libj.util.function.ObjBiIntFunction;
 
@@ -198,7 +198,7 @@ public final class JSON {
    * @throws IllegalArgumentException If {@code reader} is null.
    */
   public static Object parse(final String json) throws JsonParseException, IOException {
-    try (final StringReader reader = new StringReader(Assertions.assertNotNull(json))) {
+    try (final StringReader reader = new StringReader(assertNotNull(json))) {
       return parse(reader, null);
     }
   }
@@ -230,7 +230,7 @@ public final class JSON {
    * @throws IllegalArgumentException If {@code reader} is null.
    */
   public static Object parse(final String json, final TypeMap typeMap) throws JsonParseException, IOException {
-    try (final StringReader reader = new StringReader(Assertions.assertNotNull(json))) {
+    try (final StringReader reader = new StringReader(assertNotNull(json))) {
       return parse(reader, typeMap);
     }
   }
@@ -385,7 +385,7 @@ public final class JSON {
    * @throws IllegalArgumentException If {@code json} is null.
    */
   public static String stripWhitespace(final String json) throws JsonParseException, IOException {
-    try (final StringReader reader = new StringReader(Assertions.assertNotNull(json))) {
+    try (final StringReader reader = new StringReader(assertNotNull(json))) {
       return stripWhitespace(reader);
     }
   }

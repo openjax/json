@@ -16,9 +16,9 @@
 
 package org.openjax.json;
 
-import java.io.IOException;
+import static org.libj.lang.Assertions.*;
 
-import org.libj.lang.Assertions;
+import java.io.IOException;
 
 /**
  * Handler interface used for parsing JSON with
@@ -38,7 +38,7 @@ public interface JsonParser {
    * @throws IllegalArgumentException If {@code reader} is null.
    */
   default boolean parse(final JsonReader reader) throws IOException, JsonParseException {
-    Assertions.assertNotNull(reader);
+    assertNotNull(reader);
     boolean started = false;
     for (int off, depth = 0; (off = reader.readTokenStart()) != -1;) {
       final char ch = reader.buf()[off];
