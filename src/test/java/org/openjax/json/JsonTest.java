@@ -47,7 +47,9 @@ public class JsonTest {
     final LinkedHashMap<String,Object> clone = (LinkedHashMap<String,Object>)object.clone();
     object.put("object", clone);
 
-    final String json = JSON.toString(object);
-    assertEquals(json, JSON.toString(JSON.parse(json)));
+    for (int i = 0; i < 100; ++i) {
+      final String json = JSON.toString(object, i);
+      assertEquals(json, JSON.toString(JSON.parse(json), i));
+    }
   }
 }
