@@ -31,6 +31,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+import org.libj.lang.Numbers;
 import org.libj.lang.Strings;
 import org.libj.util.function.BooleanFunction;
 import org.libj.util.function.ObjBiIntFunction;
@@ -540,7 +541,7 @@ public final class JSON {
    * @return A JSON string encoding of the provided {@code float}.
    */
   public static String toString(final float json) {
-    return Float.isFinite(json) ? Float.toString(json) : "null";
+    return !Float.isFinite(json) ? "null" : Numbers.isWhole(json) ? Integer.toString((int)json) : Float.toString(json);
   }
 
   /**
@@ -552,7 +553,7 @@ public final class JSON {
    * @return A JSON string encoding of the provided {@code double}.
    */
   public static String toString(final double json) {
-    return Double.isFinite(json) ? Double.toString(json) : "null";
+    return !Double.isFinite(json) ? "null" : Numbers.isWhole(json) ? Long.toString((long)json) : Double.toString(json);
   }
 
   /**
