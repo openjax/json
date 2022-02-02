@@ -677,19 +677,19 @@ public final class JSON {
         builder.append('\n').append(spaces);
       }
 
-      JSON.encode(builder, member, indent, spaces == null ? null : makeIndent(spaces.length() + indent));
+      JSON.encode(builder, member, indent, spaces == null ? null : makeIndent(spaces.length()));
       builder.append(',');
     }
 
     if (len > 0) {
-      if (backUp || spaces == null)
+      if (backUp || spaces == null) {
         builder.setLength(builder.length() - 1);
-      else
+      }
+      else {
         builder.setCharAt(builder.length() - 1, '\n');
+        builder.append(makeIndent(spaces.length() - indent));
+      }
     }
-
-    if (spaces != null)
-      builder.append(makeIndent(spaces.length() - indent));
 
     return builder.append(']');
   }
