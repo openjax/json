@@ -853,10 +853,11 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
   @Override
   public synchronized void close() throws IOException {
     super.close();
-    this.positions = null;
-    this.scopes.clear();
-    this.scopes = null;
-    this.depths = null;
-    this.scope = null;
+    // Commented out, to allow this reader to be used after it is closed.
+    // this.positions = null;
+    // this.scopes.clear();
+    // this.scopes = null;
+    // this.depths = null;
+    // this.scope = null;
   }
 }
