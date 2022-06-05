@@ -22,6 +22,7 @@ import static org.openjax.json.JSON.Type.*;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
+import java.io.UncheckedIOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -181,12 +182,14 @@ public final class JSON {
    * @return A string of the JSON document provided by the specified {@link Reader reader} with insignificant whitespace stripped.
    * @throws JsonParseException If a violation has occurred of the JSON document well-formed criteria as expressed by the RFC 4627
    *           specification.
-   * @throws IOException If an I/O error has occurred.
    * @throws IllegalArgumentException If {@code reader} is null.
    */
-  public static Object parse(final String json) throws JsonParseException, IOException {
+  public static Object parse(final String json) throws JsonParseException {
     try (final StringReader reader = new StringReader(assertNotNull(json))) {
       return parse(reader, null);
+    }
+    catch (final IOException e) {
+      throw new UncheckedIOException(e);
     }
   }
 
@@ -206,12 +209,14 @@ public final class JSON {
    * @return A string of the JSON document provided by the specified {@link Reader reader} with insignificant whitespace stripped.
    * @throws JsonParseException If a violation has occurred of the JSON document well-formed criteria as expressed by the RFC 4627
    *           specification.
-   * @throws IOException If an I/O error has occurred.
    * @throws IllegalArgumentException If {@code reader} is null.
    */
-  public static Object parse(final String json, final TypeMap typeMap) throws JsonParseException, IOException {
+  public static Object parse(final String json, final TypeMap typeMap) throws JsonParseException {
     try (final StringReader reader = new StringReader(assertNotNull(json))) {
       return parse(reader, typeMap);
+    }
+    catch (final IOException e) {
+      throw new UncheckedIOException(e);
     }
   }
 
@@ -346,12 +351,14 @@ public final class JSON {
    * @return A string of the JSON document provided by the specified {@code json} string with insignificant whitespace stripped.
    * @throws JsonParseException If a violation has occurred of the JSON document well-formed criteria as expressed by the RFC 4627
    *           specification.
-   * @throws IOException If an I/O error has occurred.
    * @throws IllegalArgumentException If {@code json} is null.
    */
-  public static String stripWhitespace(final String json) throws JsonParseException, IOException {
+  public static String stripWhitespace(final String json) throws JsonParseException {
     try (final StringReader reader = new StringReader(assertNotNull(json))) {
       return stripWhitespace(reader);
+    }
+    catch (final IOException e) {
+      throw new UncheckedIOException(e);
     }
   }
 
