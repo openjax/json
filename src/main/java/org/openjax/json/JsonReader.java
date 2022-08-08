@@ -30,24 +30,19 @@ import org.libj.util.primitive.LongIterable;
 import org.libj.util.primitive.LongIterator;
 
 /**
- * Validating {@link Reader} for JSON streams that reads JSON tokens
- * sequentially, while asserting the content conforms to the
+ * Validating {@link Reader} for JSON streams that reads JSON tokens sequentially, while asserting the content conforms to the
  * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627</a> specification.
  * <p>
  * This implementation provides the following features:
  * <ul>
- * <li>Regular read of JSON tokens, sequentially returning each token
- * {@link String}: {@link #readToken()}. (Please see {@link #readToken()} for a
- * definition of: {@code token}).</li>
- * <li>Optimized read of JSON tokens, sequentially returning the {@code int}
- * starting position of each token: {@link #readTokenStart()}. (This position
- * can be dereferenced via: {@link JsonReader#buf()}).</li>
- * <li>Implements the {@link LongIterable} interface, to sequentially iterate
- * over each token: {@link #iterator()}.</li>
+ * <li>Regular read of JSON tokens, sequentially returning each token {@link String}: {@link #readToken()}. (Please see
+ * {@link #readToken()} for a definition of: {@code token}).</li>
+ * <li>Optimized read of JSON tokens, sequentially returning the {@code int} starting position of each token:
+ * {@link #readTokenStart()}. (This position can be dereferenced via: {@link JsonReader#buf()}).</li>
+ * <li>Implements the {@link LongIterable} interface, to sequentially iterate over each token: {@link #iterator()}.</li>
  * <li>Caches and indexes each token: {@link #getIndex()}.</li>
  * <li>Allows to read back previously read tokens: {@link #setIndex(int)}.</li>
- * <li>Support partial reads of tokens with {@link #read()},
- * {@link #read(char[])}. and {@link #read(char[], int, int)} methods.
+ * <li>Support partial reads of tokens with {@link #read()}, {@link #read(char[])}. and {@link #read(char[], int, int)} methods.
  * </ul>
  */
 public class JsonReader extends JsonReplayReader implements LongIterable, LongIterator {
@@ -66,17 +61,13 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
   private static final double DEFAULT_SCOPE_RESIZE_FACTOR = 2;
 
   /**
-   * Returns a {@link JsonReader} with the specified {@link Reader reader}
-   * providing the data stream.
+   * Returns a {@link JsonReader} with the specified {@link Reader reader} providing the data stream.
    * <p>
-   * If the specified {@link Reader reader} is an instance of
-   * {@link JsonReader}, the same instance is returned. Otherwise, a new
-   * {@link JsonReader} wrapping the specified {@link Reader reader} is
-   * returned.
+   * If the specified {@link Reader reader} is an instance of {@link JsonReader}, the same instance is returned. Otherwise, a new
+   * {@link JsonReader} wrapping the specified {@link Reader reader} is returned.
    *
    * @param reader The {@link Reader} providing the data stream.
-   * @return A {@link JsonReader} with the specified {@link Reader reader}
-   *         providing the data stream.
+   * @return A {@link JsonReader} with the specified {@link Reader reader} providing the data stream.
    * @throws IllegalArgumentException If {@code reader} is null.
    */
   public static JsonReader of(final Reader reader) {
@@ -97,9 +88,8 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
   private final boolean ignoreWhitespace;
 
   /**
-   * Construct a new {@link JsonReader} for JSON content to be read from the
-   * specified {@link Reader}, <b>that ignores inter-token whitespace</b>. This
-   * constructor is equivalent to calling {@code new JsonReader(reader, true)}.
+   * Construct a new {@link JsonReader} for JSON content to be read from the specified {@link Reader}, <b>that ignores inter-token
+   * whitespace</b>. This constructor is equivalent to calling {@code new JsonReader(reader, true)}.
    *
    * @param reader The {@link Reader} from which JSON is to be read.
    * @throws IllegalArgumentException If {@code reader} is null.
@@ -109,12 +99,10 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
   }
 
   /**
-   * Construct a new {@link JsonReader} for JSON content to be read from the
-   * specified {@link Reader}.
+   * Construct a new {@link JsonReader} for JSON content to be read from the specified {@link Reader}.
    *
    * @param reader The {@link Reader} from which JSON is to be read.
-   * @param ignoreWhitespace If {@code ignoreWhitespace == false}, inter-token
-   *          whitespace will <b>not</b> be skipped.
+   * @param ignoreWhitespace If {@code ignoreWhitespace == false}, inter-token whitespace will <b>not</b> be skipped.
    * @throws IllegalArgumentException If {@code reader} is null.
    */
   public JsonReader(final Reader reader, final boolean ignoreWhitespace) {
@@ -132,9 +120,8 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
   }
 
   /**
-   * Sets the token index of this reader, such that {@link #getIndex()} returns
-   * the specified index. Note, that calling {@link #readToken()} after this
-   * method will return the token with index {@code index + 1}.
+   * Sets the token index of this reader, such that {@link #getIndex()} returns the specified index. Note, that calling
+   * {@link #readToken()} after this method will return the token with index {@code index + 1}.
    *
    * @param index The index to be set.
    * @throws IllegalArgumentException If {@code index < -1 || size() <= index}.
@@ -150,10 +137,9 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
   }
 
   /**
-   * Supporting method to set the index, such that {@link #getIndex()} returns
-   * the specified index. Since the index is one minus the next token index to
-   * be read, a special case is made for index = -1, because there is no
-   * previous "end position" for the first token.
+   * Supporting method to set the index, such that {@link #getIndex()} returns the specified index. Since the index is one minus the
+   * next token index to be read, a special case is made for index = -1, because there is no previous "end position" for the first
+   * token.
    *
    * @param index The index to be set.
    * @return The start position of the token at {@code index + 1}.
@@ -181,11 +167,11 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
   }
 
   /**
-   * Returns the number of tokens read thus far. The value returned by this
-   * method defines the upper bound of {@link #setIndex(int)}.
+   * Returns the number of tokens read thus far. The value returned by this method defines the upper bound of
+   * {@link #setIndex(int)}.
    *
-   * @return The number of tokens read thus far. The value returned by this
-   *         method defines the upper bound of {@link #setIndex(int)}.
+   * @return The number of tokens read thus far. The value returned by this method defines the upper bound of
+   *         {@link #setIndex(int)}.
    */
   public int size() {
     return positions.size();
@@ -212,12 +198,10 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
   }
 
   /**
-   * Set the buffer to position {@code p}, such that a subsequent call to
-   * {@link #read()} will return the char at {@code p + 1}.
+   * Set the buffer to position {@code p}, such that a subsequent call to {@link #read()} will return the char at {@code p + 1}.
    *
    * @param p The position.
-   * @throws IllegalArgumentException If {@code p} is negative, or if {@code p}
-   *           is greater than the length of the underlying buffer.
+   * @throws IllegalArgumentException If {@code p} is negative, or if {@code p} is greater than the length of the underlying buffer.
    */
   protected void setPosition(final int p) {
     buffer.reset(p);
@@ -233,32 +217,65 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
   }
 
   /**
-   * Read the next <u>JSON token</u>, and return a
-   * {@linkplain org.libj.lang.Numbers.Composite#encode(int,int) composite}
-   * {@code long} of the <u>offset index</u> and <u>token length</u>, which can
-   * be decoded with {@link org.libj.lang.Numbers.Composite#decodeInt(long,int)
-   * Composite#decodeInt(long,int)}.
+   * Read the next <u>JSON token</u>, and return a {@linkplain org.libj.lang.Numbers.Composite#encode(int,int) composite}
+   * {@code long} of the <u>offset index</u> and <u>token length</u>, which can be decoded with
+   * {@link org.libj.lang.Numbers.Composite#decodeInt(long,int) Composite#decodeInt(long,int)}.
    * <p>
    * A <u>JSON token</u> is one of:
    * <ul>
-   * <li>Structural:<ul>
-   * <li>A character that is one of:<pre><code>{ } [ ] : ,</code></pre></li></ul></li>
-   * <li>A property key:<ul>
-   * <li>A string that matches:<pre>{@code ^".*"$}</pre></li></ul></li>
-   * <li>A property or array member value:<ul>
-   * <li>A string that matches:<pre>{@code ^".*"$}</pre></li>
-   * <li>A number that matches:<pre>{@code ^-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?([1-9]\d*))?$}</pre></li>
-   * <li>A literal that matches:<pre>{@code ^null|true|false$}</pre></li></ul></li>
-   * <li>Whitespace:<ul>
-   * <li>Whitespace string that matches:<pre>{@code ^[ \n\r\t]+$}</pre></li></ul></li>
+   * <li>Structural:
+   * <ul>
+   * <li>A character that is one of:
+   *
+   * <pre>
+   * <code>{ } [ ] : ,</code>
+   * </pre>
+   *
+   * </li>
+   * </ul>
+   * </li>
+   * <li>A property key:
+   * <ul>
+   * <li>A string that matches:
+   *
+   * <pre>{@code ^".*"$}</pre>
+   *
+   * </li>
+   * </ul>
+   * </li>
+   * <li>A property or array member value:
+   * <ul>
+   * <li>A string that matches:
+   *
+   * <pre>{@code ^".*"$}</pre>
+   *
+   * </li>
+   * <li>A number that matches:
+   *
+   * <pre>{@code ^-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?([1-9]\d*))?$}</pre>
+   *
+   * </li>
+   * <li>A literal that matches:
+   *
+   * <pre>{@code ^null|true|false$}</pre>
+   *
+   * </li>
+   * </ul>
+   * </li>
+   * <li>Whitespace:
+   * <ul>
+   * <li>Whitespace string that matches:
+   *
+   * <pre>{@code ^[ \n\r\t]+$}</pre>
+   *
+   * </li>
+   * </ul>
+   * </li>
    * </ul>
    *
-   * @implNote If this instance ignores whitespace, this method will skip
-   *           whitespace tokens.
-   * @return A {@linkplain org.libj.lang.Numbers.Composite#encode(int,int)
-   *         composite} {@code long} of the offset index and length into the
-   *         underlying {@link JsonReader}, or {@code -1} if the end of content
-   *         has been reached.
+   * @implNote If this instance ignores whitespace, this method will skip whitespace tokens.
+   * @return A {@linkplain org.libj.lang.Numbers.Composite#encode(int,int) composite} {@code long} of the offset index and length
+   *         into the underlying {@link JsonReader}, or {@code -1} if the end of content has been reached.
    * @throws IOException If an I/O error has occurred.
    * @throws JsonParseException If the content is not well formed.
    * @see org.libj.lang.Numbers.Composite#decodeInt(long,int)
@@ -288,8 +305,8 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
   }
 
   /**
-   * Supporting method for {@link #read()} and {@link #read(char[],int,int)} to
-   * advance to the next token if the end of the current token has been reached.
+   * Supporting method for {@link #read()} and {@link #read(char[],int,int)} to advance to the next token if the end of the current
+   * token has been reached.
    *
    * @return {@code true} if there are more chars to read.
    * @throws IOException If an I/O error has occurred.
@@ -323,17 +340,13 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
   /**
    * {@inheritDoc}
    * <p>
-   * Characters read with this method advance the characters of the tokens to
-   * which they belong. Therefore, when partially reading a token with
-   * {@link #read()}, subsequent calls to {@link #readToken()} will return
-   * <i>the remaining characters of the token that have not yet been returned by
-   * {@link #read()}</i>. Characters read with this method undergo the same
-   * token-level error checking as in {@link #readTokenStart()} or
-   * {@link #readToken()}.
+   * Characters read with this method advance the characters of the tokens to which they belong. Therefore, when partially reading a
+   * token with {@link #read()}, subsequent calls to {@link #readToken()} will return <i>the remaining characters of the token that
+   * have not yet been returned by {@link #read()}</i>. Characters read with this method undergo the same token-level error checking
+   * as in {@link #readTokenStart()} or {@link #readToken()}.
    *
-   * @return The character read, as an integer in the range 0 to 65535
-   *         ({@code 0x00-0xffff}), or -1 if the end of the stream has been
-   *         reached.
+   * @return The character read, as an integer in the range 0 to 65535 ({@code 0x00-0xffff}), or -1 if the end of the stream has
+   *         been reached.
    * @throws IOException If an I/O error has occurred.
    * @throws JsonParseException If the content is not well formed.
    * @see #readTokenStart()
@@ -347,22 +360,17 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
   /**
    * {@inheritDoc}
    * <p>
-   * Characters read with this method advance the characters of the tokens to
-   * which they belong. Therefore, when partially reading a token with
-   * {@link #read(char[],int,int)}, subsequent calls to {@link #readToken()}
-   * will return <i>the remaining characters of the token that have not yet been
-   * returned by {@link #read()}</i>. Characters read with this method undergo
-   * the same token-level error checking as in {@link #readTokenStart()} or
-   * {@link #readToken()}.
+   * Characters read with this method advance the characters of the tokens to which they belong. Therefore, when partially reading a
+   * token with {@link #read(char[],int,int)}, subsequent calls to {@link #readToken()} will return <i>the remaining characters of
+   * the token that have not yet been returned by {@link #read()}</i>. Characters read with this method undergo the same token-level
+   * error checking as in {@link #readTokenStart()} or {@link #readToken()}.
    *
    * @param cbuf Destination buffer.
    * @param off Offset at which to start storing characters.
    * @param len Maximum number of characters to read.
-   * @return The number of characters read, or -1 if the end of the stream has
-   *         been reached.
+   * @return The number of characters read, or -1 if the end of the stream has been reached.
    * @throws IOException If an I/O error has occurred.
-   * @throws IndexOutOfBoundsException If {@code off} is negative, or
-   *           {@code len} is negative, or {@code len} is greater than
+   * @throws IndexOutOfBoundsException If {@code off} is negative, or {@code len} is negative, or {@code len} is greater than
    *           {@code cbuf.length - off}.
    * @throws JsonParseException If the content is not well formed.
    * @see #readTokenStart()
@@ -370,7 +378,7 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
    */
   @Override
   public int read(final char[] cbuf, int off, int len) throws IOException {
-    for (int count = 0;;) {
+    for (int count = 0;;) { // [N]
       if (len == 0 || !hasRemaining())
         return count;
 
@@ -390,20 +398,15 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
   /**
    * {@inheritDoc}
    * <p>
-   * Characters read with this method advance the characters of the tokens to
-   * which they belong. Therefore, when partially reading a token with
-   * {@link #read(char[])}, subsequent calls to {@link #readToken()} will return
-   * the remaining characters of the token that have not yet been returned by
-   * {@link #read()}. Characters read with this method undergo the same
-   * token-level validation as in {@link #readTokenStart()} or
-   * {@link #readToken()}.
+   * Characters read with this method advance the characters of the tokens to which they belong. Therefore, when partially reading a
+   * token with {@link #read(char[])}, subsequent calls to {@link #readToken()} will return the remaining characters of the token
+   * that have not yet been returned by {@link #read()}. Characters read with this method undergo the same token-level validation as
+   * in {@link #readTokenStart()} or {@link #readToken()}.
    *
    * @param cbuf Destination buffer.
-   * @return The number of characters read, or -1 if the end of the stream has
-   *         been reached.
+   * @return The number of characters read, or -1 if the end of the stream has been reached.
    * @throws IOException If an I/O error has occurred.
-   * @throws IndexOutOfBoundsException If {@code off} is negative, or
-   *           {@code len} is negative, or {@code len} is greater than
+   * @throws IndexOutOfBoundsException If {@code off} is negative, or {@code len} is negative, or {@code len} is greater than
    *           {@code cbuf.length - off}.
    * @throws JsonParseException If the content is not well formed.
    * @see #readTokenStart()
@@ -415,9 +418,8 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
   }
 
   /**
-   * Returns this {@link JsonReader}, since it is itself an implementation of
-   * the {@link LongIterator} interface. The iterator iterates over the JSON
-   * token strings produced by {@code JsonReader.readToken()}.
+   * Returns this {@link JsonReader}, since it is itself an implementation of the {@link LongIterator} interface. The iterator
+   * iterates over the JSON token strings produced by {@code JsonReader.readToken()}.
    *
    * @return This instance.
    */
@@ -427,13 +429,11 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
   }
 
   /**
-   * Returns {@code true} if the iteration has more tokens. (In other words,
-   * returns {@code true} if {@link #next} would return a token rather than
-   * throw an exception).
+   * Returns {@code true} if the iteration has more tokens. (In other words, returns {@code true} if {@link #next} would return a
+   * token rather than throw an exception).
    *
    * @return {@code true} if the iteration has more tokens.
-   * @throws UncheckedIOException If an {@link IOException} occurs while
-   *           reading from the underlying stream.
+   * @throws UncheckedIOException If an {@link IOException} occurs while reading from the underlying stream.
    * @throws JsonParseException If the content is not well formed.
    */
   @Override
@@ -451,18 +451,13 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
   }
 
   /**
-   * Returns the next
-   * {@linkplain org.libj.lang.Numbers.Composite#encode(int,int) composite}
-   * {@code long} of the offset index and length into the underlying
-   * {@link JsonReader}.
+   * Returns the next {@linkplain org.libj.lang.Numbers.Composite#encode(int,int) composite} {@code long} of the offset index and
+   * length into the underlying {@link JsonReader}.
    *
-   * @return The next
-   *         {@linkplain org.libj.lang.Numbers.Composite#encode(int,int)
-   *         composite} {@code long} of the offset index and length into the
-   *         underlying {@link JsonReader}.
+   * @return The next {@linkplain org.libj.lang.Numbers.Composite#encode(int,int) composite} {@code long} of the offset index and
+   *         length into the underlying {@link JsonReader}.
    * @throws NoSuchElementException If the iteration has no more tokens.
-   * @throws UncheckedIOException If an {@link IOException} occurs while reading
-   *           from the underlying stream.
+   * @throws UncheckedIOException If an {@link IOException} occurs while reading from the underlying stream.
    * @throws JsonParseException If the content is not well formed.
    * @see #readToken()
    */
@@ -480,13 +475,10 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
   }
 
   /**
-   * Returns the index of nearest non-whitespace token that is {@code offset}
-   * distance back from {@link #index}.
+   * Returns the index of nearest non-whitespace token that is {@code offset} distance back from {@link #index}.
    *
-   * @param offset The offset back from {@code index} of the first
-   *          non-whitespace token to check.
-   * @return The index of nearest non-whitespace token that is {@code offset}
-   *         distance back from {@link #index}.
+   * @param offset The offset back from {@code index} of the first non-whitespace token to check.
+   * @return The index of nearest non-whitespace token that is {@code offset} distance back from {@link #index}.
    */
   private int nearestNonWsToken(int offset) {
     if (index < offset)
@@ -510,8 +502,7 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
   }
 
   /**
-   * Supporting method to read until the end of the next token, and return the
-   * start position of the token that was just read.
+   * Supporting method to read until the end of the next token, and return the start position of the token that was just read.
    *
    * @return The start index of the next token.
    * @throws IOException If an I/O error has occurred.
@@ -551,10 +542,9 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
   }
 
   /**
-   * Read until the end of the next token, and return the start index of the
-   * token that was just read. The end index of the token can be retrieved with
-   * a subsequent call to {@link #getPosition()}. If the end of content has been
-   * reached, this method returns -1.
+   * Read until the end of the next token, and return the start index of the token that was just read. The end index of the token
+   * can be retrieved with a subsequent call to {@link #getPosition()}. If the end of content has been reached, this method returns
+   * -1.
    *
    * @return The start index of the next token.
    * @throws IOException If an I/O error has occurred.
@@ -650,19 +640,16 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
   }
 
   /**
-   * Returns the {@code char[]} buffer of the underlying
-   * {@link JsonReplayReader}.
+   * Returns the {@code char[]} buffer of the underlying {@link JsonReplayReader}.
    *
-   * @return The {@code char[]} buffer of the underlying
-   *         {@link JsonReplayReader}.
+   * @return The {@code char[]} buffer of the underlying {@link JsonReplayReader}.
    */
   public char[] buf() {
     return buffer.buf();
   }
 
   /**
-   * Appends {@code len} characters starting at {@code off} from {@link #buf()}
-   * to the provided {@link StringBuilder}.
+   * Appends {@code len} characters starting at {@code off} from {@link #buf()} to the provided {@link StringBuilder}.
    *
    * @param builder The {@link StringBuilder}.
    * @param off The starting offset in {@link #buf()} from which to append.
@@ -673,13 +660,11 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
   }
 
   /**
-   * Returns a string from {@link #buf()} starting from {@code off} with
-   * {@code len} characters.
+   * Returns a string from {@link #buf()} starting from {@code off} with {@code len} characters.
    *
    * @param off The starting offset in {@link #buf()} from which to append.
    * @param len The number of characters from {@link #buf()} to append.
-   * @return A string from {@link #buf()} starting from {@code off} with
-   *         {@code len} characters.
+   * @return A string from {@link #buf()} starting from {@code off} with {@code len} characters.
    */
   public String bufToString(final int off, final int len) {
     return new String(buf(), off, len);
@@ -696,8 +681,7 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
   }
 
   /**
-   * Called from {@link #readTokenStart()} to advance the token index, adjust
-   * the return index, and to unread the last read char.
+   * Called from {@link #readTokenStart()} to advance the token index, adjust the return index, and to unread the last read char.
    *
    * @param ch The last read char.
    * @param pos The return position.
@@ -718,9 +702,8 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
   }
 
   /**
-   * Read until the first non-whitespace char. If whitespace is not ignored,
-   * this method will set {@link #nextStart} to the starting position of the
-   * whitespace.
+   * Read until the first non-whitespace char. If whitespace is not ignored, this method will set {@link #nextStart} to the starting
+   * position of the whitespace.
    *
    * @param ch The first char to test whether it is not whitespace.
    * @return The first non-whitespace char.
@@ -755,7 +738,7 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
   private int readQuoted() throws IOException {
     final int start = getPosition();
     boolean escaped = false;
-    for (int ch; (ch = super.read()) != -1;) {
+    for (int ch; (ch = super.read()) != -1;) { // [N]
       if (escaped)
         escaped = false;
       else if (ch == '\\')
@@ -781,7 +764,7 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
       int first = ch;
       int prev = first;
       boolean hasDot = false;
-      for (int i = 0; (ch = super.read()) != -1; ++i, prev = ch) {
+      for (int i = 0; (ch = super.read()) != -1; ++i, prev = ch) { // [N]
         if (ch == '.') {
           if (first == '-' && i == 0)
             throw new JsonParseException("Integer component required before fraction part", getPosition() - 1);
@@ -804,7 +787,7 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
 
       if (ch == 'e' || ch == 'E') {
         prev = ch;
-        for (int i = 0; (ch = super.read()) != -1; ++i, prev = ch) {
+        for (int i = 0; (ch = super.read()) != -1; ++i, prev = ch) { // [N]
           if (ch == '-' || ch == '+') {
             first = '~';
             if (i > 0)
@@ -832,10 +815,10 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
     }
 
     // Read literal
-    for (int i = 0; i < literals.length; ++i) {
+    for (int i = 0; i < literals.length; ++i) { // [A]
       if (ch == literals[i][0]) {
         final char[] literal = literals[i];
-        for (int j = 1; j < literal.length; ++j)
+        for (int j = 1; j < literal.length; ++j) // [A]
           if ((ch = super.read()) != literal[j])
             throw new JsonParseException(ch == -1 ? "Unexpected end of document" : "Illegal character: '" + (char)ch + "'", getPosition() - 1);
 

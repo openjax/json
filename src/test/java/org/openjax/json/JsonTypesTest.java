@@ -29,10 +29,10 @@ public class JsonTypesTest {
 
   @Test
   public void testIsWhitespace() {
-    for (int i = 0; i < whitespace.length; ++i)
+    for (int i = 0; i < whitespace.length; ++i) // [A]
       assertTrue(JsonUtil.isWhitespace(whitespace[i]));
 
-    for (int i = 0; i < 100; ++i)
+    for (int i = 0; i < 100; ++i) // [N]
       assertFalse(JsonUtil.isWhitespace(Strings.getRandomAlpha(1).charAt(0)));
   }
 
@@ -86,7 +86,7 @@ public class JsonTypesTest {
   private static String randomInt(final int len) {
     String string = Strings.getRandomNumeric((int)(Math.random() * (len - 1)) + 1);
     int i = 0;
-    for (; i < string.length(); ++i)
+    for (; i < string.length(); ++i) // [N]
       if (string.charAt(i) != '0')
         break;
 
@@ -100,25 +100,25 @@ public class JsonTypesTest {
 
   @Test
   public void testParseNumberInteger() {
-    for (int i = 0; i < 1000; ++i)
+    for (int i = 0; i < 1000; ++i) // [N]
       testPass(randomNeg(false) + randomInt(100), BigInteger.class);
   }
 
   @Test
   public void testParseNumberIntegerExp() {
-    for (int i = 0; i < 1000; ++i)
+    for (int i = 0; i < 1000; ++i) // [N]
       testPass(randomNeg(false) + randomInt(100) + randomExp() + (Math.random() < 0.5 ? "" : "+") + randomInt(5), BigInteger.class);
   }
 
   @Test
   public void testParseNumberDecimal() {
-    for (int i = 0; i < 1000; ++i)
+    for (int i = 0; i < 1000; ++i) // [N]
       testPass(randomNeg(false) + randomInt(100) + "." + randomInt(100), double.class);
   }
 
   @Test
   public void testParseNumberDecimalExp() {
-    for (int i = 0; i < 1000; ++i)
+    for (int i = 0; i < 1000; ++i) // [N]
       testPass(randomNeg(false) + randomInt(100) + "." + randomInt(100) + randomExp() + randomNeg(true) + randomInt(5), float.class);
   }
 

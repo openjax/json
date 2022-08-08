@@ -21,18 +21,16 @@ import static org.libj.lang.Assertions.*;
 import java.io.IOException;
 
 /**
- * Handler interface used for parsing JSON with
- * {@link JsonParser#parse(JsonReader)}.
+ * Handler interface used for parsing JSON with {@link JsonParser#parse(JsonReader)}.
  */
 public interface JsonParser {
   /**
    * Parse the JSON document with this {@link JsonParser}.
    *
    * @param reader The {@link JsonReader} from which JSON is read.
-   * @return {@code true} if the document has been read entirely. {@code false}
-   *         if parsing was aborted by a handler callback. If a handler aborts
-   *         parsing, subsequent calls to {@link #parse(JsonReader)} will resume
-   *         from the position at which parsing was previously aborted.
+   * @return {@code true} if the document has been read entirely. {@code false} if parsing was aborted by a handler callback. If a
+   *         handler aborts parsing, subsequent calls to {@link #parse(JsonReader)} will resume from the position at which parsing
+   *         was previously aborted.
    * @throws IOException If an I/O error has occurred.
    * @throws JsonParseException If the content is not a well formed JSON term.
    * @throws IllegalArgumentException If {@code reader} is null.
@@ -40,7 +38,7 @@ public interface JsonParser {
   default boolean parse(final JsonReader reader) throws IOException, JsonParseException {
     assertNotNull(reader);
     boolean started = false;
-    for (int off, depth = 0; (off = reader.readTokenStart()) != -1;) {
+    for (int off, depth = 0; (off = reader.readTokenStart()) != -1;) { // [A]
       final char ch = reader.buf()[off];
       final int len = reader.getPosition() - off;
       if (len == 1 && JsonUtil.isStructural(ch)) {
@@ -95,12 +93,11 @@ public interface JsonParser {
    * <p>
    * The document's end is defined as:
    * <ul>
-   * <li>The last closing <code>}</code> character, if the document started with
-   * <code>{</code> (i.e. the document is a JSON Object).</li>
-   * <li>The last closing <code>]</code> character, if the document started with
-   * <code>[</code> (i.e. the document is a JSON Array).</li>
-   * <li>The last non-whitespace character, if the document represents a JSON
-   * Value.</li>
+   * <li>The last closing <code>}</code> character, if the document started with <code>{</code> (i.e. the document is a JSON
+   * Object).</li>
+   * <li>The last closing <code>]</code> character, if the document started with <code>[</code> (i.e. the document is a JSON
+   * Array).</li>
+   * <li>The last non-whitespace character, if the document represents a JSON Value.</li>
    * </ul>
    */
   void endDocument();
@@ -123,62 +120,41 @@ public interface JsonParser {
    * Called when <u>token characters</u> are encountered.
    * <p>
    * Token characters are:
-   * <ul>
-   * <li>A property key:
-   * <ul>
-   * <li>A string that matches:
-   *
+   * <ul><li>A property key:
+   * <ul><li>A string that matches:
    * <pre>
    * {@code ^".*"$}
    * </pre>
-   *
-   * </li>
-   * </ul>
-   * </li>
+   * </li></ul></li>
    * <li>A property or array value:
-   * <ul>
-   * <li>A string that matches:
-   *
+   * <ul><li>A string that matches:
    * <pre>
    * {@code ^".*"$}
-   * </pre>
-   *
-   * </li>
+   * </pre></li>
    * <li>A number that matches:
-   *
    * <pre>
    * {@code ^-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?([1-9]\d*))?$}
    * </pre>
-   *
    * </li>
    * <li>A literal that matches:
-   *
    * <pre>
    * {@code ^null|true|false$}
    * </pre>
-   *
-   * </li>
-   * </ul>
-   * </li>
-   * </ul>
+   * </li></ul></li></ul>
    *
    * @param chars A reference to the underlying {@code char[]} buffer.
    * @param start The start index of the token.
    * @param len The length of the token.
    * @return {@code true} to continue parsing, {@code false} to abort.
-   * @implNote For token characters representing a string, all string-literal
-   *           unicode ({@code "\u000A"}) and two-character ({@code "\n"})
-   *           escape codes are replaced with their single-character unicode
-   *           representations, as defined in
-   *           <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section
-   *           2.5</a>.
+   * @implNote For token characters representing a string, all string-literal unicode ({@code "\u000A"}) and two-character
+   *           ({@code "\n"}) escape codes are replaced with their single-character unicode representations, as defined in
+   *           <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section 2.5</a>.
    */
   boolean characters(char[] chars, int start, int len);
 
   /**
-   * Called when <u>whitespace characters</u> are encountered after the call to
-   * {@link #startDocument()} has occurred, and not after the call to
-   * {@link #endDocument()} has occurred.
+   * Called when <u>whitespace characters</u> are encountered after the call to {@link #startDocument()} has occurred, and not after
+   * the call to {@link #endDocument()} has occurred.
    * <p>
    * Whitespace characters match:
    *

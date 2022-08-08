@@ -23,6 +23,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 import org.libj.lang.Classes;
+import org.libj.lang.Numbers;
 
 /**
  * Utility functions for operations pertaining to JSON.
@@ -36,8 +37,7 @@ public final class JsonUtil {
    * </pre>
    *
    * @param ch The char to test.
-   * @return {@code true} if {@code ch} is a structural char, otherwise
-   *         {@code false}.
+   * @return {@code true} if {@code ch} is a structural char, otherwise {@code false}.
    */
   public static boolean isStructural(final int ch) {
     return ch == '{' || ch == '}' || ch == '[' || ch == ']' || ch == ':' || ch == ',';
@@ -52,8 +52,7 @@ public final class JsonUtil {
    * </pre>
    *
    * @param ch The {@code int} to test.
-   * @return {@code true} if the specified {@code int} is an ANSI whitespace
-   *         char; otherwise {@code false}.
+   * @return {@code true} if the specified {@code int} is an ANSI whitespace char; otherwise {@code false}.
    * @see <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC4627</a>
    */
   public static boolean isWhitespace(final int ch) {
@@ -61,21 +60,19 @@ public final class JsonUtil {
   }
 
   /**
-   * Parses a number from the specified string by the rules defined in
-   * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section 2.4</a>.
+   * Parses a number from the specified string by the rules defined in <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627,
+   * Section 2.4</a>.
    *
    * @param <T> The type parameter for the return instance.
    * @param type The class of the return instance.
    * @param str The string to parse.
    * @return An instance of class {@code type} representing the parsed string.
    * @throws JsonParseException If a parsing error has occurred.
-   * @throws IllegalArgumentException If {@code str} is null, or if the
-   *           specified string is empty, or if an instance of the specific
-   *           class type does not define {@code <init>(String)},
-   *           {@code valueOf(String)}, or {@code fromString(String)}.
+   * @throws IllegalArgumentException If {@code str} is null, or if the specified string is empty, or if an instance of the specific
+   *           class type does not define {@code <init>(String)}, {@code valueOf(String)}, or {@code fromString(String)}.
    */
   @SuppressWarnings("unchecked")
-  public static <T extends Number> T parseNumber(final Class<T> type, String str) throws JsonParseException {
+  public static <T extends Number>T parseNumber(final Class<T> type, String str) throws JsonParseException {
     if (assertNotNull(str).length() == 0)
       throw new IllegalArgumentException("Empty string");
 
@@ -87,7 +84,7 @@ public final class JsonUtil {
     int first = ch;
     int last = first;
     final int len = str.length();
-    for (boolean hasDot = false; ++i < len; last = ch) {
+    for (boolean hasDot = false; ++i < len; last = ch) { // [N]
       ch = str.charAt(i);
       if (ch == '.') {
         if (first == '-' && i == 1)
@@ -115,7 +112,7 @@ public final class JsonUtil {
         throw new JsonParseException("Illegal character: '" + (char)ch + "'", i);
 
       last = ch;
-      for (expStart = i + 1; ++i < len; last = ch) {
+      for (expStart = i + 1; ++i < len; last = ch) { // [N]
         ch = str.charAt(i);
         if (ch == '-' || ch == '+') {
           first = '~';
@@ -184,14 +181,11 @@ public final class JsonUtil {
   }
 
   /**
-   * Escapes characters in the specified string that must be escaped as defined
-   * in <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section
-   * 2.5</a>. This includes quotation mark ({@code "\""}), reverse solidus
-   * ({@code "\\"}), and the control characters ({@code U+0000} through
-   * {@code U+001F}).
+   * Escapes characters in the specified string that must be escaped as defined in
+   * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section 2.5</a>. This includes quotation mark ({@code "\""}), reverse
+   * solidus ({@code "\\"}), and the control characters ({@code U+0000} through {@code U+001F}).
    * <p>
-   * This method escapes the following characters in string-literal
-   * two-character form:
+   * This method escapes the following characters in string-literal two-character form:
    *
    * <pre>
    * {'\n', '\r', '\t', '\b', '\f'} -&gt; {"\\n", "\\r", "\\t", "\\b", "\\f"}
@@ -207,36 +201,29 @@ public final class JsonUtil {
   }
 
   /**
-   * Escapes characters in the specified string that must be escaped as defined
-   * in <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section
-   * 2.5</a>. This includes quotation mark ({@code "\""}), reverse solidus
-   * ({@code "\\"}), and the control characters ({@code U+0000} through
-   * {@code U+001F}).
+   * Escapes characters in the specified string that must be escaped as defined in
+   * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section 2.5</a>. This includes quotation mark ({@code "\""}), reverse
+   * solidus ({@code "\\"}), and the control characters ({@code U+0000} through {@code U+001F}).
    * <p>
-   * This method escapes the following characters in string-literal
-   * two-character form:
+   * This method escapes the following characters in string-literal two-character form:
    *
    * <pre>
    * {'\n', '\r', '\t', '\b', '\f'} -&gt; {"\\n", "\\r", "\\t", "\\b", "\\f"}
    * </pre>
    *
-   * @param out The {@link StringBuilder} to which the escaped contents of
-   *          {@code str} are to be appended.
+   * @param out The {@link StringBuilder} to which the escaped contents of {@code str} are to be appended.
    * @param str The string to be escaped.
-   * @return The provided {@link StringBuilder} with the escaped representation
-   *         of {@code str}.
+   * @return The provided {@link StringBuilder} with the escaped representation of {@code str}.
    * @throws IllegalArgumentException If {@code out} or {@code str} is null.
    * @see #unescape(CharSequence)
    */
   public static StringBuilder escape(final StringBuilder out, final CharSequence str) {
     assertNotNull(out);
-    for (int i = 0, len = str.length(); i < len; ++i) {
+    for (int i = 0, len = str.length(); i < len; ++i) { // [N]
       final char ch = str.charAt(i);
       /*
-       * From RFC 4627, "All Unicode characters may be placed within the
-       * quotation marks except for the characters that must be escaped:
-       * quotation mark, reverse solidus, and the control characters (U+0000
-       * through U+001F)."
+       * From RFC 4627, "All Unicode characters may be placed within the quotation marks except for the characters that must be
+       * escaped: quotation mark, reverse solidus, and the control characters (U+0000 through U+001F)."
        */
       switch (ch) {
         case '"':
@@ -270,14 +257,11 @@ public final class JsonUtil {
   }
 
   /**
-   * Escapes characters in the specified {@code char[]} that must be escaped as
-   * defined in <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section
-   * 2.5</a>. This includes quotation mark ({@code "\""}), reverse solidus
-   * ({@code "\\"}), and the control characters ({@code U+0000} through
-   * {@code U+001F}).
+   * Escapes characters in the specified {@code char[]} that must be escaped as defined in
+   * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section 2.5</a>. This includes quotation mark ({@code "\""}), reverse
+   * solidus ({@code "\\"}), and the control characters ({@code U+0000} through {@code U+001F}).
    * <p>
-   * This method escapes the following characters in string-literal
-   * two-character form:
+   * This method escapes the following characters in string-literal two-character form:
    *
    * <pre>
    * {'\n', '\r', '\t', '\b', '\f'} -&gt; {"\\n", "\\r", "\\t", "\\b", "\\f"}
@@ -288,8 +272,7 @@ public final class JsonUtil {
    * @param len The length.
    * @return The escaped representation of the specified {@code char[]}.
    * @throws IllegalArgumentException If {@code chars} is null.
-   * @throws ArrayIndexOutOfBoundsException If {@code offset} is negative, or
-   *           {@code offset + len >= chars.length}.
+   * @throws ArrayIndexOutOfBoundsException If {@code offset} is negative, or {@code offset + len >= chars.length}.
    * @see #unescape(char[],int,int)
    */
   public static StringBuilder escape(final char[] chars, final int offset, final int len) {
@@ -297,40 +280,32 @@ public final class JsonUtil {
   }
 
   /**
-   * Escapes characters in the specified {@code char[]} that must be escaped as
-   * defined in <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section
-   * 2.5</a>. This includes quotation mark ({@code "\""}), reverse solidus
-   * ({@code "\\"}), and the control characters ({@code U+0000} through
-   * {@code U+001F}).
+   * Escapes characters in the specified {@code char[]} that must be escaped as defined in
+   * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section 2.5</a>. This includes quotation mark ({@code "\""}), reverse
+   * solidus ({@code "\\"}), and the control characters ({@code U+0000} through {@code U+001F}).
    * <p>
-   * This method escapes the following characters in string-literal
-   * two-character form:
+   * This method escapes the following characters in string-literal two-character form:
    *
    * <pre>
    * {'\n', '\r', '\t', '\b', '\f'} -&gt; {"\\n", "\\r", "\\t", "\\b", "\\f"}
    * </pre>
    *
-   * @param out The {@link StringBuilder} to which the escaped contents of
-   *          {@code chars} are to be appended.
+   * @param out The {@link StringBuilder} to which the escaped contents of {@code chars} are to be appended.
    * @param chars The {@code char[]} to be escaped.
    * @param offset The initial offset.
    * @param len The length.
-   * @return The provided {@link StringBuilder} with the escaped representation
-   *         of the specified {@code char[]}.
+   * @return The provided {@link StringBuilder} with the escaped representation of the specified {@code char[]}.
    * @throws IllegalArgumentException If {@code out} or {@code chars} is null.
-   * @throws ArrayIndexOutOfBoundsException If {@code offset} is negative, or
-   *           {@code offset + len >= chars.length}.
+   * @throws ArrayIndexOutOfBoundsException If {@code offset} is negative, or {@code offset + len >= chars.length}.
    * @see #unescape(char[],int,int)
    */
   public static StringBuilder escape(final StringBuilder out, final char[] chars, final int offset, final int len) {
     assertNotNull(out);
-    for (int i = offset, length = offset + len; i < length; ++i) {
+    for (int i = offset, length = offset + len; i < length; ++i) { // [N]
       final char ch = chars[i];
       /*
-       * From RFC 4627, "All Unicode characters may be placed within the
-       * quotation marks except for the characters that must be escaped:
-       * quotation mark, reverse solidus, and the control characters (U+0000
-       * through U+001F)."
+       * From RFC 4627, "All Unicode characters may be placed within the quotation marks except for the characters that must be
+       * escaped: quotation mark, reverse solidus, and the control characters (U+0000 through U+001F)."
        */
       switch (ch) {
         case '"':
@@ -364,20 +339,17 @@ public final class JsonUtil {
   }
 
   /**
-   * Unescapes string-literal unicode ({@code "\u000A"}) and two-character
-   * ({@code "\n"}) escape codes, <i>except for the double quote ({@code "\""})
-   * and reverse solidus ({@code "\\"})</i>, into UTF-8 as defined in
+   * Unescapes string-literal unicode ({@code "\u000A"}) and two-character ({@code "\n"}) escape codes, <i>except for the double
+   * quote ({@code "\""}) and reverse solidus ({@code "\\"})</i>, into UTF-8 as defined in
    * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section 2.5</a>.
    * <p>
-   * This method deliberately excludes the double quote ({@code "\""}) and
-   * reverse solidus ({@code "\\"}), as these characters are necessary to be
-   * able to differentiate the double quote from string boundaries, and thus the
-   * reverse solidus from the escape character.
+   * This method deliberately excludes the double quote ({@code "\""}) and reverse solidus ({@code "\\"}), as these characters are
+   * necessary to be able to differentiate the double quote from string boundaries, and thus the reverse solidus from the escape
+   * character.
    *
    * @param str The string to be unescaped.
-   * @return The unescaped representation of the specified string, with the
-   *         escaped form of the double quote ({@code "\""}) and reverse solidus
-   *         ({@code "\\"}) preserved.
+   * @return The unescaped representation of the specified string, with the escaped form of the double quote ({@code "\""}) and
+   *         reverse solidus ({@code "\\"}) preserved.
    * @throws IllegalArgumentException If {@code str} is null.
    * @see #escape(CharSequence)
    * @see #unescape(CharSequence)
@@ -387,30 +359,25 @@ public final class JsonUtil {
   }
 
   /**
-   * Unescapes string-literal unicode ({@code "\u000A"}) and two-character
-   * ({@code "\n"}) escape codes, <i>except for the double quote ({@code "\""})
-   * and reverse solidus ({@code "\\"})</i>, into UTF-8 as defined in
+   * Unescapes string-literal unicode ({@code "\u000A"}) and two-character ({@code "\n"}) escape codes, <i>except for the double
+   * quote ({@code "\""}) and reverse solidus ({@code "\\"})</i>, into UTF-8 as defined in
    * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section 2.5</a>.
    * <p>
-   * This method deliberately excludes the double quote ({@code "\""}) and
-   * reverse solidus ({@code "\\"}), as these characters are necessary to be
-   * able to differentiate the double quote from string boundaries, and thus the
-   * reverse solidus from the escape character.
+   * This method deliberately excludes the double quote ({@code "\""}) and reverse solidus ({@code "\\"}), as these characters are
+   * necessary to be able to differentiate the double quote from string boundaries, and thus the reverse solidus from the escape
+   * character.
    *
-   * @param out The {@link StringBuilder} to which the unescaped contents of
-   *          {@code str} are to be appended.
+   * @param out The {@link StringBuilder} to which the unescaped contents of {@code str} are to be appended.
    * @param str The string to be unescaped.
-   * @return The provided {@link StringBuilder} with the unescaped
-   *         representation of of {@code str}, with the escaped form of the
-   *         double quote ({@code "\""}) and reverse solidus ({@code "\\"})
-   *         preserved.
+   * @return The provided {@link StringBuilder} with the unescaped representation of of {@code str}, with the escaped form of the
+   *         double quote ({@code "\""}) and reverse solidus ({@code "\\"}) preserved.
    * @throws IllegalArgumentException If {@code out} or {@code str} is null.
    * @see #escape(CharSequence)
    * @see #unescape(CharSequence)
    */
   public static StringBuilder unescapeForString(final StringBuilder out, final CharSequence str) {
     assertNotNull(out);
-    for (int i = 0, len = str.length(); i < len; ++i) {
+    for (int i = 0, len = str.length(); i < len; ++i) { // [N]
       char ch = str.charAt(i);
       if (ch == '\\') {
         ch = str.charAt(++i);
@@ -429,7 +396,7 @@ public final class JsonUtil {
         else if (ch == 'u') {
           ++i;
           final char[] unicode = new char[4];
-          for (int j = 0; j < unicode.length; ++j)
+          for (int j = 0; j < unicode.length; ++j) // [A]
             unicode[j] = str.charAt(i + j);
 
           i += unicode.length - 1;
@@ -444,25 +411,21 @@ public final class JsonUtil {
   }
 
   /**
-   * Unescapes string-literal unicode ({@code "\u000A"}) and two-character
-   * ({@code "\n"}) escape codes, <i>except for the double quote ({@code "\""})
-   * and reverse solidus ({@code "\\"})</i>, into UTF-8 as defined in
+   * Unescapes string-literal unicode ({@code "\u000A"}) and two-character ({@code "\n"}) escape codes, <i>except for the double
+   * quote ({@code "\""}) and reverse solidus ({@code "\\"})</i>, into UTF-8 as defined in
    * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section 2.5</a>.
    * <p>
-   * This method deliberately excludes the double quote ({@code "\""}) and
-   * reverse solidus ({@code "\\"}), as these characters are necessary to be
-   * able to differentiate the double quote from string boundaries, and thus the
-   * reverse solidus from the escape character.
+   * This method deliberately excludes the double quote ({@code "\""}) and reverse solidus ({@code "\\"}), as these characters are
+   * necessary to be able to differentiate the double quote from string boundaries, and thus the reverse solidus from the escape
+   * character.
    *
    * @param chars The {@code char[]} to be unescaped.
    * @param offset The initial offset.
    * @param len The length.
-   * @return The unescaped representation of the specified string, with the
-   *         escaped form of the double quote ({@code "\""}) and reverse solidus
-   *         ({@code "\\"}) preserved.
+   * @return The unescaped representation of the specified string, with the escaped form of the double quote ({@code "\""}) and
+   *         reverse solidus ({@code "\\"}) preserved.
    * @throws IllegalArgumentException If {@code chars} is null.
-   * @throws ArrayIndexOutOfBoundsException If {@code offset} is negative, or
-   *           {@code offset + len >= chars.length}.
+   * @throws ArrayIndexOutOfBoundsException If {@code offset} is negative, or {@code offset + len >= chars.length}.
    * @see #escape(char[],int,int)
    * @see #unescape(char[],int,int)
    */
@@ -471,34 +434,28 @@ public final class JsonUtil {
   }
 
   /**
-   * Unescapes string-literal unicode ({@code "\u000A"}) and two-character
-   * ({@code "\n"}) escape codes, <i>except for the double quote ({@code "\""})
-   * and reverse solidus ({@code "\\"})</i>, into UTF-8 as defined in
+   * Unescapes string-literal unicode ({@code "\u000A"}) and two-character ({@code "\n"}) escape codes, <i>except for the double
+   * quote ({@code "\""}) and reverse solidus ({@code "\\"})</i>, into UTF-8 as defined in
    * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section 2.5</a>.
    * <p>
-   * This method deliberately excludes the double quote ({@code "\""}) and
-   * reverse solidus ({@code "\\"}), as these characters are necessary to be
-   * able to differentiate the double quote from string boundaries, and thus the
-   * reverse solidus from the escape character.
+   * This method deliberately excludes the double quote ({@code "\""}) and reverse solidus ({@code "\\"}), as these characters are
+   * necessary to be able to differentiate the double quote from string boundaries, and thus the reverse solidus from the escape
+   * character.
    *
-   * @param out The {@link StringBuilder} to which the unescaped contents of
-   *          {@code chars} are to be appended.
+   * @param out The {@link StringBuilder} to which the unescaped contents of {@code chars} are to be appended.
    * @param chars The {@code char[]} to be unescaped.
    * @param offset The initial offset.
    * @param len The length.
-   * @return The provided {@link StringBuilder} with the unescaped
-   *         representation of {@code chars}, with the escaped form of the
-   *         double quote ({@code "\""}) and reverse solidus ({@code "\\"})
-   *         preserved.
+   * @return The provided {@link StringBuilder} with the unescaped representation of {@code chars}, with the escaped form of the
+   *         double quote ({@code "\""}) and reverse solidus ({@code "\\"}) preserved.
    * @throws IllegalArgumentException If {@code out} or {@code chars} is null.
-   * @throws ArrayIndexOutOfBoundsException If {@code offset} is negative, or
-   *           {@code offset + len >= chars.length}.
+   * @throws ArrayIndexOutOfBoundsException If {@code offset} is negative, or {@code offset + len >= chars.length}.
    * @see #escape(char[],int,int)
    * @see #unescape(char[],int,int)
    */
   public static StringBuilder unescapeForString(final StringBuilder out, final char[] chars, final int offset, final int len) {
     assertNotNull(out);
-    for (int i = offset, length = offset + len; i < length; ++i) {
+    for (int i = offset, length = offset + len; i < length; ++i) { // [A]
       char ch = chars[i];
       if (ch == '\\') {
         ch = chars[++i];
@@ -515,13 +472,8 @@ public final class JsonUtil {
         else if (ch == 'f')
           ch = '\f';
         else if (ch == 'u') {
-          ++i;
-          final char[] unicode = new char[4];
-          for (int j = 0; j < unicode.length; ++j)
-            unicode[j] = chars[i + j];
-
-          i += unicode.length - 1;
-          ch = (char)Integer.parseInt(new String(unicode), 16);
+          ch = (char)Numbers.parseInt(chars, ++i, 4, 16, '\0');
+          i += 3;
         }
       }
 
@@ -532,8 +484,7 @@ public final class JsonUtil {
   }
 
   /**
-   * Unescapes string-literal unicode ({@code "\u000A"}) and two-character
-   * ({@code "\n"}) escape codes into UTF-8 as defined in
+   * Unescapes string-literal unicode ({@code "\u000A"}) and two-character ({@code "\n"}) escape codes into UTF-8 as defined in
    * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section 2.5</a>.
    *
    * @param str The string to be unescaped.
@@ -546,21 +497,18 @@ public final class JsonUtil {
   }
 
   /**
-   * Unescapes string-literal unicode ({@code "\u000A"}) and two-character
-   * ({@code "\n"}) escape codes into UTF-8 as defined in
+   * Unescapes string-literal unicode ({@code "\u000A"}) and two-character ({@code "\n"}) escape codes into UTF-8 as defined in
    * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section 2.5</a>.
    *
-   * @param out The {@link StringBuilder} to which the unescaped contents of
-   *          {@code str} are to be appended.
+   * @param out The {@link StringBuilder} to which the unescaped contents of {@code str} are to be appended.
    * @param str The string to be unescaped.
-   * @return The provided {@link StringBuilder} with the unescaped
-   *         representation of {@code str}.
+   * @return The provided {@link StringBuilder} with the unescaped representation of {@code str}.
    * @throws IllegalArgumentException If {@code out} or {@code str} is null.
    * @see #escape(CharSequence)
    */
   public static StringBuilder unescape(final StringBuilder out, final CharSequence str) {
     assertNotNull(out);
-    for (int i = 0, len = str.length(); i < len; ++i) {
+    for (int i = 0, len = str.length(); i < len; ++i) { // [N]
       char ch = str.charAt(i);
       if (ch == '\\') {
         ch = str.charAt(++i);
@@ -577,7 +525,7 @@ public final class JsonUtil {
         else if (ch == 'u') {
           ++i;
           final char[] unicode = new char[4];
-          for (int j = 0; j < unicode.length; ++j)
+          for (int j = 0; j < unicode.length; ++j) // [A]
             unicode[j] = str.charAt(i + j);
 
           i += unicode.length - 1;
@@ -592,8 +540,7 @@ public final class JsonUtil {
   }
 
   /**
-   * Unescapes string-literal unicode ({@code "\u000A"}) and two-character
-   * ({@code "\n"}) escape codes into UTF-8 as defined in
+   * Unescapes string-literal unicode ({@code "\u000A"}) and two-character ({@code "\n"}) escape codes into UTF-8 as defined in
    * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section 2.5</a>.
    *
    * @param chars The {@code char[]} to be unescaped.
@@ -601,8 +548,7 @@ public final class JsonUtil {
    * @param len The length.
    * @return The unescaped representation of the specified string.
    * @throws IllegalArgumentException If {@code chars} is null.
-   * @throws ArrayIndexOutOfBoundsException If {@code offset} is negative, or
-   *           {@code offset + len >= chars.length}.
+   * @throws ArrayIndexOutOfBoundsException If {@code offset} is negative, or {@code offset + len >= chars.length}.
    * @see #escape(char[],int,int)
    */
   public static StringBuilder unescape(final char[] chars, final int offset, final int len) {
@@ -610,25 +556,21 @@ public final class JsonUtil {
   }
 
   /**
-   * Unescapes string-literal unicode ({@code "\u000A"}) and two-character
-   * ({@code "\n"}) escape codes into UTF-8 as defined in
+   * Unescapes string-literal unicode ({@code "\u000A"}) and two-character ({@code "\n"}) escape codes into UTF-8 as defined in
    * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section 2.5</a>.
    *
-   * @param out The {@link StringBuilder} to which the unescaped contents of
-   *          {@code chars} are to be appended.
+   * @param out The {@link StringBuilder} to which the unescaped contents of {@code chars} are to be appended.
    * @param chars The {@code char[]} to be unescaped.
    * @param offset The initial offset.
    * @param len The length.
-   * @return The provided {@link StringBuilder} with the unescaped
-   *         representation of {@code chars}.
+   * @return The provided {@link StringBuilder} with the unescaped representation of {@code chars}.
    * @throws IllegalArgumentException If {@code out} or {@code chars} is null.
-   * @throws ArrayIndexOutOfBoundsException If {@code offset} is negative, or
-   *           {@code offset + len >= chars.length}.
+   * @throws ArrayIndexOutOfBoundsException If {@code offset} is negative, or {@code offset + len >= chars.length}.
    * @see #escape(char[],int,int)
    */
   public static StringBuilder unescape(final StringBuilder out, final char[] chars, final int offset, final int len) {
     assertNotNull(out);
-    for (int i = offset, length = offset + len; i < length; ++i) {
+    for (int i = offset, length = offset + len; i < length; ++i) { // [A]
       char ch = chars[i];
       if (ch == '\\') {
         ch = chars[++i];
@@ -645,7 +587,7 @@ public final class JsonUtil {
         else if (ch == 'u') {
           ++i;
           final char[] unicode = new char[4];
-          for (int j = 0; j < unicode.length; ++j)
+          for (int j = 0; j < unicode.length; ++j) // [A]
             unicode[j] = chars[i + j];
 
           i += unicode.length - 1;

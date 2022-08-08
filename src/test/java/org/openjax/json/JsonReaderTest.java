@@ -167,34 +167,34 @@ public class JsonReaderTest extends AbstractTest {
   public void testMarkReset() throws IOException {
     final String json = "{\"a\": \"$\", \"b\": 5, \"c\": false, \"d\": [], \"e\": {}}";
     final JsonReader reader = new JsonReader(new StringReader(json));
-    for (int i = 0; i < 2; ++i)
+    for (int i = 0; i < 2; ++i) // [N]
       logger.debug(tokenString(reader));
 
     reader.mark(-1);
-    for (int i = 0; i < 10; ++i, reader.reset()) {
+    for (int i = 0; i < 10; ++i, reader.reset()) { // [N]
       tokenString(reader);
       assertEquals("\"$\"", tokenString(reader));
     }
 
-    for (int i = 0; i < 3; ++i)
+    for (int i = 0; i < 3; ++i) // [N]
       logger.debug(tokenString(reader));
 
     logger.debug(String.valueOf((char)reader.read()));
     reader.mark(-1);
-    for (int i = 0; i < 10; ++i, reader.reset()) {
+    for (int i = 0; i < 10; ++i, reader.reset()) { // [N]
       assertEquals("b\"", tokenString(reader));
       assertEquals(":", tokenString(reader));
       assertEquals("5", tokenString(reader));
     }
 
-    for (int i = 0; i < 6; ++i)
+    for (int i = 0; i < 6; ++i) // [N]
       logger.debug(tokenString(reader));
 
-    for (int i = 0; i < 3; ++i)
+    for (int i = 0; i < 3; ++i) // [N]
       logger.debug(String.valueOf((char)reader.read()));
 
     reader.mark(-1);
-    for (int i = 0; i < 10; ++i, reader.reset()) {
+    for (int i = 0; i < 10; ++i, reader.reset()) { // [N]
       assertEquals("se", tokenString(reader));
       assertEquals(",", tokenString(reader));
       assertEquals("\"d\"", tokenString(reader));

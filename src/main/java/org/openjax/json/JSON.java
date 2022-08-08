@@ -604,7 +604,7 @@ public final class JSON {
   private static StringBuilder toString(final StringBuilder builder, final Map<String,?> object, final int indent, final String spaces) {
     builder.append('{');
     if (object.size() > 0) {
-      for (final Map.Entry<String,?> entry : object.entrySet()) {
+      for (final Map.Entry<String,?> entry : object.entrySet()) { // [S]
         if (spaces != null)
           builder.append('\n').append(spaces);
 
@@ -672,7 +672,7 @@ public final class JSON {
     builder.append('[');
     boolean backUp = false;
     final int len = array.size();
-    for (int i = 0; i < len; ++i) {
+    for (int i = 0; i < len; ++i) { // [L]
       final Object member = array.get(i);
       if (member instanceof Map || member instanceof List) {
         if (i > 0 && spaces != null)

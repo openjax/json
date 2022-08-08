@@ -91,7 +91,7 @@ public abstract class AbstractTest {
       int index = 0;
       // Test that reader.readToken() and iterator.next() are properly synced
       if (testReadChar) {
-        for (int i = 0, ch; i < random() * 10 && (ch = reader.read()) != -1; ++i)
+        for (int i = 0, ch; i < random() * 10 && (ch = reader.read()) != -1; ++i) // [N]
           builder.append((char)ch);
 
         if (!testReadBuff)
@@ -99,14 +99,14 @@ public abstract class AbstractTest {
       }
 
       if (testReadBuff) {
-        for (int i = 0; i < random() * 10; ++i)
+        for (int i = 0; i < random() * 10; ++i) // [N]
           readBuff((int)(random() * 20), reader, builder);
 
         readRemainder(reader, builder);
       }
 
       index = reader.getIndex() + 1;
-      for (long token = -1; (token = !testIterator || random() < .5 ? reader.readToken() : reader.iterator().hasNext() ? reader.iterator().next() : -1) != -1;) {
+      for (long token = -1; (token = !testIterator || random() < .5 ? reader.readToken() : reader.iterator().hasNext() ? reader.iterator().next() : -1) != -1;) { // [N]
         final int off = Numbers.Composite.decodeInt(token, 0);
         final int len = Numbers.Composite.decodeInt(token, 1);
         if (len == 0)
@@ -117,13 +117,13 @@ public abstract class AbstractTest {
           assertEquals("ignoreWhitespace: " + ignoreWhitespace + ", Index: " + reader.getIndex() + ", Position: " + reader.getPosition(), str.trim(), str);
 
         if (testIterator)
-          for (int i = 0; i < (int)(Math.random() * 10); ++i)
+          for (int i = 0; i < (int)(Math.random() * 10); ++i) // [N]
             reader.iterator().hasNext();
 
         if (index == reader.getIndex()) {
           builder.append(str);
           if (testReadChar && random() < .5) {
-            for (int i = 0, ch; i < random() * 20 && (ch = reader.read()) != -1; ++i)
+            for (int i = 0, ch; i < random() * 20 && (ch = reader.read()) != -1; ++i) // [N]
               builder.append((char)ch);
 
             if (!testReadBuff)
@@ -131,7 +131,7 @@ public abstract class AbstractTest {
           }
 
           if (testReadBuff) {
-            for (int i = 0; i < random() * 10; ++i)
+            for (int i = 0; i < random() * 10; ++i) // [N]
               readBuff((int)(random() * 20), reader, builder);
 
             readRemainder(reader, builder);
