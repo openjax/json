@@ -26,6 +26,7 @@ import java.io.UncheckedIOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,6 +35,7 @@ import java.util.function.Supplier;
 
 import org.libj.lang.Numbers;
 import org.libj.lang.Strings;
+import org.libj.util.CollectionUtil;
 import org.libj.util.function.BooleanFunction;
 import org.libj.util.function.ObjBiIntFunction;
 
@@ -671,24 +673,18 @@ public final class JSON {
   private static StringBuilder toString(final StringBuilder builder, final List<?> array, final int indent, final String spaces) {
     builder.append('[');
     boolean backUp = false;
-    final int len = array.size();
-    for (int i = 0; i < len; ++i) { // [L]
-      final Object member = array.get(i);
-      if (member instanceof Map || member instanceof List) {
-        if (i > 0 && spaces != null)
-          builder.append(' ');
-        else
-          backUp = true;
-      }
-      else if (spaces != null) {
-        builder.append('\n').append(spaces);
-      }
-
-      JSON.encode(builder, member, indent, spaces == null ? null : makeIndent(spaces.length()));
-      builder.append(',');
+    final int i$ = array.size();
+    if (CollectionUtil.isRandomAccess(array)) {
+      for (int i = 0; i < i$; ++i) // [RA]
+        backUp = toString(builder, array.get(i), spaces, indent, backUp, i);
+    }
+    else {
+      final Iterator<?> iterator = array.iterator();
+      for (int i = 0; i < i$; ++i) // [I]
+        backUp = toString(builder, iterator.next(), spaces, indent, backUp, i);
     }
 
-    if (len > 0) {
+    if (i$ > 0) {
       if (backUp || spaces == null) {
         builder.setLength(builder.length() - 1);
       }
@@ -699,6 +695,22 @@ public final class JSON {
     }
 
     return builder.append(']');
+  }
+
+  private static boolean toString(final StringBuilder builder, final Object member, final String spaces, final int indent, boolean backUp, final int i) {
+    if (member instanceof Map || member instanceof List) {
+      if (i > 0 && spaces != null)
+        builder.append(' ');
+      else
+        backUp = true;
+    }
+    else if (spaces != null) {
+      builder.append('\n').append(spaces);
+    }
+
+    JSON.encode(builder, member, indent, spaces == null ? null : makeIndent(spaces.length()));
+    builder.append(',');
+    return backUp;
   }
 
   private JSON() {
