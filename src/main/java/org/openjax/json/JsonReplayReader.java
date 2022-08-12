@@ -113,7 +113,7 @@ class JsonReplayReader extends ReplayReader {
         ch = '\f';
       else if (ch == 'u') {
         // FIXME: Optimize this code to remove char[]
-        for (int i = 0; i < unicode.length; ++i) { // [A]
+        for (int i = 0, i$ = unicode.length; i < i$; ++i) { // [A]
           final int c = in.read();
           if (c == -1)
             throw new JsonParseException("Unterminated escape sequence", pos);

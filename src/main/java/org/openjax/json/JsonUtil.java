@@ -219,7 +219,7 @@ public final class JsonUtil {
    */
   public static StringBuilder escape(final StringBuilder out, final CharSequence str) {
     assertNotNull(out);
-    for (int i = 0, len = str.length(); i < len; ++i) { // [N]
+    for (int i = 0, i$ = str.length(); i < i$; ++i) { // [N]
       final char ch = str.charAt(i);
       /*
        * From RFC 4627, "All Unicode characters may be placed within the quotation marks except for the characters that must be
@@ -377,7 +377,7 @@ public final class JsonUtil {
    */
   public static StringBuilder unescapeForString(final StringBuilder out, final CharSequence str) {
     assertNotNull(out);
-    for (int i = 0, len = str.length(); i < len; ++i) { // [N]
+    for (int i = 0, i$ = str.length(); i < i$; ++i) { // [N]
       char ch = str.charAt(i);
       if (ch == '\\') {
         ch = str.charAt(++i);
@@ -396,7 +396,7 @@ public final class JsonUtil {
         else if (ch == 'u') {
           ++i;
           final char[] unicode = new char[4];
-          for (int j = 0; j < unicode.length; ++j) // [A]
+          for (int j = 0, j$ = unicode.length; j < j$; ++j) // [A]
             unicode[j] = str.charAt(i + j);
 
           i += unicode.length - 1;
@@ -508,7 +508,7 @@ public final class JsonUtil {
    */
   public static StringBuilder unescape(final StringBuilder out, final CharSequence str) {
     assertNotNull(out);
-    for (int i = 0, len = str.length(); i < len; ++i) { // [N]
+    for (int i = 0, i$ = str.length(); i < i$; ++i) { // [N]
       char ch = str.charAt(i);
       if (ch == '\\') {
         ch = str.charAt(++i);
@@ -525,7 +525,7 @@ public final class JsonUtil {
         else if (ch == 'u') {
           ++i;
           final char[] unicode = new char[4];
-          for (int j = 0; j < unicode.length; ++j) // [A]
+          for (int j = 0, j$ = unicode.length; j < j$; ++j) // [A]
             unicode[j] = str.charAt(i + j);
 
           i += unicode.length - 1;
@@ -587,7 +587,7 @@ public final class JsonUtil {
         else if (ch == 'u') {
           ++i;
           final char[] unicode = new char[4];
-          for (int j = 0; j < unicode.length; ++j) // [A]
+          for (int j = 0, j$ = unicode.length; j < j$; ++j) // [A]
             unicode[j] = chars[i + j];
 
           i += unicode.length - 1;

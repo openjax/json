@@ -815,10 +815,10 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
     }
 
     // Read literal
-    for (int i = 0; i < literals.length; ++i) { // [A]
+    for (int i = 0, i$ = literals.length; i < i$; ++i) { // [A]
       if (ch == literals[i][0]) {
         final char[] literal = literals[i];
-        for (int j = 1; j < literal.length; ++j) // [A]
+        for (int j = 1, j$ = literal.length; j < j$; ++j) // [A]
           if ((ch = super.read()) != literal[j])
             throw new JsonParseException(ch == -1 ? "Unexpected end of document" : "Illegal character: '" + (char)ch + "'", getPosition() - 1);
 

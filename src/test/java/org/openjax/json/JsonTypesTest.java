@@ -29,7 +29,7 @@ public class JsonTypesTest {
 
   @Test
   public void testIsWhitespace() {
-    for (int i = 0; i < whitespace.length; ++i) // [A]
+    for (int i = 0, i$ = whitespace.length; i < i$; ++i) // [A]
       assertTrue(JsonUtil.isWhitespace(whitespace[i]));
 
     for (int i = 0; i < 100; ++i) // [N]
