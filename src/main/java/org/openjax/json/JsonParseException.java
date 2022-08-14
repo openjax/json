@@ -17,21 +17,18 @@
 package org.openjax.json;
 
 /**
- * An exception signaling a violation of JSON document well-formed criteria as
- * expressed by the <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627</a>
- * specification.
+ * An exception signaling a violation of JSON document well-formed criteria as expressed by the
+ * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627</a> specification.
  */
 public class JsonParseException extends RuntimeException {
   /**
-   * The zero-based character offset into the string being parsed at which the
-   * error was found during parsing.
+   * The zero-based character offset into the string being parsed at which the error was found during parsing.
    */
   private final int errorOffset;
 
   /**
-   * Constructs a JsonParseException with the specified detail message and
-   * offset. A detail message is a String that describes this particular
-   * exception.
+   * Constructs a JsonParseException with the specified detail message and offset. A detail message is a String that describes this
+   * particular exception.
    *
    * @param message The detail message.
    * @param errorOffset The position where the error is found while parsing.
@@ -43,9 +40,8 @@ public class JsonParseException extends RuntimeException {
   }
 
   /**
-   * Constructs a JsonParseException with the specified detail message and
-   * offset. A detail message is a String that describes this particular
-   * exception.
+   * Constructs a JsonParseException with the specified detail message and offset. A detail message is a String that describes this
+   * particular exception.
    *
    * @param message The detail message.
    * @param errorOffset The position where the error is found while parsing.
