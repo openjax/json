@@ -673,18 +673,18 @@ public final class JSON {
   private static StringBuilder toString(final StringBuilder builder, final List<?> array, final int indent, final String spaces) {
     builder.append('[');
     boolean backUp = false;
-    final int i$ = array.size();
-    if (CollectionUtil.isRandomAccess(array)) {
-      for (int i = 0; i < i$; ++i) // [RA]
-        backUp = toString(builder, array.get(i), spaces, indent, backUp, i);
-    }
-    else {
-      final Iterator<?> iterator = array.iterator();
-      for (int i = 0; i < i$; ++i) // [I]
-        backUp = toString(builder, iterator.next(), spaces, indent, backUp, i);
-    }
+    final int size = array.size();
+    if (size > 0) {
+      if (CollectionUtil.isRandomAccess(array)) {
+        for (int i = 0; i < size; ++i) // [RA]
+          backUp = toString(builder, array.get(i), spaces, indent, backUp, i);
+      }
+      else {
+        final Iterator<?> iterator = array.iterator();
+        for (int i = 0; i < size; ++i) // [I]
+          backUp = toString(builder, iterator.next(), spaces, indent, backUp, i);
+      }
 
-    if (i$ > 0) {
       if (backUp || spaces == null) {
         builder.setLength(builder.length() - 1);
       }
