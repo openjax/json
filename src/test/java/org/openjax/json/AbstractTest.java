@@ -21,7 +21,6 @@ import static org.junit.Assert.*;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.StringReader;
 import java.net.URL;
 
 import org.libj.io.Readers;
@@ -84,7 +83,7 @@ public abstract class AbstractTest {
 
   private static void testString(final String json, final boolean testSetIndex, final boolean ignoreWhitespace) throws IOException {
     final String unescaped = JsonUtil.unescapeForString(json).toString();
-    try (final JsonReader reader = new JsonReader(new StringReader(json), ignoreWhitespace)) {
+    try (final JsonReader reader = new JsonReader(json, ignoreWhitespace)) {
       final StringBuilder builder = new StringBuilder();
       final int gap = (int)(json.length() / 100d);
       int cut = 0;

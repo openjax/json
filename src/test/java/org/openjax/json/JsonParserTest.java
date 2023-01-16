@@ -19,7 +19,6 @@ package org.openjax.json;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
-import java.io.StringReader;
 import java.net.URL;
 
 public class JsonParserTest extends JsonReaderTest {
@@ -65,7 +64,7 @@ public class JsonParserTest extends JsonReaderTest {
   @Override
   protected void assertPass(final URL resource) throws IOException, JsonParseException {
     final String json = readFully(resource);
-    try (final JsonReader reader = new JsonReader(new StringReader(json), false)) {
+    try (final JsonReader reader = new JsonReader(json, false)) {
       final StringBuilder builder = new StringBuilder();
       while (!newParser(json, builder).parse(reader));
       assertEquals("builder length should have been set to 0 in JsonHandler#endDocument()", 0, builder.length());

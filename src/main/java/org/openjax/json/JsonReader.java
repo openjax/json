@@ -22,6 +22,7 @@ import java.io.UncheckedIOException;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
+import org.libj.io.UnsynchronizedStringReader;
 import org.libj.lang.Buffers;
 import org.libj.lang.Numbers;
 import org.libj.util.primitive.ArrayIntList;
@@ -107,6 +108,29 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
    */
   public JsonReader(final Reader reader, final boolean ignoreWhitespace) {
     super(reader, DEFAULT_BUFFER_SIZE);
+    this.ignoreWhitespace = ignoreWhitespace;
+  }
+
+  /**
+   * Construct a new {@link JsonReader} for JSON content to be read from the specified string, <b>that ignores inter-token
+   * whitespace</b>. This constructor is equivalent to calling {@code new JsonReader(str, true)}.
+   *
+   * @param str The string with the JSON document to be read.
+   * @throws IllegalArgumentException If {@code str} is null.
+   */
+  public JsonReader(final String str) {
+    this(str, true);
+  }
+
+  /**
+   * Construct a new {@link JsonReader} for JSON content to be read from the specified string.
+   *
+   * @param str The string with the JSON document to be read.
+   * @param ignoreWhitespace If {@code ignoreWhitespace == false}, inter-token whitespace will <b>not</b> be skipped.
+   * @throws IllegalArgumentException If {@code str} is null.
+   */
+  public JsonReader(final String str, final boolean ignoreWhitespace) {
+    super(new UnsynchronizedStringReader(str), DEFAULT_BUFFER_SIZE);
     this.ignoreWhitespace = ignoreWhitespace;
   }
 

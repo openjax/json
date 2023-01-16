@@ -19,7 +19,6 @@ package org.openjax.json;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
-import java.io.StringReader;
 
 import org.junit.Test;
 import org.libj.io.Readers;
@@ -28,7 +27,7 @@ import org.libj.lang.Numbers;
 public class JsonReaderTest extends AbstractTest {
   @Test
   public void testSetIndex() throws IOException {
-    try (final JsonReader reader = new JsonReader(new StringReader("  [false, true]"), true)) {
+    try (final JsonReader reader = new JsonReader("  [false, true]", true)) {
       // Starting index of the reader is -1, because no tokens have been read
       assertEquals(-1, reader.getIndex());
       assertEquals(0, reader.size());
@@ -166,7 +165,7 @@ public class JsonReaderTest extends AbstractTest {
   @Test
   public void testMarkReset() throws IOException {
     final String json = "{\"a\": \"$\", \"b\": 5, \"c\": false, \"d\": [], \"e\": {}}";
-    final JsonReader reader = new JsonReader(new StringReader(json));
+    final JsonReader reader = new JsonReader(json);
     for (int i = 0; i < 2; ++i) // [N]
       logger.debug(tokenString(reader));
 
