@@ -138,9 +138,8 @@ public final class JsonUtil {
     if (type == null)
       return null;
 
-    // If we have exponential form, and the return type is not BigDecimal, then
-    // convert to non-exponential form (unless we can immediately return a
-    // BigInteger)
+    // If we have exponential form, and the return type is not BigDecimal, then convert
+    // to non-exponential form (unless we can immediately return a BigInteger)
     if (expStart > -1 && !BigDecimal.class.isAssignableFrom(type)) {
       if (type == BigInteger.class)
         return (T)new BigDecimal(str).toBigInteger();
@@ -219,6 +218,7 @@ public final class JsonUtil {
    */
   public static StringBuilder escape(final StringBuilder out, final CharSequence str) {
     assertNotNull(out);
+    assertNotNull(str);
     for (int i = 0, i$ = str.length(); i < i$; ++i) { // [N]
       final char ch = str.charAt(i);
       /*

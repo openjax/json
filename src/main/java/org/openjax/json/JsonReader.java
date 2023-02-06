@@ -307,12 +307,13 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
   public long readToken() throws IOException, JsonParseException {
     final int start;
     final int end;
-    if (index == -1 || getPosition() == getEndPosition(index)) {
+    final int pos = getPosition();
+    if (index == -1 || pos == getEndPosition(index)) {
       start = nextToken();
       end = getEndPosition(index);
     }
     else {
-      start = getPosition();
+      start = pos;
       end = getEndPosition(index);
       setPosition(end);
     }
@@ -568,7 +569,7 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
   /**
    * Read until the end of the next token, and return the start index of the token that was just read. The end index of the token
    * can be retrieved with a subsequent call to {@link #getPosition()}. If the end of content has been reached, this method returns
-   * -1.
+   * {@code -1}.
    *
    * @return The start index of the next token.
    * @throws IOException If an I/O error has occurred.
@@ -576,11 +577,13 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
    * @see #nextToken()
    */
   protected int readTokenStart() throws IOException, JsonParseException {
-    if (0 < size() && index > -1 && getPosition() != getEndPosition(index))
-      throw new IllegalStateException("Buffer position (" + getPosition() + ") misaligned with end position (" + getEndPosition(index) + ") on index (" + index + ")");
+    final int size = size();
+    int pos = getPosition();
+    if (0 < size && index > -1 && pos != getEndPosition(index))
+      throw new IllegalStateException("Buffer position (" + pos + ") misaligned with end position (" + getEndPosition(index) + ") on index (" + index + ")");
 
     // Fast return if there is no need to re-read an already read token
-    if (index < size() - 1)
+    if (index < size - 1)
       return setIndex0(index + 1);
 
     nextStart = 0;
@@ -589,20 +592,21 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
       if (nextStart != 0 || ch == -1)
         return advance(ch, nextStart);
 
+      pos = getPosition();
       final int ch1 = nearestNonWsToken(0);
       final int ch2 = ch1 == -1 ? -1 : nearestNonWsToken(1);
       // read not after property key
       if (ch2 == ':' || ch1 != '"' || !Buffers.get(scope, depth)) {
         if (ch == '{' || ch == '[') {
           if (ch1 == '{')
-            throw new JsonParseException("Expected character '}', but encountered '" + (char)ch + "'", getPosition() - 1);
+            throw new JsonParseException("Expected character '}', but encountered '" + (char)ch + "'", pos - 1);
 
           if (ch == '{')
             Buffers.set(scope, ++depth, DEFAULT_SCOPE_RESIZE_FACTOR);
           else
             Buffers.clear(scope, ++depth);
 
-          nextStart = getPosition();
+          nextStart = pos;
           continue;
         }
 
@@ -617,43 +621,43 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
           }
 
           if (expected != ch)
-            throw new JsonParseException("Expected character '" + expected + "', but encountered '" + (char)ch + "'", getPosition() - 1);
+            throw new JsonParseException("Expected character '" + expected + "', but encountered '" + (char)ch + "'", pos - 1);
 
-          nextStart = getPosition();
+          nextStart = pos;
           continue;
         }
 
         // read ','
         if (ch == ',') {
-          nextStart = getPosition();
+          nextStart = pos;
           continue;
         }
 
         if (depth == -1)
-          throw new JsonParseException("Expected character '{' or '[', but encountered '" + (char)ch + "'", getPosition() - 1);
+          throw new JsonParseException("Expected character '{' or '[', but encountered '" + (char)ch + "'", pos - 1);
 
         // read property key
-        if (Buffers.get(scope, depth) && ch1 != ':') {
+        if (ch1 != ':' && Buffers.get(scope, depth)) {
           if (ch != '"')
-            throw new JsonParseException("Expected character '\"', but encountered '" + (char)ch + "'", getPosition() - 1);
+            throw new JsonParseException("Expected character '\"', but encountered '" + (char)ch + "'", pos - 1);
 
-          final int start = getPosition();
+          final int start = pos;
           ch = readQuoted();
           return advance(ch, start);
         }
       }
       else if (ch != ':') {
-        throw new JsonParseException("Expected character ':', but encountered '" + (char)ch + "'", getPosition() - 1);
+        throw new JsonParseException("Expected character ':', but encountered '" + (char)ch + "'", pos - 1);
       }
 
       // Read property value or array member
-      if (!Buffers.get(scope, depth) || ch1 == ':') {
-        final int start = getPosition(); // 3502
+      if (ch1 == ':' || !Buffers.get(scope, depth)) {
+        final int start = pos; // 3502
         ch = ch == '"' ? readQuoted() : readUnquoted(ch);
         return advance(ch, start);
       }
 
-      nextStart = getPosition();
+      nextStart = pos;
     }
     while ((ch = super.read()) != -1);
 
@@ -743,11 +747,12 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
     if (index == -1)
       return ch;
 
-    if (!ignoreWhitespace && depth != -1 && start != getPosition())
+    final int pos = getPosition();
+    if (!ignoreWhitespace && depth != -1 && start != pos)
       nextStart = start;
 
     if (depth == -1 && ch != -1)
-      throw new JsonParseException("No content is expected at this point: " + (char)ch, getPosition() - 1);
+      throw new JsonParseException("No content is expected at this point: " + (char)ch, pos - 1);
 
     return ch;
   }
