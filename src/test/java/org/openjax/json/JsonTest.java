@@ -49,6 +49,7 @@ public class JsonTest {
 
     for (int i = 0; i < 100; ++i) { // [N]
       final String json = JSON.toString(object, i);
+//      System.err.println(json + "\n");
       assertEquals(json, JSON.toString(JSON.parse(json), i));
     }
   }

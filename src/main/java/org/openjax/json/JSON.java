@@ -24,7 +24,6 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -33,7 +32,6 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 import org.libj.lang.Numbers;
-import org.libj.lang.Strings;
 import org.libj.util.CollectionUtil;
 import org.libj.util.function.BooleanFunction;
 import org.libj.util.function.ObjBiIntFunction;
@@ -410,22 +408,8 @@ public final class JSON {
     }
   }
 
-  private static final String[] indentsArray = {"", " ", "  ", "   ", "    ", "     ", "      ", "       ", "        ", "         ", "          ", "           ", "            ", "             ", "              ", "               ", "                ", "                 ", "                  ", "                   ", "                    "};
-  private static final Map<Integer,String> indentsMap = new HashMap<>();
-
-  private static String makeIndent(final int indent) {
-    if (indent <= 20)
-      return indentsArray[indent];
-
-    String spaces = indentsMap.get(indent);
-    if (spaces == null)
-      indentsMap.put(indent, spaces = Strings.repeat(' ', indent));
-
-    return spaces;
-  }
-
   @SuppressWarnings("unchecked")
-  private static StringBuilder encode(final StringBuilder builder, final Object obj, final int indent, final String spaces) {
+  private static StringBuilder encode(final StringBuilder builder, final Object obj, final int indent, final int spaces) {
     if (obj == null)
       return builder.append("null");
 
@@ -594,32 +578,36 @@ public final class JSON {
    */
   public static String toString(final Map<String,?> object, final int indent) {
     assertNotNegative(indent, "indent (%d) must be non-negative", indent);
-    return object == null ? "null" : toString(new StringBuilder(), object, indent, indent == 0 ? null : makeIndent(indent)).toString();
+    return object == null ? "null" : toString(new StringBuilder(), object, indent, indent == 0 ? -1 : 0).toString();
   }
 
-  private static StringBuilder toString(final StringBuilder builder, final Map<String,?> object, final int indent, final String spaces) {
+  private static StringBuilder toString(final StringBuilder builder, final Map<String,?> object, final int indent, final int spaces) {
     builder.append('{');
     if (object.size() > 0) {
       for (final Map.Entry<String,?> entry : object.entrySet()) { // [S]
-        if (spaces != null)
-          builder.append('\n').append(spaces);
+        if (spaces != -1) {
+          builder.append('\n');
+          for (int i = 0, i$ = spaces + indent; i < i$; ++i)
+            builder.append(' ');
+        }
 
         builder.append('"').append(JsonUtil.escape(entry.getKey())).append("\":");
-        if (spaces != null)
+        if (spaces != -1)
           builder.append(' ');
 
-        JSON.encode(builder, entry.getValue(), indent, spaces == null ? null : makeIndent(spaces.length() + indent));
+        JSON.encode(builder, entry.getValue(), indent, spaces == -1 ? -1 : spaces + indent);
         builder.append(',');
       }
 
-      if (spaces == null)
+      if (spaces == -1)
         builder.setLength(builder.length() - 1);
       else
         builder.setCharAt(builder.length() - 1, '\n');
     }
 
-    if (spaces != null)
-      builder.append(makeIndent(spaces.length() - indent));
+    if (spaces != -1)
+      for (int i = 0, i$ = spaces; i < i$; ++i)
+        builder.append(' ');
 
     return builder.append('}');
   }
@@ -661,48 +649,52 @@ public final class JSON {
    */
   public static String toString(final List<?> array, final int indent) {
     assertNotNegative(indent, "indent (%d) must be non-negative", indent);
-    return array == null ? "null" : toString(new StringBuilder(), array, indent, indent == 0 ? null : makeIndent(indent)).toString();
+    return array == null ? "null" : toString(new StringBuilder(), array, indent, indent == 0 ? -1 : 0).toString();
   }
 
-  private static StringBuilder toString(final StringBuilder builder, final List<?> array, final int indent, final String spaces) {
+  private static StringBuilder toString(final StringBuilder builder, final List<?> array, final int indent, final int spaces) {
     builder.append('[');
     boolean backUp = false;
     final int size = array.size();
     if (size > 0) {
       if (CollectionUtil.isRandomAccess(array)) {
         for (int i = 0; i < size; ++i) // [RA]
-          backUp = toString(builder, array.get(i), spaces, indent, backUp, i);
+          backUp = toString(builder, array.get(i), indent, spaces == -1 ? -1 : spaces + indent, backUp, i);
       }
       else {
         final Iterator<?> iterator = array.iterator();
         for (int i = 0; i < size; ++i) // [I]
-          backUp = toString(builder, iterator.next(), spaces, indent, backUp, i);
+          backUp = toString(builder, iterator.next(), indent, spaces == -1 ? -1 : spaces + indent, backUp, i);
       }
 
-      if (backUp || spaces == null) {
-        builder.setLength(builder.length() - 1);
+      final int len = builder.length();
+      if (backUp || spaces == -1) {
+        builder.setLength(len - 1);
       }
       else {
-        builder.setCharAt(builder.length() - 1, '\n');
-        builder.append(makeIndent(spaces.length() - indent));
+        builder.setCharAt(len - 1, '\n');
+        for (int i = 0, i$ = spaces; i < i$; ++i)
+          builder.append(' ');
       }
     }
 
     return builder.append(']');
   }
 
-  private static boolean toString(final StringBuilder builder, final Object member, final String spaces, final int indent, boolean backUp, final int i) {
+  private static boolean toString(final StringBuilder builder, final Object member, final int indent, final int spaces, boolean backUp, final int i) {
     if (member instanceof Map || member instanceof List) {
-      if (i > 0 && spaces != null)
+      if (i > 0 && spaces != -1)
         builder.append(' ');
       else
         backUp = true;
     }
-    else if (spaces != null) {
-      builder.append('\n').append(spaces);
+    else if (spaces != -1) {
+      builder.append('\n');
+      for (int j = 0, j$ = spaces; j < j$; ++j)
+        builder.append(' ');
     }
 
-    JSON.encode(builder, member, indent, spaces == null ? null : makeIndent(spaces.length()));
+    JSON.encode(builder, member, indent, spaces == -1 ? -1 : spaces);
     builder.append(',');
     return backUp;
   }
