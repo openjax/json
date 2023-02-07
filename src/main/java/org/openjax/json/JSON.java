@@ -605,9 +605,8 @@ public final class JSON {
         builder.setCharAt(builder.length() - 1, '\n');
     }
 
-    if (spaces != -1)
-      for (int i = 0, i$ = spaces; i < i$; ++i)
-        builder.append(' ');
+    for (int i = 0, i$ = spaces; i < i$; ++i)
+      builder.append(' ');
 
     return builder.append('}');
   }

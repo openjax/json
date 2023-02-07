@@ -16,8 +16,6 @@
 
 package org.openjax.json;
 
-import static org.libj.lang.Assertions.*;
-
 import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -65,15 +63,16 @@ public final class JsonUtil {
    *
    * @param <T> The type parameter for the return instance.
    * @param type The class of the return instance.
-   * @param str The string to parse.
+   * @param str The {@link CharSequence} to parse.
    * @return An instance of class {@code type} representing the parsed string.
    * @throws JsonParseException If a parsing error has occurred.
-   * @throws IllegalArgumentException If {@code str} is null, or if the specified string is empty, or if an instance of the specific
-   *           class type does not define {@code <init>(String)}, {@code valueOf(String)}, or {@code fromString(String)}.
+   * @throws IllegalArgumentException If the specified string is empty, or if an instance of the specific class type does not define
+   *           {@code <init>(String)}, {@code valueOf(String)}, or {@code fromString(String)}.
+   * @throws NullPointerException If {@code str} is null.
    */
   @SuppressWarnings("unchecked")
-  public static <T extends Number>T parseNumber(final Class<T> type, String str) throws JsonParseException {
-    if (assertNotNull(str).length() == 0)
+  public static <T extends Number>T parseNumber(final Class<T> type, CharSequence str) throws JsonParseException {
+    if (str.length() == 0)
       throw new IllegalArgumentException("Empty string");
 
     int i = 0;
@@ -142,37 +141,37 @@ public final class JsonUtil {
     // to non-exponential form (unless we can immediately return a BigInteger)
     if (expStart > -1 && !BigDecimal.class.isAssignableFrom(type)) {
       if (type == BigInteger.class)
-        return (T)new BigDecimal(str).toBigInteger();
+        return (T)new BigDecimal(str.toString()).toBigInteger();
 
-      str = new BigDecimal(str).toPlainString();
+      str = new BigDecimal(str.toString()).toPlainString();
     }
 
     if (type == BigDecimal.class)
-      return (T)new BigDecimal(str);
+      return (T)new BigDecimal(str.toString());
 
     if (type == BigInteger.class)
-      return (T)new BigInteger(str);
+      return (T)new BigInteger(str.toString());
 
     if (type == Long.class || type == long.class)
-      return (T)Long.valueOf(str);
+      return (T)Long.valueOf(str.toString());
 
     if (type == Integer.class || type == int.class)
-      return (T)Integer.valueOf(str);
+      return (T)Integer.valueOf(str.toString());
 
     if (type == Short.class || type == short.class)
-      return (T)Short.valueOf(str);
+      return (T)Short.valueOf(str.toString());
 
     if (type == Byte.class || type == byte.class)
-      return (T)Byte.valueOf(str);
+      return (T)Byte.valueOf(str.toString());
 
     if (type == Double.class || type == double.class)
-      return (T)Double.valueOf(str);
+      return (T)Double.valueOf(str.toString());
 
     if (type == Float.class || type == float.class)
-      return (T)Float.valueOf(str);
+      return (T)Float.valueOf(str.toString());
 
     try {
-      return Classes.newInstance(type, str);
+      return Classes.newInstance(type, str.toString());
     }
     catch (final IllegalAccessException | InstantiationException | InvocationTargetException e) {
       throw new UnsupportedOperationException("Unsupported type: " + type.getName(), e);
@@ -192,11 +191,11 @@ public final class JsonUtil {
    *
    * @param str The string to be escaped.
    * @return The escaped representation of the specified string.
-   * @throws IllegalArgumentException If {@code str} is null.
+   * @throws NullPointerException If {@code str} is null.
    * @see #unescape(CharSequence)
    */
   public static StringBuilder escape(final CharSequence str) {
-    return escape(new StringBuilder(assertNotNull(str).length()), str);
+    return escape(new StringBuilder(str.length()), str);
   }
 
   /**
@@ -213,12 +212,10 @@ public final class JsonUtil {
    * @param out The {@link StringBuilder} to which the escaped contents of {@code str} are to be appended.
    * @param str The string to be escaped.
    * @return The provided {@link StringBuilder} with the escaped representation of {@code str}.
-   * @throws IllegalArgumentException If {@code out} or {@code str} is null.
+   * @throws NullPointerException If {@code out} or {@code str} is null.
    * @see #unescape(CharSequence)
    */
   public static StringBuilder escape(final StringBuilder out, final CharSequence str) {
-    assertNotNull(out);
-    assertNotNull(str);
     for (int i = 0, i$ = str.length(); i < i$; ++i) { // [N]
       final char ch = str.charAt(i);
       /*
@@ -271,12 +268,12 @@ public final class JsonUtil {
    * @param offset The initial offset.
    * @param len The length.
    * @return The escaped representation of the specified {@code char[]}.
-   * @throws IllegalArgumentException If {@code chars} is null.
+   * @throws NullPointerException If {@code chars} is null.
    * @throws ArrayIndexOutOfBoundsException If {@code offset} is negative, or {@code offset + len >= chars.length}.
    * @see #unescape(char[],int,int)
    */
   public static StringBuilder escape(final char[] chars, final int offset, final int len) {
-    return escape(new StringBuilder(assertNotNull(chars).length), chars, offset, len);
+    return escape(new StringBuilder(chars.length), chars, offset, len);
   }
 
   /**
@@ -295,12 +292,11 @@ public final class JsonUtil {
    * @param offset The initial offset.
    * @param len The length.
    * @return The provided {@link StringBuilder} with the escaped representation of the specified {@code char[]}.
-   * @throws IllegalArgumentException If {@code out} or {@code chars} is null.
+   * @throws NullPointerException If {@code out} or {@code chars} is null.
    * @throws ArrayIndexOutOfBoundsException If {@code offset} is negative, or {@code offset + len >= chars.length}.
    * @see #unescape(char[],int,int)
    */
   public static StringBuilder escape(final StringBuilder out, final char[] chars, final int offset, final int len) {
-    assertNotNull(out);
     for (int i = offset, length = offset + len; i < length; ++i) { // [N]
       final char ch = chars[i];
       /*
@@ -350,12 +346,12 @@ public final class JsonUtil {
    * @param str The string to be unescaped.
    * @return The unescaped representation of the specified string, with the escaped form of the double quote ({@code "\""}) and
    *         reverse solidus ({@code "\\"}) preserved.
-   * @throws IllegalArgumentException If {@code str} is null.
+   * @throws NullPointerException If {@code str} is null.
    * @see #escape(CharSequence)
    * @see #unescape(CharSequence)
    */
   public static StringBuilder unescapeForString(final CharSequence str) {
-    return unescapeForString(new StringBuilder(assertNotNull(str).length()), str);
+    return unescapeForString(new StringBuilder(str.length()), str);
   }
 
   /**
@@ -371,12 +367,11 @@ public final class JsonUtil {
    * @param str The string to be unescaped.
    * @return The provided {@link StringBuilder} with the unescaped representation of of {@code str}, with the escaped form of the
    *         double quote ({@code "\""}) and reverse solidus ({@code "\\"}) preserved.
-   * @throws IllegalArgumentException If {@code out} or {@code str} is null.
+   * @throws NullPointerException If {@code out} or {@code str} is null.
    * @see #escape(CharSequence)
    * @see #unescape(CharSequence)
    */
   public static StringBuilder unescapeForString(final StringBuilder out, final CharSequence str) {
-    assertNotNull(out);
     for (int i = 0, i$ = str.length(); i < i$; ++i) { // [N]
       char ch = str.charAt(i);
       if (ch == '\\') {
@@ -424,13 +419,13 @@ public final class JsonUtil {
    * @param len The length.
    * @return The unescaped representation of the specified string, with the escaped form of the double quote ({@code "\""}) and
    *         reverse solidus ({@code "\\"}) preserved.
-   * @throws IllegalArgumentException If {@code chars} is null.
+   * @throws NullPointerException If {@code chars} is null.
    * @throws ArrayIndexOutOfBoundsException If {@code offset} is negative, or {@code offset + len >= chars.length}.
    * @see #escape(char[],int,int)
    * @see #unescape(char[],int,int)
    */
   public static StringBuilder unescapeForString(final char[] chars, final int offset, final int len) {
-    return unescapeForString(new StringBuilder(assertNotNull(chars).length), chars, offset, len);
+    return unescapeForString(new StringBuilder(chars.length), chars, offset, len);
   }
 
   /**
@@ -448,13 +443,12 @@ public final class JsonUtil {
    * @param len The length.
    * @return The provided {@link StringBuilder} with the unescaped representation of {@code chars}, with the escaped form of the
    *         double quote ({@code "\""}) and reverse solidus ({@code "\\"}) preserved.
-   * @throws IllegalArgumentException If {@code out} or {@code chars} is null.
+   * @throws NullPointerException If {@code out} or {@code chars} is null.
    * @throws ArrayIndexOutOfBoundsException If {@code offset} is negative, or {@code offset + len >= chars.length}.
    * @see #escape(char[],int,int)
    * @see #unescape(char[],int,int)
    */
   public static StringBuilder unescapeForString(final StringBuilder out, final char[] chars, final int offset, final int len) {
-    assertNotNull(out);
     for (int i = offset, length = offset + len; i < length; ++i) { // [A]
       char ch = chars[i];
       if (ch == '\\') {
@@ -489,11 +483,11 @@ public final class JsonUtil {
    *
    * @param str The string to be unescaped.
    * @return The unescaped representation of the specified string.
-   * @throws IllegalArgumentException If {@code str} is null.
+   * @throws NullPointerException If {@code str} is null.
    * @see #escape(CharSequence)
    */
   public static StringBuilder unescape(final CharSequence str) {
-    return unescape(new StringBuilder(assertNotNull(str).length()), str);
+    return unescape(new StringBuilder(str.length()), str);
   }
 
   /**
@@ -503,11 +497,10 @@ public final class JsonUtil {
    * @param out The {@link StringBuilder} to which the unescaped contents of {@code str} are to be appended.
    * @param str The string to be unescaped.
    * @return The provided {@link StringBuilder} with the unescaped representation of {@code str}.
-   * @throws IllegalArgumentException If {@code out} or {@code str} is null.
+   * @throws NullPointerException If {@code out} or {@code str} is null.
    * @see #escape(CharSequence)
    */
   public static StringBuilder unescape(final StringBuilder out, final CharSequence str) {
-    assertNotNull(out);
     for (int i = 0, i$ = str.length(); i < i$; ++i) { // [N]
       char ch = str.charAt(i);
       if (ch == '\\') {
@@ -547,12 +540,12 @@ public final class JsonUtil {
    * @param offset The initial offset.
    * @param len The length.
    * @return The unescaped representation of the specified string.
-   * @throws IllegalArgumentException If {@code chars} is null.
+   * @throws NullPointerException If {@code chars} is null.
    * @throws ArrayIndexOutOfBoundsException If {@code offset} is negative, or {@code offset + len >= chars.length}.
    * @see #escape(char[],int,int)
    */
   public static StringBuilder unescape(final char[] chars, final int offset, final int len) {
-    return unescape(new StringBuilder(assertNotNull(chars).length), chars, offset, len);
+    return unescape(new StringBuilder(chars.length), chars, offset, len);
   }
 
   /**
@@ -564,12 +557,11 @@ public final class JsonUtil {
    * @param offset The initial offset.
    * @param len The length.
    * @return The provided {@link StringBuilder} with the unescaped representation of {@code chars}.
-   * @throws IllegalArgumentException If {@code out} or {@code chars} is null.
+   * @throws NullPointerException If {@code out} or {@code chars} is null.
    * @throws ArrayIndexOutOfBoundsException If {@code offset} is negative, or {@code offset + len >= chars.length}.
    * @see #escape(char[],int,int)
    */
   public static StringBuilder unescape(final StringBuilder out, final char[] chars, final int offset, final int len) {
-    assertNotNull(out);
     for (int i = offset, length = offset + len; i < length; ++i) { // [A]
       char ch = chars[i];
       if (ch == '\\') {
