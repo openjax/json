@@ -19,16 +19,16 @@ package org.openjax.json;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
-import java.io.StringReader;
 
 import org.junit.Test;
 import org.libj.io.Readers;
+import org.libj.io.UnsynchronizedStringReader;
 
 public class JsonReplayReaderTest {
   @Test
   public void test() throws IOException {
     final String expected = "{\"foo\":\"a\nb\rc\\\"d\\\\e\bf\bgみどりいろ\"}";
-    try (final JsonReplayReader reader = new JsonReplayReader(new StringReader("{\"foo\":\"a\\nb\\rc\\\"d\\\\e\\bf\\bg\\u307f\\u3069\\u308a\\u3044\\u308d\"}"))) {
+    try (final JsonReplayReader reader = new JsonReplayReader(new UnsynchronizedStringReader("{\"foo\":\"a\\nb\\rc\\\"d\\\\e\\bf\\bg\\u307f\\u3069\\u308a\\u3044\\u308d\"}"))) {
       reader.mark(0);
       assertEquals(expected, Readers.readFully(reader));
       reader.reset();
