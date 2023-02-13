@@ -21,7 +21,6 @@ import static org.openjax.json.JSON.Type.*;
 
 import java.io.IOException;
 import java.io.Reader;
-import java.io.StringReader;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -31,6 +30,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+import org.libj.io.UnsynchronizedStringReader;
 import org.libj.lang.Numbers;
 import org.libj.util.CollectionUtil;
 import org.libj.util.function.BooleanFunction;
@@ -182,10 +182,10 @@ public final class JSON {
    * @throws IOException If an I/O error has occurred.
    * @throws JsonParseException If a violation has occurred of the JSON document well-formed criteria as expressed by the RFC 4627
    *           specification.
-   * @throws IllegalArgumentException If {@code reader} is null.
+   * @throws NullPointerException If {@code reader} is null.
    */
   public static Object parse(final String json) throws IOException, JsonParseException {
-    try (final StringReader reader = new StringReader(assertNotNull(json))) {
+    try (final Reader reader = new UnsynchronizedStringReader(json)) {
       return parse(reader, null);
     }
   }
@@ -207,10 +207,10 @@ public final class JSON {
    * @throws JsonParseException If a violation has occurred of the JSON document well-formed criteria as expressed by the RFC 4627
    *           specification.
    * @throws IOException If an I/O error has occurred.
-   * @throws IllegalArgumentException If {@code reader} is null.
+   * @throws NullPointerException If {@code reader} is null.
    */
   public static Object parse(final String json, final TypeMap typeMap) throws IOException, JsonParseException {
-    try (final StringReader reader = new StringReader(assertNotNull(json))) {
+    try (final Reader reader = new UnsynchronizedStringReader(json)) {
       return parse(reader, typeMap);
     }
   }
@@ -259,10 +259,10 @@ public final class JSON {
    */
   // FIXME: Test: null, JSON value
   public static Object parse(final Reader reader, final TypeMap typeMap) throws JsonParseException, IOException {
-    final List<Object> stack = new ArrayList<>();
+    final ArrayList<Object> stack = new ArrayList<>();
     try (final JsonReader in = JsonReader.of(reader)) {
       new JsonParser() {
-        private final List<String> propertyNames = new ArrayList<>();
+        private final ArrayList<String> propertyNames = new ArrayList<>();
         private Object current;
         private String propertyName;
 
@@ -347,10 +347,10 @@ public final class JSON {
    * @throws IOException If an I/O error has occurred.
    * @throws JsonParseException If a violation has occurred of the JSON document well-formed criteria as expressed by the RFC 4627
    *           specification.
-   * @throws IllegalArgumentException If {@code json} is null.
+   * @throws NullPointerException If {@code json} is null.
    */
   public static String stripWhitespace(final String json) throws IOException, JsonParseException {
-    try (final StringReader reader = new StringReader(assertNotNull(json))) {
+    try (final Reader reader = new UnsynchronizedStringReader(json)) {
       return stripWhitespace(reader);
     }
   }
@@ -642,9 +642,9 @@ public final class JSON {
    *          placed on a new line.
    * @return A JSON string encoding of the specified {@link List List&lt;?&gt;} representing a JSON array, or {@code null} if
    *         {@code array} is null.
-   * @throws IllegalArgumentException If {@code array} is null, or if a member value of the specified {@link List List&lt;?&gt;} is
-   *           of a class that is not one of {@link Map Map&lt;String,?&gt;}, {@link List List&lt;?&gt;}, {@link String},
-   *           {@link Number}, {@link Boolean} and {@code null}, or if {@code indent} is negative.
+   * @throws IllegalArgumentException If a member value of the specified {@link List List&lt;?&gt;} is of a class that is not one of
+   *           {@link Map Map&lt;String,?&gt;}, {@link List List&lt;?&gt;}, {@link String}, {@link Number}, {@link Boolean} and
+   *           {@code null}, or if {@code indent} is negative.
    */
   public static String toString(final List<?> array, final int indent) {
     assertNotNegative(indent, "indent (%d) must be non-negative", indent);

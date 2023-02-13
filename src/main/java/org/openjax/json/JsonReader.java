@@ -69,7 +69,7 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
    *
    * @param reader The {@link Reader} providing the data stream.
    * @return A {@link JsonReader} with the specified {@link Reader reader} providing the data stream.
-   * @throws IllegalArgumentException If {@code reader} is null.
+   * @throws NullPointerException If {@code reader} is null.
    */
   public static JsonReader of(final Reader reader) {
     return reader instanceof JsonReader ? (JsonReader)reader : new JsonReader(reader);
@@ -93,7 +93,7 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
    * whitespace</b>. This constructor is equivalent to calling {@code new JsonReader(reader, true)}.
    *
    * @param reader The {@link Reader} from which JSON is to be read.
-   * @throws IllegalArgumentException If {@code reader} is null.
+   * @throws NullPointerException If {@code reader} is null.
    */
   public JsonReader(final Reader reader) {
     this(reader, true);
@@ -104,7 +104,7 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
    *
    * @param reader The {@link Reader} from which JSON is to be read.
    * @param ignoreWhitespace If {@code ignoreWhitespace == false}, inter-token whitespace will <b>not</b> be skipped.
-   * @throws IllegalArgumentException If {@code reader} is null.
+   * @throws NullPointerException If {@code reader} is null.
    */
   public JsonReader(final Reader reader, final boolean ignoreWhitespace) {
     super(reader, DEFAULT_BUFFER_SIZE);
@@ -116,7 +116,7 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
    * whitespace</b>. This constructor is equivalent to calling {@code new JsonReader(str, true)}.
    *
    * @param str The string with the JSON document to be read.
-   * @throws IllegalArgumentException If {@code str} is null.
+   * @throws NullPointerException If {@code str} is null.
    */
   public JsonReader(final String str) {
     this(str, true);
@@ -127,7 +127,7 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
    *
    * @param str The string with the JSON document to be read.
    * @param ignoreWhitespace If {@code ignoreWhitespace == false}, inter-token whitespace will <b>not</b> be skipped.
-   * @throws IllegalArgumentException If {@code str} is null.
+   * @throws NullPointerException If {@code str} is null.
    */
   public JsonReader(final String str, final boolean ignoreWhitespace) {
     super(new UnsynchronizedStringReader(str), DEFAULT_BUFFER_SIZE);

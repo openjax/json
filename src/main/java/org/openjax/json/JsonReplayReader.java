@@ -45,7 +45,8 @@ class JsonReplayReader extends ReplayReader {
    *
    * @param in A {@link Reader} providing the underlying stream.
    * @param initialSize An int specifying the initial buffer size of the re-readable buffer.
-   * @throws IllegalArgumentException If {@code in} is null, or if {@code initialSize} is negative.
+   * @throws NullPointerException If {@code in} is null.
+   * @throws IllegalArgumentException If {@code initialSize} is negative.
    */
   JsonReplayReader(final Reader in, final int initialSize) {
     super(in, initialSize);
@@ -56,7 +57,7 @@ class JsonReplayReader extends ReplayReader {
    * re-readable buffer.
    *
    * @param in A {@link Reader} providing the underlying stream.
-   * @throws IllegalArgumentException If {@code in} is null.
+   * @throws NullPointerException If {@code in} is null.
    */
   JsonReplayReader(final Reader in) {
     super(in);

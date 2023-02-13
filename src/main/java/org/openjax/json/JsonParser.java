@@ -16,8 +16,6 @@
 
 package org.openjax.json;
 
-import static org.libj.lang.Assertions.*;
-
 import java.io.IOException;
 
 /**
@@ -33,10 +31,9 @@ public interface JsonParser {
    *         was previously aborted.
    * @throws IOException If an I/O error has occurred.
    * @throws JsonParseException If the content is not a well formed JSON term.
-   * @throws IllegalArgumentException If {@code reader} is null.
+   * @throws NullPointerException If {@code reader} is null.
    */
   default boolean parse(final JsonReader reader) throws IOException, JsonParseException {
-    assertNotNull(reader);
     boolean started = false;
     for (int off, depth = 0; (off = reader.readTokenStart()) != -1;) { // [A]
       final char ch = reader.buf()[off];
