@@ -654,16 +654,17 @@ public final class JSON {
   private static StringBuilder toString(final StringBuilder builder, final List<?> array, final int indent, final int spaces) {
     builder.append('[');
     boolean backUp = false;
-    final int size = array.size();
-    if (size > 0) {
+    final int i$ = array.size();
+    if (i$ > 0) {
       if (CollectionUtil.isRandomAccess(array)) {
-        for (int i = 0; i < size; ++i) // [RA]
+        int i = 0; do // [RA]
           backUp = toString(builder, array.get(i), indent, spaces == -1 ? -1 : spaces + indent, backUp, i);
+        while (++i < i$);
       }
       else {
-        final Iterator<?> iterator = array.iterator();
-        for (int i = 0; i < size; ++i) // [I]
-          backUp = toString(builder, iterator.next(), indent, spaces == -1 ? -1 : spaces + indent, backUp, i);
+        int i = -1; final Iterator<?> it = array.iterator(); do // [I]
+          backUp = toString(builder, it.next(), indent, spaces == -1 ? -1 : spaces + indent, backUp, ++i);
+        while (it.hasNext());
       }
 
       final int len = builder.length();
@@ -672,7 +673,7 @@ public final class JSON {
       }
       else {
         builder.setCharAt(len - 1, '\n');
-        for (int i = 0, i$ = spaces; i < i$; ++i)
+        for (int j = 0, j$ = spaces; j < j$; ++j)
           builder.append(' ');
       }
     }
