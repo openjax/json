@@ -587,7 +587,7 @@ public final class JSON {
       for (final Map.Entry<String,?> entry : object.entrySet()) { // [S]
         if (spaces != -1) {
           builder.append('\n');
-          for (int i = 0, i$ = spaces + indent; i < i$; ++i)
+          for (int i = -indent; i < spaces; ++i) // [N]
             builder.append(' ');
         }
 
@@ -605,7 +605,7 @@ public final class JSON {
         builder.setCharAt(builder.length() - 1, '\n');
     }
 
-    for (int i = 0, i$ = spaces; i < i$; ++i)
+    for (int i = 0; i < spaces; ++i) // [N]
       builder.append(' ');
 
     return builder.append('}');
@@ -673,7 +673,7 @@ public final class JSON {
       }
       else {
         builder.setCharAt(len - 1, '\n');
-        for (int j = 0, j$ = spaces; j < j$; ++j)
+        for (int j = 0; j < spaces; ++j) // [N]
           builder.append(' ');
       }
     }
@@ -690,7 +690,7 @@ public final class JSON {
     }
     else if (spaces != -1) {
       builder.append('\n');
-      for (int j = 0, j$ = spaces; j < j$; ++j)
+      for (int j = 0; j < spaces; ++j) // [N]
         builder.append(' ');
     }
 
