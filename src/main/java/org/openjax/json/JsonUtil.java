@@ -64,6 +64,8 @@ public final class JsonUtil {
    * @param <T> The type parameter for the return instance.
    * @param type The class of the return instance.
    * @param str The {@link CharSequence} to parse.
+   * @param strict Whether to enforce strict compliance to the <a href="https://www.ietf.org/rfc/rfc4627.txt">JSON Specification</a>
+   *          while parsing the JSON document.
    * @return An instance of class {@code type} representing the parsed string.
    * @throws JsonParseException If a parsing error has occurred.
    * @throws IllegalArgumentException If the specified string is empty, or if an instance of the specific class type does not define
@@ -71,7 +73,7 @@ public final class JsonUtil {
    * @throws NullPointerException If {@code str} is null.
    */
   @SuppressWarnings("unchecked")
-  public static <T extends Number>T parseNumber(final Class<T> type, CharSequence str) throws JsonParseException {
+  public static <T extends Number>T parseNumber(final Class<T> type, CharSequence str, final boolean strict) throws JsonParseException {
     if (str.length() == 0)
       throw new IllegalArgumentException("Empty string");
 
@@ -122,7 +124,8 @@ public final class JsonUtil {
           break;
         }
         else if (last == '0' && i == expStart + (first == '~' ? 2 : 1)) {
-          throw new JsonParseException("Leading zeros are not allowed", i - 1);
+          if (strict)
+            throw new JsonParseException("Leading zeros are not allowed", i - 1);
         }
       }
 

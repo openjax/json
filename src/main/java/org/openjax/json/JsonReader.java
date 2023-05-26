@@ -87,16 +87,34 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
   private int nextStart = 0;
 
   private final boolean ignoreWhitespace;
+  private final boolean strict;
 
   /**
-   * Construct a new {@link JsonReader} for JSON content to be read from the specified {@link Reader}, <b>that ignores inter-token
-   * whitespace</b>. This constructor is equivalent to calling {@code new JsonReader(reader, true)}.
+   * Construct a new {@link JsonReader} for JSON content to be read from the specified {@link Reader}, that <b>ignores inter-token
+   * whitespace</b>, and <b>enforces strict compliance to the <a href="https://www.ietf.org/rfc/rfc4627.txt">JSON
+   * Specification</a></b>.
+   * <p>
+   * This constructor is equivalent to calling {@code new JsonReader(reader, true, true)}.
    *
    * @param reader The {@link Reader} from which JSON is to be read.
    * @throws NullPointerException If {@code reader} is null.
    */
   public JsonReader(final Reader reader) {
-    this(reader, true);
+    this(reader, true, true);
+  }
+
+  /**
+   * Construct a new {@link JsonReader} for JSON content to be read from the specified {@link Reader}, that <b>enforces strict
+   * compliance to the <a href="https://www.ietf.org/rfc/rfc4627.txt">JSON Specification</a></b>.
+   * <p>
+   * This constructor is equivalent to calling {@code new JsonReader(reader, ignoreWhitespace, true)}.
+   *
+   * @param reader The {@link Reader} from which JSON is to be read.
+   * @param ignoreWhitespace If {@code ignoreWhitespace == false}, inter-token whitespace will <b>not</b> be skipped.
+   * @throws NullPointerException If {@code reader} is null.
+   */
+  public JsonReader(final Reader reader, final boolean ignoreWhitespace) {
+    this(reader, ignoreWhitespace, true);
   }
 
   /**
@@ -104,16 +122,22 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
    *
    * @param reader The {@link Reader} from which JSON is to be read.
    * @param ignoreWhitespace If {@code ignoreWhitespace == false}, inter-token whitespace will <b>not</b> be skipped.
+   * @param strict Whether to enforce strict compliance to the <a href="https://www.ietf.org/rfc/rfc4627.txt">JSON Specification</a>
+   *          while parsing the JSON document.
    * @throws NullPointerException If {@code reader} is null.
    */
-  public JsonReader(final Reader reader, final boolean ignoreWhitespace) {
+  public JsonReader(final Reader reader, final boolean ignoreWhitespace, final boolean strict) {
     super(reader, DEFAULT_BUFFER_SIZE);
     this.ignoreWhitespace = ignoreWhitespace;
+    this.strict = strict;
   }
 
   /**
    * Construct a new {@link JsonReader} for JSON content to be read from the specified string, <b>that ignores inter-token
-   * whitespace</b>. This constructor is equivalent to calling {@code new JsonReader(str, true)}.
+   * whitespace</b>, and <b>enforces strict compliance to the <a href="https://www.ietf.org/rfc/rfc4627.txt">JSON
+   * Specification</a></b>.
+   * <p>
+   * This constructor is equivalent to calling {@code new JsonReader(str, true, true)}.
    *
    * @param str The string with the JSON document to be read.
    * @throws NullPointerException If {@code str} is null.
@@ -123,15 +147,52 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
   }
 
   /**
-   * Construct a new {@link JsonReader} for JSON content to be read from the specified string.
+   * Construct a new {@link JsonReader} for JSON content to be read from the specified string, that <b>enforces strict compliance to
+   * the <a href="https://www.ietf.org/rfc/rfc4627.txt">JSON Specification</a></b>.
+   * <p>
+   * This constructor is equivalent to calling {@code new JsonReader(str, ignoreWhitespace, true)}.
    *
    * @param str The string with the JSON document to be read.
    * @param ignoreWhitespace If {@code ignoreWhitespace == false}, inter-token whitespace will <b>not</b> be skipped.
    * @throws NullPointerException If {@code str} is null.
    */
   public JsonReader(final String str, final boolean ignoreWhitespace) {
+    this(str, ignoreWhitespace, true);
+  }
+
+  /**
+   * Construct a new {@link JsonReader} for JSON content to be read from the specified string.
+   *
+   * @param str The string with the JSON document to be read.
+   * @param strict Whether to enforce strict compliance to the <a href="https://www.ietf.org/rfc/rfc4627.txt">JSON Specification</a>
+   *          while parsing the JSON document.
+   * @param ignoreWhitespace If {@code ignoreWhitespace == false}, inter-token whitespace will <b>not</b> be skipped.
+   * @throws NullPointerException If {@code str} is null.
+   */
+  public JsonReader(final String str, final boolean ignoreWhitespace, final boolean strict) {
     super(new UnsynchronizedStringReader(str), DEFAULT_BUFFER_SIZE);
     this.ignoreWhitespace = ignoreWhitespace;
+    this.strict = strict;
+  }
+
+  /**
+   * Returns whether this {@link JsonReader} skips inter-token whitespace.
+   *
+   * @return Whether this {@link JsonReader} skips inter-token whitespace.
+   */
+  public boolean isIgnoreWhitespace() {
+    return ignoreWhitespace;
+  }
+
+  /**
+   * Returns whether this {@link JsonReader} enforces strict compliance to the <a href="https://www.ietf.org/rfc/rfc4627.txt">JSON
+   * Specification</a>.
+   *
+   * @return Whether this {@link JsonReader} enforces strict compliance to the <a href="https://www.ietf.org/rfc/rfc4627.txt">JSON
+   *         Specification</a>.
+   */
+  public boolean isStrict() {
+    return strict;
   }
 
   /**
@@ -826,7 +887,8 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
             break;
           }
           else if (prev == '0' && i == (first == '~' ? 2 : 1)) {
-            throw new JsonParseException("Leading zeros are not allowed", getPosition() - 2);
+            if (strict)
+              throw new JsonParseException("Leading zeros are not allowed", getPosition() - 2);
           }
         }
 

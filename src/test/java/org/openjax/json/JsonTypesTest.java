@@ -37,12 +37,12 @@ public class JsonTypesTest {
   }
 
   private static void testPass(final String number, final Class<? extends Number> type) {
-    JsonUtil.parseNumber(type, number);
+    JsonUtil.parseNumber(type, number, true);
   }
 
   private static void testFail(final Class<? extends Exception> cls, final String number) {
     try {
-      JsonUtil.parseNumber(BigDecimal.class, number);
+      JsonUtil.parseNumber(BigDecimal.class, number, true);
       fail("Expected " + cls.getSimpleName());
     }
     catch (final Exception e) {
