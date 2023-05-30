@@ -73,7 +73,7 @@ public final class JsonUtil {
    * @throws NullPointerException If {@code str} is null.
    */
   @SuppressWarnings("unchecked")
-  public static <T extends Number>T parseNumber(final Class<T> type, CharSequence str, final boolean strict) throws JsonParseException {
+  public static <T extends Number>T parseNumber(final Class<? extends T> type, CharSequence str, final boolean strict) throws JsonParseException {
     if (str.length() == 0)
       throw new IllegalArgumentException("Empty string");
 
