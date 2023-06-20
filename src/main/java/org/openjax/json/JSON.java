@@ -577,7 +577,7 @@ public final class JSON {
    *           {@link String}, {@link Number}, {@link Boolean} and {@code null}, or if {@code indent} is negative.
    */
   public static String toString(final Map<String,?> object, final int indent) {
-    assertNotNegative(indent, "indent (%d) must be non-negative", indent);
+    assertNotNegative(indent, () -> "indent (" + indent + ") must be non-negative");
     return object == null ? "null" : toString(new StringBuilder(), object, indent, indent == 0 ? -1 : 0).toString();
   }
 
@@ -647,7 +647,7 @@ public final class JSON {
    *           {@code null}, or if {@code indent} is negative.
    */
   public static String toString(final List<?> array, final int indent) {
-    assertNotNegative(indent, "indent (%d) must be non-negative", indent);
+    assertNotNegative(indent, () -> "indent (" + indent + ") must be non-negative");
     return array == null ? "null" : toString(new StringBuilder(), array, indent, indent == 0 ? -1 : 0).toString();
   }
 
