@@ -72,18 +72,8 @@
 
     <dependency>
       <groupId>org.libj</groupId>
-      <artifactId>lang</artifactId>
-      <version>0.8.1-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>org.libj</groupId>
       <artifactId>io</artifactId>
       <version>0.7.9-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>org.libj</groupId>
-      <artifactId>math</artifactId>
-      <version>0.6.8-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

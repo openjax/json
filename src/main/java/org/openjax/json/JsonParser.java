@@ -27,8 +27,8 @@ public interface JsonParser {
    *
    * @param reader The {@link JsonReader} from which JSON is read.
    * @return {@code true} if the document has been read entirely. {@code false} if parsing was aborted by a handler callback. If a
-   *         handler aborts parsing, subsequent calls to {@link #parse(JsonReader)} will resume from the position at which parsing
-   *         was previously aborted.
+   *         handler aborts parsing, subsequent calls to {@link #parse(JsonReader)} will resume from the position at which parsing was
+   *         previously aborted.
    * @throws IOException If an I/O error has occurred.
    * @throws JsonParseException If the content is not a well formed JSON term.
    * @throws NullPointerException If {@code reader} is null.
@@ -117,6 +117,7 @@ public interface JsonParser {
    * Called when <u>token characters</u> are encountered.
    * <p>
    * Token characters are:
+   * @formatter:off
    * <ul><li>A property key:
    * <ul><li>A string that matches:
    * <pre>
@@ -138,6 +139,7 @@ public interface JsonParser {
    * {@code ^null|true|false$}
    * </pre>
    * </li></ul></li></ul>
+   * @formatter:on
    *
    * @param chars A reference to the underlying {@code char[]} buffer.
    * @param start The start index of the token.

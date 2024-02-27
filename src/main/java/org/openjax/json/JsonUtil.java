@@ -42,11 +42,18 @@ public final class JsonUtil {
   }
 
   /**
-   * Tests whether the specified {@code int} is JSON whitespace char, which is
-   * one of:
+   * Tests whether the specified {@code int} is JSON whitespace char, which is one of:
    *
    * <pre>
-   * {@code ' '}, {@code '\n'}, {@code '\r'}, or {@code '\t'}
+   * {@code
+   * ' '
+   * }, {@code
+   * '\n'
+   * }, {@code
+   * '\r'
+   * }, or {@code
+   * '\t'
+   * }
    * </pre>
    *
    * @param ch The {@code int} to test.
@@ -73,7 +80,7 @@ public final class JsonUtil {
    * @throws NullPointerException If {@code str} is null.
    */
   @SuppressWarnings("unchecked")
-  public static <T extends Number>T parseNumber(final Class<? extends T> type, CharSequence str, final boolean strict) throws JsonParseException {
+  public static <T extends Number> T parseNumber(final Class<? extends T> type, CharSequence str, final boolean strict) throws JsonParseException {
     if (str.length() == 0)
       throw new IllegalArgumentException("Empty string");
 
@@ -182,9 +189,9 @@ public final class JsonUtil {
   }
 
   /**
-   * Escapes characters in the specified string that must be escaped as defined in
-   * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section 2.5</a>. This includes quotation mark ({@code "\""}), reverse
-   * solidus ({@code "\\"}), and the control characters ({@code U+0000} through {@code U+001F}).
+   * Escapes characters in the specified string that must be escaped as defined in <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC
+   * 4627, Section 2.5</a>. This includes quotation mark ({@code "\""}), reverse solidus ({@code "\\"}), and the control characters
+   * ({@code U+0000} through {@code U+001F}).
    * <p>
    * This method escapes the following characters in string-literal two-character form:
    *
@@ -202,9 +209,9 @@ public final class JsonUtil {
   }
 
   /**
-   * Escapes characters in the specified string that must be escaped as defined in
-   * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section 2.5</a>. This includes quotation mark ({@code "\""}), reverse
-   * solidus ({@code "\\"}), and the control characters ({@code U+0000} through {@code U+001F}).
+   * Escapes characters in the specified string that must be escaped as defined in <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC
+   * 4627, Section 2.5</a>. This includes quotation mark ({@code "\""}), reverse solidus ({@code "\\"}), and the control characters
+   * ({@code U+0000} through {@code U+001F}).
    * <p>
    * This method escapes the following characters in string-literal two-character form:
    *
@@ -222,29 +229,35 @@ public final class JsonUtil {
     for (int i = 0, i$ = str.length(); i < i$; ++i) { // [N]
       final char ch = str.charAt(i);
       /*
-       * From RFC 4627, "All Unicode characters may be placed within the quotation marks except for the characters that must be
-       * escaped: quotation mark, reverse solidus, and the control characters (U+0000 through U+001F)."
+       * From RFC 4627, "All Unicode characters may be placed within the quotation marks except for the characters that must be escaped:
+       * quotation mark, reverse solidus, and the control characters (U+0000 through U+001F)."
        */
       switch (ch) {
         case '"':
         case '\\':
           out.append('\\').append(ch);
           break;
+
         case '\n':
           out.append("\\n");
           break;
+
         case '\r':
           out.append("\\r");
           break;
+
         case '\t':
           out.append("\\t");
           break;
+
         case '\b':
           out.append("\\b");
           break;
+
         case '\f':
           out.append("\\f");
           break;
+
         default:
           if (ch <= 0x1F)
             out.append(String.format("\\u%04x", (int)ch));
@@ -303,29 +316,35 @@ public final class JsonUtil {
     for (int i = offset, length = offset + len; i < length; ++i) { // [N]
       final char ch = chars[i];
       /*
-       * From RFC 4627, "All Unicode characters may be placed within the quotation marks except for the characters that must be
-       * escaped: quotation mark, reverse solidus, and the control characters (U+0000 through U+001F)."
+       * From RFC 4627, "All Unicode characters may be placed within the quotation marks except for the characters that must be escaped:
+       * quotation mark, reverse solidus, and the control characters (U+0000 through U+001F)."
        */
       switch (ch) {
         case '"':
         case '\\':
           out.append('\\').append(ch);
           break;
+
         case '\n':
           out.append("\\n");
           break;
+
         case '\r':
           out.append("\\r");
           break;
+
         case '\t':
           out.append("\\t");
           break;
+
         case '\b':
           out.append("\\b");
           break;
+
         case '\f':
           out.append("\\f");
           break;
+
         default:
           if (ch <= 0x1F)
             out.append(String.format("\\u%04x", (int)ch));
@@ -338,8 +357,8 @@ public final class JsonUtil {
   }
 
   /**
-   * Unescapes string-literal unicode ({@code "\u000A"}) and two-character ({@code "\n"}) escape codes, <i>except for the double
-   * quote ({@code "\""}) and reverse solidus ({@code "\\"})</i>, into UTF-8 as defined in
+   * Unescapes string-literal unicode ({@code "\u000A"}) and two-character ({@code "\n"}) escape codes, <i>except for the double quote
+   * ({@code "\""}) and reverse solidus ({@code "\\"})</i>, into UTF-8 as defined in
    * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section 2.5</a>.
    * <p>
    * This method deliberately excludes the double quote ({@code "\""}) and reverse solidus ({@code "\\"}), as these characters are
@@ -358,8 +377,8 @@ public final class JsonUtil {
   }
 
   /**
-   * Unescapes string-literal unicode ({@code "\u000A"}) and two-character ({@code "\n"}) escape codes, <i>except for the double
-   * quote ({@code "\""}) and reverse solidus ({@code "\\"})</i>, into UTF-8 as defined in
+   * Unescapes string-literal unicode ({@code "\u000A"}) and two-character ({@code "\n"}) escape codes, <i>except for the double quote
+   * ({@code "\""}) and reverse solidus ({@code "\\"})</i>, into UTF-8 as defined in
    * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section 2.5</a>.
    * <p>
    * This method deliberately excludes the double quote ({@code "\""}) and reverse solidus ({@code "\\"}), as these characters are
@@ -409,8 +428,8 @@ public final class JsonUtil {
   }
 
   /**
-   * Unescapes string-literal unicode ({@code "\u000A"}) and two-character ({@code "\n"}) escape codes, <i>except for the double
-   * quote ({@code "\""}) and reverse solidus ({@code "\\"})</i>, into UTF-8 as defined in
+   * Unescapes string-literal unicode ({@code "\u000A"}) and two-character ({@code "\n"}) escape codes, <i>except for the double quote
+   * ({@code "\""}) and reverse solidus ({@code "\\"})</i>, into UTF-8 as defined in
    * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section 2.5</a>.
    * <p>
    * This method deliberately excludes the double quote ({@code "\""}) and reverse solidus ({@code "\\"}), as these characters are
@@ -432,8 +451,8 @@ public final class JsonUtil {
   }
 
   /**
-   * Unescapes string-literal unicode ({@code "\u000A"}) and two-character ({@code "\n"}) escape codes, <i>except for the double
-   * quote ({@code "\""}) and reverse solidus ({@code "\\"})</i>, into UTF-8 as defined in
+   * Unescapes string-literal unicode ({@code "\u000A"}) and two-character ({@code "\n"}) escape codes, <i>except for the double quote
+   * ({@code "\""}) and reverse solidus ({@code "\\"})</i>, into UTF-8 as defined in
    * <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section 2.5</a>.
    * <p>
    * This method deliberately excludes the double quote ({@code "\""}) and reverse solidus ({@code "\\"}), as these characters are

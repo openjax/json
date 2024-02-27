@@ -102,7 +102,7 @@ public final class JSON {
      * @param factory The "JSON to object" factory function of type <code>Type{@link Type &lt;T&gt;}</code>.
      * @return {@code this} instance.
      */
-    public <T>TypeMap put(final Type<T> key, final T factory) {
+    public <T> TypeMap put(final Type<T> key, final T factory) {
       map[key.ordinal()] = factory;
       return this;
     }
@@ -114,7 +114,7 @@ public final class JSON {
      * @param key The {@link Type key}.
      * @return The function of type <code>Type{@link Type &lt;T&gt;}</code> for the provided {@link Type key}.
      */
-    public <T>T get(final Type<T> key) {
+    public <T> T get(final Type<T> key) {
       return (T)map[key.ordinal()];
     }
   }
@@ -449,8 +449,8 @@ public final class JSON {
    * </ul>
    *
    * @implNote The property values of the specified map may only be instances of {@link Map Map&lt;String,?&gt;}, {@link List
-   *           List&lt;?&gt;}, {@link String}, {@link Number}, {@link Boolean}, and {@code null}. Objects of other classes will
-   *           result in an {@link IllegalArgumentException}.
+   *           List&lt;?&gt;}, {@link String}, {@link Number}, {@link Boolean}, and {@code null}. Objects of other classes will result
+   *           in an {@link IllegalArgumentException}.
    * @param json The JSON value represented as a {@link Map Map&lt;String,?&gt;}, {@link List List&lt;?&gt;}, {@link String},
    *          {@link Number}, {@link Boolean}, and {@code null}.
    * @return A string encoding of the {@code json} object.
@@ -474,18 +474,18 @@ public final class JSON {
    * </ul>
    *
    * @implNote The property values of the specified map may only be instances of {@link Map Map&lt;String,?&gt;}, {@link List
-   *           List&lt;?&gt;}, {@link String}, {@link Number}, {@link Boolean}, and {@code null}. Objects of other classes will
-   *           result in an {@link IllegalArgumentException}.
+   *           List&lt;?&gt;}, {@link String}, {@link Number}, {@link Boolean}, and {@code null}. Objects of other classes will result
+   *           in an {@link IllegalArgumentException}.
    * @param json The JSON value represented as a {@link Map Map&lt;String,?&gt;}, {@link List List&lt;?&gt;}, {@link String},
    *          {@link Number}, {@link Boolean}, and {@code null}.
-   * @param indent Number of spaces to indent child elements. If the specified indent value is greater than {@code 0}, child
-   *          elements are indented and placed on a new line. If the indent value is {@code 0}, child elements are not indented, nor
-   *          placed on a new line.
+   * @param indent Number of spaces to indent child elements. If the specified indent value is greater than {@code 0}, child elements
+   *          are indented and placed on a new line. If the indent value is {@code 0}, child elements are not indented, nor placed on
+   *          a new line.
    * @return A string encoding of the {@code json} object.
    * @throws IllegalArgumentException If {@code json} is null, or if {@code json} or a property value of the specified {@link Map
    *           Map&lt;String,?&gt;} or member of the {@link List List&lt;?&gt;} is of a class that is not one of {@link Map
-   *           Map&lt;String,?&gt;}, {@link List List&lt;?&gt;}, {@link String}, {@link Number}, {@link Boolean} and {@code null},
-   *           or if {@code indent} is negative.
+   *           Map&lt;String,?&gt;}, {@link List List&lt;?&gt;}, {@link String}, {@link Number}, {@link Boolean} and {@code null}, or
+   *           if {@code indent} is negative.
    */
   @SuppressWarnings("unchecked")
   public static String toString(final Object json, final int indent) {
@@ -532,8 +532,8 @@ public final class JSON {
   }
 
   /**
-   * Returns a JSON string encoding of the provided {@code double}. If the provided {@code double} represents {@code NaN} or
-   * infinity, this method returns {@code "null"}. Otherwise, for all other {@code double} values, this method returns
+   * Returns a JSON string encoding of the provided {@code double}. If the provided {@code double} represents {@code NaN} or infinity,
+   * this method returns {@code "null"}. Otherwise, for all other {@code double} values, this method returns
    * {@link Double#toString(double)}.
    *
    * @param json The {@code double} to encode.
@@ -548,8 +548,8 @@ public final class JSON {
    * {@code object} is null.
    *
    * @implNote The property values of the specified map may only be instances of {@link Map Map&lt;String,?&gt;}, {@link List
-   *           List&lt;?&gt;}, {@link String}, {@link Number}, {@link Boolean}, and {@code null}. Objects of other classes will
-   *           result in an {@link IllegalArgumentException}.
+   *           List&lt;?&gt;}, {@link String}, {@link Number}, {@link Boolean}, and {@code null}. Objects of other classes will result
+   *           in an {@link IllegalArgumentException}.
    * @param object The JSON object, represented as a {@link Map Map&lt;String,?&gt;}.
    * @return A JSON string encoding of the specified {@link Map Map&lt;String,?&gt;} representing a JSON object.
    * @throws IllegalArgumentException If {@code object} is null, or if a property value of the specified {@link Map
@@ -565,12 +565,12 @@ public final class JSON {
    * {@code object} is null.
    *
    * @implNote The property values of the specified map may only be instances of {@link Map Map&lt;String,?&gt;}, {@link List
-   *           List&lt;?&gt;}, {@link String}, {@link Number}, {@link Boolean}, and {@code null}. Objects of other classes will
-   *           result in an {@link IllegalArgumentException}.
+   *           List&lt;?&gt;}, {@link String}, {@link Number}, {@link Boolean}, and {@code null}. Objects of other classes will result
+   *           in an {@link IllegalArgumentException}.
    * @param object The JSON object, represented as a {@link Map Map&lt;String,?&gt;}.
-   * @param indent Number of spaces to indent child elements. If the specified indent value is greater than {@code 0}, child
-   *          elements are indented and placed on a new line. If the indent value is {@code 0}, child elements are not indented, nor
-   *          placed on a new line.
+   * @param indent Number of spaces to indent child elements. If the specified indent value is greater than {@code 0}, child elements
+   *          are indented and placed on a new line. If the indent value is {@code 0}, child elements are not indented, nor placed on
+   *          a new line.
    * @return A JSON string encoding of the specified {@link Map Map&lt;String,?&gt;} representing a JSON object.
    * @throws IllegalArgumentException If {@code object} is null, or if a property value of the specified {@link Map
    *           Map&lt;String,?&gt;} is of a class that is not one of {@link Map Map&lt;String,?&gt;}, {@link List List&lt;?&gt;},
@@ -616,14 +616,14 @@ public final class JSON {
    * {@code null} if {@code array} is null.
    *
    * @implNote The property values of the specified map may only be instances of {@link Map Map&lt;String,?&gt;}, {@link List
-   *           List&lt;?&gt;}, {@link String}, {@link Number}, {@link Boolean}, and {@code null}. Objects of other classes will
-   *           result in an {@link IllegalArgumentException}.
+   *           List&lt;?&gt;}, {@link String}, {@link Number}, {@link Boolean}, and {@code null}. Objects of other classes will result
+   *           in an {@link IllegalArgumentException}.
    * @param array The JSON array, represented as a {@link List List&lt;?&gt;}.
    * @return A JSON string encoding of the specified {@link List List&lt;?&gt;} representing a JSON array, or {@code null} if
    *         {@code array} is null.
-   * @throws IllegalArgumentException If {@code array} is null, or if a member value of the specified {@link List List&lt;?&gt;} is
-   *           of a class that is not one of {@link Map Map&lt;String,?&gt;}, {@link List List&lt;?&gt;}, {@link String},
-   *           {@link Number}, {@link Boolean}, and {@code null}.
+   * @throws IllegalArgumentException If {@code array} is null, or if a member value of the specified {@link List List&lt;?&gt;} is of
+   *           a class that is not one of {@link Map Map&lt;String,?&gt;}, {@link List List&lt;?&gt;}, {@link String}, {@link Number},
+   *           {@link Boolean}, and {@code null}.
    */
   public static String toString(final List<?> array) {
     return toString(array, 0);
@@ -634,12 +634,12 @@ public final class JSON {
    * array, or {@code null} if {@code array} is null.
    *
    * @implNote The property values of the specified map may only be instances of {@link Map Map&lt;String,?&gt;}, {@link List
-   *           List&lt;?&gt;}, {@link String}, {@link Number}, {@link Boolean}, and {@code null}. Objects of other classes will
-   *           result in an {@link IllegalArgumentException}.
+   *           List&lt;?&gt;}, {@link String}, {@link Number}, {@link Boolean}, and {@code null}. Objects of other classes will result
+   *           in an {@link IllegalArgumentException}.
    * @param array The JSON array, represented as a {@link List List&lt;?&gt;}.
-   * @param indent Number of spaces to indent child elements. If the specified indent value is greater than {@code 0}, child
-   *          elements are indented and placed on a new line. If the indent value is {@code 0}, child elements are not indented, nor
-   *          placed on a new line.
+   * @param indent Number of spaces to indent child elements. If the specified indent value is greater than {@code 0}, child elements
+   *          are indented and placed on a new line. If the indent value is {@code 0}, child elements are not indented, nor placed on
+   *          a new line.
    * @return A JSON string encoding of the specified {@link List List&lt;?&gt;} representing a JSON array, or {@code null} if
    *         {@code array} is null.
    * @throws IllegalArgumentException If a member value of the specified {@link List List&lt;?&gt;} is of a class that is not one of
@@ -657,12 +657,15 @@ public final class JSON {
     final int i$ = array.size();
     if (i$ > 0) {
       if (CollectionUtil.isRandomAccess(array)) {
-        int i = 0; do // [RA]
+        int i = 0;
+        do // [RA]
           backUp = toString(builder, array.get(i), indent, spaces == -1 ? -1 : spaces + indent, backUp, i);
         while (++i < i$);
       }
       else {
-        int i = -1; final Iterator<?> it = array.iterator(); do // [I]
+        int i = -1;
+        final Iterator<?> it = array.iterator();
+        do // [I]
           backUp = toString(builder, it.next(), indent, spaces == -1 ? -1 : spaces + indent, backUp, ++i);
         while (it.hasNext());
       }

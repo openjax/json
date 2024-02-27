@@ -252,11 +252,9 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
   }
 
   /**
-   * Returns the number of tokens read thus far. The value returned by this method defines the upper bound of
-   * {@link #setIndex(int)}.
+   * Returns the number of tokens read thus far. The value returned by this method defines the upper bound of {@link #setIndex(int)}.
    *
-   * @return The number of tokens read thus far. The value returned by this method defines the upper bound of
-   *         {@link #setIndex(int)}.
+   * @return The number of tokens read thus far. The value returned by this method defines the upper bound of {@link #setIndex(int)}.
    */
   public int size() {
     return positions.size();
@@ -302,8 +300,8 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
   }
 
   /**
-   * Read the next <u>JSON token</u>, and return a {@linkplain org.libj.lang.Numbers.Composite#encode(int,int) composite}
-   * {@code long} of the <u>offset index</u> and <u>token length</u>, which can be decoded with
+   * Read the next <u>JSON token</u>, and return a {@linkplain org.libj.lang.Numbers.Composite#encode(int,int) composite} {@code long}
+   * of the <u>offset index</u> and <u>token length</u>, which can be decoded with
    * {@link org.libj.lang.Numbers.Composite#decodeInt(long,int) Composite#decodeInt(long,int)}.
    * <p>
    * A <u>JSON token</u> is one of:
@@ -359,8 +357,8 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
    * </ul>
    *
    * @implNote If this instance ignores whitespace, this method will skip whitespace tokens.
-   * @return A {@linkplain org.libj.lang.Numbers.Composite#encode(int,int) composite} {@code long} of the offset index and length
-   *         into the underlying {@link JsonReader}, or {@code -1} if the end of content has been reached.
+   * @return A {@linkplain org.libj.lang.Numbers.Composite#encode(int,int) composite} {@code long} of the offset index and length into
+   *         the underlying {@link JsonReader}, or {@code -1} if the end of content has been reached.
    * @throws IOException If an I/O error has occurred.
    * @throws JsonParseException If the content is not well formed.
    * @see org.libj.lang.Numbers.Composite#decodeInt(long,int)
@@ -431,8 +429,8 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
    * have not yet been returned by {@link #read()}</i>. Characters read with this method undergo the same token-level error checking
    * as in {@link #readTokenStart()} or {@link #readToken()}.
    *
-   * @return The character read, as an integer in the range 0 to 65535 ({@code 0x00-0xffff}), or -1 if the end of the stream has
-   *         been reached.
+   * @return The character read, as an integer in the range 0 to 65535 ({@code 0x00-0xffff}), or -1 if the end of the stream has been
+   *         reached.
    * @throws IOException If an I/O error has occurred.
    * @throws JsonParseException If the content is not well formed.
    * @see #readTokenStart()
@@ -447,9 +445,9 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
    * {@inheritDoc}
    * <p>
    * Characters read with this method advance the characters of the tokens to which they belong. Therefore, when partially reading a
-   * token with {@link #read(char[],int,int)}, subsequent calls to {@link #readToken()} will return <i>the remaining characters of
-   * the token that have not yet been returned by {@link #read()}</i>. Characters read with this method undergo the same token-level
-   * error checking as in {@link #readTokenStart()} or {@link #readToken()}.
+   * token with {@link #read(char[],int,int)}, subsequent calls to {@link #readToken()} will return <i>the remaining characters of the
+   * token that have not yet been returned by {@link #read()}</i>. Characters read with this method undergo the same token-level error
+   * checking as in {@link #readTokenStart()} or {@link #readToken()}.
    *
    * @param cbuf Destination buffer.
    * @param off Offset at which to start storing characters.
@@ -485,9 +483,9 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
    * {@inheritDoc}
    * <p>
    * Characters read with this method advance the characters of the tokens to which they belong. Therefore, when partially reading a
-   * token with {@link #read(char[])}, subsequent calls to {@link #readToken()} will return the remaining characters of the token
-   * that have not yet been returned by {@link #read()}. Characters read with this method undergo the same token-level validation as
-   * in {@link #readTokenStart()} or {@link #readToken()}.
+   * token with {@link #read(char[])}, subsequent calls to {@link #readToken()} will return the remaining characters of the token that
+   * have not yet been returned by {@link #read()}. Characters read with this method undergo the same token-level validation as in
+   * {@link #readTokenStart()} or {@link #readToken()}.
    *
    * @param cbuf Destination buffer.
    * @return The number of characters read, or -1 if the end of the stream has been reached.
@@ -628,8 +626,8 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
   }
 
   /**
-   * Read until the end of the next token, and return the start index of the token that was just read. The end index of the token
-   * can be retrieved with a subsequent call to {@link #getPosition()}. If the end of content has been reached, this method returns
+   * Read until the end of the next token, and return the start index of the token that was just read. The end index of the token can
+   * be retrieved with a subsequent call to {@link #getPosition()}. If the end of content has been reached, this method returns
    * {@code -1}.
    *
    * @return The start index of the next token.

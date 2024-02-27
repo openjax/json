@@ -34,7 +34,7 @@ public class JsonReaderRTest extends AbstractTest {
     final Options options = new OptionsBuilder()
       .include(".*" + JsonReaderRTest.class.getSimpleName() + ".*")
       .warmupIterations(1)
-//      .addProfiler(HotspotMemoryProfiler.class)
+      // .addProfiler(HotspotMemoryProfiler.class)
       .measurementIterations(5)
       .forks(1)
       .build();

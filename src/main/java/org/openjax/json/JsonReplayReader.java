@@ -64,8 +64,8 @@ class JsonReplayReader extends ReplayReader {
   }
 
   /**
-   * Reads a single character, and transparently unescapes string-literal unicode ({@code "\u000A"}) and two-character
-   * ({@code "\n"}) escape codes into UTF-8 as defined in <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section 2.5</a>.
+   * Reads a single character, and transparently unescapes string-literal unicode ({@code "\u000A"}) and two-character ({@code "\n"})
+   * escape codes into UTF-8 as defined in <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627, Section 2.5</a>.
    * <p>
    * {@inheritDoc}
    *
