@@ -1,16 +1,19 @@
 # Changes by Version
 
-## [v1.0.0-SNAPSHOT](https://github.com/libj/util/compare/51ae8abaf030a9989150edae6561b273191dc877..HEAD)
+## [v1.0.1-SNAPSHOT](https://github.com/libj/util/compare/2993c997810e90205b82a9595db9723f8fb0728e..HEAD)
+
+## [v1.0.0](https://github.com/libj/util/compare/51ae8abaf030a9989150edae6561b273191dc877..2993c997810e90205b82a9595db9723f8fb0728e) (2024-02-27)
+* #13 Apply auto-formatting
 
 ## [v0.9.4](https://github.com/openjax/json/compare/02b70e4d74ac2e692c384679522c05ea84a79427..51ae8abaf030a9989150edae6561b273191dc877) (2023-09-20)
 * #12 Support non-strict compliance to JSON spec
-* #11 Indentation in JSON.toString(...) is incorrect
+* #11 Indentation in `JSON.toString(...)` is incorrect
 * #10 Improve runtime and memory performance
-* #9 Support JsonReader.<init>(String)
-* #7 JsonReader.readToken to return composite long point instead of String
+* #9 Support `JsonReader.<init>(String)`
+* #7 `JsonReader.readToken` to return composite long point instead of String
 * #6 Upgrade Maven dependencies
 * #4 Transition to GitHub Actions
-* #3 Release resources in JsonReader.close()
+* #3 Release resources in `JsonReader.close()`
 * #2 Parameterize JUnit tests
 
 ## [v0.9.3](https://github.com/openjax/json/compare/1cc5ff5a8b0ebc307e765995031a38dd6a22be3a..02b70e4d74ac2e692c384679522c05ea84a79427) (2020-05-23)
