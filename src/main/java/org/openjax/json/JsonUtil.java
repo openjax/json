@@ -413,7 +413,7 @@ public final class JsonUtil {
         else if (ch == 'u') {
           ++i;
           final char[] unicode = new char[4];
-          for (int j = 0, j$ = unicode.length; j < j$; ++j) // [A]
+          for (int j = 0; j < 4; ++j) // [A]
             unicode[j] = str.charAt(i + j);
 
           i += unicode.length - 1;
@@ -526,7 +526,10 @@ public final class JsonUtil {
     for (int i = 0, i$ = str.length(); i < i$; ++i) { // [N]
       char ch = str.charAt(i);
       if (ch == '\\') {
-        ch = str.charAt(++i);
+        if (++i == i$)
+          break;
+
+        ch = str.charAt(i);
         if (ch == 'n')
           ch = '\n';
         else if (ch == 'r')
@@ -538,12 +541,16 @@ public final class JsonUtil {
         else if (ch == 'f')
           ch = '\f';
         else if (ch == 'u') {
-          ++i;
+          if (++i == i$)
+            break;
+
           final char[] unicode = new char[4];
-          for (int j = 0, j$ = unicode.length; j < j$; ++j) // [A]
+          for (int j = 0; j < 4; ++j) // [A]
             unicode[j] = str.charAt(i + j);
 
-          i += unicode.length - 1;
+          if ((i += unicode.length - 1) >= i$)
+            break;
+
           ch = (char)Integer.parseInt(new String(unicode), 16);
         }
       }
@@ -601,7 +608,7 @@ public final class JsonUtil {
         else if (ch == 'u') {
           ++i;
           final char[] unicode = new char[4];
-          for (int j = 0, j$ = unicode.length; j < j$; ++j) // [A]
+          for (int j = 0; j < 4; ++j) // [A]
             unicode[j] = chars[i + j];
 
           i += unicode.length - 1;
