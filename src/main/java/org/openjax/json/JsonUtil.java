@@ -622,6 +622,10 @@ public final class JsonUtil {
     return out;
   }
 
+  public static Double encodeNumber(final double value) {
+    return Double.isNaN(value) ? null : value;
+  }
+
   private JsonUtil() {
   }
 }

@@ -299,9 +299,7 @@ public final class JSON {
               ((List<Object>)current).add(object);
             }
           }
-          else if (ch == ':' || ch == ',') {
-          }
-          else {
+          else if (ch != ':' && ch != ',') {
             if (ch == '{') {
               final Supplier<Map<String,?>> factory = typeMap == null ? null : typeMap.get(Type.OBJECT);
               stack.add(current = factory == null ? new LinkedHashMap<>() : factory.get());
