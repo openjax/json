@@ -100,13 +100,13 @@ public class JsonReaderTest extends AbstractTest {
   public void testTerm() throws IOException {
     assertPass("{\"foo\": null}");
 
-    assertFail("{\"foo\": nulll}", JsonParseException.class, "Illegal character: 'l' [errorOffset: 12]");
-    assertFail(".", JsonParseException.class, "Expected character '{' or '[', but encountered '.' [errorOffset: 0]");
-    assertFail("x", JsonParseException.class, "Expected character '{' or '[', but encountered 'x' [errorOffset: 0]");
-    assertFail("[x]", JsonParseException.class, "Illegal character: 'x' [errorOffset: 1]");
-    assertFail("[null: x]", JsonParseException.class, "Illegal character: ':' [errorOffset: 5]");
-    assertFail("[null, x]", JsonParseException.class, "Illegal character: 'x' [errorOffset: 7]");
-    assertFail("{\"foo\": xyz}", JsonParseException.class, "Illegal character: 'x' [errorOffset: 8]");
+    assertFail("{\"foo\": nulll}", JsonParseException.class, "Expected character '\"', but encountered 'l' [errorOffset: 12]");
+    assertFail(".", JsonParseException.class, "Unexpected character: '.' [errorOffset: 0]");
+    assertFail("x", JsonParseException.class, "Unexpected character: 'x' [errorOffset: 0]");
+    assertFail("[x]", JsonParseException.class, "Unexpected character: 'x' [errorOffset: 1]");
+    assertFail("[null: x]", JsonParseException.class, "Unexpected character: ':' [errorOffset: 5]");
+    assertFail("[null, x]", JsonParseException.class, "Unexpected character: 'x' [errorOffset: 7]");
+    assertFail("{\"foo\": xyz}", JsonParseException.class, "Unexpected character: 'x' [errorOffset: 8]");
   }
 
   @Test
@@ -119,15 +119,15 @@ public class JsonReaderTest extends AbstractTest {
     assertPass("{\"foo\": \"ba\\\"r\"}");
 
     assertFail("{\"foo\": \"bar}", JsonParseException.class, "Unterminated string [errorOffset: 8]");
-    assertFail("{\"foo\": 'bar'}", JsonParseException.class, "Illegal character: ''' [errorOffset: 8]");
+    assertFail("{\"foo\": 'bar'}", JsonParseException.class, "Unexpected character: ''' [errorOffset: 8]");
   }
 
   @Test
   public void testBoolean() throws IOException {
     assertPass("{\"foo\":  true}");
     assertPass("{\"foo\": false}");
-    assertFail("{\"foo\": truee}", JsonParseException.class, "Illegal character: 'e' [errorOffset: 12]");
-    assertFail("{\"foo\": falss}", JsonParseException.class, "Illegal character: 's' [errorOffset: 12]");
+    assertFail("{\"foo\": truee}", JsonParseException.class, "Expected character '\"', but encountered 'e' [errorOffset: 12]");
+    assertFail("{\"foo\": falss}", JsonParseException.class, "Unexpected character: 's' [errorOffset: 12]");
   }
 
   @Test
@@ -144,13 +144,13 @@ public class JsonReaderTest extends AbstractTest {
     assertFail("{\"foo\": -.5}", JsonParseException.class, "Integer component required before fraction part [errorOffset: 9]");
     assertFail("{\"foo\": 001}", JsonParseException.class, "Leading zeros are not allowed [errorOffset: 8]");
     assertFail("{\"foo\": 0.}", JsonParseException.class, "Decimal point must be followed by one or more digits [errorOffset: 10]");
-    assertFail("{\"foo\": 0.0.}", JsonParseException.class, "Illegal character: '.' [errorOffset: 11]");
-    assertFail("{\"foo\": --0}", JsonParseException.class, "Illegal character: '-' [errorOffset: 9]");
+    assertFail("{\"foo\": 0.0.}", JsonParseException.class, "Unexpected character: '.' [errorOffset: 11]");
+    assertFail("{\"foo\": --0}", JsonParseException.class, "Unexpected character: '-' [errorOffset: 9]");
     assertFail("{\"foo\": 10E-}", JsonParseException.class, "Expected digit, but encountered '}' [errorOffset: 12]");
     assertFail("{\"foo\": 10E+}", JsonParseException.class, "Expected digit, but encountered '}' [errorOffset: 12]");
-    assertFail("{\"foo\": 10E--}", JsonParseException.class, "Illegal character: '-' [errorOffset: 12]");
-    assertFail("{\"foo\": 10E++}", JsonParseException.class, "Illegal character: '+' [errorOffset: 12]");
-    assertFail("{\"foo\": 10E+1.}", JsonParseException.class, "Illegal character: '.' [errorOffset: 13]");
+    assertFail("{\"foo\": 10E--}", JsonParseException.class, "Unexpected character: '-' [errorOffset: 12]");
+    assertFail("{\"foo\": 10E++}", JsonParseException.class, "Unexpected character: '+' [errorOffset: 12]");
+    assertFail("{\"foo\": 10E+1.}", JsonParseException.class, "Unexpected character: '.' [errorOffset: 13]");
     assertFail("{\"foo\": 10E01}", JsonParseException.class, "Leading zeros are not allowed [errorOffset: 11]");
     assertFail("{\"foo\": 10E+01}", JsonParseException.class, "Leading zeros are not allowed [errorOffset: 12]");
   }

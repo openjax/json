@@ -412,9 +412,9 @@ public final class JSON {
     if (obj == null)
       return builder.append("null");
 
-    if (obj instanceof String) {
+    if (obj instanceof CharSequence) {
       builder.append('"');
-      JsonUtil.escape(builder, (String)obj);
+      JsonUtil.escape(builder, (CharSequence)obj);
       return builder.append('"');
     }
 

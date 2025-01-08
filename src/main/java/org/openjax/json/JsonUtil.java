@@ -99,7 +99,7 @@ public final class JsonUtil {
           throw new JsonParseException("Integer component required before fraction part", i);
 
         if (hasDot)
-          throw new JsonParseException("Illegal character: '" + (char)ch + "'", i);
+          throw new JsonParseException("Unexpected character: '" + (char)ch + "'", i);
 
         hasDot = true;
       }
@@ -117,7 +117,7 @@ public final class JsonUtil {
     int expStart = -1;
     if (i < len) {
       if (ch != 'e' && ch != 'E')
-        throw new JsonParseException("Illegal character: '" + (char)ch + "'", i);
+        throw new JsonParseException("Unexpected character: '" + (char)ch + "'", i);
 
       last = ch;
       for (expStart = i + 1; ++i < len; last = ch) { // [N]
@@ -125,7 +125,7 @@ public final class JsonUtil {
         if (ch == '-' || ch == '+') {
           first = '~';
           if (i > expStart)
-            throw new JsonParseException("Illegal character: '" + (char)ch + "'", i);
+            throw new JsonParseException("Unexpected character: '" + (char)ch + "'", i);
         }
         else if (ch < '0' || '9' < ch) {
           break;

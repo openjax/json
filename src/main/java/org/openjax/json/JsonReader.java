@@ -24,7 +24,7 @@ import java.util.NoSuchElementException;
 
 import org.libj.io.UnsynchronizedStringReader;
 import org.libj.lang.Buffers;
-import org.libj.lang.Numbers;
+import org.libj.lang.Numbers.Composite;
 import org.libj.util.primitive.ArrayIntList;
 import org.libj.util.primitive.ArrayLongList;
 import org.libj.util.primitive.LongIterable;
@@ -232,23 +232,23 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
    */
   private int setIndex0(int index) {
     this.index = index;
-    final int start;
+    final int off;
     if (index > -1) {
-      final long position = positions.get(index);
-      start = Numbers.Composite.decodeInt(position, 0);
-      final int end = Numbers.Composite.decodeInt(position, 1);
-      setPosition(end);
+      final long offLen = positions.get(index);
+      off = Composite.decodeInt(offLen, 0);
+      final int len = Composite.decodeInt(offLen, 1);
+      setPosition(len);
       depth = depths.get(index);
     }
     else {
-      final long position = positions.get(++index);
-      start = Numbers.Composite.decodeInt(position, 0);
-      setPosition(start);
+      final long offLen = positions.get(++index);
+      off = Composite.decodeInt(offLen, 0);
+      setPosition(off);
       depth = 0;
     }
 
     scope = scopes.get(index);
-    return start;
+    return off;
   }
 
   /**
@@ -267,7 +267,7 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
    * @return The start position at {@code index}.
    */
   protected int getStartPosition(final int index) {
-    return Numbers.Composite.decodeInt(positions.get(index), 0);
+    return Composite.decodeInt(positions.get(index), 0);
   }
 
   /**
@@ -277,7 +277,7 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
    * @return The end position at {@code index}.
    */
   protected int getEndPosition(final int index) {
-    return Numbers.Composite.decodeInt(positions.get(index), 1);
+    return Composite.decodeInt(positions.get(index), 1);
   }
 
   /**
@@ -364,28 +364,28 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
    * @see org.libj.lang.Numbers.Composite#decodeInt(long,int)
    */
   public long readToken() throws IOException, JsonParseException {
-    final int start;
-    final int end;
-    final int pos = getPosition();
-    if (index == -1 || pos == getEndPosition(index)) {
-      start = nextToken();
-      end = getEndPosition(index);
+    final int off;
+    final int len;
+    final int offLen = getPosition();
+    if (index == -1 || offLen == getEndPosition(index)) {
+      off = nextToken();
+      len = getEndPosition(index);
     }
     else {
-      start = pos;
-      end = getEndPosition(index);
-      setPosition(end);
+      off = offLen;
+      len = getEndPosition(index);
+      setPosition(len);
     }
 
     // End of stream
-    if (start == -1)
+    if (off == -1)
       return -1;
 
     // Sanity check, which should never occur
-    if (start == end)
-      throw new IllegalStateException("Illegal JSON content [errorOffset: " + start + "]");
+    if (off == len)
+      throw new IllegalStateException("Illegal JSON content [errorOffset: " + off + "]");
 
-    return Numbers.Composite.encode(start, end - start);
+    return Composite.encode(off, len - off);
   }
 
   /**
@@ -692,9 +692,6 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
           continue;
         }
 
-        if (depth == -1)
-          throw new JsonParseException("Expected character '{' or '[', but encountered '" + (char)ch + "'", pos - 1);
-
         // read property key
         if (ch1 != ':' && Buffers.get(scope, depth)) {
           if (ch != '"')
@@ -747,6 +744,19 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
   }
 
   /**
+   * Appends {@code len} characters starting at {@code off} from {@link #buf()} to the provided {@link StringBuilder}.
+   *
+   * @param builder The {@link StringBuilder}.
+   * @param offLen A {@linkplain org.libj.lang.Numbers.Composite#encode(int,int) composite} {@code long} of the offset index and
+   *          length.
+   */
+  public void bufToString(final StringBuilder builder, final long offLen) {
+    final int off = Composite.decodeInt(offLen, 0);
+    final int len = Composite.decodeInt(offLen, 1);
+    builder.append(buf(), off, len);
+  }
+
+  /**
    * Returns a string from {@link #buf()} starting from {@code off} with {@code len} characters.
    *
    * @param off The starting offset in {@link #buf()} from which to append.
@@ -754,6 +764,19 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
    * @return A string from {@link #buf()} starting from {@code off} with {@code len} characters.
    */
   public String bufToString(final int off, final int len) {
+    return new String(buf(), off, len);
+  }
+
+  /**
+   * Returns a string from {@link #buf()} starting from {@code off} with {@code len} characters.
+   *
+   * @param offLen A {@linkplain org.libj.lang.Numbers.Composite#encode(int,int) composite} {@code long} of the offset index and
+   *          length.
+   * @return A string from {@link #buf()} starting from {@code off} with {@code len} characters.
+   */
+  public String bufToString(final long offLen) {
+    final int off = Composite.decodeInt(offLen, 0);
+    final int len = Composite.decodeInt(offLen, 1);
     return new String(buf(), off, len);
   }
 
@@ -784,7 +807,7 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
 
     scopes.add(scope.clone());
     depths.add(depth);
-    positions.add(Numbers.Composite.encode(--pos, getPosition()));
+    positions.add(Composite.encode(--pos, getPosition()));
     return pos;
   }
 
@@ -858,7 +881,7 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
             throw new JsonParseException("Integer component required before fraction part", getPosition() - 1);
 
           if (hasDot)
-            throw new JsonParseException("Illegal character: '" + (char)ch + "'", getPosition() - 1);
+            throw new JsonParseException("Unexpected character: '" + (char)ch + "'", getPosition() - 1);
 
           hasDot = true;
         }
@@ -879,7 +902,7 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
           if (ch == '-' || ch == '+') {
             first = '~';
             if (i > 0)
-              throw new JsonParseException("Illegal character: '" + (char)ch + "'", getPosition() - 1);
+              throw new JsonParseException("Unexpected character: '" + (char)ch + "'", getPosition() - 1);
           }
           else if (ch < '0' || '9' < ch) {
             break;
@@ -898,7 +921,7 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
       }
 
       if (ch != ']' && ch != '}' && ch != ',' && !JsonUtil.isWhitespace(ch))
-        throw new JsonParseException(ch == -1 ? "Unexpected end of document" : "Illegal character: '" + (char)ch + "'", getPosition() - 1);
+        throw new JsonParseException(ch == -1 ? "Unexpected end of document" : "Unexpected character: '" + (char)ch + "'", getPosition() - 1);
 
       return ch;
     }
@@ -909,17 +932,13 @@ public class JsonReader extends JsonReplayReader implements LongIterable, LongIt
         final char[] literal = literals[i];
         for (int j = 1, j$ = literal.length; j < j$; ++j) // [A]
           if ((ch = super.read()) != literal[j])
-            throw new JsonParseException(ch == -1 ? "Unexpected end of document" : "Illegal character: '" + (char)ch + "'", getPosition() - 1);
+            throw new JsonParseException(ch == -1 ? "Unexpected end of document" : "Unexpected character: '" + (char)ch + "'", getPosition() - 1);
 
-        ch = super.read();
-        if (!JsonUtil.isStructural(ch) && !JsonUtil.isWhitespace(ch))
-          break;
-
-        return ch;
+        return super.read();
       }
     }
 
-    throw new JsonParseException(ch == -1 ? "Unexpected end of document" : "Illegal character: '" + (char)ch + "'", getPosition() - 1);
+    throw new JsonParseException(ch == -1 ? "Unexpected end of document" : "Unexpected character: '" + (char)ch + "'", getPosition() - 1);
   }
 
   @Override
